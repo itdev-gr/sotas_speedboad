@@ -1,0 +1,1111 @@
+---
+// Βάλτε το βίντεό σας στο public/videos/hero.mp4 (ή αλλάξτε το src παρακάτω)
+---
+
+<html lang="el">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Sotas Speedboats – Yacht Cruises Zakynthos</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+	</head>
+	<body>
+		<section class="hero" aria-label="Hero section">
+			<!-- Fullscreen video background -->
+			<div class="hero-video-wrap">
+				<video
+					class="hero-video"
+					autoplay
+					muted
+					playsinline
+					aria-hidden="true"
+					data-hero-video
+				>
+					<source src="/videos/hero.mp4" type="video/mp4" />
+				</video>
+				<div class="hero-overlay" aria-hidden="true"></div>
+			</div>
+
+			<!-- Header / Navbar -->
+			<header class="hero-header">
+				<div class="nav-logo">
+					<span class="logo-letter">S</span>
+					<span class="logo-text">SOTAS SPEEDBOATS</span>
+				</div>
+				<div class="nav-menu-wrap">
+					<nav class="nav-links">
+						<a href="#home">HOME</a>
+						<a href="#book">BOOK RENTAL</a>
+						<a href="#routes">RECOMMENDED ROUTES</a>
+						<a href="#about">ABOUT US</a>
+						<a href="#faq">FAQ</a>
+						<a href="#contact">CONTACT US</a>
+					</nav>
+					<div class="nav-contact">
+						<a href="tel:+306970621594" class="nav-phone-btn">+30 697 062 1594</a>
+					</div>
+					<button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+				</div>
+			</header>
+
+			<!-- Carousel arrows -->
+			<button class="hero-arrow hero-arrow-prev" type="button" aria-label="Προηγούμενο">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<polyline points="15 18 9 12 15 6" />
+				</svg>
+			</button>
+			<button class="hero-arrow hero-arrow-next" type="button" aria-label="Επόμενο">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<polyline points="9 18 15 12 9 6" />
+				</svg>
+			</button>
+
+			<!-- Hero content (first video – left) -->
+			<div class="hero-content">
+				<p class="hero-label">SOTAS SPEEDBOATS</p>
+				<h1 class="hero-title">
+					<span>YACHT CRUISES</span>
+					<span>ZAKYNTHOS</span>
+				</h1>
+				<p class="hero-subtitle">Discover Zakynthos on a Private Luxury Yacht!</p>
+				<a href="#contact" class="hero-cta">CONTACT US</a>
+			</div>
+
+			<!-- Hero content (second video – right) -->
+			<div class="hero-content-second" aria-hidden="true">
+				<p class="hero-label">SOTAS SPEEDBOATS</p>
+				<h2 class="hero-title">
+					<span>YACHT CRUISES</span>
+					<span>ZAKYNTHOS</span>
+				</h2>
+				<p class="hero-subtitle">Discover Zakynthos on a Private Luxury Yacht!</p>
+				<a href="#contact" class="hero-cta">CONTACT US</a>
+			</div>
+
+			<!-- Floating chat icon -->
+			<a href="#chat" class="hero-chat" aria-label="Άνοιγμα συνομιλίας">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+				</svg>
+			</a>
+		</section>
+
+		<!-- Fleet section: headline + image, then three feature columns -->
+		<section class="fleet-section" aria-label="Our fleet and experience">
+			<div class="fleet-top">
+				<div class="fleet-content">
+					<h2 class="fleet-headline">Providing a large fleet of Boats for a perfect and dreamy experience</h2>
+					<p class="fleet-para">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+					</p>
+					<ul class="fleet-list">
+						<li>Stunning Cruise Paths You Follow</li>
+						<li>Premium Boats & Yachts</li>
+						<li>Our Professional Approach</li>
+						<li>Quality Service Guaranteed</li>
+					</ul>
+				</div>
+				<div class="fleet-image-wrap">
+					<img
+						src="/images/fleet-experience.png"
+						alt="Relaxing on the deck of a boat"
+						class="fleet-image"
+					/>
+				</div>
+			</div>
+			<div class="fleet-features">
+				<div class="fleet-feature">
+					<div class="fleet-feature-top">
+						<span class="fleet-feature-icon" aria-hidden="true">
+							<img src="/icons/rudder.svg" alt="" class="fleet-feature-icon-img" width="48" height="48" />
+						</span>
+						<h3 class="fleet-feature-heading">Priceless Experience</h3>
+					</div>
+					<div class="fleet-feature-wave" aria-hidden="true"></div>
+					<p class="fleet-feature-desc">Asmod tempor incididunt labore magna ust enim sed veniams quis nostrud sed commodo ipsum duals.</p>
+				</div>
+				<div class="fleet-feature">
+					<div class="fleet-feature-top">
+						<span class="fleet-feature-icon" aria-hidden="true">
+							<img src="/icons/snorkel.svg" alt="" class="fleet-feature-icon-img" width="48" height="48" />
+						</span>
+						<h3 class="fleet-feature-heading">Custom Packages</h3>
+					</div>
+					<div class="fleet-feature-wave" aria-hidden="true"></div>
+					<p class="fleet-feature-desc">Asmod tempor incididunt labore magna ust enim sed veniams quis nostrud sed commodo ipsum duals.</p>
+				</div>
+				<div class="fleet-feature">
+					<div class="fleet-feature-top">
+						<span class="fleet-feature-icon" aria-hidden="true">
+							<img src="/icons/sailor.svg" alt="" class="fleet-feature-icon-img" width="48" height="48" />
+						</span>
+						<h3 class="fleet-feature-heading">Peoples Oriented</h3>
+					</div>
+					<div class="fleet-feature-wave" aria-hidden="true"></div>
+					<p class="fleet-feature-desc">Asmod tempor incididunt labore magna ust enim sed veniams quis nostrud sed commodo ipsum duals.</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Third section: Self Drive Boat Rentals -->
+		<section class="selfdrive-section" id="selfdrive" aria-label="Self drive boat rentals">
+			<div class="selfdrive-inner">
+				<div class="selfdrive-image-wrap">
+					<img
+						src="/images/self-drive-boat.png"
+						alt="Self drive boat on the water in Zakynthos"
+						class="selfdrive-image"
+						width="800"
+						height="600"
+					/>
+				</div>
+				<div class="selfdrive-text">
+					<span class="selfdrive-bg-label" aria-hidden="true">SELF DRIVE</span>
+					<p class="selfdrive-sub">NO LICENSE REQUIRED</p>
+					<h2 class="selfdrive-title">SELF DRIVE BOAT RENTALS</h2>
+					<p class="selfdrive-desc">
+						Rent a self drive boat in Zakynthos and become a captain yourself. No license required!
+					</p>
+					<a href="#selfdrive" class="selfdrive-cta">VIEW MORE</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Skipper Drive section (image right, text left) -->
+		<section class="selfdrive-section selfdrive-section--last" id="skipperdrive" aria-label="Skipper drive boat rentals">
+			<div class="selfdrive-inner">
+				<div class="selfdrive-image-wrap">
+					<img
+						src="/images/skipper-drive.png"
+						alt="Professional skipper driving a luxury motor boat in Zakynthos"
+						class="selfdrive-image"
+						width="800"
+						height="600"
+					/>
+				</div>
+				<div class="selfdrive-text">
+					<span class="selfdrive-bg-label" aria-hidden="true">SKIPPER DRIVE</span>
+					<p class="selfdrive-sub">PROFESSIONAL SKIPPER</p>
+					<h2 class="selfdrive-title">SKIPPER DRIVE BOAT RENTALS</h2>
+					<p class="selfdrive-desc">
+						Enjoy a relaxing cruise with an experienced skipper. Sit back and discover Zakynthos and the Ionian Sea in comfort.
+					</p>
+					<a href="#skipperdrive" class="selfdrive-cta">VIEW MORE</a>
+				</div>
+			</div>
+		</section>
+
+		<footer class="site-footer" aria-label="Footer">
+			<div class="footer-main">
+				<div class="footer-col footer-about">
+					<div class="footer-logo">
+						<span class="footer-logo-letter">S</span>
+						<span class="footer-logo-text">SOTAS SPEEDBOATS</span>
+					</div>
+					<h3 class="footer-title">Για εμάς...</h3>
+					<ul class="footer-links">
+						<li><a href="#about">Εταιρεία</a></li>
+						<li><a href="#book">Κράτηση Σκάφους</a></li>
+						<li><a href="#routes">Προτεινόμενες Διαδρομές</a></li>
+						<li><a href="#selfdrive">Self Drive</a></li>
+						<li><a href="#skipperdrive">Skipper Drive</a></li>
+						<li><a href="#faq">FAQ</a></li>
+						<li><a href="#contact">Επικοινωνία</a></li>
+					</ul>
+				</div>
+				<div class="footer-col footer-useful">
+					<h3 class="footer-title">Χρήσιμα</h3>
+					<ul class="footer-links">
+						<li><a href="#terms">Όροι Χρήσης</a></li>
+						<li><a href="#privacy">Πολιτική Απορρήτου</a></li>
+						<li><a href="#cookies">Πολιτική Χρήση Cookies</a></li>
+					</ul>
+				</div>
+				<div class="footer-col footer-find">
+					<h3 class="footer-title">Βρείτε μας</h3>
+					<p class="footer-company">Sotas Speedboats</p>
+					<p class="footer-address">Ζάκυνθος, Ιόνιο</p>
+					<p class="footer-contact">
+						<a href="tel:+306970621594">+30 697 062 1594</a>
+					</p>
+					<p class="footer-contact">
+						<a href="mailto:info@boatrentalzakynthos.com">info@boatrentalzakynthos.com</a>
+					</p>
+				</div>
+				<div class="footer-col footer-contact-col">
+					<h3 class="footer-title">Επικοινωνήστε μαζί μας!</h3>
+					<a href="#contact" class="footer-form-link">Φόρμα Επικοινωνίας</a>
+					<div class="footer-social">
+						<a href="#" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+						<a href="#" aria-label="Facebook"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+						<a href="#" aria-label="YouTube"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<p class="footer-copyright">© Copyright 2025, Sotas Speedboats – Designed and Developed by <a href="https://www.itdev.gr/" target="_blank" rel="noopener noreferrer">IT DEV</a></p>
+			</div>
+		</footer>
+
+		<script is:inline>
+			document.addEventListener('DOMContentLoaded', () => {
+			const video = document.querySelector('.hero-video');
+			const heroContent = document.querySelector('.hero-content');
+			const heroContentSecond = document.querySelector('.hero-content-second');
+			const prevBtn = document.querySelector('.hero-arrow-prev');
+			const nextBtn = document.querySelector('.hero-arrow-next');
+
+			if (video) {
+				const sources = ['/videos/hero.mp4', '/videos/hero2.mp4'];
+				let currentIndex = 0;
+				let hideTriggeredForFirstVideo = false;
+				const sourceEl = video.querySelector('source');
+
+				const showVideo = () => video.classList.add('is-ready');
+				video.addEventListener('canplay', showVideo, { once: true });
+				video.addEventListener('playing', showVideo, { once: true });
+				if (video.readyState >= 2) showVideo();
+
+				function goToVideo(index) {
+					currentIndex = (index + sources.length) % sources.length;
+					sourceEl.setAttribute('src', sources[currentIndex]);
+					video.load();
+					video.play();
+					if (currentIndex === 0) {
+						hideTriggeredForFirstVideo = false;
+						heroContent?.classList.remove('hero-content--hidden');
+						heroContentSecond?.classList.remove('hero-content-second--visible');
+					} else {
+						heroContent?.classList.add('hero-content--hidden');
+						heroContentSecond?.classList.add('hero-content-second--visible');
+					}
+				}
+
+				video.addEventListener('timeupdate', () => {
+					if (currentIndex !== 0 || hideTriggeredForFirstVideo) return;
+					const duration = video.duration;
+					if (!Number.isFinite(duration)) return;
+					if (video.currentTime >= duration - 0.5) {
+						hideTriggeredForFirstVideo = true;
+						heroContent?.classList.add('hero-content--hidden');
+					}
+				});
+
+				video.addEventListener('ended', () => goToVideo(currentIndex + 1));
+
+				if (prevBtn) prevBtn.addEventListener('click', (e) => { e.preventDefault(); goToVideo(currentIndex - 1); });
+				if (nextBtn) nextBtn.addEventListener('click', (e) => { e.preventDefault(); goToVideo(currentIndex + 1); });
+			}
+
+			// Header background when menu scrolls past hero
+			const header = document.querySelector('.hero-header');
+			const heroSection = document.querySelector('.hero');
+			if (header && heroSection) {
+				const onScroll = () => {
+					const heroH = heroSection.getBoundingClientRect().height;
+					header.classList.toggle('hero-header--scrolled', window.scrollY >= heroH - 1);
+				};
+				onScroll();
+				window.addEventListener('scroll', onScroll, { passive: true });
+			}
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		font-family: 'Inter', system-ui, sans-serif;
+		overflow-x: hidden;
+	}
+</style>
+
+<style>
+	.hero {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+		min-height: 500px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		padding-top: 5rem;
+	}
+
+	/* Video container – fullscreen */
+	.hero-video-wrap {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background: #000;
+	}
+	.hero-video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0;
+		transition: opacity 0.5s ease;
+	}
+	.hero-video.is-ready {
+		opacity: 1;
+	}
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			to bottom,
+			rgba(10, 22, 40, 0.35) 0%,
+			rgba(10, 22, 40, 0.2) 50%,
+			rgba(10, 22, 40, 0.5) 100%
+		);
+		pointer-events: none;
+	}
+
+	/* Fallback όταν δεν φορτώνει βίντεο */
+	.hero-video-wrap:has(.hero-video:not([src])) .hero-overlay,
+	.hero-video-wrap .hero-overlay {
+		/* overlay πάντα ορατό */
+	}
+
+	/* Header: logo far left, menu items grouped on the right, phone/email at corner */
+	.hero-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 2rem;
+		background: transparent;
+		gap: 2rem;
+		transition: background-color 0.3s ease;
+	}
+	.hero-header.hero-header--scrolled {
+		background-color: rgba(6, 66, 80, 0.6);
+	}
+	.nav-logo {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.15rem;
+		flex-shrink: 0;
+	}
+	.nav-menu-wrap {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		margin-left: auto;
+	}
+	.nav-links {
+		display: flex;
+		gap: 1.5rem;
+		align-items: center;
+	}
+	.nav-links a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.8rem;
+		font-weight: 500;
+		letter-spacing: 0.05em;
+		opacity: 0.95;
+	}
+	.nav-links a:hover {
+		opacity: 1;
+		text-decoration: underline;
+	}
+	.logo-letter {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 2rem;
+		font-weight: 600;
+		color: #fff;
+		line-height: 1;
+	}
+	.logo-text {
+		font-size: 0.65rem;
+		letter-spacing: 0.2em;
+		color: #fff;
+		opacity: 0.9;
+	}
+	.nav-contact {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 0.15rem;
+	}
+	.nav-contact a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.7rem;
+		opacity: 0.85;
+	}
+	.nav-contact a:hover {
+		opacity: 1;
+	}
+	.nav-phone-btn {
+		display: inline-block;
+		padding: 0.5rem 1rem;
+		background: rgba(255, 255, 255, 0.2);
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.8rem;
+		font-weight: 500;
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		border-radius: 4px;
+		transition: background 0.2s, border-color 0.2s;
+	}
+	.nav-phone-btn:hover {
+		background: rgba(255, 255, 255, 0.3);
+		border-color: rgba(255, 255, 255, 0.6);
+	}
+	.nav-toggle {
+		display: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+		flex-direction: column;
+		gap: 5px;
+	}
+	.nav-toggle span {
+		width: 22px;
+		height: 2px;
+		background: #fff;
+	}
+
+	/* Carousel arrows */
+	.hero-arrow {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 10;
+		width: 48px;
+		height: 48px;
+		border: none;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.15);
+		backdrop-filter: blur(4px);
+		color: #fff;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background 0.2s, transform 0.2s;
+	}
+	.hero-arrow:hover {
+		background: rgba(255, 255, 255, 0.3);
+		transform: translateY(-50%) scale(1.05);
+	}
+	.hero-arrow-prev {
+		left: 1.5rem;
+	}
+	.hero-arrow-next {
+		right: 1.5rem;
+	}
+
+	/* Hero content */
+	.hero-content {
+		position: relative;
+		z-index: 2;
+		max-width: 90%;
+		margin: auto;
+		padding: 2rem;
+		text-align: left;
+		align-self: flex-start;
+		margin-left: 8%;
+		margin-top: 20vh;
+		animation: heroContentIn 1s ease-out forwards;
+		opacity: 0;
+	}
+	@keyframes heroContentIn {
+		from {
+			opacity: 0;
+			transform: translateY(32px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	.hero-content.hero-content--hidden {
+		animation: heroContentOut 0.5s ease-in forwards;
+		pointer-events: none;
+	}
+	@keyframes heroContentOut {
+		from {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		to {
+			opacity: 0;
+			transform: translateY(-24px);
+		}
+	}
+
+	/* Hero content for second video (right side) */
+	.hero-content-second {
+		position: relative;
+		z-index: 2;
+		max-width: 90%;
+		margin: auto;
+		padding: 2rem;
+		text-align: right;
+		align-self: flex-end;
+		margin-left: auto;
+		margin-right: 8%;
+		margin-top: calc(20vh - 40vh);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.5s ease, transform 0.5s ease;
+	}
+	.hero-content-second.hero-content-second--visible {
+		opacity: 1;
+		pointer-events: auto;
+		animation: heroContentIn 0.8s ease-out forwards;
+	}
+	.hero-content-second .hero-label,
+	.hero-content-second .hero-title,
+	.hero-content-second .hero-subtitle {
+		margin-left: auto;
+	}
+
+	.hero-label {
+		font-size: 0.8rem;
+		letter-spacing: 0.2em;
+		color: rgba(255, 255, 255, 0.85);
+		margin: 0 0 0.5rem 0;
+	}
+	.hero-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		font-weight: 600;
+		color: #fff;
+		line-height: 1.1;
+		margin: 0 0 0.75rem 0;
+		letter-spacing: 0.02em;
+	}
+	.hero-title span {
+		display: block;
+	}
+	.hero-subtitle {
+		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 1.5rem 0;
+		font-weight: 300;
+	}
+	.hero-cta {
+		display: inline-block;
+		padding: 0.85rem 2rem;
+		border: 2px solid rgba(72, 187, 180, 0.9);
+		background: rgba(72, 187, 180, 0.25);
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.85rem;
+		font-weight: 500;
+		letter-spacing: 0.15em;
+		transition: background 0.2s, border-color 0.2s;
+	}
+	.hero-cta:hover {
+		background: rgba(72, 187, 180, 0.45);
+		border-color: rgba(72, 187, 180, 1);
+	}
+
+	/* Chat icon */
+	.hero-chat {
+		position: fixed;
+		bottom: 1.5rem;
+		right: 1.5rem;
+		z-index: 10;
+		width: 56px;
+		height: 56px;
+		border-radius: 50%;
+		background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.hero-chat:hover {
+		transform: scale(1.08);
+		box-shadow: 0 6px 24px rgba(124, 58, 237, 0.5);
+	}
+
+	/* Responsive: κρύψη nav links, εμφάνιση hamburger */
+	@media (max-width: 1024px) {
+		.nav-links {
+			display: none;
+		}
+		.nav-toggle {
+			display: flex;
+		}
+		.hero-content {
+			margin-left: 5%;
+		}
+		.hero-arrow {
+			width: 40px;
+			height: 40px;
+		}
+		.hero-arrow-prev {
+			left: 0.75rem;
+		}
+		.hero-arrow-next {
+			right: 0.75rem;
+		}
+	}
+
+	/* Fleet section (under hero): headline + image, then three features */
+	.fleet-section {
+		width: 100%;
+		background: #fff;
+		padding-bottom: 4rem;
+	}
+	.fleet-top {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 4rem 2rem 3rem;
+		gap: 3rem;
+		align-items: center;
+	}
+	.fleet-content {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+	.fleet-headline {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.5rem, 3vw, 2.25rem);
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.3;
+	}
+	.fleet-para {
+		font-size: 1rem;
+		line-height: 1.65;
+		color: #333;
+		margin: 0;
+		max-width: 42ch;
+	}
+	.fleet-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.fleet-list li {
+		font-size: 1rem;
+		color: #1a1a1a;
+		position: relative;
+		padding-left: 1.5rem;
+	}
+	.fleet-list li::before {
+		content: '→';
+		position: absolute;
+		left: 0;
+		font-weight: 600;
+		color: #1a1a1a;
+	}
+	.fleet-image-wrap {
+		position: relative;
+		line-height: 0;
+	}
+	.fleet-image {
+		width: 100%;
+		height: auto;
+		display: block;
+		max-width: none;
+		vertical-align: middle;
+	}
+	.fleet-features {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem 2rem;
+		gap: 2rem;
+		background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px);
+		background-size: 24px 24px;
+	}
+	.fleet-feature {
+		text-align: left;
+		padding: 2rem 1.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.75rem;
+	}
+	.fleet-feature-top {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+	.fleet-feature-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 56px;
+		height: 56px;
+		flex-shrink: 0;
+		color: #7dd3fc;
+	}
+	.fleet-feature-icon svg,
+	.fleet-feature-icon-img {
+		width: 48px;
+		height: 48px;
+		display: block;
+	}
+	.fleet-feature-heading {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.3;
+		padding-top: 0.25rem;
+	}
+	.fleet-feature-wave {
+		width: 100%;
+		max-width: 12rem;
+		height: 8px;
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 8'%3E%3Cpath d='M0 4 Q 15 0 30 4 T 60 4 T 90 4 T 120 4' stroke='%23d1d5db' fill='none' stroke-width='1'/%3E%3C/svg%3E") no-repeat left center;
+		background-size: 100% 8px;
+	}
+	.fleet-feature-desc {
+		font-size: 0.9rem;
+		line-height: 1.6;
+		color: #374151;
+		margin: 0;
+		max-width: 32ch;
+	}
+	@media (max-width: 900px) {
+		.fleet-top {
+			grid-template-columns: 1fr;
+			padding: 3rem 1.5rem 2rem;
+		}
+		.fleet-features {
+			grid-template-columns: 1fr;
+			padding: 0 1.5rem 2rem;
+		}
+	}
+
+	/* Third section: Self Drive Boat Rentals */
+	.selfdrive-section {
+		width: 100%;
+		height: 50vh;
+		min-height: 400px;
+	}
+	.selfdrive-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		margin: 0;
+		min-height: 0;
+		min-width: 0;
+	}
+	.selfdrive-text {
+		position: relative;
+		background: #f5f0e8;
+		padding: 5rem 2rem 5rem 4rem;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 1.25rem;
+		justify-content: center;
+		overflow: hidden;
+		text-align: right;
+	}
+	.selfdrive-bg-label {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(4rem, 12vw, 8rem);
+		font-weight: 700;
+		color: rgba(139, 119, 101, 0.12);
+		white-space: nowrap;
+		letter-spacing: 0.05em;
+		pointer-events: none;
+		user-select: none;
+	}
+	.selfdrive-sub {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.2em;
+		color: #1a1a1a;
+		margin: 0;
+		text-transform: uppercase;
+		position: relative;
+		z-index: 1;
+	}
+	.selfdrive-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.2;
+		letter-spacing: 0.02em;
+		position: relative;
+		z-index: 1;
+	}
+	.selfdrive-desc {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #333;
+		margin: 0;
+		max-width: 28ch;
+		position: relative;
+		z-index: 1;
+	}
+	.selfdrive-cta {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		background: #1a1a1a;
+		color: #fff;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: background 0.2s, color 0.2s;
+		position: relative;
+		z-index: 1;
+		align-self: flex-end;
+		margin-top: 0.25rem;
+	}
+	.selfdrive-cta:hover {
+		background: #333;
+		color: #fff;
+	}
+	.selfdrive-image-wrap {
+		min-height: 400px;
+		overflow: hidden;
+	}
+	/* Self Drive section (first): center text and button, no bg label */
+	.selfdrive-section:not(.selfdrive-section--last) .selfdrive-bg-label {
+		display: none;
+	}
+	.selfdrive-section:not(.selfdrive-section--last) .selfdrive-text {
+		align-items: center;
+		text-align: center;
+	}
+	.selfdrive-section:not(.selfdrive-section--last) .selfdrive-cta {
+		align-self: center;
+	}
+	/* Skipper Drive section: image right, text left (same row), no bg label */
+	.selfdrive-section--last .selfdrive-bg-label {
+		display: none;
+	}
+	.selfdrive-section--last .selfdrive-image-wrap {
+		grid-column: 2;
+		grid-row: 1;
+	}
+	.selfdrive-section--last .selfdrive-text {
+		grid-column: 1;
+		grid-row: 1;
+		align-items: center;
+		text-align: center;
+	}
+	.selfdrive-section--last .selfdrive-cta {
+		align-self: center;
+	}
+	.selfdrive-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		min-height: 400px;
+	}
+
+	@media (max-width: 900px) {
+		.selfdrive-inner {
+			grid-template-columns: 1fr;
+		}
+		.selfdrive-text {
+			padding: 3rem 1.5rem 3rem 1.5rem;
+		}
+		.selfdrive-image-wrap {
+			min-height: 300px;
+		}
+		.selfdrive-image {
+			min-height: 300px;
+		}
+	}
+
+	/* Footer (same as menu scrolled: #064250) */
+	.site-footer {
+		background: #064250;
+		color: #fff;
+		width: 100%;
+	}
+	.footer-main {
+		display: grid;
+		grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
+		gap: 2rem 3rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 3rem 2rem 4rem;
+	}
+	.footer-col {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+	.footer-logo {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		margin-bottom: 0.25rem;
+	}
+	.footer-logo-letter {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 2rem;
+		font-weight: 600;
+		line-height: 1;
+		color: #fff;
+	}
+	.footer-logo-text {
+		font-size: 0.7rem;
+		letter-spacing: 0.2em;
+		color: #fff;
+		opacity: 0.95;
+	}
+	.footer-title {
+		font-size: 1rem;
+		font-weight: 700;
+		margin: 0;
+		color: #fff;
+		letter-spacing: 0.02em;
+	}
+	.footer-links {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.footer-links a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.9rem;
+		opacity: 0.9;
+	}
+	.footer-links a:hover {
+		opacity: 1;
+		text-decoration: underline;
+	}
+	.footer-company,
+	.footer-address,
+	.footer-contact {
+		margin: 0;
+		font-size: 0.9rem;
+		line-height: 1.5;
+		color: #fff;
+		opacity: 0.95;
+	}
+	.footer-contact a {
+		color: #fff;
+		text-decoration: none;
+	}
+	.footer-contact a:hover {
+		text-decoration: underline;
+	}
+	.footer-form-link {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.9rem;
+	}
+	.footer-form-link:hover {
+		text-decoration: underline;
+	}
+	.footer-social {
+		display: flex;
+		gap: 0.75rem;
+		margin-top: 0.25rem;
+	}
+	.footer-social a {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: #fff;
+		color: #064250;
+		transition: opacity 0.2s;
+	}
+	.footer-social a:hover {
+		opacity: 0.9;
+	}
+	.footer-bottom {
+		border-top: 1px solid rgba(255, 255, 255, 0.15);
+		padding: 1rem 2rem;
+	}
+	.footer-copyright {
+		margin: 0;
+		font-size: 0.8rem;
+		color: rgba(255, 255, 255, 0.75);
+		text-align: center;
+		max-width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.footer-copyright a {
+		color: rgba(255, 255, 255, 0.85);
+		text-decoration: none;
+	}
+	.footer-copyright a:hover {
+		text-decoration: underline;
+	}
+	@media (max-width: 900px) {
+		.footer-main {
+			grid-template-columns: 1fr 1fr;
+			padding: 2rem 1.5rem 3rem;
+		}
+	}
+	@media (max-width: 600px) {
+		.footer-main {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.footer-copyright {
+			font-size: 0.75rem;
+			text-align: center;
+		}
+	}
+</style>
