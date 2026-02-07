@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "compress-videos": "bash scripts/compress-videos.sh"
   },
   "dependencies": {
     "astro": "^5.17.1"
