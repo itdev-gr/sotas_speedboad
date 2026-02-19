@@ -67,7 +67,7 @@ try {
 								<p class="speedboat-card-name">{boat.name}</p>
 								<p class="speedboat-pax">Max. {boat.maxPax} pax</p>
 								<div class="speedboat-buttons">
-									<a href="/contact" class="speedboat-btn speedboat-btn-primary">Book with Skipper</a>
+									<a href={`/book-with-skipper?boat=${boat.id}`} class="speedboat-btn speedboat-btn-primary">Book with Skipper</a>
 									<button type="button" class="speedboat-btn speedboat-btn-secondary includes-trigger" data-boat={boat.id} aria-label={`View includes for ${boat.name}`}>Includes &gt;</button>
 								</div>
 							</div>
@@ -120,7 +120,7 @@ try {
 									{boat.fuelExcludedText ? <li class="includes-modal-excluded">{boat.fuelExcludedText}</li> : null}
 								</ul>
 								<p class="includes-modal-pax">Max. {boat.maxPax} passengers</p>
-								<a href="/contact" class="includes-modal-cta">Book with Skipper</a>
+								<a href={`/book-with-skipper?boat=${boat.id}`} class="includes-modal-cta">Book with Skipper</a>
 							</div>
 						</div>
 					</div>
