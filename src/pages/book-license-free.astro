@@ -8,7 +8,7 @@ const boatId = Astro.url.searchParams.get('boat')?.trim() || null;
 const base = Astro.url.origin;
 let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string }> = [];
 try {
-	const res = await fetch(`${base}/api/boats`);
+	const res = await fetch(`${base}/api/boats`, { cache: 'no-store' });
 	boats = res.ok ? await res.json() : [];
 } catch {
 	boats = [];
@@ -77,10 +77,6 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 									{boat.modalName && <p class="book-page-modal-name">Speedboat "{boat.modalName}"</p>}
 									{boat.lengthMeters && <p class="book-page-length">{boat.lengthMeters} m length</p>}
 									<p class="book-page-pax">Max. {boat.maxPax} pax</p>
-									<div class="book-page-prices">
-										<p class="book-page-price">- 4h Rental €{boat.price4h}*</p>
-										<p class="book-page-price">- 7h Rental €{boat.price7h}*</p>
-									</div>
 									{boat.description && <p class="book-page-description">{boat.description}</p>}
 									<div class="book-page-includes">
 										<p class="book-page-includes-heading">Includes:</p>
@@ -115,6 +111,7 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 											<input type="time" id="book-time" name="time" value="09:00" class="border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-700" />
 										</div>
 									</div>
+									<!-- Duration prices from API (Firebase), synced with Dashboard → Prices → License free -->
 									<p class="text-xs font-bold uppercase text-gray-700 mt-3">ADD_OPTIONS_SERVICES_2</p>
 									<!-- 4 hours -->
 									<div class="flex items-center justify-between gap-2 py-2 border-b border-gray-100">
@@ -328,15 +325,6 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 		margin: 0 0 1rem;
 		font-size: 0.9rem;
 		color: #666;
-	}
-	.book-page-prices {
-		margin: 0 0 0.5rem;
-	}
-	.book-page-price {
-		margin: 0.25rem 0;
-		font-size: 1.1rem;
-		font-weight: 600;
-		color: #1a1a1a;
 	}
 	.book-page-pax {
 		margin: 0 0 1rem;
