@@ -1,12 +1,12 @@
 ---
 ---
-<header class="hero-header">
+<header class="hero-header" id="main-header">
 	<a href="/" class="nav-logo">
 		<span class="logo-letter">S</span>
 		<span class="logo-text">SOTAS SPEEDBOATS</span>
 	</a>
 	<div class="nav-menu-wrap">
-		<nav class="nav-links">
+		<nav class="nav-links" id="nav-links" aria-hidden="true">
 			<a href="/">HOME</a>
 			<div class="nav-item-dropdown">
 				<a href="/#selfdrive" class="nav-link-parent" aria-haspopup="true" aria-expanded="false">BOOK RENTAL</a>
@@ -23,7 +23,7 @@
 		<div class="nav-contact">
 			<a href="tel:+306970621594" class="nav-phone-btn">+30 697 062 1594</a>
 		</div>
-		<button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού">
+		<button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="nav-links" id="nav-toggle-btn">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -175,11 +175,74 @@
 		background: #fff;
 	}
 	@media (max-width: 1024px) {
+		.nav-menu-wrap {
+			position: relative;
+		}
 		.nav-links {
 			display: none;
+			position: absolute;
+			top: 100%;
+			right: 0;
+			margin-top: 0.5rem;
+			flex-direction: column;
+			background: rgba(6, 66, 80, 0.98);
+			padding: 1rem;
+			border-radius: 8px;
+			min-width: 220px;
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+			z-index: 200;
+		}
+		.hero-header--menu-open .nav-links {
+			display: flex;
+		}
+		.hero-header--menu-open .nav-toggle {
+			opacity: 0.9;
 		}
 		.nav-toggle {
 			display: flex;
 		}
+		.nav-item-dropdown .nav-dropdown {
+			position: static;
+			opacity: 1;
+			visibility: visible;
+			box-shadow: none;
+			background: transparent;
+			padding-left: 1rem;
+			margin-top: 0.25rem;
+		}
 	}
 </style>
+<script>
+	(function () {
+		const header = document.getElementById('main-header');
+		const toggle = document.getElementById('nav-toggle-btn');
+		const navLinks = document.getElementById('nav-links');
+		if (!header || !toggle || !navLinks) return;
+		const h = header;
+		const t = toggle;
+		const n = navLinks;
+
+		function openMenu() {
+			h.classList.add('hero-header--menu-open');
+			t.setAttribute('aria-expanded', 'true');
+			t.setAttribute('aria-label', 'Κλείσιμο μενού');
+			n.setAttribute('aria-hidden', 'false');
+		}
+		function closeMenu() {
+			h.classList.remove('hero-header--menu-open');
+			t.setAttribute('aria-expanded', 'false');
+			t.setAttribute('aria-label', 'Άνοιγμα μενού');
+			n.setAttribute('aria-hidden', 'true');
+		}
+		function toggleMenu() {
+			const isOpen = h.classList.contains('hero-header--menu-open');
+			if (isOpen) closeMenu();
+			else openMenu();
+		}
+
+		t.addEventListener('click', toggleMenu);
+		n.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', closeMenu);
+		});
+	})();
+</script>

@@ -1,8 +1,15 @@
 ---
 export const prerender = false;
-const title = 'Login | Freedom Wheels';
+import { verifySession } from '../lib/auth';
+
+const session = await verifySession(Astro.request);
+if (session) {
+	return Astro.redirect('/dashboard');
+}
+
+const title = 'Login';
 const description = 'Sign in to the Freedom Wheels dashboard.';
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
 ---
 <html lang="en">
 	<head>
@@ -16,8 +23,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 			.login-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f5f5f5; font-family: system-ui, sans-serif; }
 			.login-card { background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); width: 100%; max-width: 360px; }
 			.login-card h1 { margin: 0 0 1.5rem; font-size: 1.5rem; color: #222; }
-			.login-card .logo { display: block; margin-bottom: 1.5rem; }
-			.login-card .logo img { height: 40px; width: auto; }
 			.login-field { margin-bottom: 1rem; }
 			.login-field label { display: block; margin-bottom: 0.35rem; font-size: 0.9rem; color: #444; }
 			.login-field input { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
@@ -33,7 +38,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 	<body>
 		<main class="login-page">
 			<div class="login-card">
-				<a href="/" class="logo"><img src="/logos/logo.webp" alt="Freedom Wheels" /></a>
 				<h1>Dashboard login</h1>
 				<form id="login-form">
 					<div class="login-field">

@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^9.0.4",
+    "@dataconnect/admin-generated": "file:src/dataconnect-admin-generated",
+    "@dataconnect/generated": "file:src/dataconnect-generated",
     "@tailwindcss/vite": "^4.2.0",
     "astro": "^5.17.1",
     "firebase": "^12.9.0",
-    "tailwindcss": "^4.2.0",
-    "firebase-admin": "^13.0.0"
+    "firebase-admin": "^13.0.0",
+    "tailwindcss": "^4.2.0"
   }
 }

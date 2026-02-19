@@ -1,5 +1,6 @@
 ---
 // Βάλτε το βίντεό σας στο public/videos/hero.mp4 (ή αλλάξτε το src παρακάτω)
+import FloatingContact from '../components/FloatingContact.astro';
 ---
 
 <html lang="el">
@@ -32,13 +33,13 @@
 			</div>
 
 			<!-- Header / Navbar -->
-			<header class="hero-header">
+			<header class="hero-header" id="main-header">
 				<div class="nav-logo">
 					<span class="logo-letter">S</span>
 					<span class="logo-text">SOTAS SPEEDBOATS</span>
 				</div>
 				<div class="nav-menu-wrap">
-					<nav class="nav-links">
+					<nav class="nav-links" id="nav-links" aria-hidden="true">
 						<a href="#home">HOME</a>
 						<div class="nav-item-dropdown">
 							<a href="#book" class="nav-link-parent" aria-haspopup="true" aria-expanded="false">BOOK RENTAL</a>
@@ -55,7 +56,7 @@
 					<div class="nav-contact">
 						<a href="tel:+306970621594" class="nav-phone-btn">+30 697 062 1594</a>
 					</div>
-					<button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού">
+					<button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="nav-links" id="nav-toggle-btn">
 						<span></span>
 						<span></span>
 						<span></span>
@@ -181,7 +182,7 @@
 					<p class="selfdrive-desc">
 						Rent a self drive boat in Zakynthos and become a captain yourself. No license required!
 					</p>
-					<a href="#selfdrive" class="selfdrive-cta">VIEW MORE</a>
+					<a href="/license-free-rent" class="selfdrive-cta">VIEW MORE</a>
 				</div>
 			</div>
 		</section>
@@ -323,8 +324,35 @@
 				onScroll();
 				window.addEventListener('scroll', onScroll, { passive: true });
 			}
+
+			// Mobile hamburger menu toggle
+			const navToggle = document.getElementById('nav-toggle-btn');
+			const navLinks = document.getElementById('nav-links');
+			if (header && navToggle && navLinks) {
+				function openNavMenu() {
+					header.classList.add('hero-header--menu-open');
+					navToggle.setAttribute('aria-expanded', 'true');
+					navToggle.setAttribute('aria-label', 'Κλείσιμο μενού');
+					navLinks.setAttribute('aria-hidden', 'false');
+				}
+				function closeNavMenu() {
+					header.classList.remove('hero-header--menu-open');
+					navToggle.setAttribute('aria-expanded', 'false');
+					navToggle.setAttribute('aria-label', 'Άνοιγμα μενού');
+					navLinks.setAttribute('aria-hidden', 'true');
+				}
+				navToggle.addEventListener('click', () => {
+					const isOpen = header.classList.contains('hero-header--menu-open');
+					if (isOpen) closeNavMenu();
+					else openNavMenu();
+				});
+				navLinks.querySelectorAll('a').forEach((link) => {
+					link.addEventListener('click', closeNavMenu);
+				});
+			}
 			});
 		</script>
+		<FloatingContact />
 	</body>
 </html>
 
@@ -698,11 +726,40 @@
 
 	/* Responsive: κρύψη nav links, εμφάνιση hamburger */
 	@media (max-width: 1024px) {
+		.nav-menu-wrap {
+			position: relative;
+		}
 		.nav-links {
 			display: none;
+			position: absolute;
+			top: 100%;
+			right: 0;
+			margin-top: 0.5rem;
+			flex-direction: column;
+			background: rgba(6, 66, 80, 0.98);
+			padding: 1rem;
+			border-radius: 8px;
+			min-width: 220px;
+			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+			z-index: 200;
+		}
+		.hero-header--menu-open .nav-links {
+			display: flex;
+		}
+		.hero-header--menu-open .nav-toggle {
+			opacity: 0.9;
 		}
 		.nav-toggle {
 			display: flex;
+		}
+		.nav-item-dropdown .nav-dropdown {
+			position: static;
+			opacity: 1;
+			visibility: visible;
+			box-shadow: none;
+			background: transparent;
+			padding-left: 1rem;
+			margin-top: 0.25rem;
 		}
 		.hero-content {
 			margin-left: 5%;

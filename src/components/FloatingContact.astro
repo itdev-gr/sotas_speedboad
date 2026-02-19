@@ -1,0 +1,145 @@
+---
+const whatsappUrl = 'https://wa.me/306970621594';
+const viberUrl = '#';
+const messengerUrl = '#';
+const instagramUrl = '#';
+---
+<div id="floating-contact" class="floating-contact" role="group" aria-label="Επικοινωνία">
+	<div class="floating-contact__stack" aria-hidden="true">
+		<button type="button" class="floating-contact__item floating-contact__item--close" id="floating-contact-close" aria-label="Κλείσιμο">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+		</button>
+		<a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="floating-contact__item floating-contact__item--instagram" aria-label="Instagram" title="Instagram">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+		</a>
+		<a href={messengerUrl} target="_blank" rel="noopener noreferrer" class="floating-contact__item floating-contact__item--messenger" aria-label="Facebook Messenger" title="Messenger">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 3.43 1.72 6.49 4.4 8.52V22l4.08-2.24c1.09.3 2.24.46 3.44.46 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm.96 13.18l-2.66-2.82-5.24 2.82 5.76-6.14 2.72 2.82 5.24-2.82-5.76 6.14z"/></svg>
+		</a>
+		<a href={viberUrl} target="_blank" rel="noopener noreferrer" class="floating-contact__item floating-contact__item--viber" aria-label="Viber" title="Viber">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4 0C9.473.028 5.333.344 2.986 2.414 1.243 4.1.496 6.308.05 8.49c-.456 2.215-.082 4.603.606 6.661L0 24l8.874-2.31c2.033.892 4.282 1.376 6.494 1.376h.006c.416 0 .83-.02 1.24-.058 4.572-.428 8.236-3.065 9.902-7.308.474-1.2.71-2.47.71-3.752C26.224 5.266 20.884.028 11.4 0zm.086 2.18h.214c8.567.358 13.324 5.2 13.324 13.038 0 1.067-.21 2.104-.622 3.095-1.448 3.657-4.763 5.957-8.578 6.337-.36.028-.724.043-1.092.043h-.006c-1.892 0-3.87-.48-5.646-1.392l-.403-.23-4.17 1.088 1.112-4.063-.256-.408a10.86 10.86 0 01-1.67-5.78c.002-5.17 4.21-9.378 9.381-9.378zM7.27 5.262c-.246 0-.464.06-.63.187-.35.27-.416.75-.416 1.607 0 .856.066 1.962.283 3.006.218 1.044.574 2.008 1.052 2.799.34.56.74 1.038 1.18 1.41.44.37.91.618 1.38.73.47.11.92.086 1.32-.078.26-.105.49-.27.66-.48.17-.21.28-.44.32-.67.04-.23.02-.46-.06-.67-.08-.21-.22-.41-.4-.58-.18-.17-.4-.33-.64-.46-.24-.13-.5-.23-.76-.3-.26-.07-.52-.1-.76-.1-.5 0-.95.12-1.33.36-.38.24-.7.58-.93 1-.23.42-.38.9-.44 1.42-.06.52-.02 1.06.12 1.6.14.54.36 1.06.65 1.54.29.48.64.9 1.03 1.24.39.34.82.6 1.27.78.45.18.92.27 1.38.27.26 0 .52-.03.78-.1.26-.07.52-.17.76-.3.24-.13.46-.29.64-.46.18-.17.32-.37.4-.58.08-.21.1-.44.06-.67-.04-.23-.15-.46-.32-.67-.17-.21-.4-.38-.66-.48-.4-.164-.85-.188-1.32-.078-.47.112-.94.36-1.38.73-.44.372-.84.85-1.18 1.41-.478.79-.834 1.755-1.052 2.8-.217 1.043-.283 2.15-.283 3.005 0 .857.066 1.337.416 1.607.166.127.384.187.63.187.246 0 .558-.09.93-.27.372-.18.78-.44 1.2-.77.42-.33.84-.72 1.24-1.16.4-.44.76-.92 1.07-1.42.31-.5.56-1 .74-1.5.18-.5.27-.97.27-1.4 0-.43-.09-.82-.27-1.16-.18-.34-.44-.63-.76-.86-.32-.23-.7-.4-1.12-.5-.42-.1-.86-.15-1.31-.15z"/></svg>
+		</a>
+		<a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="floating-contact__item floating-contact__item--whatsapp" aria-label="WhatsApp" title="WhatsApp">
+			<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+		</a>
+	</div>
+	<button type="button" class="floating-contact__trigger" id="floating-contact-trigger" aria-expanded="false" aria-label="Άνοιγμα επικοινωνίας">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+	</button>
+</div>
+
+<style>
+	.floating-contact {
+		position: fixed;
+		bottom: 1.25rem;
+		left: 1.25rem;
+		z-index: 9999;
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.floating-contact__trigger {
+		width: 56px;
+		height: 56px;
+		border-radius: 50%;
+		border: none;
+		background: #064250;
+		color: #fff;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 4px 12px rgba(6, 66, 80, 0.4);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+	}
+	.floating-contact__trigger:hover {
+		transform: scale(1.05);
+		box-shadow: 0 6px 16px rgba(6, 66, 80, 0.5);
+	}
+	.floating-contact__stack {
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+		gap: 0.5rem;
+		max-height: 0;
+		opacity: 0;
+		overflow: hidden;
+		pointer-events: none;
+		transition: max-height 0.35s ease, opacity 0.25s ease;
+	}
+	.floating-contact.open .floating-contact__stack {
+		max-height: 320px;
+		opacity: 1;
+		pointer-events: auto;
+	}
+	.floating-contact__item {
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		text-decoration: none;
+		transform: scale(0.6);
+		opacity: 0;
+		transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.2s ease;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+	}
+	.floating-contact__item:hover {
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+	}
+	.floating-contact.open .floating-contact__item {
+		transform: scale(1);
+		opacity: 1;
+	}
+	.floating-contact.open .floating-contact__item:nth-child(1) { transition-delay: 0.02s; }
+	.floating-contact.open .floating-contact__item:nth-child(2) { transition-delay: 0.05s; }
+	.floating-contact.open .floating-contact__item:nth-child(3) { transition-delay: 0.08s; }
+	.floating-contact.open .floating-contact__item:nth-child(4) { transition-delay: 0.11s; }
+	.floating-contact.open .floating-contact__item:nth-child(5) { transition-delay: 0.14s; }
+	.floating-contact__item--whatsapp { background: #25D366; }
+	.floating-contact__item--viber { background: #7360f2; }
+	.floating-contact__item--messenger { background: #0084ff; }
+	.floating-contact__item--instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+	.floating-contact__item--close {
+		background: rgba(115, 96, 242, 0.9);
+		cursor: pointer;
+		border: none;
+	}
+	.floating-contact__item--close:hover {
+		background: rgba(115, 96, 242, 1);
+	}
+</style>
+
+<script>
+	(function () {
+		const root = document.getElementById('floating-contact');
+		const trigger = document.getElementById('floating-contact-trigger');
+		const closeBtn = document.getElementById('floating-contact-close');
+		if (!root || !trigger || !closeBtn) return;
+		const r = root;
+		const t = trigger;
+
+		function open() {
+			r.classList.add('open');
+			t.setAttribute('aria-expanded', 'true');
+		}
+		function close() {
+			r.classList.remove('open');
+			t.setAttribute('aria-expanded', 'false');
+		}
+		function toggle() {
+			if (r.classList.contains('open')) close();
+			else open();
+		}
+
+		trigger.addEventListener('click', toggle);
+		closeBtn.addEventListener('click', close);
+
+		document.addEventListener('click', function (e) {
+			const target = e.target instanceof Node ? e.target : null;
+			if (target && !r.contains(target) && r.classList.contains('open')) close();
+		});
+	})();
+</script>

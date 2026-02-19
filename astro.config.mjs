@@ -11,5 +11,11 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/analytics'],
+    },
+    ssr: {
+      noExternal: ['firebase'],
+    },
   },
 });
