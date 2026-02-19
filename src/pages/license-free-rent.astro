@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 	</head>
-	<body>
+	<body class="license-free-body">
 		<Header />
 		<main class="license-free-page">
 			<section class="page-hero" aria-label="License Free Rent">
@@ -29,14 +29,6 @@ import Footer from '../components/Footer.astro';
 
 			<section class="license-content-section" aria-label="Self drive boat rentals">
 				<div class="license-content-inner">
-					<div class="license-image-wrap">
-						<img
-							src="/images/self-drive-boat.png"
-							alt="Self drive boat on the water in Zakynthos"
-							width="800"
-							height="600"
-						/>
-					</div>
 					<div class="license-text">
 						<p class="license-sub">NO LICENSE REQUIRED</p>
 						<h2 class="license-title">SELF DRIVE BOAT RENTALS</h2>
@@ -51,10 +43,55 @@ import Footer from '../components/Footer.astro';
 				</div>
 			</section>
 
-			<section class="license-cta-section">
-				<h2 class="license-cta-title">Ready to explore Zakynthos?</h2>
-				<p class="license-cta-text">Get in touch to check availability and book your license-free boat.</p>
-				<a href="/contact" class="license-cta-btn">CONTACT US</a>
+			<section class="speedboat-choose" aria-label="Choose your speedboat">
+				<h2 class="speedboat-choose-title">Choose Your Speedboat</h2>
+				<div class="speedboat-cards">
+					<div class="speedboat-card">
+						<div class="speedboat-card-image">
+							<img src="/images/self-drive-boat.png" alt="Boat 1" width="400" height="280" />
+						</div>
+						<div class="speedboat-card-content">
+							<p class="speedboat-card-name">Boat 1</p>
+							<p class="speedboat-rental">- 4h Rental €180*</p>
+							<p class="speedboat-rental">- 7h Rental €250*</p>
+							<p class="speedboat-pax">Max. 6 pax</p>
+							<div class="speedboat-buttons">
+								<a href="/contact" class="speedboat-btn speedboat-btn-primary">Book Here</a>
+								<a href="#includes" class="speedboat-btn speedboat-btn-secondary">Includes &gt;</a>
+							</div>
+						</div>
+					</div>
+					<div class="speedboat-card">
+						<div class="speedboat-card-image">
+							<img src="/images/fleet-experience.png" alt="Boat 2" width="400" height="280" />
+						</div>
+						<div class="speedboat-card-content">
+							<p class="speedboat-card-name">Boat 2</p>
+							<p class="speedboat-rental">- 4h Rental €200*</p>
+							<p class="speedboat-rental">- 7h Rental €270*</p>
+							<p class="speedboat-pax">Max. 7 pax</p>
+							<div class="speedboat-buttons">
+								<a href="/contact" class="speedboat-btn speedboat-btn-primary">Book Here</a>
+								<a href="#includes" class="speedboat-btn speedboat-btn-secondary">Includes &gt;</a>
+							</div>
+						</div>
+					</div>
+					<div class="speedboat-card">
+						<div class="speedboat-card-image">
+							<img src="/images/skipper-drive.png" alt="Boat 3" width="400" height="280" />
+						</div>
+						<div class="speedboat-card-content">
+							<p class="speedboat-card-name">Boat 3</p>
+							<p class="speedboat-rental">- 4h Rental €200*</p>
+							<p class="speedboat-rental">- 7h Rental €270*</p>
+							<p class="speedboat-pax">Max. 7 pax</p>
+							<div class="speedboat-buttons">
+								<a href="/contact" class="speedboat-btn speedboat-btn-primary">Book Here</a>
+								<a href="#includes" class="speedboat-btn speedboat-btn-secondary">Includes &gt;</a>
+							</div>
+						</div>
+					</div>
+				</div>
 			</section>
 		</main>
 		<Footer />
@@ -93,7 +130,9 @@ import Footer from '../components/Footer.astro';
 		margin: 0;
 		font-family: 'Inter', system-ui, sans-serif;
 		overflow-x: hidden;
-		padding-top: 5rem;
+	}
+	body.license-free-body {
+		padding-top: 0;
 	}
 </style>
 
@@ -111,6 +150,7 @@ import Footer from '../components/Footer.astro';
 		justify-content: center;
 		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
 		overflow: hidden;
+		padding-top: 5rem;
 	}
 	.page-hero-overlay {
 		position: absolute;
@@ -168,31 +208,20 @@ import Footer from '../components/Footer.astro';
 		width: 100%;
 	}
 	.license-content-inner {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
 		width: 100%;
-		max-width: none;
 		margin: 0;
-		min-height: 0;
-	}
-	.license-image-wrap {
-		min-height: 400px;
-		overflow: hidden;
-	}
-	.license-image-wrap img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		display: block;
-		min-height: 400px;
 	}
 	.license-text {
 		background: #f5f0e8;
 		padding: 4rem 3rem;
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		justify-content: center;
 		gap: 1.25rem;
+		text-align: center;
+		width: 100%;
+		box-sizing: border-box;
 	}
 	.license-sub {
 		font-size: 0.75rem;
@@ -216,6 +245,8 @@ import Footer from '../components/Footer.astro';
 		color: #333;
 		margin: 0;
 		max-width: 42ch;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.license-cta {
 		display: inline-block;
@@ -226,57 +257,112 @@ import Footer from '../components/Footer.astro';
 		font-weight: 600;
 		text-decoration: none;
 		transition: background 0.2s;
-		align-self: flex-start;
 		margin-top: 0.5rem;
 	}
 	.license-cta:hover {
 		background: #333;
 	}
 
-	.license-cta-section {
-		text-align: center;
+	/* Choose Your Speedboat section */
+	.speedboat-choose {
+		max-width: 1200px;
+		margin: 0 auto;
 		padding: 4rem 2rem;
-		background: #064250;
-		color: #fff;
 	}
-	.license-cta-title {
+	.speedboat-choose-title {
 		font-family: 'Cormorant Garamond', serif;
-		font-size: clamp(1.75rem, 3vw, 2.25rem);
+		font-size: clamp(1.75rem, 3.5vw, 2.5rem);
 		font-weight: 600;
+		color: #5C5C5C;
+		text-align: center;
+		margin: 0 0 2.5rem 0;
+		line-height: 1.2;
+	}
+	.speedboat-cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+	.speedboat-card {
+		display: flex;
+		flex-direction: column;
+	}
+	.speedboat-card-image {
+		width: 100%;
+		height: 220px;
+		overflow: hidden;
+		border-radius: 12px 12px 0 0;
+	}
+	.speedboat-card-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.speedboat-card-content {
+		background: #E0DCD7;
+		padding: 1.25rem 1.5rem;
+		border-radius: 12px 12px 0 0;
+		margin-top: -1rem;
+		position: relative;
+		z-index: 1;
+	}
+	.speedboat-card-name {
+		font-weight: 700;
+		font-size: 1.1rem;
+		color: #1a1a1a;
 		margin: 0 0 0.5rem 0;
-		color: #fff;
 	}
-	.license-cta-text {
-		margin: 0 0 1.5rem 0;
-		opacity: 0.9;
-		font-size: 1rem;
+	.speedboat-rental,
+	.speedboat-pax {
+		font-size: 0.95rem;
+		color: #333;
+		margin: 0 0 0.25rem 0;
+		line-height: 1.4;
 	}
-	.license-cta-btn {
+	.speedboat-pax {
+		margin-bottom: 1rem;
+	}
+	.speedboat-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+	.speedboat-btn {
 		display: inline-block;
-		padding: 0.9rem 2rem;
-		background: #fff;
-		color: #064250;
+		padding: 0.6rem 1.25rem;
+		font-size: 0.9rem;
+		font-weight: 500;
 		text-decoration: none;
-		font-size: 0.85rem;
-		font-weight: 600;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		border-radius: 4px;
-		transition: opacity 0.2s;
+		border-radius: 6px;
+		transition: background 0.2s, border-color 0.2s, color 0.2s;
+		border: 1px solid #c4beb5;
 	}
-	.license-cta-btn:hover {
-		opacity: 0.95;
+	.speedboat-btn-primary {
+		background: #fff;
+		color: #1a1a1a;
+	}
+	.speedboat-btn-primary:hover {
+		background: #f5f0e8;
+		border-color: #a89f94;
+	}
+	.speedboat-btn-secondary {
+		background: transparent;
+		color: #333;
+	}
+	.speedboat-btn-secondary:hover {
+		background: rgba(255, 255, 255, 0.5);
+		border-color: #a89f94;
 	}
 
 	@media (max-width: 900px) {
-		.license-content-inner {
+		.license-text {
+			padding: 3rem 1.5rem;
+		}
+		.speedboat-cards {
 			grid-template-columns: 1fr;
 		}
-		.license-image-wrap,
-		.license-image-wrap img {
-			min-height: 300px;
-		}
-		.license-text {
+		.speedboat-choose {
 			padding: 3rem 1.5rem;
 		}
 	}
