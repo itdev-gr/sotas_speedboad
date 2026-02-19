@@ -1,0 +1,270 @@
+---
+export const prerender = false;
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const boatId = Astro.url.searchParams.get('boat')?.trim() || null;
+const base = Astro.url.origin;
+let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string }> = [];
+try {
+	const res = await fetch(`${base}/api/boats`);
+	boats = res.ok ? await res.json() : [];
+} catch {
+	boats = [];
+}
+const boat = boatId ? boats.find((b) => b.id === boatId) : null;
+---
+
+<html lang="el">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{boat ? `${boat.name} – Book | Sotas Speedboats` : 'Book Boat | Sotas Speedboats – Zakynthos'}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+	</head>
+	<body class="book-license-free-body">
+		<Header />
+		<main class="book-license-free-page">
+			{!boat ? (
+				<section class="book-page-section" aria-label="Boat not found">
+					<div class="book-page-inner">
+						<h1 class="book-page-title">Boat not found</h1>
+						<p class="book-page-text">The boat you selected could not be found or is no longer available.</p>
+						<a href="/license-free-rent" class="book-page-cta">Back to License Free Rent</a>
+					</div>
+				</section>
+			) : (
+				<>
+					<section class="book-page-hero" aria-label="Book this boat">
+						<div class="book-page-hero-overlay"></div>
+						<div class="book-page-hero-content">
+							<h1 class="book-page-hero-title">{boat.name}</h1>
+							{boat.modalName && <p class="book-page-hero-subtitle">Speedboat "{boat.modalName}"</p>}
+						</div>
+					</section>
+
+					<section class="book-page-section" aria-label="Boat details">
+						<div class="book-page-inner book-page-layout">
+							<div class="book-page-media">
+								{boat.imageUrls && boat.imageUrls.length > 0 ? (
+									<div class="book-page-gallery">
+										<img src={boat.imageUrls[0]} alt={boat.name} width="600" height="400" class="book-page-main-image" />
+										{boat.imageUrls.length > 1 && (
+											<div class="book-page-thumbs">
+												{boat.imageUrls.slice(0, 5).map((url, i) => (
+													<img src={url} alt={`${boat.name} ${i + 1}`} width="80" height="56" class="book-page-thumb" />
+												))}
+											</div>
+										)}
+									</div>
+								) : (
+									<img src={boat.imageUrl || '/images/self-drive-boat.png'} alt={boat.name} width="600" height="400" class="book-page-main-image" />
+								)}
+							</div>
+							<div class="book-page-details">
+								<h2 class="book-page-detail-title">{boat.name}</h2>
+								{boat.modalName && <p class="book-page-modal-name">Speedboat "{boat.modalName}"</p>}
+								{boat.lengthMeters && <p class="book-page-length">{boat.lengthMeters} m length</p>}
+								<div class="book-page-prices">
+									<p class="book-page-price">- 4h Rental €{boat.price4h}*</p>
+									<p class="book-page-price">- 7h Rental €{boat.price7h}*</p>
+								</div>
+								<p class="book-page-pax">Max. {boat.maxPax} pax</p>
+								{boat.description && <p class="book-page-description">{boat.description}</p>}
+								<div class="book-page-includes">
+									<p class="book-page-includes-heading">Includes:</p>
+									<ul class="book-page-includes-list">
+										{boat.includes.map((item) => <li>{item}</li>)}
+										{boat.fuelExcludedText && <li class="book-page-excluded">{boat.fuelExcludedText}</li>}
+									</ul>
+								</div>
+								<a href="/contact" class="book-page-cta">Contact to book</a>
+							</div>
+						</div>
+					</section>
+				</>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	body.book-license-free-body {
+		margin: 0;
+		font-family: 'Inter', system-ui, sans-serif;
+		background: #f5f5f5;
+		color: #1a1a1a;
+	}
+	.book-license-free-page {
+		min-height: 60vh;
+		padding-bottom: 2rem;
+	}
+	.book-page-hero {
+		position: relative;
+		min-height: 28vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		color: #fff;
+		text-align: center;
+		padding: 4rem 1.5rem;
+	}
+	.book-page-hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0,0,0,0.15);
+	}
+	.book-page-hero-content {
+		position: relative;
+		z-index: 1;
+	}
+	.book-page-hero-title {
+		margin: 0 0 0.5rem;
+		font-size: 2rem;
+		font-weight: 700;
+		font-family: 'Cormorant Garamond', serif;
+	}
+	.book-page-hero-subtitle {
+		margin: 0;
+		font-size: 1.1rem;
+		opacity: 0.95;
+	}
+	.book-page-section {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 2rem 1.5rem;
+	}
+	.book-page-inner {
+		background: #fff;
+		border-radius: 12px;
+		box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+		padding: 2rem;
+	}
+	.book-page-title {
+		margin: 0 0 0.75rem;
+		font-size: 1.5rem;
+		color: #333;
+	}
+	.book-page-text {
+		margin: 0 0 1.5rem;
+		color: #555;
+	}
+	.book-page-layout {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		align-items: start;
+	}
+	@media (max-width: 768px) {
+		.book-page-layout {
+			grid-template-columns: 1fr;
+		}
+	}
+	.book-page-main-image {
+		width: 100%;
+		height: auto;
+		border-radius: 8px;
+		object-fit: cover;
+		display: block;
+	}
+	.book-page-gallery {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.book-page-thumbs {
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+	.book-page-thumb {
+		width: 56px;
+		height: 40px;
+		object-fit: cover;
+		border-radius: 4px;
+		cursor: pointer;
+		border: 2px solid transparent;
+	}
+	.book-page-thumb:hover {
+		border-color: #064250;
+	}
+	.book-page-detail-title {
+		margin: 0 0 0.25rem;
+		font-size: 1.75rem;
+		font-weight: 700;
+		color: #064250;
+		font-family: 'Cormorant Garamond', serif;
+	}
+	.book-page-modal-name {
+		margin: 0 0 0.5rem;
+		font-size: 1rem;
+		color: #555;
+	}
+	.book-page-length {
+		margin: 0 0 1rem;
+		font-size: 0.9rem;
+		color: #666;
+	}
+	.book-page-prices {
+		margin: 0 0 0.5rem;
+	}
+	.book-page-price {
+		margin: 0.25rem 0;
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: #1a1a1a;
+	}
+	.book-page-pax {
+		margin: 0 0 1rem;
+		font-size: 0.95rem;
+		color: #444;
+	}
+	.book-page-description {
+		margin: 0 0 1rem;
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: #444;
+	}
+	.book-page-includes-heading {
+		margin: 0 0 0.5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		color: #333;
+	}
+	.book-page-includes-list {
+		margin: 0 0 1.5rem;
+		padding-left: 1.25rem;
+		line-height: 1.7;
+		color: #555;
+	}
+	.book-page-includes-list li {
+		margin: 0.2rem 0;
+	}
+	.book-page-excluded {
+		list-style: none;
+		padding-left: 0;
+		margin-top: 0.5rem;
+		color: #888;
+		font-style: italic;
+	}
+	.book-page-cta {
+		display: inline-block;
+		padding: 0.75rem 1.5rem;
+		background: #064250;
+		color: #fff;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.95rem;
+		border-radius: 8px;
+		transition: background 0.2s;
+	}
+	.book-page-cta:hover {
+		background: #0a5a6a;
+	}
+</style>

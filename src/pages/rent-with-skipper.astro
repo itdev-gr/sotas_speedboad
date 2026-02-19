@@ -19,7 +19,7 @@ try {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>License Free Rent | Sotas Speedboats – Zakynthos</title>
+		<title>Rent with Skipper | Sotas Speedboats – Zakynthos</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -27,41 +27,41 @@ try {
 	<body class="license-free-body">
 		<Header />
 		<main class="license-free-page">
-			<section class="page-hero" aria-label="License Free Rent">
+			<section class="page-hero" aria-label="Rent with Skipper">
 				<div class="page-hero-overlay"></div>
 				<div class="page-hero-content">
-					<p class="page-hero-label">NO LICENSE REQUIRED</p>
-					<h1 class="page-hero-title">License Free Rent</h1>
-					<p class="page-hero-subtitle">Drive yourself in Zakynthos. No boat license needed – just enjoy the sea.</p>
+					<p class="page-hero-label">PROFESSIONAL SKIPPER</p>
+					<h1 class="page-hero-title">SKIPPER DRIVE BOAT RENTALS</h1>
+					<p class="page-hero-subtitle">Enjoy a relaxing cruise with an experienced skipper. Sit back and discover Zakynthos and the Ionian Sea in comfort.</p>
 					<a href="/contact" class="page-hero-cta">CONTACT US TO BOOK</a>
 				</div>
 			</section>
 
-			<section class="license-content-section" aria-label="Self drive boat rentals">
+			<section class="license-content-section" aria-label="Skipper drive boat rentals">
 				<div class="license-content-inner">
 					<div class="license-text">
-						<p class="license-sub">NO LICENSE REQUIRED</p>
-						<h2 class="license-title">SELF DRIVE BOAT RENTALS</h2>
+						<p class="license-sub">PROFESSIONAL SKIPPER</p>
+						<h2 class="license-title">SKIPPER DRIVE BOAT RENTALS</h2>
 						<p class="license-desc">
-							Rent a self drive boat in Zakynthos and become a captain yourself. No license required! Our boats are easy to handle and perfect for exploring the coast, hidden bays, and crystal-clear waters of the Ionian Sea.
+							Enjoy a relaxing cruise with an experienced skipper. Sit back and discover Zakynthos and the Ionian Sea in comfort.
 						</p>
 						<p class="license-desc">
-							We provide a brief safety and handling briefing before you set off. Choose from our fleet of well-maintained boats and enjoy the freedom of the sea at your own pace.
+							Our skippers know the best spots, hidden bays, and safest routes. Perfect for groups and anyone who prefers to relax while we take care of the rest.
 						</p>
 						<a href="tel:+306970621594" class="license-cta">CALL TO BOOK: +30 697 062 1594</a>
 					</div>
 				</div>
 			</section>
 
-			<section class="speedboat-choose" aria-label="Choose your speedboat">
-				<h2 class="speedboat-choose-title">Choose Your Speedboat</h2>
+			<section class="speedboat-choose" aria-label="Choose your cruise">
+				<h2 class="speedboat-choose-title">Choose Your Cruise</h2>
 				<div class="speedboat-cards">
 					{boats.length === 0 ? (
 						<p class="speedboat-no-boats">No boats available at the moment.</p>
 					) : boats.map((boat) => (
 						<div class="speedboat-card">
 							<div class="speedboat-card-image">
-								<img src={boat.imageUrl || '/images/self-drive-boat.png'} alt={boat.name} width="400" height="280" />
+								<img src={boat.imageUrl || '/images/skipper-drive.png'} alt={boat.name} width="400" height="280" />
 							</div>
 							<div class="speedboat-card-content">
 								<p class="speedboat-card-name">{boat.name}</p>
@@ -69,7 +69,7 @@ try {
 								<p class="speedboat-rental">- 7h Rental €{boat.price7h}*</p>
 								<p class="speedboat-pax">Max. {boat.maxPax} pax</p>
 								<div class="speedboat-buttons">
-									<a href={`/book-license-free?boat=${boat.id}`} class="speedboat-btn speedboat-btn-primary">Book Here</a>
+									<a href="/contact" class="speedboat-btn speedboat-btn-primary">Book with Skipper</a>
 									<button type="button" class="speedboat-btn speedboat-btn-secondary includes-trigger" data-boat={boat.id} aria-label={`View includes for ${boat.name}`}>Includes &gt;</button>
 								</div>
 							</div>
@@ -108,7 +108,7 @@ try {
 								</div>
 							) : (
 								<div class="includes-modal-image">
-									<img src={boat.imageUrl || '/images/self-drive-boat.png'} alt={`${boat.name} - ${boat.modalName}`} width="400" height="280" />
+									<img src={boat.imageUrl || '/images/skipper-drive.png'} alt={`${boat.name} - ${boat.modalName}`} width="400" height="280" />
 								</div>
 							)}
 							<div class="includes-modal-content">
@@ -122,7 +122,7 @@ try {
 									{boat.fuelExcludedText ? <li class="includes-modal-excluded">{boat.fuelExcludedText}</li> : null}
 								</ul>
 								<p class="includes-modal-pax">Max. {boat.maxPax} passengers</p>
-								<a href={`/book-license-free?boat=${boat.id}`} class="includes-modal-cta">Book Here</a>
+								<a href="/contact" class="includes-modal-cta">Book with Skipper</a>
 							</div>
 						</div>
 					</div>
@@ -147,19 +147,19 @@ try {
 					}
 				}
 
-				// Includes modals: open via event delegation, close by data-modal-close
-				document.addEventListener('click', (e) => {
-					const trigger = e.target instanceof Element ? e.target.closest('.includes-trigger[data-boat]') : null;
-					if (!trigger) return;
-					e.preventDefault();
+				// Includes modals: open/close by data-boat and data-modal-close
+				document.querySelectorAll('.includes-trigger[data-boat]').forEach((trigger) => {
 					const boatId = trigger.getAttribute('data-boat');
 					if (!boatId) return;
 					const modal = document.getElementById('includes-modal-' + boatId);
-					if (modal) {
-						modal.classList.add('includes-modal--open');
-						modal.setAttribute('aria-hidden', 'false');
-						document.body.style.overflow = 'hidden';
-					}
+					trigger.addEventListener('click', (e) => {
+						e.preventDefault();
+						if (modal) {
+							modal.classList.add('includes-modal--open');
+							modal.setAttribute('aria-hidden', 'false');
+							document.body.style.overflow = 'hidden';
+						}
+					});
 				});
 				document.querySelectorAll('[data-modal-close]').forEach((el) => {
 					const boatId = el.getAttribute('data-modal-close');
@@ -251,7 +251,7 @@ try {
 	.page-hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: url('/images/self-drive-boat.png') center/cover no-repeat;
+		background: url('/images/skipper-drive.png') center/cover no-repeat;
 		opacity: 0.25;
 	}
 	.page-hero-content {
@@ -340,7 +340,7 @@ try {
 		line-height: 1.6;
 		color: #333;
 		margin: 0;
-		max-width: 57ch; /* 42ch + 35% */
+		max-width: 57ch;
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -473,12 +473,10 @@ try {
 		opacity: 0;
 		visibility: hidden;
 		transition: opacity 0.2s, visibility 0.2s;
-		pointer-events: none;
 	}
 	.includes-modal--open {
 		opacity: 1;
 		visibility: visible;
-		pointer-events: auto;
 	}
 	.includes-modal-backdrop {
 		position: absolute;

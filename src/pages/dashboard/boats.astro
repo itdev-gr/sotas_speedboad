@@ -1,0 +1,282 @@
+---
+export const prerender = false;
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+---
+<DashboardLayout title="Boats">
+	<h1>Boats</h1>
+	<div class="dash-card">
+		<p>Manage boats shown on the License Free Rent page. Edit image, title, prices, and includes.</p>
+		<div id="boats-list" class="boats-list">
+			<p>Loading…</p>
+		</div>
+		<p id="boats-msg" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;"></p>
+	</div>
+
+	<!-- Edit modal -->
+	<div id="boat-edit-modal" class="boat-modal" aria-hidden="true" role="dialog" aria-labelledby="boat-modal-title">
+		<div class="boat-modal-backdrop" id="boat-modal-backdrop"></div>
+		<div class="boat-modal-box">
+			<h2 id="boat-modal-title" class="boat-modal-title">Edit boat</h2>
+			<form id="boat-edit-form" class="dash-form">
+				<input type="hidden" id="boat-edit-id" name="id" />
+				<div class="dash-field">
+					<label for="boat-edit-imageUrl">Image URL</label>
+					<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+						<input type="text" id="boat-edit-imageUrl" name="imageUrl" placeholder="/images/boat.png" style="flex: 1; min-width: 200px;" />
+						<label class="dash-btn dash-btn--secondary" style="margin: 0; cursor: pointer;">
+							Upload image
+							<input type="file" id="boat-edit-file" accept="image/*" style="position: absolute; width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden;" />
+						</label>
+					</div>
+					<div class="boat-image-preview-wrap" id="boat-image-preview-wrap" style="margin-top: 0.5rem;">
+						<img id="boat-image-preview" src="" alt="" style="max-width: 200px; max-height: 120px; object-fit: cover; border-radius: 6px; display: none;" />
+					</div>
+					<p id="boat-upload-status" style="font-size: 0.85rem; color: #666; margin-top: 0.25rem;"></p>
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-name">Title (card name)</label>
+					<input type="text" id="boat-edit-name" name="name" required />
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-price4h">Price 4h (€)</label>
+					<input type="number" id="boat-edit-price4h" name="price4h" min="0" step="1" required />
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-price7h">Price 7h (€)</label>
+					<input type="number" id="boat-edit-price7h" name="price7h" min="0" step="1" required />
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-maxPax">Max passengers</label>
+					<input type="number" id="boat-edit-maxPax" name="maxPax" min="1" required />
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-modalName">Modal name (e.g. Daphne, Elena)</label>
+					<input type="text" id="boat-edit-modalName" name="modalName" />
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-lengthMeters">Length (meters)</label>
+					<input type="text" id="boat-edit-lengthMeters" name="lengthMeters" placeholder="5 or 5.4" />
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-fuelExcludedText">Fuel excluded text</label>
+					<input type="text" id="boat-edit-fuelExcludedText" name="fuelExcludedText" placeholder="Fuel not included" />
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-description">Description</label>
+					<textarea id="boat-edit-description" name="description" rows="4" placeholder="Short description for the boat (shown on book page)"></textarea>
+				</div>
+				<div class="dash-field">
+					<label for="boat-edit-includes">Includes (one per line)</label>
+					<textarea id="boat-edit-includes" name="includes" rows="8" placeholder="Meet at the Port&#10;Coolbox with Ice&#10;..."></textarea>
+				</div>
+				<div class="boat-modal-actions">
+					<button type="button" class="dash-btn dash-btn--secondary" id="boat-modal-cancel">Cancel</button>
+					<button type="submit" class="dash-btn">Save</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<style>
+		.boats-list { display: flex; flex-wrap: wrap; gap: 1rem; }
+		.boat-card {
+			background: #f8fafb;
+			border: 1px solid rgba(29,130,153,0.2);
+			border-radius: 8px;
+			padding: 1rem;
+			width: 100%;
+			max-width: 320px;
+			display: flex;
+			gap: 1rem;
+			align-items: flex-start;
+		}
+		.boat-card-thumb { width: 80px; height: 56px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+		.boat-card-info { flex: 1; min-width: 0; }
+		.boat-card-name { font-weight: 600; margin: 0 0 0.25rem; }
+		.boat-card-meta { font-size: 0.9rem; color: #555; margin: 0 0 0.5rem; }
+		.boat-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1rem; box-sizing: border-box; }
+		.boat-modal[aria-hidden="true"] { display: none; }
+		.boat-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+		.boat-modal-box { position: relative; background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 1.5rem; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; }
+		.boat-modal-title { margin: 0 0 1rem; font-size: 1.25rem; }
+		.boat-modal-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+	</style>
+
+	<script>
+		type Boat = {
+			id: string;
+			name: string;
+			imageUrl: string;
+			imageUrls: string[];
+			price4h: number;
+			price7h: number;
+			maxPax: number;
+			modalName: string;
+			includes: string[];
+			lengthMeters: string;
+			fuelExcludedText: string;
+			sortOrder: number;
+			description?: string;
+		};
+
+		const listEl = document.getElementById('boats-list')!;
+		const msgEl = document.getElementById('boats-msg')!;
+		const modal = document.getElementById('boat-edit-modal')!;
+		const form = document.getElementById('boat-edit-form') as HTMLFormElement;
+		const backdrop = document.getElementById('boat-modal-backdrop')!;
+		const cancelBtn = document.getElementById('boat-modal-cancel')!;
+		const previewImg = document.getElementById('boat-image-preview') as HTMLImageElement;
+		const previewWrap = document.getElementById('boat-image-preview-wrap')!;
+		const imageUrlInput = document.getElementById('boat-edit-imageUrl') as HTMLInputElement;
+		const uploadStatusEl = document.getElementById('boat-upload-status')!;
+		const fileInput = document.getElementById('boat-edit-file') as HTMLInputElement;
+
+		function showMsg(text: string) {
+			msgEl.textContent = text;
+		}
+
+		function openModal(boat: Boat) {
+			(form.querySelector('#boat-edit-id') as HTMLInputElement).value = boat.id;
+			(imageUrlInput).value = boat.imageUrl || '';
+			(form.querySelector('#boat-edit-name') as HTMLInputElement).value = boat.name || '';
+			(form.querySelector('#boat-edit-price4h') as HTMLInputElement).value = String(boat.price4h ?? '');
+			(form.querySelector('#boat-edit-price7h') as HTMLInputElement).value = String(boat.price7h ?? '');
+			(form.querySelector('#boat-edit-maxPax') as HTMLInputElement).value = String(boat.maxPax ?? '');
+			(form.querySelector('#boat-edit-modalName') as HTMLInputElement).value = boat.modalName || '';
+			(form.querySelector('#boat-edit-lengthMeters') as HTMLInputElement).value = boat.lengthMeters || '';
+			(form.querySelector('#boat-edit-fuelExcludedText') as HTMLInputElement).value = boat.fuelExcludedText || 'Fuel not included';
+			(form.querySelector('#boat-edit-includes') as HTMLTextAreaElement).value = (boat.includes || []).join('\n');
+			(form.querySelector('#boat-edit-description') as HTMLTextAreaElement).value = boat.description || '';
+			updatePreview(boat.imageUrl || '');
+			modal.setAttribute('aria-hidden', 'false');
+		}
+
+		function closeModal() {
+			modal.setAttribute('aria-hidden', 'true');
+		}
+
+		function updatePreview(url: string) {
+			if (url && url.startsWith('http')) {
+				previewImg.src = url;
+				previewImg.alt = 'Preview';
+				previewImg.style.display = 'block';
+			} else if (url && url.startsWith('/')) {
+				previewImg.src = url;
+				previewImg.alt = 'Preview';
+				previewImg.style.display = 'block';
+			} else {
+				previewImg.style.display = 'none';
+			}
+		}
+
+		imageUrlInput?.addEventListener('input', () => updatePreview(imageUrlInput.value));
+
+		fileInput?.addEventListener('change', async (e: Event) => {
+			const input = e.target as HTMLInputElement;
+			const file = input?.files?.[0];
+			if (!file) return;
+			const boatId = (form.querySelector('#boat-edit-id') as HTMLInputElement).value.trim();
+			if (!boatId) {
+				uploadStatusEl.textContent = 'Open a boat first (Edit) then upload.';
+				input.value = '';
+				return;
+			}
+			uploadStatusEl.textContent = 'Uploading…';
+			try {
+				const { getFirebaseStorage } = await import('../../lib/firebase');
+				const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
+				const storage = getFirebaseStorage();
+				if (!storage) {
+					uploadStatusEl.textContent = 'Storage not configured.';
+					input.value = '';
+					return;
+				}
+				const path = `boats/${boatId}/main.jpg`;
+				const storageRef = ref(storage, path);
+				await uploadBytes(storageRef, file);
+				const url = await getDownloadURL(storageRef);
+				imageUrlInput.value = url;
+				updatePreview(url);
+				uploadStatusEl.textContent = 'Uploaded. Click Save to keep.';
+			} catch (err) {
+				uploadStatusEl.textContent = 'Upload failed.';
+				console.error(err);
+			}
+			input.value = '';
+		});
+
+		backdrop.addEventListener('click', closeModal);
+		cancelBtn.addEventListener('click', closeModal);
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const id = (form.querySelector('#boat-edit-id') as HTMLInputElement).value.trim();
+			const includesText = (form.querySelector('#boat-edit-includes') as HTMLTextAreaElement).value.trim();
+			const includes = includesText ? includesText.split('\n').map((s) => s.trim()).filter(Boolean) : [];
+			const payload = {
+				id,
+				name: (form.querySelector('#boat-edit-name') as HTMLInputElement).value.trim(),
+				imageUrl: imageUrlInput.value.trim(),
+				price4h: Number((form.querySelector('#boat-edit-price4h') as HTMLInputElement).value) || 0,
+				price7h: Number((form.querySelector('#boat-edit-price7h') as HTMLInputElement).value) || 0,
+				maxPax: Number((form.querySelector('#boat-edit-maxPax') as HTMLInputElement).value) || 0,
+				modalName: (form.querySelector('#boat-edit-modalName') as HTMLInputElement).value.trim(),
+				lengthMeters: (form.querySelector('#boat-edit-lengthMeters') as HTMLInputElement).value.trim(),
+				fuelExcludedText: (form.querySelector('#boat-edit-fuelExcludedText') as HTMLInputElement).value.trim() || 'Fuel not included',
+				includes,
+				description: (form.querySelector('#boat-edit-description') as HTMLTextAreaElement).value.trim(),
+			};
+			showMsg('');
+			const res = await fetch('/api/boats', {
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				credentials: 'include',
+				body: JSON.stringify(payload),
+			});
+			if (res.ok) {
+				showMsg('Saved.');
+				closeModal();
+				loadBoats();
+			} else {
+				const data = await res.json().catch(() => ({}));
+				showMsg(data.error || 'Failed to save.');
+			}
+		});
+
+		function renderBoats(boats: Boat[]) {
+			if (!boats.length) {
+				listEl.innerHTML = '<p>No boats. The first GET to /api/boats will seed 3 boats — refresh the page.</p>';
+				return;
+			}
+			listEl.innerHTML = boats.map((b) => `
+				<div class="boat-card" data-id="${b.id}">
+					<img class="boat-card-thumb" src="${b.imageUrl || '/images/self-drive-boat.png'}" alt="${b.name}" />
+					<div class="boat-card-info">
+						<p class="boat-card-name">${b.name}</p>
+						<p class="boat-card-meta">4h €${b.price4h} · 7h €${b.price7h} · Max ${b.maxPax} pax</p>
+						<button type="button" class="dash-btn boat-edit-btn" data-id="${b.id}">Edit</button>
+					</div>
+				</div>
+			`).join('');
+			listEl.querySelectorAll('.boat-edit-btn').forEach((btn) => {
+				btn.addEventListener('click', () => {
+					const id = (btn as HTMLElement).getAttribute('data-id');
+					const boat = boats.find((b) => b.id === id);
+					if (boat) openModal(boat);
+				});
+			});
+		}
+
+		async function loadBoats() {
+			const res = await fetch('/api/boats', { credentials: 'include' });
+			if (!res.ok) {
+				listEl.innerHTML = '<p>Failed to load boats.</p>';
+				return;
+			}
+			const boats: Boat[] = await res.json();
+			renderBoats(boats);
+		}
+
+		loadBoats();
+	</script>
+</DashboardLayout>

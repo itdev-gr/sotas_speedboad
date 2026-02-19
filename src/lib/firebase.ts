@@ -5,6 +5,7 @@
 import { initializeApp, type FirebaseApp } from 'firebase/app';
 import { getAuth, type Auth } from 'firebase/auth';
 import { getFirestore, type Firestore } from 'firebase/firestore';
+import { getStorage, type FirebaseStorage } from 'firebase/storage';
 import { getAnalytics, type Analytics } from 'firebase/analytics';
 
 const firebaseConfig = {
@@ -19,6 +20,7 @@ const firebaseConfig = {
 let app: FirebaseApp | null = null;
 let auth: Auth | null = null;
 let db: Firestore | null = null;
+let storage: FirebaseStorage | null = null;
 let analytics: Analytics | null = null;
 
 function hasValidConfig(): boolean {
@@ -59,6 +61,17 @@ export function getFirebaseFirestore(): Firestore | null {
   if (!firebaseApp) return null;
   db = getFirestore(firebaseApp);
   return db;
+}
+
+/**
+ * Get Firebase Storage. Initializes app if needed. Returns null if config missing.
+ */
+export function getFirebaseStorage(): FirebaseStorage | null {
+  if (storage) return storage;
+  const firebaseApp = getFirebaseApp();
+  if (!firebaseApp) return null;
+  storage = getStorage(firebaseApp);
+  return storage;
 }
 
 /**
