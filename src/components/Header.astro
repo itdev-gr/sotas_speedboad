@@ -42,10 +42,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 1rem 2rem;
+		padding: 0.75rem 1.25rem;
 		background: transparent;
-		gap: 2rem;
+		gap: 1rem;
 		transition: background-color 0.3s ease;
+		box-sizing: border-box;
 	}
 	.hero-header.hero-header--scrolled {
 		background-color: rgba(6, 66, 80, 0.6);
@@ -62,21 +63,25 @@
 	.nav-menu-wrap {
 		display: flex;
 		align-items: center;
-		gap: 1.5rem;
+		gap: 1rem;
 		margin-left: auto;
+		min-width: 0;
 	}
 	.nav-links {
 		display: flex;
-		gap: 1.5rem;
+		gap: 1rem;
 		align-items: center;
+		flex-wrap: wrap;
+		justify-content: flex-end;
 	}
 	.nav-links a {
 		color: #fff;
 		text-decoration: none;
-		font-size: 0.8rem;
+		font-size: 0.72rem;
 		font-weight: 500;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.04em;
 		opacity: 0.95;
+		white-space: nowrap;
 	}
 	.nav-links a:hover {
 		opacity: 1;
@@ -146,15 +151,16 @@
 	}
 	.nav-phone-btn {
 		display: inline-block;
-		padding: 0.5rem 1rem;
+		padding: 0.4rem 0.75rem;
 		background: rgba(255, 255, 255, 0.2);
 		color: #fff;
 		text-decoration: none;
-		font-size: 0.8rem;
+		font-size: 0.75rem;
 		font-weight: 500;
 		border: 1px solid rgba(255, 255, 255, 0.4);
 		border-radius: 4px;
 		transition: background 0.2s, border-color 0.2s;
+		flex-shrink: 0;
 	}
 	.nav-phone-btn:hover {
 		background: rgba(255, 255, 255, 0.3);
@@ -174,7 +180,7 @@
 		height: 2px;
 		background: #fff;
 	}
-	@media (max-width: 1024px) {
+	@media (max-width: 1100px) {
 		.nav-menu-wrap {
 			position: relative;
 		}

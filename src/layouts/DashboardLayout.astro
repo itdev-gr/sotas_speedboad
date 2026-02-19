@@ -48,6 +48,8 @@ if (!session) {
 			<nav class="dash__nav">
 				<a href="/dashboard" class:list={[Astro.url.pathname === '/dashboard' && 'dash__nav--active']}>Dashboard</a>
 				<a href="/dashboard/boats" class:list={[Astro.url.pathname === '/dashboard/boats' && 'dash__nav--active']}>Boats</a>
+				<a href="/dashboard/prices/license-free" class:list={[Astro.url.pathname === '/dashboard/prices/license-free' && 'dash__nav--active']}>Prices – License free</a>
+				<a href="/dashboard/prices/skipper" class:list={[Astro.url.pathname === '/dashboard/prices/skipper' && 'dash__nav--active']}>Prices – Skipper</a>
 				<a href="/dashboard/bookings" class:list={[Astro.url.pathname === '/dashboard/bookings' && 'dash__nav--active']}>Bookings</a>
 				<a href="/dashboard/contacts" class:list={[Astro.url.pathname === '/dashboard/contacts' && 'dash__nav--active']}>Contacts</a>
 				<div class="dash-user">

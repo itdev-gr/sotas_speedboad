@@ -76,6 +76,8 @@ function toBoatDoc(d: QueryDocumentSnapshot) {
 		imageUrls: Array.isArray(data.imageUrls) ? data.imageUrls.map(String) : [],
 		price4h: Number(data.price4h) || 0,
 		price7h: Number(data.price7h) || 0,
+		skipperPrice4h: Number(data.skipperPrice4h) ?? 0,
+		skipperPrice7h: Number(data.skipperPrice7h) ?? 0,
 		maxPax: Number(data.maxPax) || 0,
 		modalName: String(data.modalName ?? ''),
 		includes: Array.isArray(data.includes) ? data.includes.map(String) : [],
@@ -116,6 +118,8 @@ type BoatPayload = {
 	imageUrls?: string[];
 	price4h?: number;
 	price7h?: number;
+	skipperPrice4h?: number;
+	skipperPrice7h?: number;
 	maxPax?: number;
 	modalName?: string;
 	includes?: string[];
@@ -141,6 +145,8 @@ export const PUT: APIRoute = async ({ request }) => {
 		if (body.imageUrls !== undefined) update.imageUrls = Array.isArray(body.imageUrls) ? body.imageUrls.map(String) : [];
 		if (body.price4h !== undefined) update.price4h = Number(body.price4h) || 0;
 		if (body.price7h !== undefined) update.price7h = Number(body.price7h) || 0;
+		if (body.skipperPrice4h !== undefined) update.skipperPrice4h = Number(body.skipperPrice4h) || 0;
+		if (body.skipperPrice7h !== undefined) update.skipperPrice7h = Number(body.skipperPrice7h) || 0;
 		if (body.maxPax !== undefined) update.maxPax = Number(body.maxPax) || 0;
 		if (body.modalName !== undefined) update.modalName = String(body.modalName).trim();
 		if (body.includes !== undefined) update.includes = Array.isArray(body.includes) ? body.includes.map(String) : [];

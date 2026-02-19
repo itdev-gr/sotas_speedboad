@@ -1,0 +1,109 @@
+---
+export const prerender = false;
+import DashboardLayout from '../../../layouts/DashboardLayout.astro';
+---
+<DashboardLayout title="Prices – License free">
+	<h1>Prices – License free</h1>
+	<div class="dash-card">
+		<p>Edit boat names and 4h / 7h prices for license-free rentals. Changes are saved to Firebase.</p>
+		<div id="prices-lf-list">Loading…</div>
+		<p id="prices-lf-msg" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;"></p>
+	</div>
+	<script>
+		interface Boat {
+			id: string;
+			name: string;
+			price4h: number;
+			price7h: number;
+		}
+		(async () => {
+			const listEl = document.getElementById('prices-lf-list');
+			const msgEl = document.getElementById('prices-lf-msg');
+			if (!listEl || !msgEl) return;
+			const res = await fetch('/api/boats', { credentials: 'include' });
+			if (!res.ok) {
+				listEl.innerHTML = '<p>Failed to load boats.</p>';
+				return;
+			}
+			const boats: Boat[] = await res.json();
+			if (!boats.length) {
+				listEl.innerHTML = '<p>No boats. Add boats from the Boats page first.</p>';
+				return;
+			}
+			function render() {
+				if (!listEl) return;
+				listEl.innerHTML = boats.map((b) => `
+					<div class="prices-row" data-id="${b.id}">
+						<div class="prices-row-name">
+							<input type="text" value="${escapeHtml(b.name)}" data-field="name" data-id="${b.id}" class="dash-form input-inline" />
+						</div>
+						<div class="prices-row-price">
+							<label>4h (€)</label>
+							<input type="number" min="0" step="1" value="${b.price4h}" data-field="price4h" data-id="${b.id}" class="dash-form input-inline" style="width: 80px;" />
+						</div>
+						<div class="prices-row-price">
+							<label>7h (€)</label>
+							<input type="number" min="0" step="1" value="${b.price7h}" data-field="price7h" data-id="${b.id}" class="dash-form input-inline" style="width: 80px;" />
+						</div>
+						<button type="button" class="dash-btn prices-save-btn" data-id="${b.id}">Save</button>
+					</div>
+				`).join('');
+			}
+			function escapeHtml(s: string) {
+				const div = document.createElement('div');
+				div.textContent = s ?? '';
+				return div.innerHTML;
+			}
+			render();
+			listEl.addEventListener('click', async (e) => {
+				const btn = (e.target as HTMLElement).closest('.prices-save-btn');
+				if (!btn) return;
+				const id = btn.getAttribute('data-id');
+				if (!id) return;
+				const row = listEl.querySelector(`.prices-row[data-id="${id}"]`);
+				if (!row) return;
+				const nameInput = row.querySelector('[data-field="name"]') as HTMLInputElement;
+				const price4hInput = row.querySelector('[data-field="price4h"]') as HTMLInputElement;
+				const price7hInput = row.querySelector('[data-field="price7h"]') as HTMLInputElement;
+				const name = nameInput?.value?.trim() ?? '';
+				const price4h = Number(price4hInput?.value) || 0;
+				const price7h = Number(price7hInput?.value) || 0;
+				msgEl.textContent = 'Saving…';
+				const putRes = await fetch('/api/boats', {
+					method: 'PUT',
+					headers: { 'Content-Type': 'application/json' },
+					credentials: 'include',
+					body: JSON.stringify({ id, name, price4h, price7h }),
+				});
+				const data = await putRes.json().catch(() => ({}));
+				if (putRes.ok) {
+					msgEl.textContent = 'Saved.';
+					const idx = boats.findIndex((b) => b.id === id);
+					if (idx >= 0) {
+						boats[idx].name = name;
+						boats[idx].price4h = price4h;
+						boats[idx].price7h = price7h;
+					}
+				} else {
+					msgEl.textContent = (data as { error?: string }).error || 'Failed to save.';
+				}
+			});
+		})();
+	</script>
+	<style>
+		.prices-row {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 0.75rem 0;
+			border-bottom: 1px solid #eee;
+			flex-wrap: wrap;
+		}
+		.prices-row:last-child { border-bottom: none; }
+		.prices-row-name { flex: 1; min-width: 160px; }
+		.prices-row-name input { max-width: 100%; }
+		.prices-row-price { display: flex; align-items: center; gap: 0.5rem; }
+		.prices-row-price label { font-size: 0.85rem; color: #555; white-space: nowrap; }
+		.input-inline { padding: 0.4rem 0.6rem; font-size: 0.95rem; }
+	</style>
+</DashboardLayout>
