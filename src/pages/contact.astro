@@ -1,0 +1,263 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="el">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Contact Us | Sotas Speedboats – Zakynthos</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+	</head>
+	<body>
+		<Header />
+		<main class="contact-page">
+			<section class="contact-hero" aria-label="Contact us">
+				<div class="contact-hero-content">
+					<h1 class="contact-hero-title">Contact Us</h1>
+					<p class="contact-hero-subtitle">Get in touch to book your boat rental or ask us anything about our cruises in Zakynthos.</p>
+				</div>
+			</section>
+
+			<section class="contact-main" aria-label="Contact form and details">
+				<div class="contact-inner">
+					<div class="contact-form-wrap">
+						<h2 class="contact-form-title">Send us a message</h2>
+						<form class="contact-form" action="#" method="post" id="contact-form">
+							<label for="contact-name" class="contact-label">Name *</label>
+							<input type="text" id="contact-name" name="name" class="contact-input" required placeholder="Your name" />
+
+							<label for="contact-email" class="contact-label">Email *</label>
+							<input type="email" id="contact-email" name="email" class="contact-input" required placeholder="your@email.com" />
+
+							<label for="contact-phone" class="contact-label">Phone</label>
+							<input type="tel" id="contact-phone" name="phone" class="contact-input" placeholder="+30 ..." />
+
+							<label for="contact-message" class="contact-label">Message *</label>
+							<textarea id="contact-message" name="message" class="contact-textarea" rows="5" required placeholder="How can we help you?"></textarea>
+
+							<button type="submit" class="contact-submit">Send message</button>
+						</form>
+					</div>
+					<div class="contact-info-wrap">
+						<h2 class="contact-info-title">Get in touch</h2>
+						<div class="contact-info-block">
+							<p class="contact-info-label">Phone</p>
+							<a href="tel:+306970621594" class="contact-info-value">+30 697 062 1594</a>
+						</div>
+						<div class="contact-info-block">
+							<p class="contact-info-label">Email</p>
+							<a href="mailto:info@boatrentalzakynthos.com" class="contact-info-value">info@boatrentalzakynthos.com</a>
+						</div>
+						<div class="contact-info-block">
+							<p class="contact-info-label">Location</p>
+							<p class="contact-info-value">Zakynthos, Ionian Sea, Greece</p>
+						</div>
+						<p class="contact-info-note">We'll get back to you as soon as possible.</p>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+
+		<script is:inline>
+			document.addEventListener('DOMContentLoaded', () => {
+				const header = document.querySelector('.hero-header');
+				const heroSection = document.querySelector('.hero');
+				if (header) {
+					if (!heroSection) {
+						header.classList.add('hero-header--scrolled');
+					} else {
+						const onScroll = () => {
+							const heroH = heroSection.getBoundingClientRect().height;
+							header.classList.toggle('hero-header--scrolled', window.scrollY >= heroH - 1);
+						};
+						onScroll();
+						window.addEventListener('scroll', onScroll, { passive: true });
+					}
+				}
+				document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+					e.preventDefault();
+					alert('Thank you! We will get back to you soon.');
+				});
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		font-family: 'Inter', system-ui, sans-serif;
+		overflow-x: hidden;
+		padding-top: 5rem;
+	}
+</style>
+
+<style>
+	.contact-page {
+		min-height: 100vh;
+	}
+
+	.contact-hero {
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		padding: 4rem 2rem;
+		text-align: center;
+	}
+	.contact-hero-content {
+		max-width: 36rem;
+		margin: 0 auto;
+	}
+	.contact-hero-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(2.25rem, 4vw, 3rem);
+		font-weight: 600;
+		color: #fff;
+		margin: 0 0 0.75rem 0;
+		line-height: 1.2;
+	}
+	.contact-hero-subtitle {
+		font-size: 1.1rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	.contact-main {
+		width: 100%;
+		padding: 4rem 2rem;
+		background: #f5f0e8;
+	}
+	.contact-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		max-width: 1000px;
+		margin: 0 auto;
+		align-items: start;
+	}
+	.contact-form-wrap {
+		background: #fff;
+		padding: 2.5rem;
+		border-radius: 8px;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+	}
+	.contact-form-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin: 0 0 1.5rem 0;
+	}
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.contact-label {
+		font-size: 0.85rem;
+		font-weight: 500;
+		color: #333;
+		margin: 0;
+	}
+	.contact-input,
+	.contact-textarea {
+		width: 100%;
+		padding: 0.75rem 1rem;
+		font-size: 1rem;
+		font-family: inherit;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		background: #fff;
+		transition: border-color 0.2s;
+	}
+	.contact-input:focus,
+	.contact-textarea:focus {
+		outline: none;
+		border-color: #064250;
+	}
+	.contact-textarea {
+		resize: vertical;
+		min-height: 120px;
+	}
+	.contact-submit {
+		padding: 0.9rem 2rem;
+		background: #064250;
+		color: #fff;
+		font-size: 0.9rem;
+		font-weight: 600;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: background 0.2s;
+		margin-top: 0.5rem;
+	}
+	.contact-submit:hover {
+		background: #0a5a6a;
+	}
+
+	.contact-info-wrap {
+		background: #fff;
+		padding: 2.5rem;
+		border-radius: 8px;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+	}
+	.contact-info-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin: 0 0 1.5rem 0;
+	}
+	.contact-info-block {
+		margin-bottom: 1.5rem;
+	}
+	.contact-info-label {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #666;
+		margin: 0 0 0.25rem 0;
+	}
+	.contact-info-value {
+		font-size: 1.05rem;
+		color: #1a1a1a;
+		margin: 0;
+		text-decoration: none;
+		display: block;
+	}
+	a.contact-info-value:hover {
+		color: #064250;
+		text-decoration: underline;
+	}
+	.contact-info-note {
+		font-size: 0.9rem;
+		color: #666;
+		margin: 2rem 0 0 0;
+		padding-top: 1.5rem;
+		border-top: 1px solid #eee;
+	}
+
+	@media (max-width: 768px) {
+		.contact-inner {
+			grid-template-columns: 1fr;
+		}
+		.contact-hero {
+			padding: 3rem 1.5rem;
+		}
+	}
+</style>

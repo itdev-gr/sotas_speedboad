@@ -1,0 +1,283 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="el">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>License Free Rent | Sotas Speedboats – Zakynthos</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+	</head>
+	<body>
+		<Header />
+		<main class="license-free-page">
+			<section class="page-hero" aria-label="License Free Rent">
+				<div class="page-hero-overlay"></div>
+				<div class="page-hero-content">
+					<p class="page-hero-label">NO LICENSE REQUIRED</p>
+					<h1 class="page-hero-title">License Free Rent</h1>
+					<p class="page-hero-subtitle">Drive yourself in Zakynthos. No boat license needed – just enjoy the sea.</p>
+					<a href="/contact" class="page-hero-cta">CONTACT US TO BOOK</a>
+				</div>
+			</section>
+
+			<section class="license-content-section" aria-label="Self drive boat rentals">
+				<div class="license-content-inner">
+					<div class="license-image-wrap">
+						<img
+							src="/images/self-drive-boat.png"
+							alt="Self drive boat on the water in Zakynthos"
+							width="800"
+							height="600"
+						/>
+					</div>
+					<div class="license-text">
+						<p class="license-sub">NO LICENSE REQUIRED</p>
+						<h2 class="license-title">SELF DRIVE BOAT RENTALS</h2>
+						<p class="license-desc">
+							Rent a self drive boat in Zakynthos and become a captain yourself. No license required! Our boats are easy to handle and perfect for exploring the coast, hidden bays, and crystal-clear waters of the Ionian Sea.
+						</p>
+						<p class="license-desc">
+							We provide a brief safety and handling briefing before you set off. Choose from our fleet of well-maintained boats and enjoy the freedom of the sea at your own pace.
+						</p>
+						<a href="tel:+306970621594" class="license-cta">CALL TO BOOK: +30 697 062 1594</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="license-cta-section">
+				<h2 class="license-cta-title">Ready to explore Zakynthos?</h2>
+				<p class="license-cta-text">Get in touch to check availability and book your license-free boat.</p>
+				<a href="/contact" class="license-cta-btn">CONTACT US</a>
+			</section>
+		</main>
+		<Footer />
+
+		<script is:inline>
+			document.addEventListener('DOMContentLoaded', () => {
+				const header = document.querySelector('.hero-header');
+				const heroSection = document.querySelector('.hero');
+				if (header) {
+					if (!heroSection) {
+						header.classList.add('hero-header--scrolled');
+					} else {
+						const onScroll = () => {
+							const heroH = heroSection.getBoundingClientRect().height;
+							header.classList.toggle('hero-header--scrolled', window.scrollY >= heroH - 1);
+						};
+						onScroll();
+						window.addEventListener('scroll', onScroll, { passive: true });
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		font-family: 'Inter', system-ui, sans-serif;
+		overflow-x: hidden;
+		padding-top: 5rem;
+	}
+</style>
+
+<style>
+	.license-free-page {
+		min-height: 100vh;
+	}
+
+	.page-hero {
+		position: relative;
+		width: 100%;
+		min-height: 50vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		overflow: hidden;
+	}
+	.page-hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: url('/images/self-drive-boat.png') center/cover no-repeat;
+		opacity: 0.25;
+	}
+	.page-hero-content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		padding: 3rem 2rem;
+		max-width: 36rem;
+	}
+	.page-hero-label {
+		font-size: 0.75rem;
+		letter-spacing: 0.2em;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 0.5rem 0;
+		text-transform: uppercase;
+	}
+	.page-hero-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		font-weight: 600;
+		color: #fff;
+		margin: 0 0 1rem 0;
+		line-height: 1.2;
+	}
+	.page-hero-subtitle {
+		font-size: 1.1rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 1.5rem 0;
+		line-height: 1.5;
+	}
+	.page-hero-cta {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		background: #fff;
+		color: #064250;
+		text-decoration: none;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		border-radius: 4px;
+		transition: opacity 0.2s, transform 0.2s;
+	}
+	.page-hero-cta:hover {
+		opacity: 0.95;
+		transform: translateY(-1px);
+	}
+
+	.license-content-section {
+		width: 100%;
+	}
+	.license-content-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: 100%;
+		max-width: none;
+		margin: 0;
+		min-height: 0;
+	}
+	.license-image-wrap {
+		min-height: 400px;
+		overflow: hidden;
+	}
+	.license-image-wrap img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		min-height: 400px;
+	}
+	.license-text {
+		background: #f5f0e8;
+		padding: 4rem 3rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 1.25rem;
+	}
+	.license-sub {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.2em;
+		color: #1a1a1a;
+		margin: 0;
+		text-transform: uppercase;
+	}
+	.license-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.2;
+	}
+	.license-desc {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #333;
+		margin: 0;
+		max-width: 42ch;
+	}
+	.license-cta {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		background: #1a1a1a;
+		color: #fff;
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: background 0.2s;
+		align-self: flex-start;
+		margin-top: 0.5rem;
+	}
+	.license-cta:hover {
+		background: #333;
+	}
+
+	.license-cta-section {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: #064250;
+		color: #fff;
+	}
+	.license-cta-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.75rem, 3vw, 2.25rem);
+		font-weight: 600;
+		margin: 0 0 0.5rem 0;
+		color: #fff;
+	}
+	.license-cta-text {
+		margin: 0 0 1.5rem 0;
+		opacity: 0.9;
+		font-size: 1rem;
+	}
+	.license-cta-btn {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		background: #fff;
+		color: #064250;
+		text-decoration: none;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		border-radius: 4px;
+		transition: opacity 0.2s;
+	}
+	.license-cta-btn:hover {
+		opacity: 0.95;
+	}
+
+	@media (max-width: 900px) {
+		.license-content-inner {
+			grid-template-columns: 1fr;
+		}
+		.license-image-wrap,
+		.license-image-wrap img {
+			min-height: 300px;
+		}
+		.license-text {
+			padding: 3rem 1.5rem;
+		}
+	}
+</style>

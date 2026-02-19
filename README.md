@@ -37,6 +37,14 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run compress-videos` | Compress MP4s in `public/videos/` (requires ffmpeg) |
+
+## Deploy on Vercel
+
+The project is configured for [Vercel](https://vercel.com):
+
+- **Git:** Connect your repo at [vercel.com/new](https://vercel.com/new) and import `itdev-gr/sotas_speedboad` (or your fork). Vercel will detect Astro and use `npm run build` and `dist/`.
+- **CLI:** Install [Vercel CLI](https://vercel.com/docs/cli), then run `vercel` in the project root.
 
 ## 👀 Want to learn more?
 

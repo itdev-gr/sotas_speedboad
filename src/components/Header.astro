@@ -1,0 +1,185 @@
+---
+---
+<header class="hero-header">
+	<a href="/" class="nav-logo">
+		<span class="logo-letter">S</span>
+		<span class="logo-text">SOTAS SPEEDBOATS</span>
+	</a>
+	<div class="nav-menu-wrap">
+		<nav class="nav-links">
+			<a href="/">HOME</a>
+			<div class="nav-item-dropdown">
+				<a href="/#selfdrive" class="nav-link-parent" aria-haspopup="true" aria-expanded="false">BOOK RENTAL</a>
+				<div class="nav-dropdown" role="menu">
+					<a href="/license-free-rent" role="menuitem">License Free Rent</a>
+					<a href="/#skipperdrive" role="menuitem">Rent with Skipper</a>
+				</div>
+			</div>
+			<a href="/#routes">RECOMMENDED ROUTES</a>
+			<a href="/#about">ABOUT US</a>
+			<a href="/#faq">FAQ</a>
+			<a href="/contact">CONTACT US</a>
+		</nav>
+		<div class="nav-contact">
+			<a href="tel:+306970621594" class="nav-phone-btn">+30 697 062 1594</a>
+		</div>
+		<button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+	</div>
+</header>
+
+<style>
+	.hero-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 2rem;
+		background: transparent;
+		gap: 2rem;
+		transition: background-color 0.3s ease;
+	}
+	.hero-header.hero-header--scrolled {
+		background-color: rgba(6, 66, 80, 0.6);
+	}
+	.nav-logo {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.15rem;
+		flex-shrink: 0;
+		text-decoration: none;
+		color: inherit;
+	}
+	.nav-menu-wrap {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		margin-left: auto;
+	}
+	.nav-links {
+		display: flex;
+		gap: 1.5rem;
+		align-items: center;
+	}
+	.nav-links a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.8rem;
+		font-weight: 500;
+		letter-spacing: 0.05em;
+		opacity: 0.95;
+	}
+	.nav-links a:hover {
+		opacity: 1;
+		text-decoration: underline;
+	}
+	.nav-item-dropdown {
+		position: relative;
+	}
+	.nav-link-parent {
+		display: inline-block;
+	}
+	.nav-dropdown {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		margin-top: 0.25rem;
+		min-width: 180px;
+		background: rgba(6, 66, 80, 0.98);
+		border-radius: 4px;
+		padding: 0.5rem 0;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.2s, visibility 0.2s;
+		z-index: 200;
+	}
+	.nav-item-dropdown:hover .nav-dropdown {
+		opacity: 1;
+		visibility: visible;
+	}
+	.nav-dropdown a {
+		display: block;
+		padding: 0.5rem 1rem;
+		font-size: 0.8rem;
+		white-space: nowrap;
+		border-radius: 0;
+		color: #fff;
+	}
+	.nav-dropdown a:hover {
+		background: rgba(255, 255, 255, 0.1);
+		text-decoration: none;
+	}
+	.logo-letter {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 2rem;
+		font-weight: 600;
+		color: #fff;
+		line-height: 1;
+	}
+	.logo-text {
+		font-size: 0.65rem;
+		letter-spacing: 0.2em;
+		color: #fff;
+		opacity: 0.9;
+	}
+	.nav-contact {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 0.15rem;
+	}
+	.nav-contact a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.7rem;
+		opacity: 0.85;
+	}
+	.nav-phone-btn {
+		display: inline-block;
+		padding: 0.5rem 1rem;
+		background: rgba(255, 255, 255, 0.2);
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.8rem;
+		font-weight: 500;
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		border-radius: 4px;
+		transition: background 0.2s, border-color 0.2s;
+	}
+	.nav-phone-btn:hover {
+		background: rgba(255, 255, 255, 0.3);
+		border-color: rgba(255, 255, 255, 0.6);
+	}
+	.nav-toggle {
+		display: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+		flex-direction: column;
+		gap: 5px;
+	}
+	.nav-toggle span {
+		width: 22px;
+		height: 2px;
+		background: #fff;
+	}
+	@media (max-width: 1024px) {
+		.nav-links {
+			display: none;
+		}
+		.nav-toggle {
+			display: flex;
+		}
+	}
+</style>
