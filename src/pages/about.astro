@@ -1,0 +1,199 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="el">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>About Us | Sotas Speedboats – Zakynthos</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+	</head>
+	<body class="about-page-body">
+		<Header />
+		<main class="about-page">
+			<section class="about-hero" aria-label="About us">
+				<div class="about-hero-content">
+					<h1 class="about-hero-title">About Us</h1>
+					<p class="about-hero-subtitle">Your trusted partner for boat rentals in Zakynthos and the Ionian Sea.</p>
+				</div>
+			</section>
+
+			<section class="about-content" aria-label="Our story and values">
+				<div class="about-inner">
+					<div class="about-block">
+						<h2 class="about-heading">Who We Are</h2>
+						<p class="about-text">
+							Sotas Speedboats offers license-free and skipper-driven boat rentals in Zakynthos. We help visitors explore the island’s coastline, hidden bays, and crystal-clear waters in a safe and enjoyable way.
+						</p>
+					</div>
+					<div class="about-block">
+						<h2 class="about-heading">What We Offer</h2>
+						<p class="about-text">
+							Choose between self-drive boats (no license required) or cruises with an experienced skipper. Our fleet is well maintained and equipped with safety gear, coolbox, Bluetooth speaker, sun canopy, and more. We give a short briefing before every self-drive rental so you feel confident on the water.
+						</p>
+					</div>
+					<div class="about-block">
+						<h2 class="about-heading">Zakynthos & the Ionian Sea</h2>
+						<p class="about-text">
+							We operate from Zakynthos and know the area well. Whether you want to visit Shipwreck Beach, the Blue Caves, or quieter spots, we can suggest routes and make your day at sea memorable.
+						</p>
+					</div>
+					<p class="about-cta-wrap">
+						<a href="/contact" class="about-cta">Get in touch</a>
+						<a href="/license-free-rent" class="about-cta about-cta-secondary">View our boats</a>
+					</p>
+				</div>
+			</section>
+		</main>
+		<Footer />
+
+		<script is:inline>
+			document.addEventListener('DOMContentLoaded', () => {
+				const header = document.querySelector('.hero-header');
+				const heroSection = document.querySelector('.hero');
+				if (header) {
+					if (!heroSection) {
+						header.classList.add('hero-header--scrolled');
+					} else {
+						const onScroll = () => {
+							const heroH = heroSection.getBoundingClientRect().height;
+							header.classList.toggle('hero-header--scrolled', window.scrollY >= heroH - 1);
+						};
+						onScroll();
+						window.addEventListener('scroll', onScroll, { passive: true });
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		font-family: 'Inter', system-ui, sans-serif;
+		overflow-x: hidden;
+	}
+	body.about-page-body {
+		padding-top: 0;
+	}
+</style>
+
+<style>
+	.about-page {
+		min-height: 100vh;
+	}
+
+	.about-hero {
+		position: relative;
+		width: 100%;
+		min-height: 40vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		overflow: hidden;
+		padding-top: 5rem;
+		padding-bottom: 3rem;
+	}
+	.about-hero-content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		padding: 2rem;
+		max-width: 36rem;
+	}
+	.about-hero-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 600;
+		color: #fff;
+		margin: 0 0 0.75rem 0;
+		line-height: 1.2;
+	}
+	.about-hero-subtitle {
+		font-size: 1.05rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	.about-content {
+		width: 100%;
+		padding: 4rem 2rem;
+		background: #f5f0e8;
+	}
+	.about-inner {
+		max-width: 720px;
+		margin: 0 auto;
+	}
+	.about-block {
+		margin-bottom: 2rem;
+	}
+	.about-heading {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin: 0 0 0.75rem 0;
+		line-height: 1.2;
+	}
+	.about-text {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #333;
+		margin: 0;
+	}
+	.about-cta-wrap {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 2.5rem;
+	}
+	.about-cta {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		background: #064250;
+		color: #fff;
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 4px;
+		transition: background 0.2s;
+	}
+	.about-cta:hover {
+		background: #0a5a6a;
+	}
+	.about-cta-secondary {
+		background: transparent;
+		color: #064250;
+		border: 2px solid #064250;
+	}
+	.about-cta-secondary:hover {
+		background: #064250;
+		color: #fff;
+	}
+
+	@media (max-width: 768px) {
+		.about-hero {
+			padding: 4rem 1.5rem 2.5rem;
+		}
+		.about-content {
+			padding: 3rem 1.5rem;
+		}
+	}
+</style>
