@@ -6,7 +6,8 @@ import Footer from '../components/Footer.astro';
 
 const boatId = Astro.url.searchParams.get('boat')?.trim() || null;
 const base = Astro.url.origin;
-let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; skipperPrice4h: number; skipperPrice7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string }> = [];
+type SkipperService = { name: string; durationHours: number; price: number; description?: string };
+let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; skipperPrice4h: number; skipperPrice7h: number; skipperServices: SkipperService[]; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string }> = [];
 try {
 	const res = await fetch(`${base}/api/boats`, { cache: 'no-store' });
 	boats = res.ok ? await res.json() : [];
@@ -14,6 +15,7 @@ try {
 	boats = [];
 }
 const boat = boatId ? boats.find((b) => b.id === boatId) : null;
+if (boat && !Array.isArray(boat.skipperServices)) (boat as { skipperServices: SkipperService[] }).skipperServices = [];
 ---
 
 <html lang="el">
@@ -107,35 +109,32 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 											<input type="time" id="book-time" name="time" value="09:00" class="border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-700" />
 										</div>
 									</div>
-									<!-- Duration prices from API (Firebase), Dashboard → Prices – Skipper -->
-									<div class="flex items-center justify-between gap-2 py-2 border-b border-gray-100">
-										<div class="flex-1 min-w-0">
-											<p class="text-sm font-medium text-gray-800">4 hours</p>
-											<p class="text-xs text-gray-600">€{boat.skipperPrice4h}</p>
-										</div>
-										<button type="button" class="text-sm font-medium border border-teal-500 text-teal-600 px-3 py-1.5 rounded hover:bg-teal-50">VIEW</button>
-										<label class="group flex items-center gap-2 cursor-pointer shrink-0">
-											<input type="radio" name="duration" value="4h" checked class="sr-only peer" />
-											<span class="text-xs text-gray-600">Yes</span>
-											<span class="relative inline-block w-10 h-5 rounded-full bg-gray-200 group-has-checked:bg-green-500 transition-colors">
-												<span class="absolute top-1 left-1 w-3 h-3 rounded-full bg-white shadow transition-transform group-has-checked:translate-x-5"></span>
-											</span>
-										</label>
-									</div>
-									<div class="flex items-center justify-between gap-2 py-2 border-b border-gray-100">
-										<div class="flex-1 min-w-0">
-											<p class="text-sm font-medium text-gray-800">7 hours</p>
-											<p class="text-xs text-gray-600">€{boat.skipperPrice7h}</p>
-										</div>
-										<button type="button" class="text-sm font-medium border border-teal-500 text-teal-600 px-3 py-1.5 rounded hover:bg-teal-50">VIEW</button>
-										<label class="group flex items-center gap-2 cursor-pointer shrink-0">
-											<input type="radio" name="duration" value="7h" class="sr-only peer" />
-											<span class="text-xs text-gray-600">Yes</span>
-											<span class="relative inline-block w-10 h-5 rounded-full bg-gray-200 group-has-checked:bg-green-500 transition-colors">
-												<span class="absolute top-1 left-1 w-3 h-3 rounded-full bg-white shadow transition-transform group-has-checked:translate-x-5"></span>
-											</span>
-										</label>
-									</div>
+									{boat.skipperServices && boat.skipperServices.length > 0 ? (
+										<>
+											{boat.skipperServices.map((svc, i) => {
+												const label = `${svc.name} - ${svc.durationHours} Hour${svc.durationHours !== 1 ? 's' : ''}`;
+												const serviceValue = `${svc.name} - ${svc.durationHours} Hours`;
+												return (
+													<div class="flex items-center justify-between gap-2 py-2 border-b border-gray-100" data-service-index={i}>
+														<div class="flex-1 min-w-0">
+															<p class="text-sm font-medium text-gray-800">{label}</p>
+															<p class="text-xs text-gray-600">+€{svc.price.toFixed(2)}</p>
+														</div>
+														<button type="button" class="view-desc-btn text-sm font-medium border border-teal-500 text-teal-600 px-3 py-1.5 rounded hover:bg-teal-50" data-view-description={svc.description ?? ''} data-view-label={label}>VIEW</button>
+														<label class="group flex items-center gap-2 cursor-pointer shrink-0">
+															<input type="radio" name="service" value={serviceValue} checked={i === 0} class="sr-only peer" />
+															<span class="text-xs text-gray-600">Yes</span>
+															<span class="relative inline-block w-10 h-5 rounded-full bg-gray-200 group-has-checked:bg-green-500 transition-colors">
+																<span class="absolute top-1 left-1 w-3 h-3 rounded-full bg-white shadow transition-transform group-has-checked:translate-x-5"></span>
+															</span>
+														</label>
+													</div>
+												);
+											})}
+										</>
+									) : (
+										<p class="text-sm text-gray-500 py-2">No options available for this boat.</p>
+									)}
 									<div class="flex flex-col gap-1">
 										<label for="book-promo" class="text-xs font-medium text-gray-600">Enter Promo Code</label>
 										<input type="text" id="book-promo" name="promo" placeholder="Promo code" class="border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400" />
@@ -151,22 +150,59 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 				</>
 			)}
 		</main>
+		<div id="service-desc-modal" class="sk-view-modal" role="dialog" aria-modal="true" aria-labelledby="service-desc-modal-title" aria-hidden="true" hidden>
+			<div class="sk-view-modal-backdrop" id="service-desc-modal-backdrop"></div>
+			<div class="sk-view-modal-box">
+				<div class="sk-view-modal-header">
+					<h3 id="service-desc-modal-title" class="sk-view-modal-title">Route details</h3>
+					<button type="button" class="sk-view-modal-close" id="service-desc-modal-close" aria-label="Close">&times;</button>
+				</div>
+				<div class="sk-view-modal-body" id="service-desc-modal-body"></div>
+			</div>
+		</div>
 		<Footer />
 		<script>
-			document.getElementById('book-online-form')?.addEventListener('submit', (e) => {
+			const form = document.getElementById('book-online-form');
+			form?.addEventListener('submit', (e) => {
 				e.preventDefault();
-				const form = e.currentTarget as HTMLFormElement;
-				const boat = (form.querySelector('[name="boat"]') as HTMLInputElement)?.value?.trim() || '';
-				const date = (form.querySelector('[name="date"]') as HTMLInputElement)?.value?.trim() || '';
-				const time = (form.querySelector('[name="time"]') as HTMLInputElement)?.value?.trim() || '';
-				const duration = (form.querySelector('[name="duration"]:checked') as HTMLInputElement)?.value?.trim() || '';
+				const f = e.currentTarget as HTMLFormElement;
+				const boat = (f.querySelector('[name="boat"]') as HTMLInputElement)?.value?.trim() || '';
+				const date = (f.querySelector('[name="date"]') as HTMLInputElement)?.value?.trim() || '';
+				const time = (f.querySelector('[name="time"]') as HTMLInputElement)?.value?.trim() || '';
+				const service = (f.querySelector('[name="service"]:checked') as HTMLInputElement)?.value?.trim() || '';
 				const params = new URLSearchParams();
 				if (boat) params.set('boat', boat);
 				if (date) params.set('date', date);
 				if (time) params.set('time', time);
-				if (duration) params.set('duration', duration);
+				if (service) params.set('service', service);
 				window.location.href = '/contact?' + params.toString();
 			});
+
+			const modal = document.getElementById('service-desc-modal');
+			const modalBody = document.getElementById('service-desc-modal-body');
+			const modalClose = document.getElementById('service-desc-modal-close');
+			const modalBackdrop = document.getElementById('service-desc-modal-backdrop');
+			document.querySelectorAll('.view-desc-btn').forEach((btn) => {
+				btn.addEventListener('click', () => {
+					const desc = (btn as HTMLElement).getAttribute('data-view-description') ?? '';
+					const label = (btn as HTMLElement).getAttribute('data-view-label') ?? '';
+					const titleEl = document.getElementById('service-desc-modal-title');
+					if (titleEl) titleEl.textContent = label || 'Route details';
+					if (modalBody) modalBody.textContent = desc || 'No description available.';
+					if (modal) {
+						modal.removeAttribute('hidden');
+						modal.setAttribute('aria-hidden', 'false');
+					}
+				});
+			});
+			function closeModal() {
+				if (modal) {
+					modal.setAttribute('hidden', '');
+					modal.setAttribute('aria-hidden', 'true');
+				}
+			}
+			modalClose?.addEventListener('click', closeModal);
+			modalBackdrop?.addEventListener('click', closeModal);
 		</script>
 	</body>
 </html>
@@ -372,5 +408,55 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 	.book-page-text {
 		margin: 0 0 1.5rem;
 		color: #555;
+	}
+
+	.sk-view-modal {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+	}
+	.sk-view-modal-backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+	}
+	.sk-view-modal-box {
+		position: relative;
+		background: #fff;
+		border-radius: 12px;
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+		max-width: 420px;
+		width: 100%;
+		max-height: 80vh;
+		overflow: auto;
+	}
+	.sk-view-modal-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 1.25rem;
+		border-bottom: 1px solid #eee;
+	}
+	.sk-view-modal-title { margin: 0; font-size: 1.1rem; font-weight: 600; color: #333; }
+	.sk-view-modal-close {
+		background: none;
+		border: none;
+		font-size: 1.5rem;
+		line-height: 1;
+		color: #666;
+		cursor: pointer;
+		padding: 0.25rem;
+	}
+	.sk-view-modal-close:hover { color: #333; }
+	.sk-view-modal-body {
+		padding: 1.25rem;
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: #555;
+		white-space: pre-wrap;
 	}
 </style>

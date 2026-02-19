@@ -5,16 +5,39 @@ import DashboardLayout from '../../../layouts/DashboardLayout.astro';
 <DashboardLayout title="Prices – Skipper">
 	<h1>Prices – Skipper</h1>
 	<div class="dash-card">
-		<p>Edit boat names and 4h / 7h prices for rent-with-skipper. Changes are saved to Firebase.</p>
+		<p>Add route options per boat (name, duration, price). These appear on the Book with Skipper page. Changes are saved to Firebase.</p>
 		<div id="prices-sk-list">Loading…</div>
 		<p id="prices-sk-msg" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;"></p>
 	</div>
 	<script>
+		interface SkipperService {
+			name: string;
+			durationHours: number;
+			price: number;
+			description?: string;
+		}
 		interface Boat {
 			id: string;
 			name: string;
-			skipperPrice4h?: number;
-			skipperPrice7h?: number;
+			skipperServices?: SkipperService[];
+		}
+		function escapeHtml(s: string) {
+			const div = document.createElement('div');
+			div.textContent = s ?? '';
+			return div.innerHTML;
+		}
+		function serviceRow(boatId: string, index: number, s: SkipperService) {
+			return `
+				<div class="sk-service-row" data-boat-id="${escapeHtml(boatId)}" data-index="${index}">
+					<input type="text" placeholder="e.g. North Route" value="${escapeHtml(s.name)}" data-field="name" class="dash-form input-inline sk-input-name" />
+					<label class="sk-label">Duration (h)</label>
+					<input type="number" min="0" step="1" value="${s.durationHours}" data-field="durationHours" class="dash-form input-inline sk-input-num" style="width: 70px;" />
+					<label class="sk-label">Price (€)</label>
+					<input type="number" min="0" step="1" value="${s.price}" data-field="price" class="dash-form input-inline sk-input-num" style="width: 80px;" />
+					<input type="text" placeholder="Description (for VIEW)" value="${escapeHtml(s.description ?? '')}" data-field="description" class="dash-form input-inline sk-input-desc" />
+					<button type="button" class="dash-btn sk-remove-btn" data-boat-id="${escapeHtml(boatId)}" data-index="${index}" aria-label="Remove">Remove</button>
+				</div>
+			`;
 		}
 		(async () => {
 			const listEl = document.getElementById('prices-sk-list');
@@ -30,80 +53,114 @@ import DashboardLayout from '../../../layouts/DashboardLayout.astro';
 				listEl.innerHTML = '<p>No boats. Add boats from the Boats page first.</p>';
 				return;
 			}
+			function getServicesForBoat(boatId: string): SkipperService[] {
+				const boat = boats.find((b) => b.id === boatId);
+				return boat?.skipperServices ?? [];
+			}
 			function render() {
 				if (!listEl) return;
-				listEl.innerHTML = boats.map((b) => `
-					<div class="prices-row" data-id="${b.id}">
-						<div class="prices-row-name">
-							<input type="text" value="${escapeHtml(b.name)}" data-field="name" data-id="${b.id}" class="dash-form input-inline" />
+				listEl.innerHTML = boats.map((b) => {
+					const services = getServicesForBoat(b.id);
+					const servicesHtml = services.length
+						? services.map((s, i) => serviceRow(b.id, i, s)).join('')
+						: '';
+					return `
+						<div class="sk-boat-block" data-id="${b.id}">
+							<h3 class="sk-boat-title">${escapeHtml(b.name)}</h3>
+							<div class="sk-services-list">
+								${servicesHtml}
+							</div>
+							<div class="sk-actions">
+								<button type="button" class="dash-btn sk-add-btn" data-boat-id="${b.id}">Add option</button>
+								<button type="button" class="dash-btn prices-save-btn" data-id="${b.id}">Save</button>
+							</div>
 						</div>
-						<div class="prices-row-price">
-							<label>4h (€)</label>
-							<input type="number" min="0" step="1" value="${b.skipperPrice4h ?? 0}" data-field="skipperPrice4h" data-id="${b.id}" class="dash-form input-inline" style="width: 80px;" />
-						</div>
-						<div class="prices-row-price">
-							<label>7h (€)</label>
-							<input type="number" min="0" step="1" value="${b.skipperPrice7h ?? 0}" data-field="skipperPrice7h" data-id="${b.id}" class="dash-form input-inline" style="width: 80px;" />
-						</div>
-						<button type="button" class="dash-btn prices-save-btn" data-id="${b.id}">Save</button>
-					</div>
-				`).join('');
-			}
-			function escapeHtml(s: string) {
-				const div = document.createElement('div');
-				div.textContent = s ?? '';
-				return div.innerHTML;
+					`;
+				}).join('');
 			}
 			render();
+
 			listEl.addEventListener('click', async (e) => {
-				const btn = (e.target as HTMLElement).closest('.prices-save-btn');
-				if (!btn) return;
-				const id = btn.getAttribute('data-id');
-				if (!id) return;
-				const row = listEl.querySelector(`.prices-row[data-id="${id}"]`);
-				if (!row) return;
-				const nameInput = row.querySelector('[data-field="name"]') as HTMLInputElement;
-				const price4hInput = row.querySelector('[data-field="skipperPrice4h"]') as HTMLInputElement;
-				const price7hInput = row.querySelector('[data-field="skipperPrice7h"]') as HTMLInputElement;
-				const name = nameInput?.value?.trim() ?? '';
-				const skipperPrice4h = Number(price4hInput?.value) || 0;
-				const skipperPrice7h = Number(price7hInput?.value) || 0;
-				msgEl.textContent = 'Saving…';
-				const putRes = await fetch('/api/boats', {
-					method: 'PUT',
-					headers: { 'Content-Type': 'application/json' },
-					credentials: 'include',
-					body: JSON.stringify({ id, name, skipperPrice4h, skipperPrice7h }),
-				});
-				const data = await putRes.json().catch(() => ({}));
-				if (putRes.ok) {
-					msgEl.textContent = 'Saved.';
-					const idx = boats.findIndex((b) => b.id === id);
-					if (idx >= 0) {
-						boats[idx].name = name;
-						boats[idx].skipperPrice4h = skipperPrice4h;
-						boats[idx].skipperPrice7h = skipperPrice7h;
+				const target = e.target as HTMLElement;
+				const addBtn = target.closest('.sk-add-btn');
+				const removeBtn = target.closest('.sk-remove-btn');
+				const saveBtn = target.closest('.prices-save-btn');
+
+				if (addBtn) {
+					const boatId = addBtn.getAttribute('data-boat-id');
+					if (!boatId) return;
+					const boat = boats.find((b) => b.id === boatId);
+					if (!boat) return;
+					if (!boat.skipperServices) boat.skipperServices = [];
+					boat.skipperServices.push({ name: '', durationHours: 0, price: 0, description: '' });
+					render();
+					return;
+				}
+
+				if (removeBtn) {
+					const boatId = removeBtn.getAttribute('data-boat-id');
+					const indexStr = removeBtn.getAttribute('data-index');
+					if (boatId == null || indexStr == null) return;
+					const index = parseInt(indexStr, 10);
+					const boat = boats.find((b) => b.id === boatId);
+					if (!boat || !boat.skipperServices) return;
+					boat.skipperServices.splice(index, 1);
+					render();
+					return;
+				}
+
+				if (saveBtn) {
+					const id = saveBtn.getAttribute('data-id');
+					if (!id) return;
+					const block = listEl.querySelector(`.sk-boat-block[data-id="${id}"]`);
+					if (!block) return;
+					const rows = block.querySelectorAll('.sk-service-row');
+					const skipperServices: SkipperService[] = [];
+					rows.forEach((row) => {
+						const name = (row.querySelector('[data-field="name"]') as HTMLInputElement)?.value?.trim() ?? '';
+						const durationHours = Number((row.querySelector('[data-field="durationHours"]') as HTMLInputElement)?.value) || 0;
+						const price = Number((row.querySelector('[data-field="price"]') as HTMLInputElement)?.value) || 0;
+						const description = (row.querySelector('[data-field="description"]') as HTMLInputElement)?.value?.trim() ?? '';
+						skipperServices.push({ name, durationHours, price, description: description || undefined });
+					});
+					msgEl.textContent = 'Saving…';
+					const putRes = await fetch('/api/boats', {
+						method: 'PUT',
+						headers: { 'Content-Type': 'application/json' },
+						credentials: 'include',
+						body: JSON.stringify({ id, skipperServices }),
+					});
+					const data = await putRes.json().catch(() => ({}));
+					if (putRes.ok) {
+						msgEl.textContent = 'Saved.';
+						const idx = boats.findIndex((b) => b.id === id);
+						if (idx >= 0) boats[idx].skipperServices = skipperServices;
+					} else {
+						msgEl.textContent = (data as { error?: string }).error || 'Failed to save.';
 					}
-				} else {
-					msgEl.textContent = (data as { error?: string }).error || 'Failed to save.';
 				}
 			});
 		})();
 	</script>
 	<style>
-		.prices-row {
+		.sk-boat-block {
+			padding: 1rem 0;
+			border-bottom: 1px solid #eee;
+		}
+		.sk-boat-block:last-child { border-bottom: none; }
+		.sk-boat-title { margin: 0 0 0.75rem; font-size: 1.1rem; color: #333; }
+		.sk-services-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem; }
+		.sk-service-row {
 			display: flex;
 			align-items: center;
-			gap: 1rem;
-			padding: 0.75rem 0;
-			border-bottom: 1px solid #eee;
+			gap: 0.5rem;
 			flex-wrap: wrap;
 		}
-		.prices-row:last-child { border-bottom: none; }
-		.prices-row-name { flex: 1; min-width: 160px; }
-		.prices-row-name input { max-width: 100%; }
-		.prices-row-price { display: flex; align-items: center; gap: 0.5rem; }
-		.prices-row-price label { font-size: 0.85rem; color: #555; white-space: nowrap; }
+		.sk-input-name { min-width: 140px; }
+		.sk-input-num { width: 70px; }
+		.sk-input-desc { flex: 1; min-width: 160px; }
+		.sk-label { font-size: 0.85rem; color: #555; white-space: nowrap; }
+		.sk-actions { display: flex; gap: 0.5rem; align-items: center; }
 		.input-inline { padding: 0.4rem 0.6rem; font-size: 0.95rem; }
 	</style>
 </DashboardLayout>

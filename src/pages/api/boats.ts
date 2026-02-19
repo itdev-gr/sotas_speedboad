@@ -66,6 +66,22 @@ const SEED_BOATS: Array<{ id: string; name: string; imageUrl: string; imageUrls?
 	},
 ];
 
+type SkipperService = { name: string; durationHours: number; price: number; description?: string };
+
+function normalizeSkipperServices(raw: unknown): SkipperService[] {
+	if (!Array.isArray(raw)) return [];
+	return raw.map((item) => {
+		if (item == null || typeof item !== 'object') return { name: '', durationHours: 0, price: 0, description: '' };
+		const o = item as Record<string, unknown>;
+		return {
+			name: String(o.name ?? ''),
+			durationHours: Number(o.durationHours) || 0,
+			price: Number(o.price) || 0,
+			description: o.description !== undefined ? String(o.description ?? '') : undefined,
+		};
+	});
+}
+
 function toBoatDoc(d: QueryDocumentSnapshot) {
 	const data = d.data();
 	if (!data) return null;
@@ -78,6 +94,7 @@ function toBoatDoc(d: QueryDocumentSnapshot) {
 		price7h: Number(data.price7h) || 0,
 		skipperPrice4h: Number(data.skipperPrice4h) ?? 0,
 		skipperPrice7h: Number(data.skipperPrice7h) ?? 0,
+		skipperServices: normalizeSkipperServices(data.skipperServices),
 		maxPax: Number(data.maxPax) || 0,
 		modalName: String(data.modalName ?? ''),
 		includes: Array.isArray(data.includes) ? data.includes.map(String) : [],
@@ -120,6 +137,7 @@ type BoatPayload = {
 	price7h?: number;
 	skipperPrice4h?: number;
 	skipperPrice7h?: number;
+	skipperServices?: SkipperService[];
 	maxPax?: number;
 	modalName?: string;
 	includes?: string[];
@@ -147,6 +165,7 @@ export const PUT: APIRoute = async ({ request }) => {
 		if (body.price7h !== undefined) update.price7h = Number(body.price7h) || 0;
 		if (body.skipperPrice4h !== undefined) update.skipperPrice4h = Number(body.skipperPrice4h) || 0;
 		if (body.skipperPrice7h !== undefined) update.skipperPrice7h = Number(body.skipperPrice7h) || 0;
+		if (body.skipperServices !== undefined) update.skipperServices = normalizeSkipperServices(body.skipperServices);
 		if (body.maxPax !== undefined) update.maxPax = Number(body.maxPax) || 0;
 		if (body.modalName !== undefined) update.modalName = String(body.modalName).trim();
 		if (body.includes !== undefined) update.includes = Array.isArray(body.includes) ? body.includes.map(String) : [];
