@@ -78,24 +78,28 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 	</div>
 
 	<style>
-		.boats-list { display: flex; flex-wrap: wrap; gap: 1rem; }
-		.boat-card {
+		.boats-list { display: flex; flex-direction: column; gap: 0; }
+		.boat-product-line {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			padding: 1rem 1.25rem;
 			background: #f8fafb;
 			border: 1px solid rgba(29,130,153,0.2);
-			border-radius: 8px;
-			padding: 1rem;
-			width: 100%;
-			max-width: 320px;
-			display: flex;
-			gap: 1rem;
-			align-items: flex-start;
+			border-bottom: none;
 		}
-		.boat-card-thumb { width: 80px; height: 56px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
-		.boat-card-info { flex: 1; min-width: 0; }
-		.boat-card-name { font-weight: 600; margin: 0 0 0.25rem; }
-		.boat-card-meta { font-size: 0.9rem; color: #555; margin: 0 0 0.5rem; }
-		.boat-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1rem; box-sizing: border-box; }
+		.boats-list .boat-product-line:last-of-type { border-bottom: 1px solid rgba(29,130,153,0.2); }
+		.boat-product-line:first-of-type { border-radius: 8px 8px 0 0; }
+		.boats-list .boat-product-line:last-of-type { border-radius: 0 0 8px 8px; }
+		.boats-list .boat-product-line:only-of-type { border-radius: 8px; border-bottom: 1px solid rgba(29,130,153,0.2); }
+		.boat-product-line-thumb { width: 120px; height: 84px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+		.boat-product-line-info { flex: 1; min-width: 0; }
+		.boat-product-line-name { font-weight: 600; margin: 0 0 0.25rem; font-size: 1.05rem; }
+		.boat-product-line-meta { font-size: 0.9rem; color: #555; margin: 0; }
+		.boat-product-line-actions { flex-shrink: 0; }
+		.boat-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1rem; box-sizing: border-box; pointer-events: none; }
 		.boat-modal[aria-hidden="true"] { display: none; }
+		.boat-modal[aria-hidden="false"] { pointer-events: auto; }
 		.boat-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
 		.boat-modal-box { position: relative; background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 1.5rem; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; }
 		.boat-modal-title { margin: 0 0 1rem; font-size: 1.25rem; }
@@ -207,6 +211,9 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 
 		backdrop.addEventListener('click', closeModal);
 		cancelBtn.addEventListener('click', closeModal);
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
+		});
 
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
@@ -243,29 +250,37 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			}
 		});
 
+		let currentBoats: Boat[] = [];
+
 		function renderBoats(boats: Boat[]) {
+			currentBoats = boats;
 			if (!boats.length) {
 				listEl.innerHTML = '<p>No boats. The first GET to /api/boats will seed 3 boats — refresh the page.</p>';
 				return;
 			}
 			listEl.innerHTML = boats.map((b) => `
-				<div class="boat-card" data-id="${b.id}">
-					<img class="boat-card-thumb" src="${b.imageUrl || '/images/self-drive-boat.png'}" alt="${b.name}" />
-					<div class="boat-card-info">
-						<p class="boat-card-name">${b.name}</p>
-						<p class="boat-card-meta">4h €${b.price4h} · 7h €${b.price7h} · Max ${b.maxPax} pax</p>
+				<div class="boat-product-line" data-id="${b.id}">
+					<img class="boat-product-line-thumb" src="${b.imageUrl || '/images/self-drive-boat.png'}" alt="${b.name}" />
+					<div class="boat-product-line-info">
+						<p class="boat-product-line-name">${b.name}</p>
+						<p class="boat-product-line-meta">4h €${b.price4h} · 7h €${b.price7h} · Max ${b.maxPax} pax</p>
+					</div>
+					<div class="boat-product-line-actions">
 						<button type="button" class="dash-btn boat-edit-btn" data-id="${b.id}">Edit</button>
 					</div>
 				</div>
 			`).join('');
-			listEl.querySelectorAll('.boat-edit-btn').forEach((btn) => {
-				btn.addEventListener('click', () => {
-					const id = (btn as HTMLElement).getAttribute('data-id');
-					const boat = boats.find((b) => b.id === id);
-					if (boat) openModal(boat);
-				});
-			});
 		}
+
+		// Event delegation: any Edit click in the boats list opens the modal
+		listEl.addEventListener('click', (e) => {
+			const btn = e.target instanceof Element ? e.target.closest('.boat-edit-btn[data-id]') : null;
+			if (!btn) return;
+			e.preventDefault();
+			const id = btn.getAttribute('data-id');
+			const boat = currentBoats.find((b) => b.id === id);
+			if (boat) openModal(boat);
+		});
 
 		async function loadBoats() {
 			const res = await fetch('/api/boats', { credentials: 'include' });
