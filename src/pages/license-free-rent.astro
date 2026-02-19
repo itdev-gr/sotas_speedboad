@@ -57,7 +57,7 @@ import Footer from '../components/Footer.astro';
 							<p class="speedboat-pax">Max. 6 pax</p>
 							<div class="speedboat-buttons">
 								<a href="/contact" class="speedboat-btn speedboat-btn-primary">Book Here</a>
-								<a href="#includes" class="speedboat-btn speedboat-btn-secondary">Includes &gt;</a>
+								<button type="button" class="speedboat-btn speedboat-btn-secondary includes-trigger" data-boat="1" aria-label="View includes for Boat 1">Includes &gt;</button>
 							</div>
 						</div>
 					</div>
@@ -72,7 +72,7 @@ import Footer from '../components/Footer.astro';
 							<p class="speedboat-pax">Max. 7 pax</p>
 							<div class="speedboat-buttons">
 								<a href="/contact" class="speedboat-btn speedboat-btn-primary">Book Here</a>
-								<a href="#includes" class="speedboat-btn speedboat-btn-secondary">Includes &gt;</a>
+								<button type="button" class="speedboat-btn speedboat-btn-secondary includes-trigger" data-boat="2" aria-label="View includes for Boat 2">Includes &gt;</button>
 							</div>
 						</div>
 					</div>
@@ -87,7 +87,7 @@ import Footer from '../components/Footer.astro';
 							<p class="speedboat-pax">Max. 7 pax</p>
 							<div class="speedboat-buttons">
 								<a href="/contact" class="speedboat-btn speedboat-btn-primary">Book Here</a>
-								<a href="#includes" class="speedboat-btn speedboat-btn-secondary">Includes &gt;</a>
+								<button type="button" class="speedboat-btn speedboat-btn-secondary includes-trigger" data-boat="3" aria-label="View includes for Boat 3">Includes &gt;</button>
 							</div>
 						</div>
 					</div>
@@ -95,6 +95,120 @@ import Footer from '../components/Footer.astro';
 			</section>
 		</main>
 		<Footer />
+
+		<!-- Includes modal for Boat 1 -->
+		<div id="includes-modal" class="includes-modal" role="dialog" aria-modal="true" aria-labelledby="includes-modal-title" aria-hidden="true">
+			<div class="includes-modal-backdrop"></div>
+			<div class="includes-modal-box">
+				<button type="button" class="includes-modal-close" aria-label="Close">&times;</button>
+				<div class="includes-modal-inner">
+					<div class="includes-modal-image">
+						<img src="/images/self-drive-boat.png" alt="Boat 1 - Daphne" width="400" height="280" />
+					</div>
+					<div class="includes-modal-content">
+						<h3 id="includes-modal-title" class="includes-modal-title">
+							<span>Speedboat</span>
+							<span class="includes-modal-boat-name">"Daphne"</span>
+						</h3>
+						<p class="includes-modal-heading">Includes:</p>
+						<ul class="includes-modal-list">
+							<li>Meet at the Port</li>
+							<li>Coolbox with Ice</li>
+							<li>Bluetooth Speaker Onboard</li>
+							<li>Sun Canopy</li>
+							<li>Sunbathing Area</li>
+							<li>GPS Tracking</li>
+							<li>60 HP Engine + Backup Engine</li>
+							<li>5 Meters</li>
+							<li>All Required Safety Equipment</li>
+							<li class="includes-modal-excluded">Fuel not included</li>
+						</ul>
+						<p class="includes-modal-pax">Max. 6 passengers</p>
+						<a href="/contact" class="includes-modal-cta">Book Here</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Includes modal for Boat 2 (Elena) -->
+		<div id="includes-modal-2" class="includes-modal" role="dialog" aria-modal="true" aria-labelledby="includes-modal-2-title" aria-hidden="true">
+			<div class="includes-modal-backdrop" data-modal-close="2"></div>
+			<div class="includes-modal-box">
+				<button type="button" class="includes-modal-close" data-modal-close="2" aria-label="Close">&times;</button>
+				<div class="includes-modal-inner">
+					<div class="includes-modal-carousel-wrap">
+						<div class="includes-modal-carousel" data-carousel="2">
+							<div class="includes-modal-carousel-track">
+								<div class="includes-modal-carousel-slide"><img src="/images/fleet-experience.png" alt="Speedboat Elena" width="400" height="280" /></div>
+								<div class="includes-modal-carousel-slide"><img src="/images/fleet-experience.png" alt="Speedboat Elena interior" width="400" height="280" /></div>
+								<div class="includes-modal-carousel-slide"><img src="/images/fleet-experience.png" alt="Speedboat Elena" width="400" height="280" /></div>
+								<div class="includes-modal-carousel-slide"><img src="/images/fleet-experience.png" alt="Speedboat Elena" width="400" height="280" /></div>
+								<div class="includes-modal-carousel-slide"><img src="/images/fleet-experience.png" alt="Speedboat Elena" width="400" height="280" /></div>
+								<div class="includes-modal-carousel-slide"><img src="/images/fleet-experience.png" alt="Speedboat Elena" width="400" height="280" /></div>
+							</div>
+							<button type="button" class="includes-modal-carousel-prev" data-carousel="2" aria-label="Previous image">&larr;</button>
+							<button type="button" class="includes-modal-carousel-next" data-carousel="2" aria-label="Next image">&rarr;</button>
+							<span class="includes-modal-carousel-counter" data-carousel-counter="2">1/6</span>
+						</div>
+						<p class="includes-modal-carousel-title">Speedboat Elena</p>
+					</div>
+					<div class="includes-modal-content">
+						<h3 id="includes-modal-2-title" class="includes-modal-title">
+							Speedboat <span class="includes-modal-boat-name">'Elena'</span>
+						</h3>
+						<p class="includes-modal-heading">Includes:</p>
+						<ul class="includes-modal-list">
+							<li>Meet at the Port</li>
+							<li>Coolbox with Ice</li>
+							<li>Bluetooth Speaker Onboard</li>
+							<li>Sun Canopy</li>
+							<li>Sunbathing Area</li>
+							<li>GPS Tracking</li>
+							<li>60 HP Engine + Backup Engine</li>
+							<li>5.4 Meters</li>
+							<li>All Required Safety Equipment</li>
+							<li class="includes-modal-excluded">Fuel not included</li>
+						</ul>
+						<p class="includes-modal-pax">Max. 7 passengers</p>
+						<a href="/contact" class="includes-modal-cta">Book Here</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Includes modal for Boat 3 (Valeria) -->
+		<div id="includes-modal-3" class="includes-modal" role="dialog" aria-modal="true" aria-labelledby="includes-modal-3-title" aria-hidden="true">
+			<div class="includes-modal-backdrop" data-modal-close="3"></div>
+			<div class="includes-modal-box">
+				<button type="button" class="includes-modal-close" data-modal-close="3" aria-label="Close">&times;</button>
+				<div class="includes-modal-inner">
+					<div class="includes-modal-image">
+						<img src="/images/skipper-drive.png" alt="Boat 3 - Valeria" width="400" height="280" />
+					</div>
+					<div class="includes-modal-content">
+						<h3 id="includes-modal-3-title" class="includes-modal-title">
+							<span>Speedboat</span>
+							<span class="includes-modal-boat-name">"Valeria"</span>
+						</h3>
+						<p class="includes-modal-heading">Includes:</p>
+						<ul class="includes-modal-list">
+							<li>Meet at the Port</li>
+							<li>Coolbox with Ice</li>
+							<li>Bluetooth Speaker Onboard</li>
+							<li>Sun Canopy</li>
+							<li>Sunbathing Area</li>
+							<li>GPS Tracking</li>
+							<li>60 HP Engine + Backup Engine</li>
+							<li>5.5 Meters</li>
+							<li>All Required Safety Equipment</li>
+							<li class="includes-modal-excluded">Fuel not included</li>
+						</ul>
+						<p class="includes-modal-pax">Max. 7 passengers</p>
+						<a href="/contact" class="includes-modal-cta">Book Here</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<script is:inline>
 			document.addEventListener('DOMContentLoaded', () => {
@@ -111,6 +225,95 @@ import Footer from '../components/Footer.astro';
 						onScroll();
 						window.addEventListener('scroll', onScroll, { passive: true });
 					}
+				}
+
+				// Includes modal Boat 1
+				const modal = document.getElementById('includes-modal');
+				const triggers1 = document.querySelectorAll('.includes-trigger[data-boat="1"]');
+				const openModal1 = () => {
+					if (modal) {
+						modal.classList.add('includes-modal--open');
+						modal.setAttribute('aria-hidden', 'false');
+						document.body.style.overflow = 'hidden';
+					}
+				};
+				const closeModal1 = () => {
+					if (modal) {
+						modal.classList.remove('includes-modal--open');
+						modal.setAttribute('aria-hidden', 'true');
+						document.body.style.overflow = '';
+					}
+				};
+				triggers1.forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); openModal1(); }));
+				modal?.querySelector('.includes-modal-close')?.addEventListener('click', closeModal1);
+				modal?.querySelector('.includes-modal-backdrop')?.addEventListener('click', closeModal1);
+				modal?.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal1(); });
+
+				// Includes modal Boat 2 (Elena)
+				const modal2 = document.getElementById('includes-modal-2');
+				const triggers2 = document.querySelectorAll('.includes-trigger[data-boat="2"]');
+				const openModal2 = () => {
+					if (modal2) {
+						modal2.classList.add('includes-modal--open');
+						modal2.setAttribute('aria-hidden', 'false');
+						document.body.style.overflow = 'hidden';
+					}
+				};
+				const closeModal2 = () => {
+					if (modal2) {
+						modal2.classList.remove('includes-modal--open');
+						modal2.setAttribute('aria-hidden', 'true');
+						document.body.style.overflow = '';
+					}
+				};
+				triggers2.forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); openModal2(); }));
+				document.querySelectorAll('[data-modal-close="2"]').forEach((el) => el.addEventListener('click', closeModal2));
+				modal2?.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal2(); });
+
+				// Includes modal Boat 3 (Valeria)
+				const modal3 = document.getElementById('includes-modal-3');
+				const triggers3 = document.querySelectorAll('.includes-trigger[data-boat="3"]');
+				const openModal3 = () => {
+					if (modal3) {
+						modal3.classList.add('includes-modal--open');
+						modal3.setAttribute('aria-hidden', 'false');
+						document.body.style.overflow = 'hidden';
+					}
+				};
+				const closeModal3 = () => {
+					if (modal3) {
+						modal3.classList.remove('includes-modal--open');
+						modal3.setAttribute('aria-hidden', 'true');
+						document.body.style.overflow = '';
+					}
+				};
+				triggers3.forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); openModal3(); }));
+				document.querySelectorAll('[data-modal-close="3"]').forEach((el) => el.addEventListener('click', closeModal3));
+				modal3?.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal3(); });
+
+				// Carousel for modal 2
+				const carousel = document.querySelector('[data-carousel="2"]');
+				if (carousel) {
+					const track = carousel.querySelector('.includes-modal-carousel-track');
+					const slides = carousel.querySelectorAll('.includes-modal-carousel-slide');
+					const total = slides.length;
+					let index = 0;
+					const counterEl = document.querySelector('[data-carousel-counter="2"]');
+					const update = () => {
+						if (track && total) {
+							track.style.transform = 'translateX(-' + (index * 100) + '%)';
+							if (counterEl) counterEl.textContent = (index + 1) + '/' + total;
+						}
+					};
+					carousel.querySelector('.includes-modal-carousel-prev')?.addEventListener('click', () => {
+						index = (index - 1 + total) % total;
+						update();
+					});
+					carousel.querySelector('.includes-modal-carousel-next')?.addEventListener('click', () => {
+						index = (index + 1) % total;
+						update();
+					});
+					update();
 				}
 			});
 		</script>
@@ -244,7 +447,7 @@ import Footer from '../components/Footer.astro';
 		line-height: 1.6;
 		color: #333;
 		margin: 0;
-		max-width: 42ch;
+		max-width: 57ch; /* 42ch + 35% */
 		margin-left: auto;
 		margin-right: auto;
 	}
@@ -354,6 +557,226 @@ import Footer from '../components/Footer.astro';
 		background: rgba(255, 255, 255, 0.5);
 		border-color: #a89f94;
 	}
+	button.speedboat-btn {
+		cursor: pointer;
+		font-family: inherit;
+	}
+
+	/* Includes modal */
+	.includes-modal {
+		position: fixed;
+		inset: 0;
+		z-index: 1000;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.2s, visibility 0.2s;
+	}
+	.includes-modal--open {
+		opacity: 1;
+		visibility: visible;
+	}
+	.includes-modal-backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+	}
+	.includes-modal-box {
+		position: relative;
+		background: #fff;
+		border-radius: 12px;
+		max-width: 720px;
+		width: 100%;
+		max-height: 90vh;
+		overflow: hidden;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+	}
+	.includes-modal-close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		z-index: 2;
+		width: 2.5rem;
+		height: 2.5rem;
+		padding: 0;
+		border: none;
+		background: rgba(255, 255, 255, 0.9);
+		color: #333;
+		font-size: 1.75rem;
+		line-height: 1;
+		cursor: pointer;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background 0.2s;
+	}
+	.includes-modal-close:hover {
+		background: #fff;
+	}
+	.includes-modal-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		min-height: 280px;
+	}
+	.includes-modal-image {
+		width: 100%;
+		overflow: hidden;
+	}
+	.includes-modal-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		min-height: 280px;
+	}
+	.includes-modal-content {
+		padding: 2rem 1.75rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		overflow-y: auto;
+	}
+	.includes-modal-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.2;
+	}
+	.includes-modal-boat-name {
+		display: block;
+		font-weight: 400;
+		color: #5C5C5C;
+	}
+	.includes-modal-heading {
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin: 0.5rem 0 0 0;
+		text-decoration: underline;
+	}
+	.includes-modal-list {
+		list-style: disc;
+		padding-left: 1.25rem;
+		margin: 0.25rem 0 0 0;
+		font-size: 0.9rem;
+		color: #333;
+		line-height: 1.5;
+	}
+	.includes-modal-list li {
+		margin-bottom: 0.25rem;
+	}
+	.includes-modal-excluded {
+		color: #c00;
+		list-style: none;
+		padding-left: 0;
+		position: relative;
+	}
+	.includes-modal-excluded::before {
+		content: "✕ ";
+		color: #c00;
+		font-weight: bold;
+	}
+	.includes-modal-pax {
+		font-size: 0.9rem;
+		color: #333;
+		margin: 0.5rem 0 0 0;
+	}
+	.includes-modal-cta {
+		display: inline-block;
+		align-self: flex-start;
+		margin-top: 1rem;
+		padding: 0.7rem 1.5rem;
+		background: #E0DCD7;
+		color: #1a1a1a;
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 6px;
+		border: 1px solid #c4beb5;
+		transition: background 0.2s;
+	}
+	.includes-modal-cta:hover {
+		background: #d5d0c9;
+	}
+
+	/* Modal 2 carousel */
+	.includes-modal-carousel-wrap {
+		display: flex;
+		flex-direction: column;
+		min-height: 280px;
+	}
+	.includes-modal-carousel {
+		position: relative;
+		flex: 1;
+		overflow: hidden;
+	}
+	.includes-modal-carousel-track {
+		display: flex;
+		transition: transform 0.3s ease;
+		height: 100%;
+		min-height: 280px;
+	}
+	.includes-modal-carousel-slide {
+		flex: 0 0 100%;
+		width: 100%;
+		overflow: hidden;
+	}
+	.includes-modal-carousel-slide img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		min-height: 280px;
+	}
+	.includes-modal-carousel-prev,
+	.includes-modal-carousel-next {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 2.5rem;
+		height: 2.5rem;
+		padding: 0;
+		border: none;
+		background: rgba(255, 255, 255, 0.9);
+		color: #333;
+		font-size: 1.25rem;
+		cursor: pointer;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: background 0.2s;
+	}
+	.includes-modal-carousel-prev { left: 0.75rem; }
+	.includes-modal-carousel-next { right: 0.75rem; }
+	.includes-modal-carousel-prev:hover,
+	.includes-modal-carousel-next:hover {
+		background: #fff;
+	}
+	.includes-modal-carousel-counter {
+		position: absolute;
+		top: 0.75rem;
+		right: 0.75rem;
+		background: rgba(0, 0, 0, 0.5);
+		color: #fff;
+		font-size: 0.8rem;
+		padding: 0.25rem 0.5rem;
+		border-radius: 4px;
+	}
+	.includes-modal-carousel-title {
+		font-size: 1rem;
+		font-weight: 600;
+		color: #333;
+		margin: 0;
+		padding: 0.75rem 1rem;
+		background: #f8f6f3;
+	}
 
 	@media (max-width: 900px) {
 		.license-text {
@@ -364,6 +787,16 @@ import Footer from '../components/Footer.astro';
 		}
 		.speedboat-choose {
 			padding: 3rem 1.5rem;
+		}
+		.includes-modal-inner {
+			grid-template-columns: 1fr;
+		}
+		.includes-modal-image img {
+			min-height: 220px;
+		}
+		.includes-modal-carousel-track,
+		.includes-modal-carousel-slide img {
+			min-height: 220px;
 		}
 	}
 </style>
