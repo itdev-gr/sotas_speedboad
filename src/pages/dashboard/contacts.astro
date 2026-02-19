@@ -1,0 +1,67 @@
+---
+export const prerender = false;
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+---
+<DashboardLayout title="Contacts">
+	<h1>Contact submissions</h1>
+	<div class="dash-card">
+		<p>Messages submitted via the website contact form. Newest first.</p>
+		<table class="dash-table" id="contacts-table">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Country</th>
+					<th>Message</th>
+				</tr>
+			</thead>
+			<tbody id="contacts-tbody">
+				<tr><td colspan="6">Loading…</td></tr>
+			</tbody>
+		</table>
+		<p id="contacts-msg" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;"></p>
+	</div>
+	<script>
+		function escapeHtml(s) {
+			const div = document.createElement('div');
+			div.textContent = s ?? '';
+			return div.innerHTML;
+		}
+		function formatDate(iso) {
+			if (!iso) return '';
+			try {
+				const d = new Date(iso);
+				return d.toLocaleDateString(undefined, { dateStyle: 'short' }) + ' ' + d.toLocaleTimeString(undefined, { timeStyle: 'short' });
+			} catch {
+				return iso;
+			}
+		}
+		(async () => {
+			const tbody = document.getElementById('contacts-tbody');
+			const msg = document.getElementById('contacts-msg');
+			const res = await fetch('/api/contacts', { credentials: 'include' });
+			if (!res.ok) {
+				tbody.innerHTML = '<tr><td colspan="6">Failed to load contacts.</td></tr>';
+				if (res.status === 401) msg.textContent = 'Please log in again.';
+				return;
+			}
+			const contacts = await res.json();
+			if (contacts.length === 0) {
+				tbody.innerHTML = '<tr><td colspan="6">No contact submissions yet.</td></tr>';
+				return;
+			}
+			tbody.innerHTML = contacts.map((c) => `
+				<tr>
+					<td>${escapeHtml(formatDate(c.createdAt))}</td>
+					<td>${escapeHtml(c.firstname ?? '')} ${escapeHtml(c.lastname ?? '')}</td>
+					<td><a href="mailto:${escapeHtml(c.email ?? '')}">${escapeHtml(c.email ?? '')}</a></td>
+					<td>${escapeHtml(c.phone ?? '')}</td>
+					<td>${escapeHtml(c.country ?? '')}</td>
+					<td style="max-width: 280px; white-space: pre-wrap;">${escapeHtml(c.message ?? '')}</td>
+				</tr>
+			`).join('');
+		})();
+	</script>
+</DashboardLayout>

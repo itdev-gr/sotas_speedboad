@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
@@ -14,50 +15,108 @@ import Footer from '../components/Footer.astro';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 	</head>
-	<body class="faq-page-body">
+	<body class="faq-page-body min-h-screen font-sans antialiased overflow-x-hidden" style="font-family: 'Inter', system-ui, sans-serif;">
 		<Header />
-		<main class="faq-page">
-			<section class="faq-hero" aria-label="FAQ">
-				<div class="faq-hero-content">
-					<h1 class="faq-hero-title">Frequently Asked Questions</h1>
-					<p class="faq-hero-subtitle">Answers to common questions about our boat rentals in Zakynthos.</p>
+		<main class="min-h-screen">
+			<!-- Hero (same as before) -->
+			<section class="relative w-full min-h-[40vh] flex items-center justify-center overflow-hidden pt-20 pb-12" style="background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);" aria-label="FAQ">
+				<div class="relative z-10 text-center px-8 py-6 max-w-xl">
+					<h1 class="font-serif text-3xl md:text-4xl font-semibold text-white mb-3 leading-tight" style="font-family: 'Cormorant Garamond', serif;">Frequently Asked Questions</h1>
+					<p class="text-base text-white/90 leading-relaxed">Answers to common questions about our boat rentals in Zakynthos.</p>
 				</div>
 			</section>
 
-			<section class="faq-content" aria-label="Questions and answers">
-				<div class="faq-inner">
-					<dl class="faq-list">
-						<details class="faq-item">
-							<summary class="faq-question">Do I need a boat license to rent?</summary>
-							<p class="faq-answer">No. Our license-free boats can be driven without any license. We give you a short safety and handling briefing before you set off.</p>
-						</details>
-						<details class="faq-item">
-							<summary class="faq-question">What is included in the rental?</summary>
-							<p class="faq-answer">Meet at the port, coolbox with ice, Bluetooth speaker, sun canopy, sunbathing area, GPS tracking, safety equipment, and fuel is not included. Specific inclusions may vary by boat – check each boat’s “Includes” section.</p>
-						</details>
-						<details class="faq-item">
-							<summary class="faq-question">How do I book?</summary>
-							<p class="faq-answer">Contact us by phone at +30 697 062 1594 or use the contact form. We’ll confirm availability and complete your booking.</p>
-						</details>
-						<details class="faq-item">
-							<summary class="faq-question">What are the rental durations?</summary>
-							<p class="faq-answer">We offer 4-hour and 7-hour rentals. Prices depend on the boat – see our License Free Rent page for options.</p>
-						</details>
-						<details class="faq-item">
-							<summary class="faq-question">Where do we meet and start?</summary>
-							<p class="faq-answer">We meet at the port and the boat pickup is at Zakynthos Marina. We’ll confirm the exact meeting point when you book.</p>
-						</details>
-						<details class="faq-item">
-							<summary class="faq-question">Can I get a skipper?</summary>
-							<p class="faq-answer">Yes. We offer skipper-driven rentals so you can relax and enjoy the cruise. See our “Rent with Skipper” option for more details.</p>
-						</details>
-						<details class="faq-item">
-							<summary class="faq-question">What if the weather is bad?</summary>
-							<p class="faq-answer">Your safety comes first. If conditions are unsafe, we’ll reschedule or refund according to our cancellation policy.</p>
-						</details>
-					</dl>
-					<p class="faq-cta-wrap">
-						<a href="/contact" class="faq-cta">Still have questions? Contact us</a>
+			<!-- FAQ accordion (template) -->
+			<section class="py-24 bg-[#f5f0e8]" aria-label="Questions and answers">
+				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+					<div class="accordion-group">
+						<div class="accordion py-8 px-6 border-b border-solid border-[#e0ddd8] transition-all duration-300 rounded-2xl hover:bg-white/60" id="faq-heading-1">
+							<button type="button" class="accordion-toggle group inline-flex items-center justify-between leading-8 text-[#1a1a1a] w-full transition duration-300 text-left hover:text-[#064250]" aria-controls="faq-collapse-1" aria-expanded="false" id="faq-btn-1">
+								<h5 class="text-left">Do I need a boat license to rent?</h5>
+								<svg class="text-[#333] transition duration-300 group-hover:text-[#064250] shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+							<div id="faq-collapse-1" class="accordion-content w-full overflow-hidden transition-all duration-300" aria-labelledby="faq-heading-1" role="region">
+								<p class="text-base text-[#333] leading-6 pt-2">No. Our license-free boats can be driven without any license. We give you a short safety and handling briefing before you set off.</p>
+							</div>
+						</div>
+
+						<div class="accordion py-8 px-6 border-b border-solid border-[#e0ddd8] transition-all duration-300 rounded-2xl hover:bg-white/60" id="faq-heading-2">
+							<button type="button" class="accordion-toggle group inline-flex items-center justify-between leading-8 text-[#1a1a1a] w-full transition duration-300 text-left hover:text-[#064250]" aria-controls="faq-collapse-2" aria-expanded="false" id="faq-btn-2">
+								<h5 class="text-left">What is included in the rental?</h5>
+								<svg class="text-[#333] transition duration-300 group-hover:text-[#064250] shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+							<div id="faq-collapse-2" class="accordion-content w-full overflow-hidden transition-all duration-300" aria-labelledby="faq-heading-2" role="region">
+								<p class="text-base text-[#333] leading-6 pt-2">Meet at the port, coolbox with ice, Bluetooth speaker, sun canopy, sunbathing area, GPS tracking, safety equipment, and fuel is not included. Specific inclusions may vary by boat – check each boat's "Includes" section.</p>
+							</div>
+						</div>
+
+						<div class="accordion py-8 px-6 border-b border-solid border-[#e0ddd8] transition-all duration-300 rounded-2xl hover:bg-white/60" id="faq-heading-3">
+							<button type="button" class="accordion-toggle group inline-flex items-center justify-between leading-8 text-[#1a1a1a] w-full transition duration-300 text-left hover:text-[#064250]" aria-controls="faq-collapse-3" aria-expanded="false" id="faq-btn-3">
+								<h5 class="text-left">How do I book?</h5>
+								<svg class="text-[#333] transition duration-300 group-hover:text-[#064250] shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+							<div id="faq-collapse-3" class="accordion-content w-full overflow-hidden transition-all duration-300" aria-labelledby="faq-heading-3" role="region">
+								<p class="text-base text-[#333] leading-6 pt-2">Contact us by phone at +30 697 062 1594 or use the contact form. We'll confirm availability and complete your booking.</p>
+							</div>
+						</div>
+
+						<div class="accordion py-8 px-6 border-b border-solid border-[#e0ddd8] transition-all duration-300 rounded-2xl hover:bg-white/60" id="faq-heading-4">
+							<button type="button" class="accordion-toggle group inline-flex items-center justify-between leading-8 text-[#1a1a1a] w-full transition duration-300 text-left hover:text-[#064250]" aria-controls="faq-collapse-4" aria-expanded="false" id="faq-btn-4">
+								<h5 class="text-left">What are the rental durations?</h5>
+								<svg class="text-[#333] transition duration-300 group-hover:text-[#064250] shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+							<div id="faq-collapse-4" class="accordion-content w-full overflow-hidden transition-all duration-300" aria-labelledby="faq-heading-4" role="region">
+								<p class="text-base text-[#333] leading-6 pt-2">We offer 4-hour and 7-hour rentals. Prices depend on the boat – see our License Free Rent page for options.</p>
+							</div>
+						</div>
+
+						<div class="accordion py-8 px-6 border-b border-solid border-[#e0ddd8] transition-all duration-300 rounded-2xl hover:bg-white/60" id="faq-heading-5">
+							<button type="button" class="accordion-toggle group inline-flex items-center justify-between leading-8 text-[#1a1a1a] w-full transition duration-300 text-left hover:text-[#064250]" aria-controls="faq-collapse-5" aria-expanded="false" id="faq-btn-5">
+								<h5 class="text-left">Where do we meet and start?</h5>
+								<svg class="text-[#333] transition duration-300 group-hover:text-[#064250] shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+							<div id="faq-collapse-5" class="accordion-content w-full overflow-hidden transition-all duration-300" aria-labelledby="faq-heading-5" role="region">
+								<p class="text-base text-[#333] leading-6 pt-2">We meet at the port and the boat pickup is at Zakynthos Marina. We'll confirm the exact meeting point when you book.</p>
+							</div>
+						</div>
+
+						<div class="accordion py-8 px-6 border-b border-solid border-[#e0ddd8] transition-all duration-300 rounded-2xl hover:bg-white/60" id="faq-heading-6">
+							<button type="button" class="accordion-toggle group inline-flex items-center justify-between leading-8 text-[#1a1a1a] w-full transition duration-300 text-left hover:text-[#064250]" aria-controls="faq-collapse-6" aria-expanded="false" id="faq-btn-6">
+								<h5 class="text-left">Can I get a skipper?</h5>
+								<svg class="text-[#333] transition duration-300 group-hover:text-[#064250] shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+							<div id="faq-collapse-6" class="accordion-content w-full overflow-hidden transition-all duration-300" aria-labelledby="faq-heading-6" role="region">
+								<p class="text-base text-[#333] leading-6 pt-2">Yes. We offer skipper-driven rentals so you can relax and enjoy the cruise. See our "Rent with Skipper" option for more details.</p>
+							</div>
+						</div>
+
+						<div class="accordion py-8 px-6 transition-all duration-300 rounded-2xl hover:bg-white/60" id="faq-heading-7">
+							<button type="button" class="accordion-toggle group inline-flex items-center justify-between leading-8 text-[#1a1a1a] w-full transition duration-300 text-left hover:text-[#064250]" aria-controls="faq-collapse-7" aria-expanded="false" id="faq-btn-7">
+								<h5 class="text-left">What if the weather is bad?</h5>
+								<svg class="text-[#333] transition duration-300 group-hover:text-[#064250] shrink-0" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+									<path d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</button>
+							<div id="faq-collapse-7" class="accordion-content w-full overflow-hidden transition-all duration-300" aria-labelledby="faq-heading-7" role="region">
+								<p class="text-base text-[#333] leading-6 pt-2">Your safety comes first. If conditions are unsafe, we'll reschedule or refund according to our cancellation policy.</p>
+							</div>
+						</div>
+					</div>
+
+					<p class="text-center mt-10">
+						<a href="/contact" class="inline-block py-3 px-8 bg-[#064250] text-white text-sm font-semibold rounded hover:bg-[#0a5a6a] transition-colors">Still have questions? Contact us</a>
 					</p>
 				</div>
 			</section>
@@ -80,152 +139,57 @@ import Footer from '../components/Footer.astro';
 						window.addEventListener('scroll', onScroll, { passive: true });
 					}
 				}
+				// FAQ accordion: only one open at a time, max-height animation
+				const accordionGroup = document.querySelector('.accordion-group');
+				if (accordionGroup) {
+					accordionGroup.addEventListener('click', (e) => {
+						const btn = e.target.closest('.accordion-toggle');
+						if (!btn) return;
+						const accordion = btn.closest('.accordion');
+						const content = document.getElementById(btn.getAttribute('aria-controls'));
+						if (!accordion || !content) return;
+						const isOpen = accordion.classList.contains('active');
+						// Close all others
+						accordionGroup.querySelectorAll('.accordion').forEach((el) => {
+							el.classList.remove('active');
+							const otherBtn = el.querySelector('.accordion-toggle');
+							const otherContent = otherBtn && document.getElementById(otherBtn.getAttribute('aria-controls'));
+							if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+							if (otherContent) otherContent.style.maxHeight = '';
+						});
+						if (!isOpen) {
+							accordion.classList.add('active');
+							btn.setAttribute('aria-expanded', 'true');
+							content.style.maxHeight = content.scrollHeight + 'px';
+						}
+					});
+				}
 			});
 		</script>
 	</body>
 </html>
 
 <style is:global>
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
-	html {
-		scroll-behavior: smooth;
-	}
-	body {
-		margin: 0;
-		font-family: 'Inter', system-ui, sans-serif;
-		overflow-x: hidden;
-	}
-	body.faq-page-body {
-		padding-top: 0;
-	}
+	html { scroll-behavior: smooth; }
+	body.faq-page-body { padding-top: 0; }
 </style>
 
 <style>
-	.faq-page {
-		min-height: 100vh;
+	/* Accordion content: closed by default */
+	.accordion-content {
+		max-height: 0;
+		transition: max-height 0.35s ease;
 	}
-
-	.faq-hero {
-		position: relative;
-		width: 100%;
-		min-height: 40vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
-		overflow: hidden;
-		padding-top: 5rem;
-		padding-bottom: 3rem;
+	/* Active state: accent color and chevron rotation */
+	.accordion.active {
+		background: rgba(245, 240, 232, 0.9);
 	}
-	.faq-hero-content {
-		position: relative;
-		z-index: 1;
-		text-align: center;
-		padding: 2rem;
-		max-width: 36rem;
-	}
-	.faq-hero-title {
-		font-family: 'Cormorant Garamond', serif;
-		font-size: clamp(2rem, 4vw, 3rem);
+	.accordion.active .accordion-toggle {
 		font-weight: 600;
-		color: #fff;
-		margin: 0 0 0.75rem 0;
-		line-height: 1.2;
-	}
-	.faq-hero-subtitle {
-		font-size: 1.05rem;
-		color: rgba(255, 255, 255, 0.9);
-		margin: 0;
-		line-height: 1.5;
-	}
-
-	.faq-content {
-		width: 100%;
-		padding: 4rem 2rem;
-		background: #f5f0e8;
-	}
-	.faq-inner {
-		max-width: 720px;
-		margin: 0 auto;
-	}
-	.faq-list {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-	.faq-item {
-		background: #fff;
-		border-radius: 8px;
-		margin-bottom: 0.75rem;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-		overflow: hidden;
-	}
-	.faq-question {
-		font-weight: 600;
-		font-size: 1rem;
-		color: #1a1a1a;
-		padding: 1.25rem 1.5rem;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 1rem;
-	}
-	.faq-question::-webkit-details-marker {
-		display: none;
-	}
-	.faq-question::after {
-		content: '+';
-		font-size: 1.25rem;
 		color: #064250;
-		flex-shrink: 0;
 	}
-	.faq-item[open] .faq-question::after {
-		content: '−';
-	}
-	.faq-answer {
-		font-size: 0.95rem;
-		line-height: 1.6;
-		color: #333;
-		margin: 0;
-		padding: 0 1.5rem 1.25rem 1.5rem;
-		border-top: 1px solid #eee;
-	}
-	.faq-cta-wrap {
-		text-align: center;
-		margin-top: 2.5rem;
-	}
-	.faq-cta {
-		display: inline-block;
-		padding: 0.9rem 2rem;
-		background: #064250;
-		color: #fff;
-		font-size: 0.9rem;
-		font-weight: 600;
-		text-decoration: none;
-		border-radius: 4px;
-		transition: background 0.2s;
-	}
-	.faq-cta:hover {
-		background: #0a5a6a;
-	}
-
-	@media (max-width: 768px) {
-		.faq-hero {
-			padding: 4rem 1.5rem 2.5rem;
-		}
-		.faq-content {
-			padding: 3rem 1.5rem;
-		}
-		.faq-question {
-			padding: 1rem 1.25rem;
-		}
-		.faq-answer {
-			padding: 0 1.25rem 1rem 1.25rem;
-		}
+	.accordion.active .accordion-toggle svg {
+		transform: rotate(180deg);
+		color: #064250;
 	}
 </style>

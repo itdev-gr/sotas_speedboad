@@ -17,9 +17,19 @@ import Footer from '../components/Footer.astro';
 	</head>
 	<body class="contact-page-body min-h-screen font-sans antialiased overflow-x-hidden" style="font-family: 'Inter', system-ui, sans-serif;">
 		<Header />
-		<main class="min-h-[80vh] grid grid-cols-1 lg:grid-cols-2 pt-20" aria-label="Contact form and details">
+		<main class="min-h-screen" aria-label="Contact">
+			<!-- Hero header (same height as License Free Rent) -->
+			<section class="relative w-full min-h-[50vh] flex items-center justify-center overflow-hidden pt-20 pb-12" style="background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);" aria-label="Contact us">
+				<div class="relative z-10 text-center px-8 py-6 max-w-[36rem]">
+					<p class="text-xs font-semibold tracking-[0.2em] text-white/90 uppercase mb-2">Get in touch</p>
+					<h1 class="font-serif text-4xl md:text-5xl font-semibold text-white mb-4 leading-tight" style="font-family: 'Cormorant Garamond', serif;">Contact Us</h1>
+					<p class="text-base text-white/90 leading-relaxed">Reach out to book your boat rental or ask us anything about our cruises in Zakynthos.</p>
+				</div>
+			</section>
+			<!-- Two-column form + info -->
+			<div class="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]" aria-label="Contact form and details">
 			<!-- Left: dark form -->
-			<section class="bg-[#0A1929] flex flex-col justify-center px-8 py-12 lg:px-12 lg:py-16">
+			<section class="bg-[#064250] flex flex-col justify-center px-8 py-12 lg:px-12 lg:py-16">
 				<h1 class="text-2xl lg:text-3xl font-bold text-white mb-3">Send us a message</h1>
 				<p class="text-gray-400 text-sm lg:text-base mb-8 max-w-lg">
 					For any question or info about our services, please fill out the form below and we'll get back to you as soon as possible.
@@ -55,7 +65,8 @@ import Footer from '../components/Footer.astro';
 						<label for="contact-message" class="text-white text-sm font-medium">Write a message *</label>
 						<textarea id="contact-message" name="message" rows="4" required placeholder="Your message..." class="bg-transparent border-0 border-b border-white/80 text-white placeholder-gray-400 py-2 focus:outline-none focus:border-white resize-y min-h-[100px]"></textarea>
 					</div>
-					<button type="submit" class="mt-2 px-8 py-3 rounded-lg bg-linear-to-r from-cyan-500 to-teal-500 text-white font-semibold text-sm uppercase tracking-wide hover:opacity-95 transition-opacity w-fit">
+					<div id="contact-form-feedback" class="text-sm mt-1 min-h-[1.25rem]" aria-live="polite"></div>
+					<button type="submit" id="contact-submit-btn" class="mt-2 px-8 py-3 rounded-lg bg-[#0a5a6a] text-white font-semibold text-sm uppercase tracking-wide hover:bg-[#064250] transition-colors w-fit disabled:opacity-70">
 						Send Message
 					</button>
 				</form>
@@ -63,7 +74,7 @@ import Footer from '../components/Footer.astro';
 
 			<!-- Right: light contact info -->
 			<section class="bg-white flex flex-col justify-center px-8 py-12 lg:px-12 lg:py-16">
-				<p class="text-[#3CCFDB] text-xs font-semibold uppercase tracking-wider mb-2">Contact Us</p>
+				<p class="text-[#064250] text-xs font-semibold uppercase tracking-wider mb-2">Contact Us</p>
 				<h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Get In Touch</h2>
 				<p class="text-gray-600 text-sm lg:text-base mb-8 max-w-md">
 					Do not hesitate to contact us for any info you might need. Our team is available every day on the phone from 9:00 am to 9:00 PM (GMT+2). Let's plan the perfect day at sea for you and your loved ones!
@@ -71,7 +82,7 @@ import Footer from '../components/Footer.astro';
 
 				<div class="space-y-6 mb-10">
 					<div class="flex gap-4">
-						<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#3CCFDB] flex items-center justify-center text-[#3CCFDB]">
+						<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#064250] flex items-center justify-center text-[#064250]">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
 						</div>
 						<div>
@@ -80,7 +91,7 @@ import Footer from '../components/Footer.astro';
 						</div>
 					</div>
 					<div class="flex gap-4">
-						<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#3CCFDB] flex items-center justify-center text-[#3CCFDB]">
+						<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#064250] flex items-center justify-center text-[#064250]">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a2 2 0 0 1 2 2c0 .5-.2 1.2-.5 1.8L12 12v6m0 0h-2m2 0h2M10 8h4M8 8v10m8-10v10" /></svg>
 						</div>
 						<div>
@@ -89,21 +100,21 @@ import Footer from '../components/Footer.astro';
 						</div>
 					</div>
 					<div class="flex gap-4">
-						<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#3CCFDB] flex items-center justify-center text-[#3CCFDB]">
+						<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#064250] flex items-center justify-center text-[#064250]">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg>
 						</div>
 						<div>
 							<p class="font-semibold text-gray-900 text-sm">Call Us</p>
-							<a href="tel:+306970621594" class="text-gray-600 text-sm hover:text-[#3CCFDB]">(+30) 697 062 1594</a>
+							<a href="tel:+306970621594" class="text-gray-600 text-sm hover:text-[#064250]">(+30) 697 062 1594</a>
 						</div>
 					</div>
 					<div class="flex gap-4">
-						<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#3CCFDB] flex items-center justify-center text-[#3CCFDB]">
+						<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#064250] flex items-center justify-center text-[#064250]">
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
 						</div>
 						<div>
 							<p class="font-semibold text-gray-900 text-sm">Email Us</p>
-							<a href="mailto:info@boatrentalzakynthos.com" class="text-gray-600 text-sm hover:text-[#3CCFDB]">info@boatrentalzakynthos.com</a>
+							<a href="mailto:info@boatrentalzakynthos.com" class="text-gray-600 text-sm hover:text-[#064250]">info@boatrentalzakynthos.com</a>
 						</div>
 					</div>
 				</div>
@@ -111,15 +122,13 @@ import Footer from '../components/Footer.astro';
 				<div>
 					<p class="font-bold text-gray-900 text-sm mb-4">Follow Us</p>
 					<div class="flex flex-wrap gap-3">
-						<a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-[#3CCFDB] text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-						<a href="#" aria-label="TripAdvisor" class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 0 0 4.04 10.43 5.976 5.976 0 0 0 4.075-1.6L12 19.705l1.922-2.09a5.976 5.976 0 0 0 4.075 1.6 5.997 5.997 0 0 0 4.04-10.43l1.963-2.135h-4.35a13.573 13.573 0 0 0-7.645-2.353zM12 6.255c1.531 0 3.063.303 4.504.91a7.381 7.381 0 0 1 2.24 1.604 3.986 3.986 0 0 1-2.617 1.426 3.975 3.975 0 0 1-2.636-1.018 3.994 3.994 0 0 1-1.491-3.122zm-8.77 5.335a7.36 7.36 0 0 1 2.24-1.604A11.73 11.73 0 0 1 12 6.255c.576 0 1.135.068 1.682.2a3.994 3.994 0 0 0-1.491 3.122 3.975 3.975 0 0 0 2.636 1.018 3.986 3.986 0 0 0 2.617-1.426 7.381 7.381 0 0 1-2.24 1.604 11.674 11.674 0 0 1-4.504.91c-1.531 0-3.063-.303-4.504-.91a7.381 7.381 0 0 1-2.24-1.604z"/></svg></a>
-						<a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-						<a href="#" aria-label="YouTube" class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-						<a href="#" aria-label="X Twitter" class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-						<a href="#" aria-label="Pinterest" class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.214 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+						<a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-[#064250] text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+						<a href="#" aria-label="TripAdvisor" class="w-10 h-10 rounded-full bg-[#064250] text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 0 0 4.04 10.43 5.976 5.976 0 0 0 4.075-1.6L12 19.705l1.922-2.09a5.976 5.976 0 0 0 4.075 1.6 5.997 5.997 0 0 0 4.04-10.43l1.963-2.135h-4.35a13.573 13.573 0 0 0-7.645-2.353zM12 6.255c1.531 0 3.063.303 4.504.91a7.381 7.381 0 0 1 2.24 1.604 3.986 3.986 0 0 1-2.617 1.426 3.975 3.975 0 0 1-2.636-1.018 3.994 3.994 0 0 1-1.491-3.122zm-8.77 5.335a7.36 7.36 0 0 1 2.24-1.604A11.73 11.73 0 0 1 12 6.255c.576 0 1.135.068 1.682.2a3.994 3.994 0 0 0-1.491 3.122 3.975 3.975 0 0 0 2.636 1.018 3.986 3.986 0 0 0 2.617-1.426 7.381 7.381 0 0 1-2.24 1.604 11.674 11.674 0 0 1-4.504.91c-1.531 0-3.063-.303-4.504-.91a7.381 7.381 0 0 1-2.24-1.604z"/></svg></a>
+						<a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-[#064250] text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
 					</div>
 				</div>
 			</section>
+			</div>
 		</main>
 		<Footer />
 
@@ -139,9 +148,42 @@ import Footer from '../components/Footer.astro';
 						window.addEventListener('scroll', onScroll, { passive: true });
 					}
 				}
-				document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+				const form = document.getElementById('contact-form');
+				const feedback = document.getElementById('contact-form-feedback');
+				const submitBtn = document.getElementById('contact-submit-btn');
+				form?.addEventListener('submit', async (e) => {
 					e.preventDefault();
-					alert('Thank you! We will get back to you soon.');
+					if (!form || !feedback || !submitBtn) return;
+					const fd = new FormData(form);
+					const firstname = String(fd.get('firstname') ?? '').trim();
+					const lastname = String(fd.get('lastname') ?? '').trim();
+					const country = String(fd.get('country') ?? '').trim();
+					const phone = String(fd.get('phone') ?? '').trim();
+					const email = String(fd.get('email') ?? '').trim();
+					const message = String(fd.get('message') ?? '').trim();
+					feedback.textContent = '';
+					feedback.className = 'text-sm mt-1 min-h-[1.25rem]';
+					submitBtn.disabled = true;
+					try {
+						const res = await fetch('/api/contacts', {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/json' },
+							body: JSON.stringify({ firstname, lastname, country, phone, email, message }),
+						});
+						const data = await res.json().catch(() => ({}));
+						if (res.ok) {
+							feedback.textContent = 'Thank you! We will get back to you soon.';
+							feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-green-300';
+							form.reset();
+						} else {
+							feedback.textContent = data.error || 'Something went wrong. Please try again.';
+							feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-red-300';
+						}
+					} catch {
+						feedback.textContent = 'Network error. Please try again.';
+						feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-red-300';
+					}
+					submitBtn.disabled = false;
 				});
 			});
 		</script>
