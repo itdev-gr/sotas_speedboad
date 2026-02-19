@@ -20,33 +20,29 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 				<input type="text" name="phone" id="booking-phone" />
 			</div>
 			<div class="dash-field">
-				<label>Scooter</label>
-				<select name="scooterId">
-					<option value="sh-125">SH 125</option>
-					<option value="liberty-125">LIBERTY 125</option>
-					<option value="sim-200">SIM 200</option>
-					<option value="voge-rally-300">VOGE RALLY 300</option>
+				<label>Boat</label>
+				<select name="boatId" id="booking-boat"></select>
+			</div>
+			<div class="dash-field">
+				<label>Rental date</label>
+				<input type="date" name="rentalDate" id="booking-rental-date" required />
+			</div>
+			<div class="dash-field">
+				<label>Duration</label>
+				<select name="duration" id="booking-duration">
+					<option value="4h">4h</option>
+					<option value="7h">7h</option>
 				</select>
 			</div>
 			<div class="dash-field">
-				<label>Pickup date</label>
-				<input type="date" name="pickupDate" required />
-			</div>
-			<div class="dash-field">
-				<label>Return date</label>
-				<input type="date" name="returnDate" required />
-			</div>
-			<div class="dash-field">
-				<label>Pickup location</label>
-				<select name="pickupLocationId" id="pickup-loc"></select>
-			</div>
-			<div class="dash-field">
-				<label>Return location</label>
-				<select name="returnLocationId" id="return-loc"></select>
+				<label>Meet location</label>
+				<select name="locationId" id="booking-location">
+					<option value="">—</option>
+				</select>
 			</div>
 			<div class="dash-field">
 				<label>Total (€)</label>
-				<input type="number" name="totalEur" step="0.01" min="0" value="0" />
+				<input type="number" name="totalEur" id="booking-total" step="0.01" min="0" value="0" />
 			</div>
 			<div class="dash-field">
 				<label>Status</label>
@@ -87,9 +83,9 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			<thead>
 				<tr>
 					<th>Customer</th>
-					<th>Scooter</th>
-					<th>Pickup</th>
-					<th>Return</th>
+					<th>Boat</th>
+					<th>Date</th>
+					<th>Duration</th>
 					<th>Total</th>
 					<th>Status</th>
 				</tr>
@@ -100,128 +96,99 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 		</table>
 	</div>
 	<script>
-		function escapeHtml(s) {
+		function escapeHtml(s: string) {
 			const div = document.createElement('div');
 			div.textContent = s ?? '';
 			return div.innerHTML;
 		}
 
-		function getSeason(dateStr) {
-			const d = new Date(dateStr);
-			const month = d.getMonth() + 1;
-			const day = d.getDate();
-			if (month < 6) return 'low';
-			if (month > 9) return 'low';
-			if (month === 6 && day < 15) return 'low';
-			if (month === 9 && day > 30) return 'low';
-			return 'high';
-		}
-
-		function getDays(pickupDate, returnDate) {
-			if (!pickupDate || !returnDate) return null;
-			const a = new Date(pickupDate);
-			const b = new Date(returnDate);
-			if (isNaN(a.getTime()) || isNaN(b.getTime()) || b < a) return null;
-			const diff = Math.round((b.getTime() - a.getTime()) / (24 * 60 * 60 * 1000));
-			return diff < 1 ? 1 : diff;
-		}
-
-		function getRentalPrice(pricesMatrix, scooterId, season, days) {
-			if (!scooterId || !season || !days || days < 1) return 0;
-			if (days <= 7) {
-				const row = pricesMatrix.find(function (p) {
-					return p.scooter_id === scooterId && p.season === season && p.days === days;
-				});
-				return row ? Number(row.price_eur) : 0;
-			}
-			// > 7 days: 7-day price + (price7 / 7) * extra days
-			const row7 = pricesMatrix.find(function (p) {
-				return p.scooter_id === scooterId && p.season === season && p.days === 7;
-			});
-			const price7 = row7 ? Number(row7.price_eur) : 0;
-			if (price7 === 0) return 0;
-			const dailyRate = price7 / 7;
-			const extraDays = days - 7;
-			return price7 + (dailyRate * extraDays);
-		}
-
-		function getLocationPrice(locations, locationId) {
+		function getLocationPrice(locations: Array<{ id: string; price_eur?: number | null }>, locationId: string) {
 			if (!locationId) return 0;
-			const loc = locations.find(function (l) { return l.id === locationId; });
+			const loc = locations.find((l: { id: string }) => l.id === locationId);
 			return (loc && loc.price_eur != null) ? Number(loc.price_eur) : 0;
 		}
 
 		(async () => {
-			const form = document.getElementById('booking-form');
+			const form = document.getElementById('booking-form') as HTMLFormElement | null;
 			const formMsg = document.getElementById('booking-form-msg');
 			const tbody = document.getElementById('bookings-tbody');
-			const pickupSelect = document.getElementById('pickup-loc');
-			const returnSelect = document.getElementById('return-loc');
-			const totalInput = form?.querySelector('[name="totalEur"]');
-			const scooterSelect = form?.querySelector('[name="scooterId"]');
-			const pickupDateInput = form?.querySelector('[name="pickupDate"]');
-			const returnDateInput = form?.querySelector('[name="returnDate"]');
+			const boatSelect = document.getElementById('booking-boat') as HTMLSelectElement | null;
+			const locationSelect = document.getElementById('booking-location') as HTMLSelectElement | null;
+			const totalInput = document.getElementById('booking-total') as HTMLInputElement | null;
+			const durationSelect = document.getElementById('booking-duration') as HTMLSelectElement | null;
+
+			let boats: Array<{ id: string; name: string; price4h?: number; price7h?: number }> = [];
+			let locations: Array<{ id: string; label?: string; price_eur?: number | null }> = [];
+
+			// Load boats
+			const boatsRes = await fetch('/api/boats', { credentials: 'include' });
+			if (boatsRes.ok) {
+				boats = await boatsRes.json();
+				if (boatSelect) boatSelect.innerHTML = '<option value="">Select boat</option>' + boats.map((b) => `<option value="${escapeHtml(b.id)}">${escapeHtml(b.name)}</option>`).join('');
+			}
 
 			// Load locations
 			const locRes = await fetch('/api/locations', { credentials: 'include' });
-			const locations = locRes.ok ? await locRes.json() : [];
-			locations.forEach((loc) => {
-				const opt = document.createElement('option');
-				opt.value = loc.id;
-				opt.textContent = loc.label || loc.id;
-				pickupSelect?.appendChild(opt.cloneNode(true));
-				returnSelect?.appendChild(opt);
-			});
-
-			// Load prices matrix
-			const pricesRes = await fetch('/api/prices', { credentials: 'include' });
-			const pricesMatrix = pricesRes.ok ? await pricesRes.json() : [];
-
-			// Auto-calc total
-			function calcTotal() {
-				if (!totalInput || !scooterSelect || !pickupDateInput || !returnDateInput) return;
-				const scooterId = (scooterSelect as HTMLSelectElement).value;
-				const pickupDate = (pickupDateInput as HTMLInputElement).value;
-				const returnDate = (returnDateInput as HTMLInputElement).value;
-				const pickupLocId = (pickupSelect as HTMLSelectElement)?.value ?? '';
-				const returnLocId = (returnSelect as HTMLSelectElement)?.value ?? '';
-				const days = getDays(pickupDate, returnDate);
-				if (!days) return;
-				const season = getSeason(pickupDate);
-				const rental = getRentalPrice(pricesMatrix, scooterId, season, days);
-				const pickupLocPrice = getLocationPrice(locations, pickupLocId);
-				const returnLocPrice = getLocationPrice(locations, returnLocId);
-				const total = rental + pickupLocPrice + returnLocPrice;
-				(totalInput as HTMLInputElement).value = total.toFixed(2);
+			if (locRes.ok) {
+				locations = await locRes.json();
+				locations.forEach((loc) => {
+					const opt = document.createElement('option');
+					opt.value = loc.id;
+					opt.textContent = loc.label || loc.id;
+					locationSelect?.appendChild(opt);
+				});
 			}
 
-			// Attach listeners
-			scooterSelect?.addEventListener('change', calcTotal);
-			pickupDateInput?.addEventListener('change', calcTotal);
-			returnDateInput?.addEventListener('change', calcTotal);
-			pickupSelect?.addEventListener('change', calcTotal);
-			returnSelect?.addEventListener('change', calcTotal);
+			function calcTotal() {
+				if (!totalInput || !boatSelect || !durationSelect || !locationSelect) return;
+				const boatId = boatSelect.value;
+				const duration = durationSelect.value;
+				const locationId = locationSelect.value;
+				const boat = boats.find((b) => b.id === boatId);
+				let total = 0;
+				if (boat) {
+					total = duration === '7h' ? (Number(boat.price7h) || 0) : (Number(boat.price4h) || 0);
+				}
+				total += getLocationPrice(locations, locationId);
+				totalInput.value = total.toFixed(2);
+			}
+
+			boatSelect?.addEventListener('change', calcTotal);
+			durationSelect?.addEventListener('change', calcTotal);
+			locationSelect?.addEventListener('change', calcTotal);
+
+			function boatName(boatId: string) {
+				const b = boats.find((x) => x.id === boatId);
+				return b ? b.name : (boatId || '—');
+			}
 
 			// Load bookings table
 			const bookRes = await fetch('/api/bookings', { credentials: 'include' });
+			if (!tbody) return;
 			if (!bookRes.ok) {
 				tbody.innerHTML = '<tr><td colspan="6">Failed to load bookings.</td></tr>';
 			} else {
 				const bookings = await bookRes.json();
 				tbody.innerHTML = bookings.length === 0
 					? '<tr><td colspan="6">No bookings yet.</td></tr>'
-					: bookings.map((b) => `
+					: bookings.map((b: { boatId?: string; scooterId?: string; rentalDate?: string; pickupDate?: string; duration?: string; customerName?: string; totalEur?: number; status?: string }) => {
+						const date = b.rentalDate ?? b.pickupDate ?? '—';
+						const boatLabel = boatName(b.boatId ?? b.scooterId ?? '');
+						const durationLabel = b.duration ?? '—';
+						return `
 						<tr>
 							<td>${escapeHtml(b.customerName ?? '')}</td>
-							<td>${escapeHtml(b.scooterId ?? '')}</td>
-							<td>${escapeHtml(b.pickupDate ?? '')}</td>
-							<td>${escapeHtml(b.returnDate ?? '')}</td>
+							<td>${escapeHtml(boatLabel)}</td>
+							<td>${escapeHtml(date)}</td>
+							<td>${escapeHtml(durationLabel)}</td>
 							<td>€${Number(b.totalEur ?? 0).toFixed(2)}</td>
 							<td>${escapeHtml(b.status ?? '')}</td>
 						</tr>
-					`).join('');
+					`;
+					}).join('');
 			}
 
+			if (!form || !formMsg) return;
 			form.addEventListener('submit', async (e) => {
 				e.preventDefault();
 				formMsg.textContent = '';
@@ -236,11 +203,10 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 					customerName: fd.get('customerName'),
 					email: fd.get('email'),
 					phone: fd.get('phone'),
-					scooterId: fd.get('scooterId'),
-					pickupDate: fd.get('pickupDate'),
-					returnDate: fd.get('returnDate'),
-					pickupLocationId: fd.get('pickupLocationId'),
-					returnLocationId: fd.get('returnLocationId'),
+					boatId: fd.get('boatId'),
+					rentalDate: fd.get('rentalDate'),
+					duration: fd.get('duration') || '4h',
+					locationId: fd.get('locationId') || '',
 					totalEur: parseFloat(String(fd.get('totalEur') ?? 0)) || 0,
 					status: fd.get('status') || 'pending',
 					notes: fd.get('notes'),
@@ -257,7 +223,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 					form.reset();
 					window.location.reload();
 				} else {
-					formMsg.textContent = data.error || 'Failed to create booking.';
+					formMsg.textContent = (data as { error?: string }).error || 'Failed to create booking.';
 				}
 			});
 		})();

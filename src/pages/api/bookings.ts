@@ -20,23 +20,28 @@ export const GET: APIRoute = async ({ request }) => {
 		const snap = await db.collection('bookings').get();
 		const bookings = snap.docs
 			.map((d) => {
-			const data = d.data();
-			return {
-				id: d.id,
-				customerName: data.customerName,
-				email: data.email,
-				phone: data.phone,
-				scooterId: data.scooterId,
-				pickupDate: data.pickupDate,
-				returnDate: data.returnDate,
-				pickupLocationId: data.pickupLocationId,
-				returnLocationId: data.returnLocationId,
-				totalEur: data.totalEur,
-				status: data.status,
-				notes: data.notes,
-				createdAt: data.createdAt,
-			};
-		})
+				const data = d.data();
+				return {
+					id: d.id,
+					customerName: data.customerName,
+					email: data.email,
+					phone: data.phone,
+					boatId: data.boatId,
+					rentalDate: data.rentalDate,
+					duration: data.duration,
+					locationId: data.locationId,
+					totalEur: data.totalEur,
+					status: data.status,
+					notes: data.notes,
+					createdAt: data.createdAt,
+					// Legacy fields for backward compatibility
+					scooterId: data.scooterId,
+					pickupDate: data.pickupDate,
+					returnDate: data.returnDate,
+					pickupLocationId: data.pickupLocationId,
+					returnLocationId: data.returnLocationId,
+				};
+			})
 			.sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? ''));
 		return json(bookings);
 	} catch (e) {
@@ -55,49 +60,48 @@ export const POST: APIRoute = async ({ request }) => {
 			customerName?: string;
 			email?: string;
 			phone?: string;
-			scooterId?: string;
-			pickupDate?: string;
-			returnDate?: string;
-			pickupLocationId?: string;
-			returnLocationId?: string;
+			boatId?: string;
+			rentalDate?: string;
+			duration?: string;
+			locationId?: string;
 			totalEur?: number;
 			status?: string;
 			notes?: string;
 		};
-		const scooterId = String(body.scooterId ?? '').trim();
-		const pickupDate = String(body.pickupDate ?? '').trim();
-		const returnDate = String(body.returnDate ?? '').trim();
+		const boatId = String(body.boatId ?? '').trim();
+		const rentalDate = String(body.rentalDate ?? '').trim();
+		const duration = String(body.duration ?? '4h').trim();
+
+		if (!boatId || !rentalDate) {
+			return json({ error: 'Boat and rental date are required.' }, 400);
+		}
+
 		const doc = {
 			customerName: String(body.customerName ?? '').trim(),
 			email: String(body.email ?? '').trim(),
 			phone: String(body.phone ?? '').trim(),
-			scooterId,
-			pickupDate,
-			returnDate,
-			pickupLocationId: String(body.pickupLocationId ?? '').trim(),
-			returnLocationId: String(body.returnLocationId ?? '').trim(),
+			boatId,
+			rentalDate,
+			duration: duration === '7h' ? '7h' : '4h',
+			locationId: String(body.locationId ?? '').trim(),
 			totalEur: Number(body.totalEur) || 0,
 			status: String(body.status ?? 'pending').trim(),
 			notes: String(body.notes ?? '').trim(),
 			createdAt: new Date().toISOString(),
 		};
 
-		// Inventory check: overlapping non-cancelled bookings must be < scooter quantity
-		const scootersSnap = await db.collection('scooters').doc(scooterId).get();
-		const quantity = scootersSnap.exists ? Number((scootersSnap.data() as { quantity?: number }).quantity) || 0 : 0;
-		const bookingsSnap = await db.collection('bookings').where('scooterId', '==', scooterId).get();
-		let overlappingCount = 0;
-		for (const d of bookingsSnap.docs) {
+		// Availability: one non-cancelled booking per boat per day
+		const existingSnap = await db
+			.collection('bookings')
+			.where('boatId', '==', boatId)
+			.where('rentalDate', '==', rentalDate)
+			.get();
+		for (const d of existingSnap.docs) {
 			const data = d.data();
 			const statusLower = String(data.status ?? '').toLowerCase();
 			if (statusLower === 'cancelled' || statusLower === 'canceled') continue;
-			const exPickup = String(data.pickupDate ?? '');
-			const exReturn = String(data.returnDate ?? '');
-			if (exPickup < returnDate && exReturn > pickupDate) overlappingCount++;
-		}
-		if (overlappingCount >= quantity) {
 			return json(
-				{ error: 'No availability for this scooter on the selected dates. Try different dates or another scooter.' },
+				{ error: 'This boat is already booked for the selected date. Choose another date or boat.' },
 				409
 			);
 		}

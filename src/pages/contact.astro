@@ -165,10 +165,18 @@ import Footer from '../components/Footer.astro';
 					feedback.className = 'text-sm mt-1 min-h-[1.25rem]';
 					submitBtn.disabled = true;
 					try {
+						const payload = {
+							firstname,
+							lastname,
+							country,
+							phone,
+							email,
+							message,
+						};
 						const res = await fetch('/api/contacts', {
 							method: 'POST',
 							headers: { 'Content-Type': 'application/json' },
-							body: JSON.stringify({ firstname, lastname, country, phone, email, message }),
+							body: JSON.stringify(payload),
 						});
 						const data = await res.json().catch(() => ({}));
 						if (res.ok) {
