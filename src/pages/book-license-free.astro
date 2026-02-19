@@ -117,7 +117,7 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 									<div class="flex items-center justify-between gap-2 py-2 border-b border-gray-100">
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-800">4 hours</p>
-											<p class="text-xs text-gray-600">+€0.00</p>
+											<p class="text-xs text-gray-600">€{boat.price4h}</p>
 										</div>
 										<button type="button" class="text-sm font-medium border border-teal-500 text-teal-600 px-3 py-1.5 rounded hover:bg-teal-50">VIEW</button>
 										<label class="group flex items-center gap-2 cursor-pointer shrink-0">
@@ -132,7 +132,7 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 									<div class="flex items-center justify-between gap-2 py-2 border-b border-gray-100">
 										<div class="flex-1 min-w-0">
 											<p class="text-sm font-medium text-gray-800">7 hours</p>
-											<p class="text-xs text-gray-600">+€{boat.price7h - boat.price4h}.00</p>
+											<p class="text-xs text-gray-600">€{boat.price7h}</p>
 										</div>
 										<button type="button" class="text-sm font-medium border border-teal-500 text-teal-600 px-3 py-1.5 rounded hover:bg-teal-50">VIEW</button>
 										<label class="group flex items-center gap-2 cursor-pointer shrink-0">
