@@ -3,107 +3,546 @@ export const prerender = false;
 import DashboardLayout from '../../layouts/DashboardLayout.astro';
 ---
 <DashboardLayout title="Boats">
-	<h1>Boats</h1>
-	<div class="dash-card">
-		<p>Manage boats shown on the License Free Rent page. Edit image, title, prices, and includes.</p>
-		<div id="boats-list" class="boats-list">
-			<p>Loading…</p>
+	<div class="boats-header">
+		<div>
+			<h1>Boats</h1>
+			<p class="boats-subtitle">Manage boats shown on the License Free Rent page. Edit image, title, prices, and includes.</p>
 		</div>
-		<p id="boats-msg" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;"></p>
+		<div class="boats-header-stats" id="boats-stats"></div>
 	</div>
+
+	<div id="boats-grid" class="boats-grid">
+		<div class="boats-loading">
+			<div class="boats-spinner"></div>
+			<p>Loading boats...</p>
+		</div>
+	</div>
+	<p id="boats-msg" class="boats-msg"></p>
 
 	<!-- Edit modal -->
 	<div id="boat-edit-modal" class="boat-modal" aria-hidden="true" role="dialog" aria-labelledby="boat-modal-title">
 		<div class="boat-modal-backdrop" id="boat-modal-backdrop"></div>
 		<div class="boat-modal-box">
-			<h2 id="boat-modal-title" class="boat-modal-title">Edit boat</h2>
-			<form id="boat-edit-form" class="dash-form">
+			<div class="boat-modal-header">
+				<h2 id="boat-modal-title" class="boat-modal-title">Edit Boat</h2>
+				<button type="button" class="boat-modal-close" id="boat-modal-close" aria-label="Close">&times;</button>
+			</div>
+			<form id="boat-edit-form" class="boat-form">
 				<input type="hidden" id="boat-edit-id" name="id" />
-				<div class="dash-field">
-					<label for="boat-edit-imageUrl">Image URL</label>
-					<div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-						<input type="text" id="boat-edit-imageUrl" name="imageUrl" placeholder="/images/boat.png" style="flex: 1; min-width: 200px;" />
-						<label class="dash-btn dash-btn--secondary" style="margin: 0; cursor: pointer;">
-							Upload image
-							<input type="file" id="boat-edit-file" accept="image/*" style="position: absolute; width: 0.1px; height: 0.1px; opacity: 0; overflow: hidden;" />
-						</label>
+
+				<!-- Image section -->
+				<div class="form-section">
+					<h3 class="form-section-title">Image</h3>
+					<div class="form-row">
+						<div class="form-field form-field--grow">
+							<label for="boat-edit-imageUrl">Image URL</label>
+							<input type="text" id="boat-edit-imageUrl" name="imageUrl" placeholder="/images/boat.png" />
+						</div>
+						<div class="form-field form-field--auto">
+							<label>&nbsp;</label>
+							<label class="upload-btn">
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+								Upload
+								<input type="file" id="boat-edit-file" accept="image/*" hidden />
+							</label>
+						</div>
 					</div>
-					<div class="boat-image-preview-wrap" id="boat-image-preview-wrap" style="margin-top: 0.5rem;">
-						<img id="boat-image-preview" src="" alt="" style="max-width: 200px; max-height: 120px; object-fit: cover; border-radius: 6px; display: none;" />
+					<div class="image-preview" id="boat-image-preview-wrap">
+						<img id="boat-image-preview" src="" alt="" />
+						<span class="image-preview-placeholder" id="image-placeholder">No image</span>
 					</div>
-					<p id="boat-upload-status" style="font-size: 0.85rem; color: #666; margin-top: 0.25rem;"></p>
+					<p id="boat-upload-status" class="upload-status"></p>
 				</div>
-				<div class="dash-field">
-					<label for="boat-edit-name">Title (card name)</label>
-					<input type="text" id="boat-edit-name" name="name" required />
+
+				<!-- Details section -->
+				<div class="form-section">
+					<h3 class="form-section-title">Details</h3>
+					<div class="form-row">
+						<div class="form-field form-field--grow">
+							<label for="boat-edit-name">Title (card name)</label>
+							<input type="text" id="boat-edit-name" name="name" required />
+						</div>
+						<div class="form-field">
+							<label for="boat-edit-modalName">Modal name</label>
+							<input type="text" id="boat-edit-modalName" name="modalName" placeholder="e.g. Daphne" />
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-field">
+							<label for="boat-edit-lengthMeters">Length (m)</label>
+							<input type="text" id="boat-edit-lengthMeters" name="lengthMeters" placeholder="5.4" />
+						</div>
+						<div class="form-field">
+							<label for="boat-edit-maxPax">Max passengers</label>
+							<input type="number" id="boat-edit-maxPax" name="maxPax" min="1" required />
+						</div>
+					</div>
+					<div class="form-field">
+						<label for="boat-edit-description">Description</label>
+						<textarea id="boat-edit-description" name="description" rows="3" placeholder="Short description shown on the booking page"></textarea>
+					</div>
 				</div>
-				<div class="dash-field">
-					<label for="boat-edit-price4h">Price 4h (€)</label>
-					<input type="number" id="boat-edit-price4h" name="price4h" min="0" step="1" required />
+
+				<!-- Pricing section -->
+				<div class="form-section">
+					<h3 class="form-section-title">Pricing</h3>
+					<div class="form-row">
+						<div class="form-field">
+							<label for="boat-edit-price4h">Price 4h</label>
+							<div class="input-with-prefix">
+								<span class="input-prefix">&euro;</span>
+								<input type="number" id="boat-edit-price4h" name="price4h" min="0" step="1" required />
+							</div>
+						</div>
+						<div class="form-field">
+							<label for="boat-edit-price7h">Price 7h</label>
+							<div class="input-with-prefix">
+								<span class="input-prefix">&euro;</span>
+								<input type="number" id="boat-edit-price7h" name="price7h" min="0" step="1" required />
+							</div>
+						</div>
+					</div>
+					<div class="form-field">
+						<label for="boat-edit-fuelExcludedText">Fuel note</label>
+						<input type="text" id="boat-edit-fuelExcludedText" name="fuelExcludedText" placeholder="Fuel not included" />
+					</div>
 				</div>
-				<div class="dash-field">
-					<label for="boat-edit-price7h">Price 7h (€)</label>
-					<input type="number" id="boat-edit-price7h" name="price7h" min="0" step="1" required />
+
+				<!-- Includes section -->
+				<div class="form-section">
+					<h3 class="form-section-title">Includes</h3>
+					<div class="form-field">
+						<label for="boat-edit-includes">One item per line</label>
+						<textarea id="boat-edit-includes" name="includes" rows="6" placeholder="Meet at the Port&#10;Coolbox with Ice&#10;Snorkeling Equipment&#10;..."></textarea>
+					</div>
 				</div>
-				<div class="dash-field">
-					<label for="boat-edit-maxPax">Max passengers</label>
-					<input type="number" id="boat-edit-maxPax" name="maxPax" min="1" required />
-				</div>
-				<div class="dash-field">
-					<label for="boat-edit-modalName">Modal name (e.g. Daphne, Elena)</label>
-					<input type="text" id="boat-edit-modalName" name="modalName" />
-				</div>
-				<div class="dash-field">
-					<label for="boat-edit-lengthMeters">Length (meters)</label>
-					<input type="text" id="boat-edit-lengthMeters" name="lengthMeters" placeholder="5 or 5.4" />
-				</div>
-				<div class="dash-field">
-					<label for="boat-edit-fuelExcludedText">Fuel excluded text</label>
-					<input type="text" id="boat-edit-fuelExcludedText" name="fuelExcludedText" placeholder="Fuel not included" />
-				</div>
-				<div class="dash-field">
-					<label for="boat-edit-description">Description</label>
-					<textarea id="boat-edit-description" name="description" rows="4" placeholder="Short description for the boat (shown on book page)"></textarea>
-				</div>
-				<div class="dash-field">
-					<label for="boat-edit-includes">Includes (one per line)</label>
-					<textarea id="boat-edit-includes" name="includes" rows="8" placeholder="Meet at the Port&#10;Coolbox with Ice&#10;..."></textarea>
-				</div>
-				<div class="boat-modal-actions">
-					<button type="button" class="dash-btn dash-btn--secondary" id="boat-modal-cancel">Cancel</button>
-					<button type="submit" class="dash-btn">Save</button>
+
+				<div class="boat-modal-footer">
+					<button type="button" class="btn btn--secondary" id="boat-modal-cancel">Cancel</button>
+					<button type="submit" class="btn btn--primary">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+						Save Changes
+					</button>
 				</div>
 			</form>
 		</div>
 	</div>
 
 	<style>
-		.boats-list { display: flex; flex-direction: column; gap: 0; }
-		.boat-product-line {
+		/* Header */
+		.boats-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin-bottom: 1.5rem;
+			flex-wrap: wrap;
+			gap: 1rem;
+			padding: 1.25rem 1.5rem 0;
+		}
+		.boats-header h1 {
+			margin: 0 0 0.25rem;
+			font-size: 1.6rem;
+			color: #1a1a1a;
+		}
+		.boats-subtitle {
+			margin: 0;
+			font-size: 0.9rem;
+			color: #666;
+		}
+		.boats-header-stats {
+			display: flex;
+			gap: 1rem;
+		}
+		.stat-badge {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background: #fff;
+			border: 1px solid rgba(29,130,153,0.2);
+			border-radius: 8px;
+			padding: 0.5rem 1rem;
+			min-width: 70px;
+		}
+		.stat-badge-value {
+			font-size: 1.4rem;
+			font-weight: 700;
+			color: #1d8299;
+		}
+		.stat-badge-label {
+			font-size: 0.7rem;
+			color: #888;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		/* Loading */
+		.boats-loading {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 3rem;
+			color: #888;
+		}
+		.boats-spinner {
+			width: 32px;
+			height: 32px;
+			border: 3px solid rgba(29,130,153,0.2);
+			border-top-color: #1d8299;
+			border-radius: 50%;
+			animation: spin 0.8s linear infinite;
+			margin-bottom: 0.75rem;
+		}
+		@keyframes spin { to { transform: rotate(360deg); } }
+
+		/* Grid */
+		.boats-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 1rem;
+			padding: 0 1.5rem;
+		}
+		.boats-msg {
+			margin: 0.75rem 1.5rem 0;
+			font-size: 0.9rem;
+			color: #666;
+		}
+
+		/* Boat card */
+		.boat-card {
+			background: #fff;
+			border-radius: 10px;
+			border: 1px solid rgba(29,130,153,0.15);
+			box-shadow: 0 1px 4px rgba(29,130,153,0.08);
+			overflow: hidden;
+			transition: box-shadow 0.2s, transform 0.2s;
+		}
+		.boat-card:hover {
+			box-shadow: 0 4px 16px rgba(29,130,153,0.15);
+			transform: translateY(-2px);
+		}
+		.boat-card-image {
+			position: relative;
+			width: 100%;
+			height: 180px;
+			overflow: hidden;
+			background: #f0f4f5;
+		}
+		.boat-card-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.boat-card-pax {
+			position: absolute;
+			top: 0.5rem;
+			right: 0.5rem;
+			background: rgba(29,130,153,0.9);
+			color: #fff;
+			font-size: 0.75rem;
+			font-weight: 600;
+			padding: 0.25rem 0.5rem;
+			border-radius: 4px;
 			display: flex;
 			align-items: center;
-			gap: 1rem;
-			padding: 1rem 1.25rem;
-			background: #f8fafb;
-			border: 1px solid rgba(29,130,153,0.2);
-			border-bottom: none;
+			gap: 0.25rem;
 		}
-		.boats-list .boat-product-line:last-of-type { border-bottom: 1px solid rgba(29,130,153,0.2); }
-		.boat-product-line:first-of-type { border-radius: 8px 8px 0 0; }
-		.boats-list .boat-product-line:last-of-type { border-radius: 0 0 8px 8px; }
-		.boats-list .boat-product-line:only-of-type { border-radius: 8px; border-bottom: 1px solid rgba(29,130,153,0.2); }
-		.boat-product-line-thumb { width: 120px; height: 84px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
-		.boat-product-line-info { flex: 1; min-width: 0; }
-		.boat-product-line-name { font-weight: 600; margin: 0 0 0.25rem; font-size: 1.05rem; }
-		.boat-product-line-meta { font-size: 0.9rem; color: #555; margin: 0; }
-		.boat-product-line-actions { flex-shrink: 0; }
+		.boat-card-body {
+			padding: 1rem 1.25rem;
+		}
+		.boat-card-name {
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: #1a1a1a;
+			margin: 0 0 0.25rem;
+		}
+		.boat-card-modal-name {
+			font-size: 0.8rem;
+			color: #888;
+			margin: 0 0 0.75rem;
+		}
+		.boat-card-details {
+			display: flex;
+			gap: 0.75rem;
+			margin-bottom: 0.75rem;
+			flex-wrap: wrap;
+		}
+		.boat-card-detail {
+			display: flex;
+			align-items: center;
+			gap: 0.3rem;
+			font-size: 0.8rem;
+			color: #555;
+		}
+		.boat-card-detail svg {
+			color: #1d8299;
+			flex-shrink: 0;
+		}
+		.boat-card-prices {
+			display: flex;
+			gap: 0.5rem;
+			margin-bottom: 1rem;
+		}
+		.price-tag {
+			display: flex;
+			align-items: baseline;
+			gap: 0.2rem;
+			background: #e8f4f7;
+			padding: 0.35rem 0.65rem;
+			border-radius: 6px;
+			font-size: 0.85rem;
+		}
+		.price-tag-amount {
+			font-weight: 700;
+			color: #1d8299;
+		}
+		.price-tag-label {
+			font-size: 0.7rem;
+			color: #888;
+		}
+		.boat-card-includes {
+			list-style: none;
+			margin: 0 0 1rem;
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.35rem;
+		}
+		.boat-card-includes li {
+			font-size: 0.75rem;
+			background: #f5f5f5;
+			color: #555;
+			padding: 0.2rem 0.5rem;
+			border-radius: 4px;
+		}
+		.boat-card-footer {
+			display: flex;
+			justify-content: flex-end;
+			padding-top: 0.75rem;
+			border-top: 1px solid #f0f0f0;
+		}
+		.edit-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			padding: 0.45rem 1rem;
+			background: #1d8299;
+			color: #fff;
+			border: none;
+			border-radius: 6px;
+			font-size: 0.85rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background 0.2s;
+		}
+		.edit-btn:hover { background: #176f82; }
+
+		/* Modal */
 		.boat-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1rem; box-sizing: border-box; pointer-events: none; }
 		.boat-modal[aria-hidden="true"] { display: none; }
 		.boat-modal[aria-hidden="false"] { pointer-events: auto; }
-		.boat-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
-		.boat-modal-box { position: relative; background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 1.5rem; max-width: 480px; width: 100%; max-height: 90vh; overflow-y: auto; }
-		.boat-modal-title { margin: 0 0 1rem; font-size: 1.25rem; }
-		.boat-modal-actions { display: flex; gap: 0.75rem; margin-top: 1rem; }
+		.boat-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); }
+		.boat-modal-box {
+			position: relative;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+			max-width: 560px;
+			width: 100%;
+			max-height: 90vh;
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+		}
+		.boat-modal-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1.25rem 1.5rem;
+			border-bottom: 1px solid #eee;
+			position: sticky;
+			top: 0;
+			background: #fff;
+			border-radius: 12px 12px 0 0;
+			z-index: 1;
+		}
+		.boat-modal-title { margin: 0; font-size: 1.2rem; font-weight: 700; }
+		.boat-modal-close {
+			background: none;
+			border: none;
+			font-size: 1.5rem;
+			color: #888;
+			cursor: pointer;
+			width: 32px;
+			height: 32px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 6px;
+			transition: background 0.15s;
+		}
+		.boat-modal-close:hover { background: #f0f0f0; color: #333; }
+
+		/* Form */
+		.boat-form { padding: 0 1.5rem 1.5rem; }
+		.form-section {
+			padding-top: 1.25rem;
+			margin-bottom: 0.25rem;
+		}
+		.form-section-title {
+			font-size: 0.75rem;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.08em;
+			color: #1d8299;
+			margin: 0 0 0.75rem;
+			padding-bottom: 0.4rem;
+			border-bottom: 2px solid #e8f4f7;
+		}
+		.form-row {
+			display: flex;
+			gap: 0.75rem;
+			flex-wrap: wrap;
+		}
+		.form-field {
+			display: flex;
+			flex-direction: column;
+			gap: 0.3rem;
+			margin-bottom: 0.75rem;
+			min-width: 120px;
+			flex: 1;
+		}
+		.form-field--grow { flex: 2; }
+		.form-field--auto { flex: none; }
+		.form-field label {
+			font-size: 0.8rem;
+			font-weight: 600;
+			color: #444;
+		}
+		.form-field input,
+		.form-field textarea {
+			width: 100%;
+			padding: 0.5rem 0.65rem;
+			border: 1px solid #ddd;
+			border-radius: 6px;
+			font-size: 0.9rem;
+			box-sizing: border-box;
+			transition: border-color 0.15s, box-shadow 0.15s;
+		}
+		.form-field input:focus,
+		.form-field textarea:focus {
+			outline: none;
+			border-color: #1d8299;
+			box-shadow: 0 0 0 3px rgba(29,130,153,0.15);
+		}
+		.form-field textarea { resize: vertical; min-height: 70px; }
+
+		.input-with-prefix {
+			display: flex;
+			align-items: stretch;
+		}
+		.input-prefix {
+			display: flex;
+			align-items: center;
+			padding: 0 0.6rem;
+			background: #f5f5f5;
+			border: 1px solid #ddd;
+			border-right: none;
+			border-radius: 6px 0 0 6px;
+			font-size: 0.9rem;
+			color: #666;
+		}
+		.input-with-prefix input {
+			border-radius: 0 6px 6px 0;
+		}
+
+		/* Image preview */
+		.image-preview {
+			width: 100%;
+			height: 120px;
+			background: #f8f9fa;
+			border: 2px dashed #ddd;
+			border-radius: 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			margin-top: 0.5rem;
+		}
+		.image-preview img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+			display: none;
+		}
+		.image-preview img.visible { display: block; }
+		.image-preview-placeholder {
+			font-size: 0.85rem;
+			color: #aaa;
+		}
+
+		/* Upload button */
+		.upload-btn {
+			display: inline-flex !important;
+			align-items: center;
+			gap: 0.35rem;
+			padding: 0.5rem 0.85rem;
+			background: #e8f4f7;
+			color: #1d8299;
+			border: 1px solid rgba(29,130,153,0.3);
+			border-radius: 6px;
+			font-size: 0.85rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background 0.15s;
+			white-space: nowrap;
+		}
+		.upload-btn:hover { background: #d4edf2; }
+		.upload-status { font-size: 0.8rem; color: #888; margin: 0.25rem 0 0; }
+
+		/* Modal footer */
+		.boat-modal-footer {
+			display: flex;
+			justify-content: flex-end;
+			gap: 0.75rem;
+			padding-top: 1.25rem;
+			border-top: 1px solid #eee;
+			margin-top: 0.5rem;
+		}
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.4rem;
+			padding: 0.55rem 1.25rem;
+			border: none;
+			border-radius: 6px;
+			font-size: 0.9rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background 0.15s;
+		}
+		.btn--primary { background: #1d8299; color: #fff; }
+		.btn--primary:hover { background: #176f82; }
+		.btn--secondary { background: #f0f0f0; color: #444; }
+		.btn--secondary:hover { background: #e0e0e0; }
+
+		@media (max-width: 700px) {
+			.boats-grid {
+				grid-template-columns: 1fr;
+				padding: 0 0.75rem;
+			}
+			.boats-header {
+				padding: 1rem 0.75rem 0;
+			}
+			.boat-modal-box {
+				max-height: 95vh;
+			}
+			.form-row {
+				flex-direction: column;
+				gap: 0;
+			}
+		}
 	</style>
 
 	<script>
@@ -123,25 +562,25 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			description?: string;
 		};
 
-		const listEl = document.getElementById('boats-list')!;
+		const gridEl = document.getElementById('boats-grid')!;
 		const msgEl = document.getElementById('boats-msg')!;
+		const statsEl = document.getElementById('boats-stats')!;
 		const modal = document.getElementById('boat-edit-modal')!;
 		const form = document.getElementById('boat-edit-form') as HTMLFormElement;
 		const backdrop = document.getElementById('boat-modal-backdrop')!;
 		const cancelBtn = document.getElementById('boat-modal-cancel')!;
+		const closeBtn = document.getElementById('boat-modal-close')!;
 		const previewImg = document.getElementById('boat-image-preview') as HTMLImageElement;
-		const previewWrap = document.getElementById('boat-image-preview-wrap')!;
+		const placeholderEl = document.getElementById('image-placeholder')!;
 		const imageUrlInput = document.getElementById('boat-edit-imageUrl') as HTMLInputElement;
 		const uploadStatusEl = document.getElementById('boat-upload-status')!;
 		const fileInput = document.getElementById('boat-edit-file') as HTMLInputElement;
 
-		function showMsg(text: string) {
-			msgEl.textContent = text;
-		}
+		function showMsg(text: string) { msgEl.textContent = text; }
 
 		function openModal(boat: Boat) {
 			(form.querySelector('#boat-edit-id') as HTMLInputElement).value = boat.id;
-			(imageUrlInput).value = boat.imageUrl || '';
+			imageUrlInput.value = boat.imageUrl || '';
 			(form.querySelector('#boat-edit-name') as HTMLInputElement).value = boat.name || '';
 			(form.querySelector('#boat-edit-price4h') as HTMLInputElement).value = String(boat.price4h ?? '');
 			(form.querySelector('#boat-edit-price7h') as HTMLInputElement).value = String(boat.price7h ?? '');
@@ -153,23 +592,23 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			(form.querySelector('#boat-edit-description') as HTMLTextAreaElement).value = boat.description || '';
 			updatePreview(boat.imageUrl || '');
 			modal.setAttribute('aria-hidden', 'false');
+			document.body.style.overflow = 'hidden';
 		}
 
 		function closeModal() {
 			modal.setAttribute('aria-hidden', 'true');
+			document.body.style.overflow = '';
 		}
 
 		function updatePreview(url: string) {
-			if (url && url.startsWith('http')) {
+			if (url && (url.startsWith('http') || url.startsWith('/'))) {
 				previewImg.src = url;
 				previewImg.alt = 'Preview';
-				previewImg.style.display = 'block';
-			} else if (url && url.startsWith('/')) {
-				previewImg.src = url;
-				previewImg.alt = 'Preview';
-				previewImg.style.display = 'block';
+				previewImg.classList.add('visible');
+				placeholderEl.style.display = 'none';
 			} else {
-				previewImg.style.display = 'none';
+				previewImg.classList.remove('visible');
+				placeholderEl.style.display = '';
 			}
 		}
 
@@ -180,21 +619,13 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			const file = input?.files?.[0];
 			if (!file) return;
 			const boatId = (form.querySelector('#boat-edit-id') as HTMLInputElement).value.trim();
-			if (!boatId) {
-				uploadStatusEl.textContent = 'Open a boat first (Edit) then upload.';
-				input.value = '';
-				return;
-			}
-			uploadStatusEl.textContent = 'Uploading…';
+			if (!boatId) { uploadStatusEl.textContent = 'Open a boat first (Edit) then upload.'; input.value = ''; return; }
+			uploadStatusEl.textContent = 'Uploading...';
 			try {
 				const { getFirebaseStorage } = await import('../../lib/firebase');
 				const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
 				const storage = getFirebaseStorage();
-				if (!storage) {
-					uploadStatusEl.textContent = 'Storage not configured.';
-					input.value = '';
-					return;
-				}
+				if (!storage) { uploadStatusEl.textContent = 'Storage not configured.'; input.value = ''; return; }
 				const path = `boats/${boatId}/main.jpg`;
 				const storageRef = ref(storage, path);
 				await uploadBytes(storageRef, file);
@@ -202,15 +633,13 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 				imageUrlInput.value = url;
 				updatePreview(url);
 				uploadStatusEl.textContent = 'Uploaded. Click Save to keep.';
-			} catch (err) {
-				uploadStatusEl.textContent = 'Upload failed.';
-				console.error(err);
-			}
+			} catch (err) { uploadStatusEl.textContent = 'Upload failed.'; console.error(err); }
 			input.value = '';
 		});
 
 		backdrop.addEventListener('click', closeModal);
 		cancelBtn.addEventListener('click', closeModal);
+		closeBtn.addEventListener('click', closeModal);
 		document.addEventListener('keydown', (e) => {
 			if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
 		});
@@ -234,46 +663,65 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 				description: (form.querySelector('#boat-edit-description') as HTMLTextAreaElement).value.trim(),
 			};
 			showMsg('');
-			const res = await fetch('/api/boats', {
-				method: 'PUT',
-				headers: { 'Content-Type': 'application/json' },
-				credentials: 'include',
-				body: JSON.stringify(payload),
-			});
-			if (res.ok) {
-				showMsg('Saved.');
-				closeModal();
-				loadBoats();
-			} else {
-				const data = await res.json().catch(() => ({}));
-				showMsg(data.error || 'Failed to save.');
-			}
+			const res = await fetch('/api/boats', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(payload) });
+			if (res.ok) { showMsg('Saved successfully.'); closeModal(); loadBoats(); }
+			else { const data = await res.json().catch(() => ({})); showMsg(data.error || 'Failed to save.'); }
 		});
 
 		let currentBoats: Boat[] = [];
 
+		function escapeHtml(str: string) {
+			return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+		}
+
 		function renderBoats(boats: Boat[]) {
 			currentBoats = boats;
+
+			// Stats
+			const totalPax = boats.reduce((s, b) => s + (b.maxPax || 0), 0);
+			statsEl.innerHTML = `
+				<div class="stat-badge"><span class="stat-badge-value">${boats.length}</span><span class="stat-badge-label">Boats</span></div>
+				<div class="stat-badge"><span class="stat-badge-value">${totalPax}</span><span class="stat-badge-label">Total Pax</span></div>
+			`;
+
 			if (!boats.length) {
-				listEl.innerHTML = '<p>No boats. The first GET to /api/boats will seed 3 boats — refresh the page.</p>';
+				gridEl.innerHTML = '<p style="padding:2rem;color:#888;text-align:center;">No boats found. The first GET to /api/boats will seed boats — refresh the page.</p>';
 				return;
 			}
-			listEl.innerHTML = boats.map((b) => `
-				<div class="boat-product-line" data-id="${b.id}">
-					<img class="boat-product-line-thumb" src="${b.imageUrl || '/images/self-drive-boat.png'}" alt="${b.name}" />
-					<div class="boat-product-line-info">
-						<p class="boat-product-line-name">${b.name}</p>
-						<p class="boat-product-line-meta">4h €${b.price4h} · 7h €${b.price7h} · Max ${b.maxPax} pax</p>
+
+			gridEl.innerHTML = boats.map((b) => `
+				<div class="boat-card" data-id="${b.id}">
+					<div class="boat-card-image">
+						<img src="${escapeHtml(b.imageUrl || '/images/self-drive-boat.png')}" alt="${escapeHtml(b.name)}" loading="lazy" />
+						<span class="boat-card-pax">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+							${b.maxPax} pax
+						</span>
 					</div>
-					<div class="boat-product-line-actions">
-						<button type="button" class="dash-btn boat-edit-btn" data-id="${b.id}">Edit</button>
+					<div class="boat-card-body">
+						<h3 class="boat-card-name">${escapeHtml(b.name)}</h3>
+						${b.modalName ? `<p class="boat-card-modal-name">${escapeHtml(b.modalName)}</p>` : ''}
+						<div class="boat-card-details">
+							${b.lengthMeters ? `<span class="boat-card-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4"/></svg>${escapeHtml(b.lengthMeters)}m</span>` : ''}
+							${b.fuelExcludedText ? `<span class="boat-card-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22h12M5 22V2l7 4v16"/><path d="M19 12V8l-4-2"/></svg>${escapeHtml(b.fuelExcludedText)}</span>` : ''}
+						</div>
+						<div class="boat-card-prices">
+							<span class="price-tag"><span class="price-tag-amount">&euro;${b.price4h}</span><span class="price-tag-label">/4h</span></span>
+							<span class="price-tag"><span class="price-tag-amount">&euro;${b.price7h}</span><span class="price-tag-label">/7h</span></span>
+						</div>
+						${b.includes && b.includes.length ? `<ul class="boat-card-includes">${b.includes.slice(0, 5).map(i => `<li>${escapeHtml(i)}</li>`).join('')}${b.includes.length > 5 ? `<li>+${b.includes.length - 5} more</li>` : ''}</ul>` : ''}
+						<div class="boat-card-footer">
+							<button type="button" class="edit-btn boat-edit-btn" data-id="${b.id}">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+								Edit
+							</button>
+						</div>
 					</div>
 				</div>
 			`).join('');
 		}
 
-		// Event delegation: any Edit click in the boats list opens the modal
-		listEl.addEventListener('click', (e) => {
+		gridEl.addEventListener('click', (e) => {
 			const btn = e.target instanceof Element ? e.target.closest('.boat-edit-btn[data-id]') : null;
 			if (!btn) return;
 			e.preventDefault();
@@ -284,10 +732,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 
 		async function loadBoats() {
 			const res = await fetch('/api/boats', { credentials: 'include' });
-			if (!res.ok) {
-				listEl.innerHTML = '<p>Failed to load boats.</p>';
-				return;
-			}
+			if (!res.ok) { gridEl.innerHTML = '<p style="padding:2rem;color:#c00;">Failed to load boats.</p>'; return; }
 			const boats: Boat[] = await res.json();
 			renderBoats(boats);
 		}
