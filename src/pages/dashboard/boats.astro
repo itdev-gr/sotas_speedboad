@@ -72,20 +72,9 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 					<textarea id="f-description" rows="3" placeholder="Short description"></textarea>
 				</div>
 				<div class="pf">
-					<label>Image</label>
-					<div class="pf-row" style="align-items:flex-end;">
-						<input type="text" id="f-imageUrl" placeholder="URL or upload" style="flex:1;" />
-						<label class="upload-btn">
-							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-							Upload
-							<input type="file" id="f-file" accept="image/*" hidden />
-						</label>
-					</div>
+					<label>Images (1–4)</label>
+					<div id="images-grid" class="images-grid"></div>
 					<p id="upload-status" style="font-size:0.8rem;color:#888;margin:0.25rem 0 0;"></p>
-					<div class="img-preview" id="img-preview">
-						<img id="img-preview-img" src="" alt="" />
-						<span id="img-placeholder">No image</span>
-					</div>
 				</div>
 			</div>
 
@@ -284,10 +273,16 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 		.pf-row { display: flex; gap: 0.75rem; }
 		.pf-row > .pf { flex: 1; }
 
-		/* Image preview */
-		.img-preview {
-			width: 100%;
-			height: 100px;
+		/* Images grid */
+		.images-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0.5rem;
+			margin-top: 0.4rem;
+		}
+		.img-slot {
+			position: relative;
+			aspect-ratio: 4/3;
 			background: #f8f9fa;
 			border: 2px dashed #ddd;
 			border-radius: 6px;
@@ -295,29 +290,53 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			align-items: center;
 			justify-content: center;
 			overflow: hidden;
-			margin-top: 0.4rem;
-		}
-		.img-preview img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
-		.img-preview img.visible { display: block; }
-		.img-preview span { font-size: 0.85rem; color: #aaa; }
-
-		/* Upload button */
-		.upload-btn {
-			display: inline-flex !important;
-			align-items: center;
-			gap: 0.3rem;
-			padding: 0.5rem 0.75rem;
-			background: #e8f4f7;
-			color: #1d8299;
-			border: 1px solid rgba(29,130,153,0.3);
-			border-radius: 6px;
-			font-size: 0.82rem;
-			font-weight: 500;
 			cursor: pointer;
-			white-space: nowrap;
-			flex-shrink: 0;
 		}
-		.upload-btn:hover { background: #d4edf2; }
+		.img-slot:hover { border-color: #1d8299; }
+		.img-slot img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.img-slot-empty {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.2rem;
+			color: #aaa;
+			font-size: 0.75rem;
+		}
+		.img-slot-empty svg { opacity: 0.5; }
+		.img-slot-remove {
+			position: absolute;
+			top: 4px;
+			right: 4px;
+			width: 22px;
+			height: 22px;
+			background: rgba(0,0,0,0.6);
+			color: #fff;
+			border: none;
+			border-radius: 50%;
+			font-size: 0.75rem;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			line-height: 1;
+		}
+		.img-slot-remove:hover { background: #c00; }
+		.img-slot-badge {
+			position: absolute;
+			bottom: 4px;
+			left: 4px;
+			background: rgba(29,130,153,0.85);
+			color: #fff;
+			font-size: 0.65rem;
+			font-weight: 600;
+			padding: 1px 5px;
+			border-radius: 3px;
+		}
 
 		/* Panel footer */
 		.panel-footer {
@@ -359,14 +378,12 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 		const overlay = document.getElementById('panel-overlay')!;
 		const panelTitle = document.getElementById('panel-title')!;
 		const form = document.getElementById('boat-form') as HTMLFormElement;
-		const previewImg = document.getElementById('img-preview-img') as HTMLImageElement;
-		const placeholderEl = document.getElementById('img-placeholder')!;
-		const imageUrlInput = document.getElementById('f-imageUrl') as HTMLInputElement;
+		const imagesGrid = document.getElementById('images-grid')!;
 		const uploadStatus = document.getElementById('upload-status')!;
-		const fileInput = document.getElementById('f-file') as HTMLInputElement;
 
 		let boats: Boat[] = [];
 		let isCreateMode = false;
+		let panelImages: string[] = []; // current images being edited (1-4)
 
 		function esc(s: string) {
 			return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -386,7 +403,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 						<button type="button" class="sort-btn move-up" data-i="${i}" ${i === 0 ? 'disabled' : ''} title="Move up">&#9650;</button>
 						<button type="button" class="sort-btn move-down" data-i="${i}" ${i === boats.length - 1 ? 'disabled' : ''} title="Move down">&#9660;</button>
 					</td>
-					<td><img class="boat-thumb" src="${esc(b.imageUrl || '/images/self-drive-boat.png')}" alt="${esc(b.name)}" /></td>
+					<td><img class="boat-thumb" src="${esc((b.imageUrls && b.imageUrls[0]) || b.imageUrl || '/images/self-drive-boat.png')}" alt="${esc(b.name)}" /></td>
 					<td><strong>${esc(b.name)}</strong>${b.modalName ? `<br><small style="color:#888">${esc(b.modalName)}</small>` : ''}</td>
 					<td>${b.maxPax}</td>
 					<td>&euro;${b.price4h}</td>
@@ -450,7 +467,10 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			(document.getElementById('f-lengthMeters') as HTMLInputElement).value = boat.lengthMeters || '';
 			(document.getElementById('f-maxPax') as HTMLInputElement).value = String(boat.maxPax || '');
 			(document.getElementById('f-description') as HTMLTextAreaElement).value = boat.description || '';
-			imageUrlInput.value = boat.imageUrl || '';
+			// Build images array: imageUrls if available, fall back to imageUrl
+			const urls = (boat.imageUrls && boat.imageUrls.length) ? [...boat.imageUrls] : (boat.imageUrl ? [boat.imageUrl] : []);
+			panelImages = urls.filter(Boolean).slice(0, 4);
+			renderImagesGrid();
 			(document.getElementById('f-price4h') as HTMLInputElement).value = String(boat.price4h || '');
 			(document.getElementById('f-price7h') as HTMLInputElement).value = String(boat.price7h || '');
 			(document.getElementById('f-skipperPrice4h') as HTMLInputElement).value = String(boat.skipperPrice4h || '');
@@ -458,7 +478,6 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			(document.getElementById('f-fuelExcludedText') as HTMLInputElement).value = boat.fuelExcludedText || 'Fuel not included';
 			(document.getElementById('f-includes') as HTMLTextAreaElement).value = (boat.includes || []).join('\n');
 			(document.getElementById('f-sortOrder') as HTMLInputElement).value = String(boat.sortOrder || '');
-			updatePreview(boat.imageUrl || '');
 			uploadStatus.textContent = '';
 			// Reset to Details tab
 			switchTab('details');
@@ -494,37 +513,73 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			if (tab) switchTab(tab.getAttribute('data-tab')!);
 		});
 
-		// --- Image preview ---
-		function updatePreview(url: string) {
-			if (url && (url.startsWith('http') || url.startsWith('/'))) {
-				previewImg.src = url;
-				previewImg.classList.add('visible');
-				placeholderEl.style.display = 'none';
-			} else {
-				previewImg.classList.remove('visible');
-				placeholderEl.style.display = '';
+		// --- Multi-image grid ---
+		function renderImagesGrid() {
+			const MAX = 4;
+			let html = '';
+			for (let i = 0; i < MAX; i++) {
+				const url = panelImages[i] || '';
+				if (url) {
+					html += `<div class="img-slot" data-i="${i}">
+						<img src="${esc(url)}" alt="Image ${i + 1}" />
+						<button type="button" class="img-slot-remove" data-i="${i}" title="Remove">&times;</button>
+						${i === 0 ? '<span class="img-slot-badge">Main</span>' : ''}
+					</div>`;
+				} else if (i <= panelImages.length) {
+					// Show one empty slot after the last filled one (or slot 0 if none)
+					html += `<div class="img-slot img-slot-add" data-i="${i}">
+						<span class="img-slot-empty">
+							<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+							Add image
+						</span>
+						<input type="file" accept="image/*" hidden />
+					</div>`;
+					break; // only one empty add-slot at a time
+				}
 			}
+			imagesGrid.innerHTML = html;
 		}
-		imageUrlInput.addEventListener('input', () => updatePreview(imageUrlInput.value));
 
-		fileInput.addEventListener('change', async (e: Event) => {
+		imagesGrid.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement;
+			// Remove button
+			const removeBtn = target.closest('.img-slot-remove') as HTMLElement;
+			if (removeBtn) {
+				e.stopPropagation();
+				const i = Number(removeBtn.dataset.i);
+				panelImages.splice(i, 1);
+				renderImagesGrid();
+				return;
+			}
+			// Click on add slot -> trigger file input
+			const addSlot = target.closest('.img-slot-add') as HTMLElement;
+			if (addSlot) {
+				const fileInput = addSlot.querySelector('input[type="file"]') as HTMLInputElement;
+				fileInput?.click();
+			}
+		});
+
+		imagesGrid.addEventListener('change', async (e: Event) => {
 			const input = e.target as HTMLInputElement;
-			const file = input?.files?.[0];
+			if (input.type !== 'file') return;
+			const file = input.files?.[0];
 			if (!file) return;
 			const boatId = (document.getElementById('f-id') as HTMLInputElement).value.trim();
 			if (!boatId) { uploadStatus.textContent = 'Save the boat first, then upload.'; input.value = ''; return; }
-			uploadStatus.textContent = 'Uploading...';
+			const slot = input.closest('.img-slot-add') as HTMLElement;
+			const idx = Number(slot?.dataset.i ?? panelImages.length);
+			uploadStatus.textContent = `Uploading image ${idx + 1}...`;
 			try {
 				const { getFirebaseStorage } = await import('../../lib/firebase');
 				const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
 				const storage = getFirebaseStorage();
 				if (!storage) { uploadStatus.textContent = 'Storage not configured.'; input.value = ''; return; }
-				const path = `boats/${boatId}/main.jpg`;
+				const path = `boats/${boatId}/img_${idx}.jpg`;
 				const storageRef = ref(storage, path);
 				await uploadBytes(storageRef, file);
 				const url = await getDownloadURL(storageRef);
-				imageUrlInput.value = url;
-				updatePreview(url);
+				panelImages[idx] = url;
+				renderImagesGrid();
 				uploadStatus.textContent = 'Uploaded. Click Save to keep.';
 			} catch (err) { uploadStatus.textContent = 'Upload failed.'; console.error(err); }
 			input.value = '';
@@ -539,7 +594,8 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			const payload = {
 				id,
 				name: (document.getElementById('f-name') as HTMLInputElement).value.trim(),
-				imageUrl: imageUrlInput.value.trim(),
+				imageUrl: panelImages[0] || '',
+				imageUrls: [...panelImages],
 				price4h: Number((document.getElementById('f-price4h') as HTMLInputElement).value) || 0,
 				price7h: Number((document.getElementById('f-price7h') as HTMLInputElement).value) || 0,
 				skipperPrice4h: Number((document.getElementById('f-skipperPrice4h') as HTMLInputElement).value) || 0,
