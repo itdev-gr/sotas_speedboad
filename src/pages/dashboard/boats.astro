@@ -276,13 +276,13 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 		/* Images grid */
 		.images-grid {
 			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			gap: 0.5rem;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 0.35rem;
 			margin-top: 0.4rem;
 		}
 		.img-slot {
 			position: relative;
-			aspect-ratio: 4/3;
+			aspect-ratio: 1;
 			background: #f8f9fa;
 			border: 2px dashed #ddd;
 			border-radius: 6px;
@@ -303,17 +303,17 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 0.2rem;
+			gap: 0.1rem;
 			color: #aaa;
-			font-size: 0.75rem;
+			font-size: 0.6rem;
 		}
-		.img-slot-empty svg { opacity: 0.5; }
+		.img-slot-empty svg { opacity: 0.5; width: 14px; height: 14px; }
 		.img-slot-remove {
 			position: absolute;
-			top: 4px;
-			right: 4px;
-			width: 22px;
-			height: 22px;
+			top: 2px;
+			right: 2px;
+			width: 18px;
+			height: 18px;
 			background: rgba(0,0,0,0.6);
 			color: #fff;
 			border: none;
@@ -328,8 +328,8 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 		.img-slot-remove:hover { background: #c00; }
 		.img-slot-badge {
 			position: absolute;
-			bottom: 4px;
-			left: 4px;
+			bottom: 2px;
+			left: 2px;
 			background: rgba(29,130,153,0.85);
 			color: #fff;
 			font-size: 0.65rem;
