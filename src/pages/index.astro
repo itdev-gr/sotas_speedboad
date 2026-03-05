@@ -1,5 +1,4 @@
 ---
-// Βάλτε το βίντεό σας στο public/videos/hero.mp4 (ή αλλάξτε το src παρακάτω)
 import FloatingContact from '../components/FloatingContact.astro';
 import Header from '../components/Header.astro';
 ---
@@ -18,18 +17,15 @@ import Header from '../components/Header.astro';
 	</head>
 	<body>
 		<section class="hero" aria-label="Hero section">
-			<!-- Fullscreen video background -->
-			<div class="hero-video-wrap">
-				<video
-					class="hero-video"
-					autoplay
-					muted
-					playsinline
+			<!-- Fullscreen image background -->
+			<div class="hero-image-wrap">
+				<img
+					class="hero-image is-ready"
+					src="/images/unnamed.jpg"
+					alt="Zakynthos boat cruise"
 					aria-hidden="true"
-					data-hero-video
-				>
-					<source src="/videos/hero.mp4" type="video/mp4" />
-				</video>
+					data-hero-image
+				/>
 				<div class="hero-overlay" aria-hidden="true"></div>
 			</div>
 
@@ -228,55 +224,43 @@ import Header from '../components/Header.astro';
 
 		<script is:inline>
 			document.addEventListener('DOMContentLoaded', () => {
-			const video = document.querySelector('.hero-video');
+			const heroImage = document.querySelector('[data-hero-image]');
 			const heroContent = document.querySelector('.hero-content');
 			const heroContentSecond = document.querySelector('.hero-content-second');
 			const prevBtn = document.querySelector('.hero-arrow-prev');
 			const nextBtn = document.querySelector('.hero-arrow-next');
 
-			if (video) {
-				const sources = ['/videos/hero.mp4', '/videos/hero2.mp4'];
+			if (heroImage) {
+				const images = ['/images/unnamed.jpg', '/images/hero2.png'];
 				let currentIndex = 0;
-				let hideTriggeredForFirstVideo = false;
-				const sourceEl = video.querySelector('source');
+				let autoTimer = null;
 
-				const showVideo = () => video.classList.add('is-ready');
-				video.addEventListener('canplay', showVideo, { once: true });
-				video.addEventListener('playing', showVideo, { once: true });
-				if (video.readyState >= 2) showVideo();
-
-				function goToVideo(index) {
-					currentIndex = (index + sources.length) % sources.length;
-					sourceEl.setAttribute('src', sources[currentIndex]);
-					video.load();
-					video.play();
+				function goToSlide(index) {
+					currentIndex = (index + images.length) % images.length;
+					heroImage.classList.remove('is-ready');
+					heroImage.src = images[currentIndex];
+					heroImage.onload = () => heroImage.classList.add('is-ready');
 					if (currentIndex === 0) {
-						hideTriggeredForFirstVideo = false;
 						heroContent?.classList.remove('hero-content--hidden');
 						heroContentSecond?.classList.remove('hero-content-second--visible');
 					} else {
 						heroContent?.classList.add('hero-content--hidden');
 						heroContentSecond?.classList.add('hero-content-second--visible');
 					}
+					resetAutoPlay();
 				}
 
-				video.addEventListener('timeupdate', () => {
-					if (currentIndex !== 0 || hideTriggeredForFirstVideo) return;
-					const duration = video.duration;
-					if (!Number.isFinite(duration)) return;
-					if (video.currentTime >= duration - 0.5) {
-						hideTriggeredForFirstVideo = true;
-						heroContent?.classList.add('hero-content--hidden');
-					}
-				});
+				function resetAutoPlay() {
+					if (autoTimer) clearInterval(autoTimer);
+					autoTimer = setInterval(() => goToSlide(currentIndex + 1), 6000);
+				}
 
-				video.addEventListener('ended', () => goToVideo(currentIndex + 1));
+				resetAutoPlay();
 
-				if (prevBtn) prevBtn.addEventListener('click', (e) => { e.preventDefault(); goToVideo(currentIndex - 1); });
-				if (nextBtn) nextBtn.addEventListener('click', (e) => { e.preventDefault(); goToVideo(currentIndex + 1); });
+				if (prevBtn) prevBtn.addEventListener('click', (e) => { e.preventDefault(); goToSlide(currentIndex - 1); });
+				if (nextBtn) nextBtn.addEventListener('click', (e) => { e.preventDefault(); goToSlide(currentIndex + 1); });
 			}
 
-			// Header transparent until scroll past hero, then solid teal (handled by Header component + this script)
 			const header = document.querySelector('.hero-header');
 			const heroSection = document.querySelector('.hero');
 			if (header && heroSection) {
@@ -323,21 +307,21 @@ import Header from '../components/Header.astro';
 		padding-top: 5rem;
 	}
 
-	/* Video container – fullscreen */
-	.hero-video-wrap {
+	/* Image container – fullscreen */
+	.hero-image-wrap {
 		position: absolute;
 		inset: 0;
 		z-index: 0;
 		background: #000;
 	}
-	.hero-video {
+	.hero-image {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		opacity: 0;
-		transition: opacity 0.5s ease;
+		transition: opacity 0.8s ease;
 	}
-	.hero-video.is-ready {
+	.hero-image.is-ready {
 		opacity: 1;
 	}
 	.hero-overlay {
@@ -350,12 +334,6 @@ import Header from '../components/Header.astro';
 			rgba(10, 22, 40, 0.5) 100%
 		);
 		pointer-events: none;
-	}
-
-	/* Fallback όταν δεν φορτώνει βίντεο */
-	.hero-video-wrap:has(.hero-video:not([src])) .hero-overlay,
-	.hero-video-wrap .hero-overlay {
-		/* overlay πάντα ορατό */
 	}
 
 	/* Carousel arrows */
