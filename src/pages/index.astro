@@ -240,7 +240,7 @@ import Header from '../components/Header.astro';
 					heroImage.classList.remove('is-ready');
 					heroImage.src = images[currentIndex];
 					heroImage.onload = () => heroImage.classList.add('is-ready');
-					heroImage.closest('.hero-image-wrap').classList.toggle('hero-image-wrap--contain', currentIndex === 1);
+					heroImage.closest('.hero-image-wrap').classList.toggle('hero-image-wrap--hero2', currentIndex === 1);
 					if (currentIndex === 0) {
 						heroContent?.classList.remove('hero-content--hidden');
 						heroContentSecond?.classList.remove('hero-content-second--visible');
@@ -325,11 +325,8 @@ import Header from '../components/Header.astro';
 	.hero-image.is-ready {
 		opacity: 1;
 	}
-	.hero-image-wrap--contain {
-		background: #0a7e9e;
-	}
-	.hero-image-wrap--contain .hero-image {
-		object-fit: contain;
+	.hero-image-wrap--hero2 .hero-image {
+		object-position: center bottom;
 	}
 	.hero-overlay {
 		position: absolute;
