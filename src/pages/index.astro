@@ -66,6 +66,60 @@ import Header from '../components/Header.astro';
 			</div>
 		</section>
 
+		<!-- Services bar -->
+		<section class="services-bar" aria-label="Our services">
+			<div class="services-bar-inner">
+				<div class="services-bar-item">
+					<svg class="services-bar-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M32 6L14 18v28l18 12 18-12V18L32 6z" stroke="currentColor" stroke-width="2" fill="none"/>
+						<rect x="24" y="28" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+						<path d="M28 28v-4a4 4 0 018 0v4" stroke="currentColor" stroke-width="2" fill="none"/>
+					</svg>
+					<span class="services-bar-label">Private Yachting</span>
+				</div>
+				<div class="services-bar-divider"></div>
+				<div class="services-bar-item">
+					<svg class="services-bar-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="32" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+						<line x1="32" y1="13" x2="32" y2="54" stroke="currentColor" stroke-width="2"/>
+						<line x1="22" y1="54" x2="42" y2="54" stroke="currentColor" stroke-width="2"/>
+						<path d="M24 22c4 4 12 4 16 0" stroke="currentColor" stroke-width="2" fill="none"/>
+						<path d="M22 32c5 5 15 5 20 0" stroke="currentColor" stroke-width="2" fill="none"/>
+					</svg>
+					<span class="services-bar-label">Boat Rentals with Skipper</span>
+				</div>
+				<div class="services-bar-divider"></div>
+				<div class="services-bar-item">
+					<svg class="services-bar-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width="2"/>
+						<circle cx="32" cy="32" r="4" stroke="currentColor" stroke-width="2"/>
+						<line x1="32" y1="14" x2="32" y2="24" stroke="currentColor" stroke-width="2"/>
+						<line x1="32" y1="40" x2="32" y2="50" stroke="currentColor" stroke-width="2"/>
+						<line x1="14" y1="32" x2="24" y2="32" stroke="currentColor" stroke-width="2"/>
+						<line x1="40" y1="32" x2="50" y2="32" stroke="currentColor" stroke-width="2"/>
+						<line x1="19.3" y1="19.3" x2="25.5" y2="25.5" stroke="currentColor" stroke-width="2"/>
+						<line x1="38.5" y1="38.5" x2="44.7" y2="44.7" stroke="currentColor" stroke-width="2"/>
+						<line x1="44.7" y1="19.3" x2="38.5" y2="25.5" stroke="currentColor" stroke-width="2"/>
+						<line x1="25.5" y1="38.5" x2="19.3" y2="44.7" stroke="currentColor" stroke-width="2"/>
+					</svg>
+					<span class="services-bar-label">Self Drive Boats</span>
+				</div>
+				<div class="services-bar-divider"></div>
+				<div class="services-bar-item">
+					<svg class="services-bar-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<rect x="20" y="8" width="24" height="6" rx="1" stroke="currentColor" stroke-width="2"/>
+						<path d="M22 14v4h20v-4" stroke="currentColor" stroke-width="2" fill="none"/>
+						<line x1="24" y1="18" x2="24" y2="52" stroke="currentColor" stroke-width="2"/>
+						<line x1="40" y1="18" x2="40" y2="52" stroke="currentColor" stroke-width="2"/>
+						<path d="M24 18c0 8 16 8 16 18" stroke="currentColor" stroke-width="1.5" fill="none"/>
+						<path d="M24 24c0 6 16 6 16 14" stroke="currentColor" stroke-width="1.5" fill="none"/>
+						<line x1="20" y1="52" x2="44" y2="52" stroke="currentColor" stroke-width="2"/>
+					</svg>
+					<span class="services-bar-label">Special Celebrations</span>
+				</div>
+			</div>
+		</section>
+
 		<!-- Fleet section: commented out for now
 		<section class="fleet-section" aria-label="Our fleet and experience">
 			<div class="fleet-top">
@@ -531,6 +585,67 @@ import Header from '../components/Header.astro';
 		}
 		.hero-arrow-next {
 			right: 0.5rem;
+		}
+	}
+
+	/* Services bar */
+	.services-bar {
+		width: 100%;
+		background: #c4b9ab;
+	}
+	.services-bar-inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 1.5rem 2rem;
+	}
+	.services-bar-item {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.5rem 1rem;
+	}
+	.services-bar-icon {
+		width: 48px;
+		height: 48px;
+		color: #8b7765;
+	}
+	.services-bar-label {
+		font-size: 0.9rem;
+		font-weight: 400;
+		color: #6b5e52;
+		letter-spacing: 0.02em;
+		text-align: center;
+	}
+	.services-bar-divider {
+		width: 1px;
+		height: 60px;
+		background: rgba(139, 119, 101, 0.35);
+		flex-shrink: 0;
+	}
+	@media (max-width: 700px) {
+		.services-bar-inner {
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			padding: 1.25rem 1rem;
+		}
+		.services-bar-item {
+			flex: 1 1 40%;
+			min-width: 140px;
+		}
+		.services-bar-divider {
+			display: none;
+		}
+		.services-bar-icon {
+			width: 36px;
+			height: 36px;
+		}
+		.services-bar-label {
+			font-size: 0.8rem;
 		}
 	}
 
