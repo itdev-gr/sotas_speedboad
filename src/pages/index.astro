@@ -492,6 +492,46 @@ import Header from '../components/Header.astro';
 			right: 0.75rem;
 		}
 	}
+	@media (max-width: 600px) {
+		.hero {
+			min-height: 100svh;
+			padding-top: 4rem;
+		}
+		.hero-content {
+			margin-left: 5%;
+			margin-top: 15vh;
+			padding: 1.25rem;
+		}
+		.hero-content-second {
+			margin-right: 5%;
+			margin-top: calc(15vh - 35vh);
+			padding: 1.25rem;
+		}
+		.hero-title {
+			font-size: clamp(2rem, 8vw, 3rem);
+		}
+		.hero-subtitle {
+			font-size: 0.9rem;
+		}
+		.hero-cta {
+			padding: 0.7rem 1.5rem;
+			font-size: 0.8rem;
+		}
+		.hero-arrow {
+			width: 36px;
+			height: 36px;
+		}
+		.hero-arrow svg {
+			width: 18px;
+			height: 18px;
+		}
+		.hero-arrow-prev {
+			left: 0.5rem;
+		}
+		.hero-arrow-next {
+			right: 0.5rem;
+		}
+	}
 
 	/* Fleet section (under hero): headline + image, then three features */
 	.fleet-section {
@@ -633,6 +673,25 @@ import Header from '../components/Header.astro';
 			padding: 0 1.5rem 2rem;
 		}
 	}
+	@media (max-width: 600px) {
+		.fleet-section {
+			padding-bottom: 2rem;
+		}
+		.fleet-top {
+			padding: 2rem 1.25rem 1.5rem;
+			gap: 2rem;
+		}
+		.fleet-para {
+			max-width: none;
+		}
+		.fleet-features {
+			padding: 0 1.25rem 1.5rem;
+			gap: 1rem;
+		}
+		.fleet-feature {
+			padding: 1.5rem 1rem;
+		}
+	}
 
 	/* Third section: Self Drive Boat Rentals */
 	.selfdrive-section {
@@ -767,17 +826,51 @@ import Header from '../components/Header.astro';
 	}
 
 	@media (max-width: 900px) {
+		.selfdrive-section {
+			height: auto;
+			min-height: auto;
+		}
 		.selfdrive-inner {
 			grid-template-columns: 1fr;
 		}
 		.selfdrive-text {
-			padding: 3rem 1.5rem 3rem 1.5rem;
+			padding: 2.5rem 1.5rem;
 		}
 		.selfdrive-image-wrap {
-			min-height: 300px;
+			min-height: 250px;
+			max-height: 350px;
 		}
 		.selfdrive-image {
-			min-height: 300px;
+			min-height: 250px;
+			max-height: 350px;
+		}
+		.selfdrive-section--last .selfdrive-image-wrap {
+			grid-column: auto;
+			grid-row: auto;
+		}
+		.selfdrive-section--last .selfdrive-text {
+			grid-column: auto;
+			grid-row: auto;
+		}
+		.selfdrive-desc {
+			max-width: none;
+		}
+	}
+	@media (max-width: 600px) {
+		.selfdrive-text {
+			padding: 2rem 1.25rem;
+			gap: 1rem;
+		}
+		.selfdrive-title {
+			font-size: clamp(1.5rem, 6vw, 2rem);
+		}
+		.selfdrive-image-wrap {
+			min-height: 200px;
+			max-height: 280px;
+		}
+		.selfdrive-image {
+			min-height: 200px;
+			max-height: 280px;
 		}
 	}
 
@@ -917,11 +1010,15 @@ import Header from '../components/Header.astro';
 	@media (max-width: 600px) {
 		.footer-main {
 			grid-template-columns: 1fr;
-			gap: 2rem;
+			gap: 1.5rem;
+			padding: 2rem 1.25rem 2.5rem;
 		}
 		.footer-copyright {
 			font-size: 0.75rem;
 			text-align: center;
+		}
+		.footer-bottom {
+			padding: 1rem 1.25rem;
 		}
 	}
 </style>
