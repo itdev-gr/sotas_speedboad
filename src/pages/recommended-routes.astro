@@ -1,0 +1,348 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const routes = [
+	{
+		name: 'Navagio (Shipwreck) Beach',
+		duration: '4–7 hours',
+		image: '/images/unnamed.jpg',
+		description: 'Visit the world-famous Shipwreck Beach — accessible only by sea. Crystal-clear turquoise waters and towering white cliffs make this the must-see destination in Zakynthos.',
+		highlights: ['Iconic shipwreck on white sand', 'Turquoise waters perfect for swimming', 'Dramatic cliff scenery', 'Photo opportunities from the sea'],
+	},
+	{
+		name: 'Blue Caves',
+		duration: '4–7 hours',
+		image: '/images/IMG_6416.jpeg',
+		description: 'Explore the magical Blue Caves at the northern tip of Zakynthos. Sunlight reflects off the white limestone and the sandy seabed, creating an incredible blue glow inside the caves.',
+		highlights: ['Natural blue light reflections', 'Swim inside the caves', 'Stunning rock formations', 'Great for snorkeling'],
+	},
+	{
+		name: 'Marathonisi (Turtle Island)',
+		duration: '4 hours',
+		image: '/images/self-drive-boat.png',
+		description: 'Cruise to Turtle Island in Laganas Bay — a protected nesting site for the Caretta Caretta sea turtle. Enjoy the pristine sandy beach and spot turtles in their natural habitat.',
+		highlights: ['Caretta Caretta turtle spotting', 'Unspoiled sandy beach', 'Shallow warm waters', 'Part of the National Marine Park'],
+	},
+	{
+		name: 'Keri Caves & Mizithres',
+		duration: '4 hours',
+		image: '/images/image_skipper.png',
+		description: 'Discover the stunning sea caves of Keri and the impressive Mizithres rock formations on the southwestern coast. A hidden gem with dramatic cliffs dropping into deep blue water.',
+		highlights: ['Impressive rock pillars', 'Sea caves to explore', 'Deep blue swimming spots', 'Secluded and less crowded'],
+	},
+	{
+		name: 'Full Island Tour',
+		duration: '7 hours',
+		image: '/images/unnamed.jpg',
+		description: 'The ultimate Zakynthos experience — circumnavigate the entire island in one day. Visit Navagio, Blue Caves, Xigia Beach, and the south coast caves all in a single unforgettable trip.',
+		highlights: ['Complete island experience', 'All major landmarks in one trip', 'Multiple swimming stops', 'Best value for a full day'],
+	},
+	{
+		name: 'Xigia Sulphur Beach',
+		duration: '4 hours',
+		image: '/images/IMG_6416.jpeg',
+		description: 'A unique natural spa experience — Xigia Beach features natural sulphur springs flowing into the sea. The mineral-rich waters are believed to have therapeutic properties.',
+		highlights: ['Natural sulphur springs', 'Therapeutic mineral waters', 'Beautiful small cove', 'Combine with Blue Caves visit'],
+	},
+];
+---
+
+<html lang="el">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Recommended Routes | Sotas Speedboats – Zakynthos</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+	</head>
+	<body class="routes-body">
+		<Header />
+		<main class="routes-page">
+			<section class="page-hero" aria-label="Recommended Routes">
+				<div class="page-hero-overlay"></div>
+				<div class="page-hero-content">
+					<p class="page-hero-label">EXPLORE ZAKYNTHOS</p>
+					<h1 class="page-hero-title">Recommended Routes</h1>
+					<p class="page-hero-subtitle">Discover the best destinations around Zakynthos by boat. From iconic landmarks to hidden gems.</p>
+				</div>
+			</section>
+
+			<section class="routes-grid-section" aria-label="Routes">
+				<div class="routes-grid">
+					{routes.map((route) => (
+						<div class="route-card">
+							<div class="route-card-image">
+								<img src={route.image} alt={route.name} width="600" height="400" loading="lazy" />
+								<span class="route-card-duration">{route.duration}</span>
+							</div>
+							<div class="route-card-body">
+								<h2 class="route-card-name">{route.name}</h2>
+								<p class="route-card-desc">{route.description}</p>
+								<ul class="route-card-highlights">
+									{route.highlights.map((h) => <li>{h}</li>)}
+								</ul>
+								<a href="/contact" class="route-card-cta">Book This Route</a>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section class="routes-cta-section" aria-label="Contact">
+				<div class="routes-cta-inner">
+					<h2 class="routes-cta-title">Not sure which route to choose?</h2>
+					<p class="routes-cta-desc">Contact us and we'll help you plan the perfect trip based on your preferences, group size, and available time.</p>
+					<div class="routes-cta-buttons">
+						<a href="/contact" class="routes-cta-btn routes-cta-btn--primary">Contact Us</a>
+						<a href="tel:+306970621594" class="routes-cta-btn routes-cta-btn--secondary">Call: +30 697 062 1594</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style is:global>
+	*, *::before, *::after { box-sizing: border-box; }
+	html { scroll-behavior: smooth; }
+	body { margin: 0; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+	body.routes-body { padding-top: 0; }
+</style>
+
+<style>
+	.routes-page { min-height: 100vh; }
+
+	/* Hero */
+	.page-hero {
+		position: relative;
+		width: 100%;
+		min-height: 50vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		overflow: hidden;
+		padding-top: 5rem;
+	}
+	.page-hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: url('/images/IMG_6416.jpeg') center/cover no-repeat;
+		opacity: 0.25;
+	}
+	.page-hero-content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		padding: 3rem 2rem;
+		max-width: 36rem;
+	}
+	.page-hero-label {
+		font-size: 0.75rem;
+		letter-spacing: 0.2em;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 0.5rem 0;
+		text-transform: uppercase;
+	}
+	.page-hero-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		font-weight: 600;
+		color: #fff;
+		margin: 0 0 1rem 0;
+		line-height: 1.2;
+	}
+	.page-hero-subtitle {
+		font-size: 1.1rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	/* Routes grid */
+	.routes-grid-section {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 4rem 2rem;
+	}
+	.routes-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
+	}
+	.route-card {
+		background: #fff;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.route-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+	}
+	.route-card-image {
+		position: relative;
+		width: 100%;
+		height: 240px;
+		overflow: hidden;
+	}
+	.route-card-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.3s;
+	}
+	.route-card:hover .route-card-image img {
+		transform: scale(1.05);
+	}
+	.route-card-duration {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		background: rgba(0, 0, 0, 0.6);
+		color: #fff;
+		font-size: 0.8rem;
+		font-weight: 500;
+		padding: 0.3rem 0.75rem;
+		border-radius: 20px;
+		backdrop-filter: blur(4px);
+	}
+	.route-card-body {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.route-card-name {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.2;
+	}
+	.route-card-desc {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: #444;
+		margin: 0;
+	}
+	.route-card-highlights {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+	.route-card-highlights li {
+		font-size: 0.8rem;
+		color: #064250;
+		background: #e8f4f7;
+		padding: 0.25rem 0.65rem;
+		border-radius: 20px;
+		white-space: nowrap;
+	}
+	.route-card-cta {
+		display: inline-block;
+		align-self: flex-start;
+		margin-top: 0.5rem;
+		padding: 0.65rem 1.5rem;
+		background: #1a1a1a;
+		color: #fff;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-decoration: none;
+		border-radius: 6px;
+		transition: background 0.2s;
+	}
+	.route-card-cta:hover {
+		background: #333;
+	}
+
+	/* Bottom CTA */
+	.routes-cta-section {
+		background: #f5f0e8;
+		padding: 4rem 2rem;
+	}
+	.routes-cta-inner {
+		max-width: 700px;
+		margin: 0 auto;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+	.routes-cta-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+	}
+	.routes-cta-desc {
+		font-size: 1rem;
+		color: #444;
+		margin: 0;
+		line-height: 1.6;
+		max-width: 50ch;
+	}
+	.routes-cta-buttons {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-top: 0.5rem;
+	}
+	.routes-cta-btn {
+		display: inline-block;
+		padding: 0.85rem 2rem;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-decoration: none;
+		border-radius: 6px;
+		transition: background 0.2s, color 0.2s;
+	}
+	.routes-cta-btn--primary {
+		background: #064250;
+		color: #fff;
+	}
+	.routes-cta-btn--primary:hover {
+		background: #0a5a6a;
+	}
+	.routes-cta-btn--secondary {
+		background: #fff;
+		color: #1a1a1a;
+		border: 1px solid #c4beb5;
+	}
+	.routes-cta-btn--secondary:hover {
+		background: #f0ebe3;
+	}
+
+	@media (max-width: 900px) {
+		.routes-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+	@media (max-width: 600px) {
+		.routes-grid-section {
+			padding: 2.5rem 1.25rem;
+		}
+		.route-card-image {
+			height: 200px;
+		}
+		.routes-cta-section {
+			padding: 3rem 1.25rem;
+		}
+	}
+</style>

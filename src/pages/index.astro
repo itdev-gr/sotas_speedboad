@@ -236,7 +236,7 @@ import Header from '../components/Header.astro';
 					<h3 class="footer-title">Links</h3>
 					<ul class="footer-links">
 						<li><a href="#book">Boat Booking</a></li>
-						<li><a href="#routes">Recommended Routes</a></li>
+						<li><a href="/recommended-routes">Recommended Routes</a></li>
 						<li><a href="#selfdrive">Self Drive</a></li>
 						<li><a href="/rent-with-skipper">Skipper Drive</a></li>
 						<li><a href="/faq">FAQ</a></li>
@@ -277,8 +277,23 @@ import Header from '../components/Header.astro';
 			</div>
 		</footer>
 
+		<script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
 		<script is:inline>
 			document.addEventListener('DOMContentLoaded', () => {
+			// GSAP hover animation for services bar icons
+			document.querySelectorAll('.services-bar-icon').forEach(function(icon) {
+				icon.parentElement.addEventListener('mouseenter', function() {
+					gsap.to(icon, { rotation: 15, duration: 0.3, ease: 'power2.out' });
+				});
+				icon.parentElement.addEventListener('mouseleave', function() {
+					gsap.to(icon, { rotation: -15, duration: 0.2, ease: 'power2.inOut',
+						onComplete: function() {
+							gsap.to(icon, { rotation: 0, duration: 0.3, ease: 'elastic.out(1, 0.5)' });
+						}
+					});
+				});
+			});
+
 			const heroImage = document.querySelector('[data-hero-image]');
 			const heroContent = document.querySelector('.hero-content');
 			const heroContentSecond = document.querySelector('.hero-content-second');
@@ -608,6 +623,7 @@ import Header from '../components/Header.astro';
 		align-items: center;
 		gap: 0.6rem;
 		padding: 0.5rem 1rem;
+		cursor: pointer;
 	}
 	.services-bar-icon {
 		width: 48px;
