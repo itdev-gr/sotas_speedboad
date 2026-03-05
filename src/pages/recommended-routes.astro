@@ -1,51 +1,16 @@
 ---
+export const prerender = false;
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const routes = [
-	{
-		name: 'Navagio (Shipwreck) Beach',
-		duration: '4–7 hours',
-		image: '/images/unnamed.jpg',
-		description: 'Visit the world-famous Shipwreck Beach — accessible only by sea. Crystal-clear turquoise waters and towering white cliffs make this the must-see destination in Zakynthos.',
-		highlights: ['Iconic shipwreck on white sand', 'Turquoise waters perfect for swimming', 'Dramatic cliff scenery', 'Photo opportunities from the sea'],
-	},
-	{
-		name: 'Blue Caves',
-		duration: '4–7 hours',
-		image: '/images/IMG_6416.jpeg',
-		description: 'Explore the magical Blue Caves at the northern tip of Zakynthos. Sunlight reflects off the white limestone and the sandy seabed, creating an incredible blue glow inside the caves.',
-		highlights: ['Natural blue light reflections', 'Swim inside the caves', 'Stunning rock formations', 'Great for snorkeling'],
-	},
-	{
-		name: 'Marathonisi (Turtle Island)',
-		duration: '4 hours',
-		image: '/images/self-drive-boat.png',
-		description: 'Cruise to Turtle Island in Laganas Bay — a protected nesting site for the Caretta Caretta sea turtle. Enjoy the pristine sandy beach and spot turtles in their natural habitat.',
-		highlights: ['Caretta Caretta turtle spotting', 'Unspoiled sandy beach', 'Shallow warm waters', 'Part of the National Marine Park'],
-	},
-	{
-		name: 'Keri Caves & Mizithres',
-		duration: '4 hours',
-		image: '/images/image_skipper.png',
-		description: 'Discover the stunning sea caves of Keri and the impressive Mizithres rock formations on the southwestern coast. A hidden gem with dramatic cliffs dropping into deep blue water.',
-		highlights: ['Impressive rock pillars', 'Sea caves to explore', 'Deep blue swimming spots', 'Secluded and less crowded'],
-	},
-	{
-		name: 'Full Island Tour',
-		duration: '7 hours',
-		image: '/images/unnamed.jpg',
-		description: 'The ultimate Zakynthos experience — circumnavigate the entire island in one day. Visit Navagio, Blue Caves, Xigia Beach, and the south coast caves all in a single unforgettable trip.',
-		highlights: ['Complete island experience', 'All major landmarks in one trip', 'Multiple swimming stops', 'Best value for a full day'],
-	},
-	{
-		name: 'Xigia Sulphur Beach',
-		duration: '4 hours',
-		image: '/images/IMG_6416.jpeg',
-		description: 'A unique natural spa experience — Xigia Beach features natural sulphur springs flowing into the sea. The mineral-rich waters are believed to have therapeutic properties.',
-		highlights: ['Natural sulphur springs', 'Therapeutic mineral waters', 'Beautiful small cove', 'Combine with Blue Caves visit'],
-	},
-];
+const base = Astro.url.origin;
+let routes: Array<{ id: string; name: string; duration: string; image: string; description: string; highlights: string[]; sortOrder: number }> = [];
+try {
+	const res = await fetch(`${base}/api/routes`);
+	routes = res.ok ? await res.json() : [];
+} catch {
+	routes = [];
+}
 ---
 
 <html lang="el">
@@ -85,7 +50,7 @@ const routes = [
 								<ul class="route-card-highlights">
 									{route.highlights.map((h) => <li>{h}</li>)}
 								</ul>
-								<a href="/contact" class="route-card-cta">Book This Route</a>
+								<a href="/rent-with-skipper" class="route-card-cta">Book This Route</a>
 							</div>
 						</div>
 					))}

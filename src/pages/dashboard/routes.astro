@@ -1,0 +1,487 @@
+---
+export const prerender = false;
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+---
+<DashboardLayout title="Routes">
+	<h1>Routes</h1>
+	<div class="dash-card">
+		<div class="routes-toolbar">
+			<p class="routes-subtitle">Manage recommended routes shown on the Recommended Routes page.</p>
+			<button type="button" class="dash-btn" id="add-route-btn">+ Add Route</button>
+		</div>
+		<div style="overflow-x:auto;">
+			<table class="dash-table" id="routes-table">
+				<thead>
+					<tr>
+						<th style="width:60px">#</th>
+						<th style="width:60px">Image</th>
+						<th>Name</th>
+						<th>Duration</th>
+						<th>Highlights</th>
+						<th style="width:120px">Actions</th>
+					</tr>
+				</thead>
+				<tbody id="routes-tbody">
+					<tr><td colspan="6">Loading...</td></tr>
+				</tbody>
+			</table>
+		</div>
+		<p id="routes-msg" style="margin-top:0.75rem;font-size:0.9rem;color:#666;"></p>
+	</div>
+
+	<!-- Side panel -->
+	<div id="panel-overlay" class="panel-overlay" hidden></div>
+	<div id="side-panel" class="side-panel" hidden>
+		<div class="panel-header">
+			<h2 id="panel-title">Edit Route</h2>
+			<button type="button" class="panel-close" id="panel-close">&times;</button>
+		</div>
+		<form id="route-form" class="panel-body">
+			<input type="hidden" id="f-id" />
+			<div class="pf">
+				<label for="f-name">Route Name</label>
+				<input type="text" id="f-name" required placeholder="e.g. Navagio (Shipwreck) Beach" />
+			</div>
+			<div class="pf">
+				<label for="f-duration">Duration</label>
+				<input type="text" id="f-duration" placeholder="e.g. 4–7 hours" />
+			</div>
+			<div class="pf">
+				<label for="f-description">Description</label>
+				<textarea id="f-description" rows="4" placeholder="Describe the route..."></textarea>
+			</div>
+			<div class="pf">
+				<label for="f-highlights">Highlights (one per line)</label>
+				<textarea id="f-highlights" rows="5" placeholder="Iconic shipwreck on white sand&#10;Turquoise waters&#10;..."></textarea>
+			</div>
+			<div class="pf">
+				<label>Image</label>
+				<div id="image-slot" class="img-slot">
+					<span class="img-slot-empty" id="image-empty">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+						Add image
+					</span>
+					<img id="image-preview" class="img-preview" src="" alt="" style="display:none;" />
+					<button type="button" class="img-slot-remove" id="image-remove" style="display:none;" title="Remove">&times;</button>
+					<input type="file" accept="image/*" id="image-input" hidden />
+				</div>
+				<p id="upload-status" style="font-size:0.8rem;color:#888;margin:0.25rem 0 0;"></p>
+			</div>
+			<div class="pf">
+				<label for="f-sortOrder">Sort order</label>
+				<input type="number" id="f-sortOrder" min="0" />
+			</div>
+		</form>
+		<div class="panel-footer">
+			<button type="button" class="dash-btn dash-btn--secondary" id="panel-cancel">Cancel</button>
+			<button type="button" class="dash-btn" id="panel-save">Save</button>
+		</div>
+	</div>
+
+	<style>
+		.routes-toolbar {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 1rem;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+		}
+		.routes-subtitle { margin: 0; font-size: 0.9rem; color: #666; }
+
+		:global(.route-thumb) {
+			width: 48px;
+			height: 48px;
+			max-width: 48px;
+			max-height: 48px;
+			object-fit: cover;
+			border-radius: 4px;
+			background: #f0f4f5;
+			display: block;
+		}
+		:global(#routes-table td:nth-child(2)) {
+			width: 60px;
+			overflow: hidden;
+		}
+
+		.sort-btn {
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0 2px;
+			color: #888;
+			font-size: 0.8rem;
+			line-height: 1;
+		}
+		.sort-btn:hover { color: #1d8299; }
+
+		.act-btn {
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0.25rem 0.4rem;
+			border-radius: 4px;
+			color: #555;
+			font-size: 0.85rem;
+		}
+		.act-btn:hover { background: #f0f0f0; color: #1d8299; }
+		.act-btn--danger:hover { color: #c00; }
+
+		:global(.route-highlights) {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.25rem;
+		}
+		:global(.route-highlight-tag) {
+			font-size: 0.7rem;
+			background: #e8f4f7;
+			color: #064250;
+			padding: 0.15rem 0.4rem;
+			border-radius: 10px;
+			white-space: nowrap;
+		}
+
+		.panel-overlay {
+			position: fixed;
+			inset: 0;
+			background: rgba(0,0,0,0.35);
+			z-index: 99;
+		}
+
+		.side-panel {
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 480px;
+			max-width: 100vw;
+			height: 100vh;
+			background: #fff;
+			z-index: 100;
+			display: flex;
+			flex-direction: column;
+			box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+			transform: translateX(100%);
+			transition: transform 0.25s ease;
+		}
+		.side-panel.open { transform: translateX(0); }
+
+		.panel-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1rem 1.25rem;
+			border-bottom: 1px solid #eee;
+			flex-shrink: 0;
+		}
+		.panel-header h2 { margin: 0; font-size: 1.15rem; }
+		.panel-close {
+			background: none;
+			border: none;
+			font-size: 1.5rem;
+			color: #888;
+			cursor: pointer;
+			width: 32px;
+			height: 32px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-radius: 4px;
+		}
+		.panel-close:hover { background: #f0f0f0; }
+
+		.panel-body {
+			flex: 1;
+			overflow-y: auto;
+			padding: 1.25rem;
+		}
+
+		.pf { margin-bottom: 0.85rem; }
+		.pf label { display: block; font-size: 0.82rem; font-weight: 600; color: #444; margin-bottom: 0.25rem; }
+		.pf input, .pf textarea {
+			width: 100%;
+			padding: 0.5rem 0.6rem;
+			border: 1px solid #ddd;
+			border-radius: 6px;
+			font-size: 0.9rem;
+			box-sizing: border-box;
+		}
+		.pf input:focus, .pf textarea:focus {
+			outline: none;
+			border-color: #1d8299;
+			box-shadow: 0 0 0 2px rgba(29,130,153,0.15);
+		}
+		.pf textarea { resize: vertical; min-height: 60px; }
+
+		.img-slot {
+			position: relative;
+			width: 120px;
+			height: 80px;
+			background: #f8f9fa;
+			border: 2px dashed #ddd;
+			border-radius: 6px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			cursor: pointer;
+			margin-top: 0.4rem;
+		}
+		.img-slot:hover { border-color: #1d8299; }
+		.img-slot-empty {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.1rem;
+			color: #aaa;
+			font-size: 0.6rem;
+		}
+		.img-slot-empty svg { opacity: 0.5; width: 14px; height: 14px; }
+		.img-preview {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+		.img-slot-remove {
+			position: absolute;
+			top: 2px;
+			right: 2px;
+			width: 18px;
+			height: 18px;
+			background: rgba(0,0,0,0.6);
+			color: #fff;
+			border: none;
+			border-radius: 50%;
+			font-size: 0.75rem;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			line-height: 1;
+		}
+		.img-slot-remove:hover { background: #c00; }
+
+		.panel-footer {
+			display: flex;
+			justify-content: flex-end;
+			gap: 0.75rem;
+			padding: 1rem 1.25rem;
+			border-top: 1px solid #eee;
+			flex-shrink: 0;
+		}
+
+		@media (max-width: 600px) {
+			.side-panel { width: 100vw; }
+		}
+	</style>
+
+	<script>
+		type Route = {
+			id: string;
+			name: string;
+			duration: string;
+			image: string;
+			description: string;
+			highlights: string[];
+			sortOrder: number;
+		};
+
+		const tbody = document.getElementById('routes-tbody')!;
+		const msgEl = document.getElementById('routes-msg')!;
+		const panel = document.getElementById('side-panel')!;
+		const overlay = document.getElementById('panel-overlay')!;
+		const panelTitle = document.getElementById('panel-title')!;
+		const form = document.getElementById('route-form') as HTMLFormElement;
+		const uploadStatus = document.getElementById('upload-status')!;
+		const imageSlot = document.getElementById('image-slot')!;
+		const imageEmpty = document.getElementById('image-empty')!;
+		const imagePreview = document.getElementById('image-preview') as HTMLImageElement;
+		const imageRemove = document.getElementById('image-remove')!;
+		const imageInput = document.getElementById('image-input') as HTMLInputElement;
+
+		let routes: Route[] = [];
+		let isCreateMode = false;
+		let currentImage = '';
+
+		function esc(s: string) {
+			return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+		}
+
+		function showMsg(t: string) { msgEl.textContent = t; }
+
+		function renderTable() {
+			if (!routes.length) {
+				tbody.innerHTML = '<tr><td colspan="6" style="color:#888;text-align:center;">No routes found.</td></tr>';
+				return;
+			}
+			tbody.innerHTML = routes.map((r, i) => `
+				<tr>
+					<td>
+						<button type="button" class="sort-btn move-up" data-i="${i}" ${i === 0 ? 'disabled' : ''} title="Move up">&#9650;</button>
+						<button type="button" class="sort-btn move-down" data-i="${i}" ${i === routes.length - 1 ? 'disabled' : ''} title="Move down">&#9660;</button>
+					</td>
+					<td><img class="route-thumb" src="${esc(r.image || '/images/self-drive-boat.png')}" alt="${esc(r.name)}" /></td>
+					<td><strong>${esc(r.name)}</strong></td>
+					<td>${esc(r.duration)}</td>
+					<td><div class="route-highlights">${r.highlights.slice(0, 3).map(h => `<span class="route-highlight-tag">${esc(h)}</span>`).join('')}${r.highlights.length > 3 ? `<span class="route-highlight-tag">+${r.highlights.length - 3}</span>` : ''}</div></td>
+					<td>
+						<button type="button" class="act-btn edit-btn" data-id="${r.id}" title="Edit">&#9998; Edit</button>
+						<button type="button" class="act-btn act-btn--danger del-btn" data-id="${r.id}" title="Delete">&#128465;</button>
+					</td>
+				</tr>
+			`).join('');
+		}
+
+		tbody.addEventListener('click', async (e) => {
+			const target = e.target as HTMLElement;
+			const btn = target.closest('button');
+			if (!btn) return;
+
+			if (btn.classList.contains('move-up') || btn.classList.contains('move-down')) {
+				const i = Number(btn.dataset.i);
+				const j = btn.classList.contains('move-up') ? i - 1 : i + 1;
+				if (j < 0 || j >= routes.length) return;
+				const tmpSort = routes[i].sortOrder;
+				routes[i].sortOrder = routes[j].sortOrder;
+				routes[j].sortOrder = tmpSort;
+				[routes[i], routes[j]] = [routes[j], routes[i]];
+				renderTable();
+				await Promise.all([
+					fetch('/api/routes', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ id: routes[i].id, sortOrder: routes[i].sortOrder }) }),
+					fetch('/api/routes', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ id: routes[j].id, sortOrder: routes[j].sortOrder }) }),
+				]);
+			}
+
+			if (btn.classList.contains('edit-btn')) {
+				const route = routes.find(r => r.id === btn.dataset.id);
+				if (route) openPanel(route, false);
+			}
+
+			if (btn.classList.contains('del-btn')) {
+				const id = btn.dataset.id!;
+				const route = routes.find(r => r.id === id);
+				if (!confirm(`Delete "${route?.name || id}"? This cannot be undone.`)) return;
+				const res = await fetch('/api/routes', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ id }) });
+				if (res.ok) { showMsg('Deleted.'); loadRoutes(); }
+				else { const d = await res.json().catch(() => ({})); showMsg(d.error || 'Delete failed.'); }
+			}
+		});
+
+		function openPanel(route: Route, create: boolean) {
+			isCreateMode = create;
+			panelTitle.textContent = create ? 'Add Route' : 'Edit Route';
+			(document.getElementById('f-id') as HTMLInputElement).value = route.id;
+			(document.getElementById('f-name') as HTMLInputElement).value = route.name;
+			(document.getElementById('f-duration') as HTMLInputElement).value = route.duration;
+			(document.getElementById('f-description') as HTMLTextAreaElement).value = route.description;
+			(document.getElementById('f-highlights') as HTMLTextAreaElement).value = (route.highlights || []).join('\n');
+			(document.getElementById('f-sortOrder') as HTMLInputElement).value = String(route.sortOrder || '');
+			currentImage = route.image || '';
+			updateImageUI();
+			uploadStatus.textContent = '';
+			panel.hidden = false;
+			overlay.hidden = false;
+			requestAnimationFrame(() => panel.classList.add('open'));
+			document.body.style.overflow = 'hidden';
+		}
+
+		function updateImageUI() {
+			if (currentImage) {
+				imagePreview.src = currentImage;
+				imagePreview.style.display = 'block';
+				imageRemove.style.display = 'flex';
+				imageEmpty.style.display = 'none';
+			} else {
+				imagePreview.style.display = 'none';
+				imageRemove.style.display = 'none';
+				imageEmpty.style.display = 'flex';
+			}
+		}
+
+		function closePanel() {
+			panel.classList.remove('open');
+			setTimeout(() => {
+				panel.hidden = true;
+				overlay.hidden = true;
+			}, 250);
+			document.body.style.overflow = '';
+		}
+
+		document.getElementById('panel-close')!.addEventListener('click', closePanel);
+		document.getElementById('panel-cancel')!.addEventListener('click', closePanel);
+		overlay.addEventListener('click', closePanel);
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && !panel.hidden) closePanel();
+		});
+
+		imageSlot.addEventListener('click', (e) => {
+			if ((e.target as HTMLElement).closest('.img-slot-remove')) return;
+			imageInput.click();
+		});
+
+		imageRemove.addEventListener('click', (e) => {
+			e.stopPropagation();
+			currentImage = '';
+			updateImageUI();
+		});
+
+		imageInput.addEventListener('change', async () => {
+			const file = imageInput.files?.[0];
+			if (!file) return;
+			const routeId = (document.getElementById('f-id') as HTMLInputElement).value.trim();
+			if (!routeId) { uploadStatus.textContent = 'Save the route first, then upload.'; imageInput.value = ''; return; }
+			uploadStatus.textContent = 'Uploading...';
+			try {
+				const { getFirebaseStorage } = await import('../../lib/firebase');
+				const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
+				const storage = getFirebaseStorage();
+				if (!storage) { uploadStatus.textContent = 'Storage not configured.'; imageInput.value = ''; return; }
+				const path = `routes/${routeId}/image.jpg`;
+				const storageRef = ref(storage, path);
+				await uploadBytes(storageRef, file);
+				const url = await getDownloadURL(storageRef);
+				currentImage = url;
+				updateImageUI();
+				uploadStatus.textContent = 'Uploaded. Click Save to keep.';
+			} catch (err) { uploadStatus.textContent = 'Upload failed.'; console.error(err); }
+			imageInput.value = '';
+		});
+
+		document.getElementById('panel-save')!.addEventListener('click', async () => {
+			if (!form.reportValidity()) return;
+			const id = (document.getElementById('f-id') as HTMLInputElement).value.trim();
+			const highlightsText = (document.getElementById('f-highlights') as HTMLTextAreaElement).value.trim();
+			const highlights = highlightsText ? highlightsText.split('\n').map(s => s.trim()).filter(Boolean) : [];
+			const payload = {
+				id,
+				name: (document.getElementById('f-name') as HTMLInputElement).value.trim(),
+				duration: (document.getElementById('f-duration') as HTMLInputElement).value.trim(),
+				description: (document.getElementById('f-description') as HTMLTextAreaElement).value.trim(),
+				highlights,
+				image: currentImage,
+				sortOrder: Number((document.getElementById('f-sortOrder') as HTMLInputElement).value) || 0,
+			};
+			showMsg('');
+			const res = await fetch('/api/routes', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(payload) });
+			if (res.ok) { showMsg('Saved.'); closePanel(); loadRoutes(); }
+			else { const d = await res.json().catch(() => ({})); showMsg(d.error || 'Save failed.'); }
+		});
+
+		document.getElementById('add-route-btn')!.addEventListener('click', () => {
+			const newId = 'route_' + Date.now();
+			const nextOrder = routes.length ? Math.max(...routes.map(r => r.sortOrder)) + 1 : 1;
+			openPanel({
+				id: newId, name: '', duration: '', image: '', description: '', highlights: [], sortOrder: nextOrder,
+			}, true);
+		});
+
+		async function loadRoutes() {
+			const res = await fetch('/api/routes', { credentials: 'include' });
+			if (!res.ok) { tbody.innerHTML = '<tr><td colspan="6" style="color:#c00;">Failed to load routes.</td></tr>'; return; }
+			routes = await res.json();
+			renderTable();
+		}
+
+		loadRoutes();
+	</script>
+</DashboardLayout>
