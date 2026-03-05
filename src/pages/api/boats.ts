@@ -180,3 +180,19 @@ export const PUT: APIRoute = async ({ request }) => {
 		return json({ error: 'Failed to update boat' }, 500);
 	}
 };
+
+export const DELETE: APIRoute = async ({ request }) => {
+	const session = await verifySession(request);
+	if (!session) return json({ error: 'Unauthorized' }, 401);
+	const db = getDb();
+	if (!db) return json({ error: 'Database not configured' }, 503);
+	try {
+		const { id } = (await request.json()) as { id?: string };
+		if (!id) return json({ error: 'id required' }, 400);
+		await db.collection('boats').doc(id).delete();
+		return json({ ok: true });
+	} catch (e) {
+		console.error(e);
+		return json({ error: 'Failed to delete boat' }, 500);
+	}
+};

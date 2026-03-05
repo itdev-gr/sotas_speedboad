@@ -3,372 +3,223 @@ export const prerender = false;
 import DashboardLayout from '../../layouts/DashboardLayout.astro';
 ---
 <DashboardLayout title="Boats">
-	<div class="boats-header">
-		<div>
-			<h1>Boats</h1>
-			<p class="boats-subtitle">Manage boats shown on the License Free Rent page. Edit image, title, prices, and includes.</p>
+	<h1>Boats</h1>
+	<div class="dash-card">
+		<div class="boats-toolbar">
+			<p class="boats-subtitle">Manage boats shown on the License Free Rent page.</p>
+			<button type="button" class="dash-btn" id="add-boat-btn">+ Add Boat</button>
 		</div>
-		<div class="boats-header-stats" id="boats-stats"></div>
+		<div style="overflow-x:auto;">
+			<table class="dash-table" id="boats-table">
+				<thead>
+					<tr>
+						<th style="width:60px">#</th>
+						<th style="width:60px">Image</th>
+						<th>Name</th>
+						<th>Pax</th>
+						<th>4h</th>
+						<th>7h</th>
+						<th>Skip 4h</th>
+						<th>Skip 7h</th>
+						<th style="width:120px">Actions</th>
+					</tr>
+				</thead>
+				<tbody id="boats-tbody">
+					<tr><td colspan="9">Loading...</td></tr>
+				</tbody>
+			</table>
+		</div>
+		<p id="boats-msg" style="margin-top:0.75rem;font-size:0.9rem;color:#666;"></p>
 	</div>
 
-	<div id="boats-grid" class="boats-grid">
-		<div class="boats-loading">
-			<div class="boats-spinner"></div>
-			<p>Loading boats...</p>
+	<!-- Side panel -->
+	<div id="panel-overlay" class="panel-overlay" hidden></div>
+	<div id="side-panel" class="side-panel" hidden>
+		<div class="panel-header">
+			<h2 id="panel-title">Edit Boat</h2>
+			<button type="button" class="panel-close" id="panel-close">&times;</button>
 		</div>
-	</div>
-	<p id="boats-msg" class="boats-msg"></p>
+		<div class="panel-tabs">
+			<button type="button" class="panel-tab active" data-tab="details">Details</button>
+			<button type="button" class="panel-tab" data-tab="pricing">Pricing</button>
+			<button type="button" class="panel-tab" data-tab="extras">Extras</button>
+		</div>
+		<form id="boat-form" class="panel-body">
+			<input type="hidden" id="f-id" />
 
-	<!-- Edit modal -->
-	<div id="boat-edit-modal" class="boat-modal" aria-hidden="true" role="dialog" aria-labelledby="boat-modal-title">
-		<div class="boat-modal-backdrop" id="boat-modal-backdrop"></div>
-		<div class="boat-modal-box">
-			<div class="boat-modal-header">
-				<h2 id="boat-modal-title" class="boat-modal-title">Edit Boat</h2>
-				<button type="button" class="boat-modal-close" id="boat-modal-close" aria-label="Close">&times;</button>
+			<!-- Details tab -->
+			<div class="tab-content active" data-tab="details">
+				<div class="pf">
+					<label for="f-name">Name (card title)</label>
+					<input type="text" id="f-name" required />
+				</div>
+				<div class="pf">
+					<label for="f-modalName">Modal name</label>
+					<input type="text" id="f-modalName" placeholder="e.g. Daphne" />
+				</div>
+				<div class="pf-row">
+					<div class="pf">
+						<label for="f-lengthMeters">Length (m)</label>
+						<input type="text" id="f-lengthMeters" placeholder="5.4" />
+					</div>
+					<div class="pf">
+						<label for="f-maxPax">Max passengers</label>
+						<input type="number" id="f-maxPax" min="1" required />
+					</div>
+				</div>
+				<div class="pf">
+					<label for="f-description">Description</label>
+					<textarea id="f-description" rows="3" placeholder="Short description"></textarea>
+				</div>
+				<div class="pf">
+					<label>Image</label>
+					<div class="pf-row" style="align-items:flex-end;">
+						<input type="text" id="f-imageUrl" placeholder="URL or upload" style="flex:1;" />
+						<label class="upload-btn">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+							Upload
+							<input type="file" id="f-file" accept="image/*" hidden />
+						</label>
+					</div>
+					<p id="upload-status" style="font-size:0.8rem;color:#888;margin:0.25rem 0 0;"></p>
+					<div class="img-preview" id="img-preview">
+						<img id="img-preview-img" src="" alt="" />
+						<span id="img-placeholder">No image</span>
+					</div>
+				</div>
 			</div>
-			<form id="boat-edit-form" class="boat-form">
-				<input type="hidden" id="boat-edit-id" name="id" />
 
-				<!-- Image section -->
-				<div class="form-section">
-					<h3 class="form-section-title">Image</h3>
-					<div class="form-row">
-						<div class="form-field form-field--grow">
-							<label for="boat-edit-imageUrl">Image URL</label>
-							<input type="text" id="boat-edit-imageUrl" name="imageUrl" placeholder="/images/boat.png" />
-						</div>
-						<div class="form-field form-field--auto">
-							<label>&nbsp;</label>
-							<label class="upload-btn">
-								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-								Upload
-								<input type="file" id="boat-edit-file" accept="image/*" hidden />
-							</label>
-						</div>
+			<!-- Pricing tab -->
+			<div class="tab-content" data-tab="pricing">
+				<div class="pf-row">
+					<div class="pf">
+						<label for="f-price4h">Price 4h (&euro;)</label>
+						<input type="number" id="f-price4h" min="0" step="1" required />
 					</div>
-					<div class="image-preview" id="boat-image-preview-wrap">
-						<img id="boat-image-preview" src="" alt="" />
-						<span class="image-preview-placeholder" id="image-placeholder">No image</span>
-					</div>
-					<p id="boat-upload-status" class="upload-status"></p>
-				</div>
-
-				<!-- Details section -->
-				<div class="form-section">
-					<h3 class="form-section-title">Details</h3>
-					<div class="form-row">
-						<div class="form-field form-field--grow">
-							<label for="boat-edit-name">Title (card name)</label>
-							<input type="text" id="boat-edit-name" name="name" required />
-						</div>
-						<div class="form-field">
-							<label for="boat-edit-modalName">Modal name</label>
-							<input type="text" id="boat-edit-modalName" name="modalName" placeholder="e.g. Daphne" />
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-field">
-							<label for="boat-edit-lengthMeters">Length (m)</label>
-							<input type="text" id="boat-edit-lengthMeters" name="lengthMeters" placeholder="5.4" />
-						</div>
-						<div class="form-field">
-							<label for="boat-edit-maxPax">Max passengers</label>
-							<input type="number" id="boat-edit-maxPax" name="maxPax" min="1" required />
-						</div>
-					</div>
-					<div class="form-field">
-						<label for="boat-edit-description">Description</label>
-						<textarea id="boat-edit-description" name="description" rows="3" placeholder="Short description shown on the booking page"></textarea>
+					<div class="pf">
+						<label for="f-price7h">Price 7h (&euro;)</label>
+						<input type="number" id="f-price7h" min="0" step="1" required />
 					</div>
 				</div>
-
-				<!-- Pricing section -->
-				<div class="form-section">
-					<h3 class="form-section-title">Pricing</h3>
-					<div class="form-row">
-						<div class="form-field">
-							<label for="boat-edit-price4h">Price 4h</label>
-							<div class="input-with-prefix">
-								<span class="input-prefix">&euro;</span>
-								<input type="number" id="boat-edit-price4h" name="price4h" min="0" step="1" required />
-							</div>
-						</div>
-						<div class="form-field">
-							<label for="boat-edit-price7h">Price 7h</label>
-							<div class="input-with-prefix">
-								<span class="input-prefix">&euro;</span>
-								<input type="number" id="boat-edit-price7h" name="price7h" min="0" step="1" required />
-							</div>
-						</div>
+				<div class="pf-row">
+					<div class="pf">
+						<label for="f-skipperPrice4h">Skipper 4h (&euro;)</label>
+						<input type="number" id="f-skipperPrice4h" min="0" step="1" />
 					</div>
-					<div class="form-field">
-						<label for="boat-edit-fuelExcludedText">Fuel note</label>
-						<input type="text" id="boat-edit-fuelExcludedText" name="fuelExcludedText" placeholder="Fuel not included" />
+					<div class="pf">
+						<label for="f-skipperPrice7h">Skipper 7h (&euro;)</label>
+						<input type="number" id="f-skipperPrice7h" min="0" step="1" />
 					</div>
 				</div>
-
-				<!-- Includes section -->
-				<div class="form-section">
-					<h3 class="form-section-title">Includes</h3>
-					<div class="form-field">
-						<label for="boat-edit-includes">One item per line</label>
-						<textarea id="boat-edit-includes" name="includes" rows="6" placeholder="Meet at the Port&#10;Coolbox with Ice&#10;Snorkeling Equipment&#10;..."></textarea>
-					</div>
+				<div class="pf">
+					<label for="f-fuelExcludedText">Fuel note</label>
+					<input type="text" id="f-fuelExcludedText" placeholder="Fuel not included" />
 				</div>
+			</div>
 
-				<div class="boat-modal-footer">
-					<button type="button" class="btn btn--secondary" id="boat-modal-cancel">Cancel</button>
-					<button type="submit" class="btn btn--primary">
-						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-						Save Changes
-					</button>
+			<!-- Extras tab -->
+			<div class="tab-content" data-tab="extras">
+				<div class="pf">
+					<label for="f-includes">Includes (one per line)</label>
+					<textarea id="f-includes" rows="8" placeholder="Meet at the Port&#10;Coolbox with Ice&#10;..."></textarea>
 				</div>
-			</form>
+				<div class="pf">
+					<label for="f-sortOrder">Sort order</label>
+					<input type="number" id="f-sortOrder" min="0" />
+				</div>
+			</div>
+		</form>
+		<div class="panel-footer">
+			<button type="button" class="dash-btn dash-btn--secondary" id="panel-cancel">Cancel</button>
+			<button type="button" class="dash-btn" id="panel-save">Save</button>
 		</div>
 	</div>
 
 	<style>
-		/* Header */
-		.boats-header {
+		/* Toolbar */
+		.boats-toolbar {
 			display: flex;
 			justify-content: space-between;
-			align-items: flex-start;
-			margin-bottom: 1.5rem;
+			align-items: center;
+			margin-bottom: 1rem;
 			flex-wrap: wrap;
-			gap: 1rem;
-			padding: 1.25rem 1.5rem 0;
+			gap: 0.5rem;
 		}
-		.boats-header h1 {
-			margin: 0 0 0.25rem;
-			font-size: 1.6rem;
-			color: #1a1a1a;
-		}
-		.boats-subtitle {
-			margin: 0;
-			font-size: 0.9rem;
-			color: #666;
-		}
-		.boats-header-stats {
-			display: flex;
-			gap: 1rem;
-		}
-		.stat-badge {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			background: #fff;
-			border: 1px solid rgba(29,130,153,0.2);
-			border-radius: 8px;
-			padding: 0.5rem 1rem;
-			min-width: 70px;
-		}
-		.stat-badge-value {
-			font-size: 1.4rem;
-			font-weight: 700;
-			color: #1d8299;
-		}
-		.stat-badge-label {
-			font-size: 0.7rem;
-			color: #888;
-			text-transform: uppercase;
-			letter-spacing: 0.05em;
-		}
+		.boats-subtitle { margin: 0; font-size: 0.9rem; color: #666; }
 
-		/* Loading */
-		.boats-loading {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			padding: 3rem;
-			color: #888;
-		}
-		.boats-spinner {
-			width: 32px;
-			height: 32px;
-			border: 3px solid rgba(29,130,153,0.2);
-			border-top-color: #1d8299;
-			border-radius: 50%;
-			animation: spin 0.8s linear infinite;
-			margin-bottom: 0.75rem;
-		}
-		@keyframes spin { to { transform: rotate(360deg); } }
-
-		/* Grid */
-		.boats-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-			gap: 1rem;
-			padding: 0 1.5rem;
-		}
-		.boats-msg {
-			margin: 0.75rem 1.5rem 0;
-			font-size: 0.9rem;
-			color: #666;
-		}
-
-		/* Boat card */
-		.boat-card {
-			background: #fff;
-			border-radius: 10px;
-			border: 1px solid rgba(29,130,153,0.15);
-			box-shadow: 0 1px 4px rgba(29,130,153,0.08);
-			overflow: hidden;
-			transition: box-shadow 0.2s, transform 0.2s;
-		}
-		.boat-card:hover {
-			box-shadow: 0 4px 16px rgba(29,130,153,0.15);
-			transform: translateY(-2px);
-		}
-		.boat-card-image {
-			position: relative;
-			width: 100%;
-			height: 180px;
-			overflow: hidden;
-			background: #f0f4f5;
-		}
-		.boat-card-image img {
-			width: 100%;
-			height: 100%;
+		/* Table thumbnail */
+		.boat-thumb {
+			width: 48px;
+			height: 48px;
 			object-fit: cover;
+			border-radius: 4px;
+			background: #f0f4f5;
 			display: block;
 		}
-		.boat-card-pax {
-			position: absolute;
-			top: 0.5rem;
-			right: 0.5rem;
-			background: rgba(29,130,153,0.9);
-			color: #fff;
-			font-size: 0.75rem;
-			font-weight: 600;
-			padding: 0.25rem 0.5rem;
-			border-radius: 4px;
-			display: flex;
-			align-items: center;
-			gap: 0.25rem;
-		}
-		.boat-card-body {
-			padding: 1rem 1.25rem;
-		}
-		.boat-card-name {
-			font-size: 1.1rem;
-			font-weight: 700;
-			color: #1a1a1a;
-			margin: 0 0 0.25rem;
-		}
-		.boat-card-modal-name {
-			font-size: 0.8rem;
-			color: #888;
-			margin: 0 0 0.75rem;
-		}
-		.boat-card-details {
-			display: flex;
-			gap: 0.75rem;
-			margin-bottom: 0.75rem;
-			flex-wrap: wrap;
-		}
-		.boat-card-detail {
-			display: flex;
-			align-items: center;
-			gap: 0.3rem;
-			font-size: 0.8rem;
-			color: #555;
-		}
-		.boat-card-detail svg {
-			color: #1d8299;
-			flex-shrink: 0;
-		}
-		.boat-card-prices {
-			display: flex;
-			gap: 0.5rem;
-			margin-bottom: 1rem;
-		}
-		.price-tag {
-			display: flex;
-			align-items: baseline;
-			gap: 0.2rem;
-			background: #e8f4f7;
-			padding: 0.35rem 0.65rem;
-			border-radius: 6px;
-			font-size: 0.85rem;
-		}
-		.price-tag-amount {
-			font-weight: 700;
-			color: #1d8299;
-		}
-		.price-tag-label {
-			font-size: 0.7rem;
-			color: #888;
-		}
-		.boat-card-includes {
-			list-style: none;
-			margin: 0 0 1rem;
-			padding: 0;
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.35rem;
-		}
-		.boat-card-includes li {
-			font-size: 0.75rem;
-			background: #f5f5f5;
-			color: #555;
-			padding: 0.2rem 0.5rem;
-			border-radius: 4px;
-		}
-		.boat-card-footer {
-			display: flex;
-			justify-content: flex-end;
-			padding-top: 0.75rem;
-			border-top: 1px solid #f0f0f0;
-		}
-		.edit-btn {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.4rem;
-			padding: 0.45rem 1rem;
-			background: #1d8299;
-			color: #fff;
-			border: none;
-			border-radius: 6px;
-			font-size: 0.85rem;
-			font-weight: 500;
-			cursor: pointer;
-			transition: background 0.2s;
-		}
-		.edit-btn:hover { background: #176f82; }
 
-		/* Modal */
-		.boat-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1rem; box-sizing: border-box; pointer-events: none; }
-		.boat-modal[aria-hidden="true"] { display: none; }
-		.boat-modal[aria-hidden="false"] { pointer-events: auto; }
-		.boat-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); }
-		.boat-modal-box {
-			position: relative;
+		/* Sort arrows */
+		.sort-btn {
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0 2px;
+			color: #888;
+			font-size: 0.8rem;
+			line-height: 1;
+		}
+		.sort-btn:hover { color: #1d8299; }
+
+		/* Action buttons */
+		.act-btn {
+			background: none;
+			border: none;
+			cursor: pointer;
+			padding: 0.25rem 0.4rem;
+			border-radius: 4px;
+			color: #555;
+			font-size: 0.85rem;
+		}
+		.act-btn:hover { background: #f0f0f0; color: #1d8299; }
+		.act-btn--danger:hover { color: #c00; }
+
+		/* Panel overlay */
+		.panel-overlay {
+			position: fixed;
+			inset: 0;
+			background: rgba(0,0,0,0.35);
+			z-index: 99;
+		}
+
+		/* Side panel */
+		.side-panel {
+			position: fixed;
+			top: 0;
+			right: 0;
+			width: 480px;
+			max-width: 100vw;
+			height: 100vh;
 			background: #fff;
-			border-radius: 12px;
-			box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-			max-width: 560px;
-			width: 100%;
-			max-height: 90vh;
-			overflow-y: auto;
+			z-index: 100;
 			display: flex;
 			flex-direction: column;
+			box-shadow: -4px 0 24px rgba(0,0,0,0.15);
+			transform: translateX(100%);
+			transition: transform 0.25s ease;
 		}
-		.boat-modal-header {
+		.side-panel.open {
+			transform: translateX(0);
+		}
+
+		.panel-header {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			padding: 1.25rem 1.5rem;
+			padding: 1rem 1.25rem;
 			border-bottom: 1px solid #eee;
-			position: sticky;
-			top: 0;
-			background: #fff;
-			border-radius: 12px 12px 0 0;
-			z-index: 1;
+			flex-shrink: 0;
 		}
-		.boat-modal-title { margin: 0; font-size: 1.2rem; font-weight: 700; }
-		.boat-modal-close {
+		.panel-header h2 { margin: 0; font-size: 1.15rem; }
+		.panel-close {
 			background: none;
 			border: none;
 			font-size: 1.5rem;
@@ -379,169 +230,107 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			border-radius: 6px;
-			transition: background 0.15s;
+			border-radius: 4px;
 		}
-		.boat-modal-close:hover { background: #f0f0f0; color: #333; }
+		.panel-close:hover { background: #f0f0f0; }
 
-		/* Form */
-		.boat-form { padding: 0 1.5rem 1.5rem; }
-		.form-section {
-			padding-top: 1.25rem;
-			margin-bottom: 0.25rem;
-		}
-		.form-section-title {
-			font-size: 0.75rem;
-			font-weight: 700;
-			text-transform: uppercase;
-			letter-spacing: 0.08em;
-			color: #1d8299;
-			margin: 0 0 0.75rem;
-			padding-bottom: 0.4rem;
-			border-bottom: 2px solid #e8f4f7;
-		}
-		.form-row {
+		/* Tabs */
+		.panel-tabs {
 			display: flex;
-			gap: 0.75rem;
-			flex-wrap: wrap;
+			border-bottom: 1px solid #eee;
+			padding: 0 1.25rem;
+			flex-shrink: 0;
 		}
-		.form-field {
-			display: flex;
-			flex-direction: column;
-			gap: 0.3rem;
-			margin-bottom: 0.75rem;
-			min-width: 120px;
+		.panel-tab {
+			background: none;
+			border: none;
+			padding: 0.6rem 1rem;
+			font-size: 0.85rem;
+			font-weight: 500;
+			color: #888;
+			cursor: pointer;
+			border-bottom: 2px solid transparent;
+			margin-bottom: -1px;
+		}
+		.panel-tab:hover { color: #333; }
+		.panel-tab.active { color: #1d8299; border-bottom-color: #1d8299; }
+
+		/* Panel body */
+		.panel-body {
 			flex: 1;
+			overflow-y: auto;
+			padding: 1.25rem;
 		}
-		.form-field--grow { flex: 2; }
-		.form-field--auto { flex: none; }
-		.form-field label {
-			font-size: 0.8rem;
-			font-weight: 600;
-			color: #444;
-		}
-		.form-field input,
-		.form-field textarea {
+		.tab-content { display: none; }
+		.tab-content.active { display: block; }
+
+		/* Panel form fields */
+		.pf { margin-bottom: 0.85rem; }
+		.pf label { display: block; font-size: 0.82rem; font-weight: 600; color: #444; margin-bottom: 0.25rem; }
+		.pf input, .pf textarea {
 			width: 100%;
-			padding: 0.5rem 0.65rem;
+			padding: 0.5rem 0.6rem;
 			border: 1px solid #ddd;
 			border-radius: 6px;
 			font-size: 0.9rem;
 			box-sizing: border-box;
-			transition: border-color 0.15s, box-shadow 0.15s;
 		}
-		.form-field input:focus,
-		.form-field textarea:focus {
+		.pf input:focus, .pf textarea:focus {
 			outline: none;
 			border-color: #1d8299;
-			box-shadow: 0 0 0 3px rgba(29,130,153,0.15);
+			box-shadow: 0 0 0 2px rgba(29,130,153,0.15);
 		}
-		.form-field textarea { resize: vertical; min-height: 70px; }
-
-		.input-with-prefix {
-			display: flex;
-			align-items: stretch;
-		}
-		.input-prefix {
-			display: flex;
-			align-items: center;
-			padding: 0 0.6rem;
-			background: #f5f5f5;
-			border: 1px solid #ddd;
-			border-right: none;
-			border-radius: 6px 0 0 6px;
-			font-size: 0.9rem;
-			color: #666;
-		}
-		.input-with-prefix input {
-			border-radius: 0 6px 6px 0;
-		}
+		.pf textarea { resize: vertical; min-height: 60px; }
+		.pf-row { display: flex; gap: 0.75rem; }
+		.pf-row > .pf { flex: 1; }
 
 		/* Image preview */
-		.image-preview {
+		.img-preview {
 			width: 100%;
-			height: 120px;
+			height: 100px;
 			background: #f8f9fa;
 			border: 2px dashed #ddd;
-			border-radius: 8px;
+			border-radius: 6px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			overflow: hidden;
-			margin-top: 0.5rem;
+			margin-top: 0.4rem;
 		}
-		.image-preview img {
-			max-width: 100%;
-			max-height: 100%;
-			object-fit: contain;
-			display: none;
-		}
-		.image-preview img.visible { display: block; }
-		.image-preview-placeholder {
-			font-size: 0.85rem;
-			color: #aaa;
-		}
+		.img-preview img { max-width: 100%; max-height: 100%; object-fit: contain; display: none; }
+		.img-preview img.visible { display: block; }
+		.img-preview span { font-size: 0.85rem; color: #aaa; }
 
 		/* Upload button */
 		.upload-btn {
 			display: inline-flex !important;
 			align-items: center;
-			gap: 0.35rem;
-			padding: 0.5rem 0.85rem;
+			gap: 0.3rem;
+			padding: 0.5rem 0.75rem;
 			background: #e8f4f7;
 			color: #1d8299;
 			border: 1px solid rgba(29,130,153,0.3);
 			border-radius: 6px;
-			font-size: 0.85rem;
+			font-size: 0.82rem;
 			font-weight: 500;
 			cursor: pointer;
-			transition: background 0.15s;
 			white-space: nowrap;
+			flex-shrink: 0;
 		}
 		.upload-btn:hover { background: #d4edf2; }
-		.upload-status { font-size: 0.8rem; color: #888; margin: 0.25rem 0 0; }
 
-		/* Modal footer */
-		.boat-modal-footer {
+		/* Panel footer */
+		.panel-footer {
 			display: flex;
 			justify-content: flex-end;
 			gap: 0.75rem;
-			padding-top: 1.25rem;
+			padding: 1rem 1.25rem;
 			border-top: 1px solid #eee;
-			margin-top: 0.5rem;
+			flex-shrink: 0;
 		}
-		.btn {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.4rem;
-			padding: 0.55rem 1.25rem;
-			border: none;
-			border-radius: 6px;
-			font-size: 0.9rem;
-			font-weight: 500;
-			cursor: pointer;
-			transition: background 0.15s;
-		}
-		.btn--primary { background: #1d8299; color: #fff; }
-		.btn--primary:hover { background: #176f82; }
-		.btn--secondary { background: #f0f0f0; color: #444; }
-		.btn--secondary:hover { background: #e0e0e0; }
 
-		@media (max-width: 700px) {
-			.boats-grid {
-				grid-template-columns: 1fr;
-				padding: 0 0.75rem;
-			}
-			.boats-header {
-				padding: 1rem 0.75rem 0;
-			}
-			.boat-modal-box {
-				max-height: 95vh;
-			}
-			.form-row {
-				flex-direction: column;
-				gap: 0;
-			}
+		@media (max-width: 600px) {
+			.side-panel { width: 100vw; }
 		}
 	</style>
 
@@ -553,6 +342,8 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			imageUrls: string[];
 			price4h: number;
 			price7h: number;
+			skipperPrice4h: number;
+			skipperPrice7h: number;
 			maxPax: number;
 			modalName: string;
 			includes: string[];
@@ -562,48 +353,151 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			description?: string;
 		};
 
-		const gridEl = document.getElementById('boats-grid')!;
+		const tbody = document.getElementById('boats-tbody')!;
 		const msgEl = document.getElementById('boats-msg')!;
-		const statsEl = document.getElementById('boats-stats')!;
-		const modal = document.getElementById('boat-edit-modal')!;
-		const form = document.getElementById('boat-edit-form') as HTMLFormElement;
-		const backdrop = document.getElementById('boat-modal-backdrop')!;
-		const cancelBtn = document.getElementById('boat-modal-cancel')!;
-		const closeBtn = document.getElementById('boat-modal-close')!;
-		const previewImg = document.getElementById('boat-image-preview') as HTMLImageElement;
-		const placeholderEl = document.getElementById('image-placeholder')!;
-		const imageUrlInput = document.getElementById('boat-edit-imageUrl') as HTMLInputElement;
-		const uploadStatusEl = document.getElementById('boat-upload-status')!;
-		const fileInput = document.getElementById('boat-edit-file') as HTMLInputElement;
+		const panel = document.getElementById('side-panel')!;
+		const overlay = document.getElementById('panel-overlay')!;
+		const panelTitle = document.getElementById('panel-title')!;
+		const form = document.getElementById('boat-form') as HTMLFormElement;
+		const previewImg = document.getElementById('img-preview-img') as HTMLImageElement;
+		const placeholderEl = document.getElementById('img-placeholder')!;
+		const imageUrlInput = document.getElementById('f-imageUrl') as HTMLInputElement;
+		const uploadStatus = document.getElementById('upload-status')!;
+		const fileInput = document.getElementById('f-file') as HTMLInputElement;
 
-		function showMsg(text: string) { msgEl.textContent = text; }
+		let boats: Boat[] = [];
+		let isCreateMode = false;
 
-		function openModal(boat: Boat) {
-			(form.querySelector('#boat-edit-id') as HTMLInputElement).value = boat.id;
+		function esc(s: string) {
+			return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+		}
+
+		function showMsg(t: string) { msgEl.textContent = t; }
+
+		// --- Table rendering ---
+		function renderTable() {
+			if (!boats.length) {
+				tbody.innerHTML = '<tr><td colspan="9" style="color:#888;text-align:center;">No boats found.</td></tr>';
+				return;
+			}
+			tbody.innerHTML = boats.map((b, i) => `
+				<tr>
+					<td>
+						<button type="button" class="sort-btn move-up" data-i="${i}" ${i === 0 ? 'disabled' : ''} title="Move up">&#9650;</button>
+						<button type="button" class="sort-btn move-down" data-i="${i}" ${i === boats.length - 1 ? 'disabled' : ''} title="Move down">&#9660;</button>
+					</td>
+					<td><img class="boat-thumb" src="${esc(b.imageUrl || '/images/self-drive-boat.png')}" alt="${esc(b.name)}" /></td>
+					<td><strong>${esc(b.name)}</strong>${b.modalName ? `<br><small style="color:#888">${esc(b.modalName)}</small>` : ''}</td>
+					<td>${b.maxPax}</td>
+					<td>&euro;${b.price4h}</td>
+					<td>&euro;${b.price7h}</td>
+					<td>${b.skipperPrice4h ? '&euro;' + b.skipperPrice4h : '&mdash;'}</td>
+					<td>${b.skipperPrice7h ? '&euro;' + b.skipperPrice7h : '&mdash;'}</td>
+					<td>
+						<button type="button" class="act-btn edit-btn" data-id="${b.id}" title="Edit">&#9998; Edit</button>
+						<button type="button" class="act-btn act-btn--danger del-btn" data-id="${b.id}" title="Delete">&#128465;</button>
+					</td>
+				</tr>
+			`).join('');
+		}
+
+		// --- Sort / reorder ---
+		tbody.addEventListener('click', async (e) => {
+			const target = e.target as HTMLElement;
+			const btn = target.closest('button');
+			if (!btn) return;
+
+			if (btn.classList.contains('move-up') || btn.classList.contains('move-down')) {
+				const i = Number(btn.dataset.i);
+				const j = btn.classList.contains('move-up') ? i - 1 : i + 1;
+				if (j < 0 || j >= boats.length) return;
+				// Swap sortOrder values
+				const tmpSort = boats[i].sortOrder;
+				boats[i].sortOrder = boats[j].sortOrder;
+				boats[j].sortOrder = tmpSort;
+				// Swap in array
+				[boats[i], boats[j]] = [boats[j], boats[i]];
+				renderTable();
+				// Persist both
+				await Promise.all([
+					fetch('/api/boats', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ id: boats[i].id, sortOrder: boats[i].sortOrder }) }),
+					fetch('/api/boats', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ id: boats[j].id, sortOrder: boats[j].sortOrder }) }),
+				]);
+			}
+
+			if (btn.classList.contains('edit-btn')) {
+				const boat = boats.find(b => b.id === btn.dataset.id);
+				if (boat) openPanel(boat, false);
+			}
+
+			if (btn.classList.contains('del-btn')) {
+				const id = btn.dataset.id!;
+				const boat = boats.find(b => b.id === id);
+				if (!confirm(`Delete "${boat?.name || id}"? This cannot be undone.`)) return;
+				const res = await fetch('/api/boats', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ id }) });
+				if (res.ok) { showMsg('Deleted.'); loadBoats(); }
+				else { const d = await res.json().catch(() => ({})); showMsg(d.error || 'Delete failed.'); }
+			}
+		});
+
+		// --- Panel ---
+		function openPanel(boat: Boat, create: boolean) {
+			isCreateMode = create;
+			panelTitle.textContent = create ? 'Add Boat' : 'Edit Boat';
+			(document.getElementById('f-id') as HTMLInputElement).value = boat.id;
+			(document.getElementById('f-name') as HTMLInputElement).value = boat.name;
+			(document.getElementById('f-modalName') as HTMLInputElement).value = boat.modalName || '';
+			(document.getElementById('f-lengthMeters') as HTMLInputElement).value = boat.lengthMeters || '';
+			(document.getElementById('f-maxPax') as HTMLInputElement).value = String(boat.maxPax || '');
+			(document.getElementById('f-description') as HTMLTextAreaElement).value = boat.description || '';
 			imageUrlInput.value = boat.imageUrl || '';
-			(form.querySelector('#boat-edit-name') as HTMLInputElement).value = boat.name || '';
-			(form.querySelector('#boat-edit-price4h') as HTMLInputElement).value = String(boat.price4h ?? '');
-			(form.querySelector('#boat-edit-price7h') as HTMLInputElement).value = String(boat.price7h ?? '');
-			(form.querySelector('#boat-edit-maxPax') as HTMLInputElement).value = String(boat.maxPax ?? '');
-			(form.querySelector('#boat-edit-modalName') as HTMLInputElement).value = boat.modalName || '';
-			(form.querySelector('#boat-edit-lengthMeters') as HTMLInputElement).value = boat.lengthMeters || '';
-			(form.querySelector('#boat-edit-fuelExcludedText') as HTMLInputElement).value = boat.fuelExcludedText || 'Fuel not included';
-			(form.querySelector('#boat-edit-includes') as HTMLTextAreaElement).value = (boat.includes || []).join('\n');
-			(form.querySelector('#boat-edit-description') as HTMLTextAreaElement).value = boat.description || '';
+			(document.getElementById('f-price4h') as HTMLInputElement).value = String(boat.price4h || '');
+			(document.getElementById('f-price7h') as HTMLInputElement).value = String(boat.price7h || '');
+			(document.getElementById('f-skipperPrice4h') as HTMLInputElement).value = String(boat.skipperPrice4h || '');
+			(document.getElementById('f-skipperPrice7h') as HTMLInputElement).value = String(boat.skipperPrice7h || '');
+			(document.getElementById('f-fuelExcludedText') as HTMLInputElement).value = boat.fuelExcludedText || 'Fuel not included';
+			(document.getElementById('f-includes') as HTMLTextAreaElement).value = (boat.includes || []).join('\n');
+			(document.getElementById('f-sortOrder') as HTMLInputElement).value = String(boat.sortOrder || '');
 			updatePreview(boat.imageUrl || '');
-			modal.setAttribute('aria-hidden', 'false');
+			uploadStatus.textContent = '';
+			// Reset to Details tab
+			switchTab('details');
+			panel.hidden = false;
+			overlay.hidden = false;
+			requestAnimationFrame(() => panel.classList.add('open'));
 			document.body.style.overflow = 'hidden';
 		}
 
-		function closeModal() {
-			modal.setAttribute('aria-hidden', 'true');
+		function closePanel() {
+			panel.classList.remove('open');
+			setTimeout(() => {
+				panel.hidden = true;
+				overlay.hidden = true;
+			}, 250);
 			document.body.style.overflow = '';
 		}
 
+		document.getElementById('panel-close')!.addEventListener('click', closePanel);
+		document.getElementById('panel-cancel')!.addEventListener('click', closePanel);
+		overlay.addEventListener('click', closePanel);
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && !panel.hidden) closePanel();
+		});
+
+		// --- Tabs ---
+		function switchTab(name: string) {
+			document.querySelectorAll('.panel-tab').forEach(t => t.classList.toggle('active', t.getAttribute('data-tab') === name));
+			document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.getAttribute('data-tab') === name));
+		}
+		document.querySelector('.panel-tabs')!.addEventListener('click', (e) => {
+			const tab = (e.target as HTMLElement).closest('.panel-tab');
+			if (tab) switchTab(tab.getAttribute('data-tab')!);
+		});
+
+		// --- Image preview ---
 		function updatePreview(url: string) {
 			if (url && (url.startsWith('http') || url.startsWith('/'))) {
 				previewImg.src = url;
-				previewImg.alt = 'Preview';
 				previewImg.classList.add('visible');
 				placeholderEl.style.display = 'none';
 			} else {
@@ -611,130 +505,76 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 				placeholderEl.style.display = '';
 			}
 		}
+		imageUrlInput.addEventListener('input', () => updatePreview(imageUrlInput.value));
 
-		imageUrlInput?.addEventListener('input', () => updatePreview(imageUrlInput.value));
-
-		fileInput?.addEventListener('change', async (e: Event) => {
+		fileInput.addEventListener('change', async (e: Event) => {
 			const input = e.target as HTMLInputElement;
 			const file = input?.files?.[0];
 			if (!file) return;
-			const boatId = (form.querySelector('#boat-edit-id') as HTMLInputElement).value.trim();
-			if (!boatId) { uploadStatusEl.textContent = 'Open a boat first (Edit) then upload.'; input.value = ''; return; }
-			uploadStatusEl.textContent = 'Uploading...';
+			const boatId = (document.getElementById('f-id') as HTMLInputElement).value.trim();
+			if (!boatId) { uploadStatus.textContent = 'Save the boat first, then upload.'; input.value = ''; return; }
+			uploadStatus.textContent = 'Uploading...';
 			try {
 				const { getFirebaseStorage } = await import('../../lib/firebase');
 				const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
 				const storage = getFirebaseStorage();
-				if (!storage) { uploadStatusEl.textContent = 'Storage not configured.'; input.value = ''; return; }
+				if (!storage) { uploadStatus.textContent = 'Storage not configured.'; input.value = ''; return; }
 				const path = `boats/${boatId}/main.jpg`;
 				const storageRef = ref(storage, path);
 				await uploadBytes(storageRef, file);
 				const url = await getDownloadURL(storageRef);
 				imageUrlInput.value = url;
 				updatePreview(url);
-				uploadStatusEl.textContent = 'Uploaded. Click Save to keep.';
-			} catch (err) { uploadStatusEl.textContent = 'Upload failed.'; console.error(err); }
+				uploadStatus.textContent = 'Uploaded. Click Save to keep.';
+			} catch (err) { uploadStatus.textContent = 'Upload failed.'; console.error(err); }
 			input.value = '';
 		});
 
-		backdrop.addEventListener('click', closeModal);
-		cancelBtn.addEventListener('click', closeModal);
-		closeBtn.addEventListener('click', closeModal);
-		document.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal();
-		});
-
-		form.addEventListener('submit', async (e) => {
-			e.preventDefault();
-			const id = (form.querySelector('#boat-edit-id') as HTMLInputElement).value.trim();
-			const includesText = (form.querySelector('#boat-edit-includes') as HTMLTextAreaElement).value.trim();
-			const includes = includesText ? includesText.split('\n').map((s) => s.trim()).filter(Boolean) : [];
+		// --- Save ---
+		document.getElementById('panel-save')!.addEventListener('click', async () => {
+			if (!form.reportValidity()) return;
+			const id = (document.getElementById('f-id') as HTMLInputElement).value.trim();
+			const includesText = (document.getElementById('f-includes') as HTMLTextAreaElement).value.trim();
+			const includes = includesText ? includesText.split('\n').map(s => s.trim()).filter(Boolean) : [];
 			const payload = {
 				id,
-				name: (form.querySelector('#boat-edit-name') as HTMLInputElement).value.trim(),
+				name: (document.getElementById('f-name') as HTMLInputElement).value.trim(),
 				imageUrl: imageUrlInput.value.trim(),
-				price4h: Number((form.querySelector('#boat-edit-price4h') as HTMLInputElement).value) || 0,
-				price7h: Number((form.querySelector('#boat-edit-price7h') as HTMLInputElement).value) || 0,
-				maxPax: Number((form.querySelector('#boat-edit-maxPax') as HTMLInputElement).value) || 0,
-				modalName: (form.querySelector('#boat-edit-modalName') as HTMLInputElement).value.trim(),
-				lengthMeters: (form.querySelector('#boat-edit-lengthMeters') as HTMLInputElement).value.trim(),
-				fuelExcludedText: (form.querySelector('#boat-edit-fuelExcludedText') as HTMLInputElement).value.trim() || 'Fuel not included',
+				price4h: Number((document.getElementById('f-price4h') as HTMLInputElement).value) || 0,
+				price7h: Number((document.getElementById('f-price7h') as HTMLInputElement).value) || 0,
+				skipperPrice4h: Number((document.getElementById('f-skipperPrice4h') as HTMLInputElement).value) || 0,
+				skipperPrice7h: Number((document.getElementById('f-skipperPrice7h') as HTMLInputElement).value) || 0,
+				maxPax: Number((document.getElementById('f-maxPax') as HTMLInputElement).value) || 0,
+				modalName: (document.getElementById('f-modalName') as HTMLInputElement).value.trim(),
+				lengthMeters: (document.getElementById('f-lengthMeters') as HTMLInputElement).value.trim(),
+				fuelExcludedText: (document.getElementById('f-fuelExcludedText') as HTMLInputElement).value.trim() || 'Fuel not included',
 				includes,
-				description: (form.querySelector('#boat-edit-description') as HTMLTextAreaElement).value.trim(),
+				description: (document.getElementById('f-description') as HTMLTextAreaElement).value.trim(),
+				sortOrder: Number((document.getElementById('f-sortOrder') as HTMLInputElement).value) || 0,
 			};
 			showMsg('');
 			const res = await fetch('/api/boats', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(payload) });
-			if (res.ok) { showMsg('Saved successfully.'); closeModal(); loadBoats(); }
-			else { const data = await res.json().catch(() => ({})); showMsg(data.error || 'Failed to save.'); }
+			if (res.ok) { showMsg('Saved.'); closePanel(); loadBoats(); }
+			else { const d = await res.json().catch(() => ({})); showMsg(d.error || 'Save failed.'); }
 		});
 
-		let currentBoats: Boat[] = [];
-
-		function escapeHtml(str: string) {
-			return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-		}
-
-		function renderBoats(boats: Boat[]) {
-			currentBoats = boats;
-
-			// Stats
-			const totalPax = boats.reduce((s, b) => s + (b.maxPax || 0), 0);
-			statsEl.innerHTML = `
-				<div class="stat-badge"><span class="stat-badge-value">${boats.length}</span><span class="stat-badge-label">Boats</span></div>
-				<div class="stat-badge"><span class="stat-badge-value">${totalPax}</span><span class="stat-badge-label">Total Pax</span></div>
-			`;
-
-			if (!boats.length) {
-				gridEl.innerHTML = '<p style="padding:2rem;color:#888;text-align:center;">No boats found. The first GET to /api/boats will seed boats — refresh the page.</p>';
-				return;
-			}
-
-			gridEl.innerHTML = boats.map((b) => `
-				<div class="boat-card" data-id="${b.id}">
-					<div class="boat-card-image">
-						<img src="${escapeHtml(b.imageUrl || '/images/self-drive-boat.png')}" alt="${escapeHtml(b.name)}" loading="lazy" />
-						<span class="boat-card-pax">
-							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-							${b.maxPax} pax
-						</span>
-					</div>
-					<div class="boat-card-body">
-						<h3 class="boat-card-name">${escapeHtml(b.name)}</h3>
-						${b.modalName ? `<p class="boat-card-modal-name">${escapeHtml(b.modalName)}</p>` : ''}
-						<div class="boat-card-details">
-							${b.lengthMeters ? `<span class="boat-card-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M2 12l4-4M2 12l4 4M22 12l-4-4M22 12l-4 4"/></svg>${escapeHtml(b.lengthMeters)}m</span>` : ''}
-							${b.fuelExcludedText ? `<span class="boat-card-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22h12M5 22V2l7 4v16"/><path d="M19 12V8l-4-2"/></svg>${escapeHtml(b.fuelExcludedText)}</span>` : ''}
-						</div>
-						<div class="boat-card-prices">
-							<span class="price-tag"><span class="price-tag-amount">&euro;${b.price4h}</span><span class="price-tag-label">/4h</span></span>
-							<span class="price-tag"><span class="price-tag-amount">&euro;${b.price7h}</span><span class="price-tag-label">/7h</span></span>
-						</div>
-						${b.includes && b.includes.length ? `<ul class="boat-card-includes">${b.includes.slice(0, 5).map(i => `<li>${escapeHtml(i)}</li>`).join('')}${b.includes.length > 5 ? `<li>+${b.includes.length - 5} more</li>` : ''}</ul>` : ''}
-						<div class="boat-card-footer">
-							<button type="button" class="edit-btn boat-edit-btn" data-id="${b.id}">
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-								Edit
-							</button>
-						</div>
-					</div>
-				</div>
-			`).join('');
-		}
-
-		gridEl.addEventListener('click', (e) => {
-			const btn = e.target instanceof Element ? e.target.closest('.boat-edit-btn[data-id]') : null;
-			if (!btn) return;
-			e.preventDefault();
-			const id = btn.getAttribute('data-id');
-			const boat = currentBoats.find((b) => b.id === id);
-			if (boat) openModal(boat);
+		// --- Add boat ---
+		document.getElementById('add-boat-btn')!.addEventListener('click', () => {
+			const newId = 'boat_' + Date.now();
+			const nextOrder = boats.length ? Math.max(...boats.map(b => b.sortOrder)) + 1 : 1;
+			openPanel({
+				id: newId, name: '', imageUrl: '', imageUrls: [], price4h: 0, price7h: 0,
+				skipperPrice4h: 0, skipperPrice7h: 0, maxPax: 0, modalName: '', includes: [],
+				lengthMeters: '', fuelExcludedText: 'Fuel not included', sortOrder: nextOrder, description: '',
+			}, true);
 		});
 
+		// --- Load ---
 		async function loadBoats() {
 			const res = await fetch('/api/boats', { credentials: 'include' });
-			if (!res.ok) { gridEl.innerHTML = '<p style="padding:2rem;color:#c00;">Failed to load boats.</p>'; return; }
-			const boats: Boat[] = await res.json();
-			renderBoats(boats);
+			if (!res.ok) { tbody.innerHTML = '<tr><td colspan="9" style="color:#c00;">Failed to load boats.</td></tr>'; return; }
+			boats = await res.json();
+			renderTable();
 		}
 
 		loadBoats();
