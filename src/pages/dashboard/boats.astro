@@ -136,16 +136,18 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 		}
 		.boats-subtitle { margin: 0; font-size: 0.9rem; color: #666; }
 
-		/* Table thumbnail */
-		.boat-thumb {
+		/* Table thumbnail – use :global because rows are built dynamically */
+		:global(.boat-thumb) {
 			width: 48px;
 			height: 48px;
+			max-width: 48px;
+			max-height: 48px;
 			object-fit: cover;
 			border-radius: 4px;
 			background: #f0f4f5;
 			display: block;
 		}
-		#boats-table td:nth-child(2) {
+		:global(#boats-table td:nth-child(2)) {
 			width: 60px;
 			overflow: hidden;
 		}
