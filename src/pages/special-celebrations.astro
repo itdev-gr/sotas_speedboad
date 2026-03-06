@@ -176,12 +176,17 @@ import Footer from '../components/Footer.astro';
 	.py-section-inner--full {
 		grid-template-columns: 1fr;
 	}
+	.py-section-inner--full {
+		min-height: auto;
+	}
 	.py-text--full {
 		text-align: center;
 		align-items: center;
 		max-width: 800px;
 		margin: 0 auto;
 		padding: 5rem 3rem;
+		width: 100%;
+		box-sizing: border-box;
 	}
 	.py-text--full .py-desc {
 		max-width: 60ch;
@@ -268,6 +273,10 @@ import Footer from '../components/Footer.astro';
 		.py-text {
 			padding: 2.5rem 1.5rem;
 		}
+		.py-text--full {
+			max-width: 100%;
+			padding: 3rem 1.5rem;
+		}
 		.py-image-wrap img {
 			min-height: 280px;
 			max-height: 350px;
@@ -276,6 +285,12 @@ import Footer from '../components/Footer.astro';
 	@media (max-width: 600px) {
 		.py-text {
 			padding: 2rem 1.25rem;
+		}
+		.py-text--full {
+			padding: 2.5rem 1.25rem;
+		}
+		.py-text--full .py-desc {
+			max-width: 100%;
 		}
 		.py-image-wrap img {
 			min-height: 220px;
