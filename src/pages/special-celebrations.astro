@@ -27,13 +27,10 @@ import Footer from '../components/Footer.astro';
 				</div>
 			</section>
 
-			<!-- Section 1: Image left, Text right -->
+			<!-- Section 1: Full-width text -->
 			<section class="py-section" aria-label="Celebrate on the sea">
-				<div class="py-section-inner">
-					<div class="py-image-wrap">
-						<img src="/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.png" alt="Celebration on a luxury yacht in Zakynthos" width="800" height="600" />
-					</div>
-					<div class="py-text">
+				<div class="py-section-inner py-section-inner--full">
+					<div class="py-text py-text--full">
 						<p class="py-label">CELEBRATE IN STYLE</p>
 						<h2 class="py-title">Make Every Occasion Extraordinary</h2>
 						<p class="py-desc">Whether it's a birthday, a marriage proposal, an anniversary, or any milestone worth celebrating, there's no better setting than the turquoise waters of the Ionian Sea. Our private yacht cruises offer an exclusive and intimate atmosphere to create memories that last a lifetime.</p>
@@ -175,6 +172,22 @@ import Footer from '../components/Footer.astro';
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		min-height: 450px;
+	}
+	.py-section-inner--full {
+		grid-template-columns: 1fr;
+	}
+	.py-text--full {
+		text-align: center;
+		align-items: center;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 5rem 3rem;
+	}
+	.py-text--full .py-desc {
+		max-width: 60ch;
+	}
+	.py-text--full .py-cta {
+		align-self: center;
 	}
 	.py-image-wrap {
 		overflow: hidden;
