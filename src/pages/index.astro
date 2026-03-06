@@ -63,8 +63,19 @@ import Header from '../components/Header.astro';
 				<a href="/contact" class="hero-cta">CONTACT US</a>
 			</div>
 
-			<!-- Hero content (second video – right) -->
+			<!-- Hero content (second image – right) -->
 			<div class="hero-content-second" aria-hidden="true">
+				<p class="hero-label">SOTAS SPEEDBOATS</p>
+				<h2 class="hero-title">
+					<span>YACHT CRUISES</span>
+					<span>ZAKYNTHOS</span>
+				</h2>
+				<p class="hero-subtitle">Discover Zakynthos on a Private Luxury Yacht!</p>
+				<a href="/contact" class="hero-cta">CONTACT US</a>
+			</div>
+
+			<!-- Hero content (video slide – left) -->
+			<div class="hero-content-video" aria-hidden="true">
 				<p class="hero-label">SOTAS SPEEDBOATS</p>
 				<h2 class="hero-title">
 					<span>YACHT CRUISES</span>
@@ -192,8 +203,8 @@ import Header from '../components/Header.astro';
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/self-drive-boat.png"
-						alt="Self drive boat on the water in Zakynthos"
+						src="/images/license-free-hero.png"
+						alt="Self drive boats at Shipwreck Beach Zakynthos"
 						class="selfdrive-image"
 						width="800"
 						height="600"
@@ -307,6 +318,7 @@ import Header from '../components/Header.astro';
 			const heroVideo = document.querySelector('[data-hero-video]');
 			const heroContent = document.querySelector('.hero-content');
 			const heroContentSecond = document.querySelector('.hero-content-second');
+			const heroContentVideo = document.querySelector('.hero-content-video');
 			const prevBtn = document.querySelector('.hero-arrow-prev');
 			const nextBtn = document.querySelector('.hero-arrow-next');
 
@@ -353,14 +365,10 @@ import Header from '../components/Header.astro';
 						if (autoTimer) clearTimeout(autoTimer);
 					}
 
-					// Toggle text content (show first text for slides 0 & 2, second text for slide 1)
-					if (currentIndex === 1) {
-						heroContent?.classList.add('hero-content--hidden');
-						heroContentSecond?.classList.add('hero-content-second--visible');
-					} else {
-						heroContent?.classList.remove('hero-content--hidden');
-						heroContentSecond?.classList.remove('hero-content-second--visible');
-					}
+					// Toggle text content per slide
+					heroContent?.classList.toggle('hero-content--hidden', currentIndex !== 0);
+					heroContentSecond?.classList.toggle('hero-content-second--visible', currentIndex === 1);
+					heroContentVideo?.classList.toggle('hero-content-video--visible', currentIndex === 2);
 				}
 
 				function resetAutoPlay() {
@@ -559,6 +567,27 @@ import Header from '../components/Header.astro';
 		pointer-events: auto;
 		animation: heroContentIn 0.8s ease-out forwards;
 	}
+	/* Hero content for video slide (left side) */
+	.hero-content-video {
+		position: relative;
+		z-index: 2;
+		max-width: 90%;
+		margin: auto;
+		padding: 2rem;
+		text-align: left;
+		align-self: flex-start;
+		margin-left: 8%;
+		margin-top: calc(20vh - 40vh);
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.5s ease, transform 0.5s ease;
+	}
+	.hero-content-video.hero-content-video--visible {
+		opacity: 1;
+		pointer-events: auto;
+		animation: heroContentIn 0.8s ease-out forwards;
+	}
+
 	.hero-content-second .hero-label,
 	.hero-content-second .hero-title,
 	.hero-content-second .hero-subtitle {
