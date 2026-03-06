@@ -4,16 +4,37 @@ import FloatingContact from './FloatingContact.astro';
 <footer class="site-footer" aria-label="Footer">
 	<div class="footer-main">
 		<div class="footer-col footer-about">
-			<a href="/" class="footer-logo">
-				<span class="footer-logo-letter">S</span>
-				<span class="footer-logo-text">SOTA TRAVEL ZAKYNTHOS</span>
+			<a href="/" class="footer-logo" aria-label="Sota Travel Zakynthos">
+				<svg class="footer-logo-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" fill="none" aria-hidden="true">
+					<g fill="#D4A017">
+						<rect x="135" y="68" width="130" height="14" rx="2"/>
+						<polygon points="140,68 155,22 170,58 170,68"/>
+						<polygon points="182,68 200,8 218,68"/>
+						<polygon points="230,68 245,22 260,68"/>
+						<circle cx="155" cy="20" r="6"/>
+						<circle cx="200" cy="6" r="7"/>
+						<circle cx="245" cy="20" r="6"/>
+					</g>
+					<path d="M108,88 L108,250 Q108,310 200,360 Q292,310 292,250 L292,88 Z" fill="none" stroke="#D4A017" stroke-width="10"/>
+					<path d="M122,100 L122,246 Q122,300 200,344 Q278,300 278,246 L278,100 Z" fill="none" stroke="#D4A017" stroke-width="3"/>
+					<text x="200" y="215" text-anchor="middle" font-family="'Cormorant Garamond','Times New Roman',serif" font-weight="800" font-size="80" fill="#D4A017" letter-spacing="6">STZ</text>
+					<g stroke="#D4A017" fill="none" stroke-width="3.5" stroke-linecap="round">
+						<path d="M155,260 Q167,250 179,260 Q191,270 203,260 Q215,250 227,260 Q239,270 248,260"/>
+						<path d="M160,275 Q172,265 184,275 Q196,285 208,275 Q220,265 232,275 Q240,282 245,275"/>
+						<path d="M168,289 Q178,281 188,289 Q198,297 208,289 Q218,281 228,289"/>
+					</g>
+					<text x="200" y="415" text-anchor="middle" font-family="'Cormorant Garamond','Times New Roman',serif" font-weight="900" font-size="48" fill="#D4A017" letter-spacing="5">SOTA TRAVEL</text>
+					<text x="200" y="458" text-anchor="middle" font-family="'Cormorant Garamond','Times New Roman',serif" font-weight="700" font-size="32" fill="#D4A017" letter-spacing="4">ZAKYNTHOS</text>
+					<text x="200" y="495" text-anchor="middle" font-family="'Cormorant Garamond','Times New Roman',serif" font-weight="700" font-size="24" fill="#D4A017" letter-spacing="3">- VIP CRUISE -</text>
+				</svg>
 			</a>
 			<h3 class="footer-title">Links</h3>
 			<ul class="footer-links">
-				<li><a href="/#selfdrive">Boat Booking</a></li>
-				<li><a href="/recommended-routes">Recommended Routes</a></li>
 				<li><a href="/license-free-rent">Self Drive</a></li>
 				<li><a href="/rent-with-skipper">Skipper Drive</a></li>
+				<li><a href="/private-yachting">Private Yachting</a></li>
+				<li><a href="/special-celebrations">Special Celebrations</a></li>
+				<li><a href="/recommended-routes">Recommended Routes</a></li>
 				<li><a href="/faq">FAQ</a></li>
 				<li><a href="/contact">Contact</a></li>
 			</ul>
@@ -75,24 +96,14 @@ import FloatingContact from './FloatingContact.astro';
 	}
 	.footer-logo {
 		display: flex;
-		flex-direction: column;
-		gap: 0.15rem;
 		margin-bottom: 0.25rem;
 		text-decoration: none;
 		color: inherit;
 	}
-	.footer-logo-letter {
-		font-family: 'Cormorant Garamond', serif;
-		font-size: 2rem;
-		font-weight: 600;
-		line-height: 1;
-		color: #fff;
-	}
-	.footer-logo-text {
-		font-size: 0.7rem;
-		letter-spacing: 0.2em;
-		color: #fff;
-		opacity: 0.95;
+	.footer-logo-img {
+		height: 100px;
+		width: auto;
+		display: block;
 	}
 	.footer-title {
 		font-size: 1rem;
