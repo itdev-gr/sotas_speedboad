@@ -89,14 +89,14 @@ import Header from '../components/Header.astro';
 		<!-- Services bar -->
 		<section class="services-bar" aria-label="Our services">
 			<div class="services-bar-inner">
-				<div class="services-bar-item">
+				<a href="/private-yachting" class="services-bar-item">
 					<svg class="services-bar-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M32 6L14 18v28l18 12 18-12V18L32 6z" stroke="currentColor" stroke-width="2" fill="none"/>
 						<rect x="24" y="28" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
 						<path d="M28 28v-4a4 4 0 018 0v4" stroke="currentColor" stroke-width="2" fill="none"/>
 					</svg>
 					<span class="services-bar-label">Private Yachting</span>
-				</div>
+				</a>
 				<div class="services-bar-divider"></div>
 				<a href="/rent-with-skipper" class="services-bar-item">
 					<svg class="services-bar-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -197,6 +197,30 @@ import Header from '../components/Header.astro';
 			</div>
 		</section>
 		-->
+
+		<!-- Private Yachting section (image left, text right) -->
+		<section class="selfdrive-section selfdrive-section--last" id="privateyachting" aria-label="Private yachting">
+			<div class="selfdrive-inner">
+				<div class="selfdrive-image-wrap">
+					<img
+						src="/images/unnamed.jpg"
+						alt="Private luxury yacht cruise in Zakynthos"
+						class="selfdrive-image"
+						width="800"
+						height="600"
+					/>
+				</div>
+				<div class="selfdrive-text">
+					<span class="selfdrive-bg-label" aria-hidden="true">PRIVATE YACHTING</span>
+					<p class="selfdrive-sub">LUXURY EXPERIENCE</p>
+					<h2 class="selfdrive-title">PRIVATE YACHTING</h2>
+					<p class="selfdrive-desc">
+						Experience the ultimate luxury cruise around Zakynthos on a private yacht. Tailored routes, premium service.
+					</p>
+					<a href="/private-yachting" class="selfdrive-cta">VIEW MORE</a>
+				</div>
+			</div>
+		</section>
 
 		<!-- Third section: Self Drive Boat Rentals -->
 		<section class="selfdrive-section" id="selfdrive" aria-label="Self drive boat rentals">
