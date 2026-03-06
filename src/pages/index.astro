@@ -26,6 +26,15 @@ import Header from '../components/Header.astro';
 					aria-hidden="true"
 					data-hero-image
 				/>
+				<video
+					class="hero-video"
+					src="/videos/hero.mp4"
+					muted
+					playsinline
+					preload="auto"
+					aria-hidden="true"
+					data-hero-video
+				></video>
 				<div class="hero-overlay" aria-hidden="true"></div>
 			</div>
 
@@ -295,35 +304,73 @@ import Header from '../components/Header.astro';
 			});
 
 			const heroImage = document.querySelector('[data-hero-image]');
+			const heroVideo = document.querySelector('[data-hero-video]');
 			const heroContent = document.querySelector('.hero-content');
 			const heroContentSecond = document.querySelector('.hero-content-second');
 			const prevBtn = document.querySelector('.hero-arrow-prev');
 			const nextBtn = document.querySelector('.hero-arrow-next');
 
 			if (heroImage) {
-				const images = ['/images/unnamed.jpg', '/images/IMG_6416.jpeg'];
+				const slides = [
+					{ type: 'image', src: '/images/unnamed.jpg' },
+					{ type: 'image', src: '/images/IMG_6416.jpeg' },
+					{ type: 'video' }
+				];
 				let currentIndex = 0;
 				let autoTimer = null;
 
 				function goToSlide(index) {
-					currentIndex = (index + images.length) % images.length;
-					heroImage.classList.remove('is-ready');
-					heroImage.src = images[currentIndex];
-					heroImage.onload = () => heroImage.classList.add('is-ready');
-					heroImage.closest('.hero-image-wrap').classList.toggle('hero-image-wrap--hero2', currentIndex === 1);
-					if (currentIndex === 0) {
-						heroContent?.classList.remove('hero-content--hidden');
-						heroContentSecond?.classList.remove('hero-content-second--visible');
+					currentIndex = ((index % slides.length) + slides.length) % slides.length;
+					const slide = slides[currentIndex];
+					const wrap = heroImage.closest('.hero-image-wrap');
+
+					// Stop video if leaving video slide
+					if (heroVideo) {
+						heroVideo.pause();
+						heroVideo.currentTime = 0;
+					}
+
+					if (slide.type === 'image') {
+						// Show image, hide video
+						heroImage.classList.remove('is-ready');
+						heroImage.src = slide.src;
+						heroImage.onload = () => heroImage.classList.add('is-ready');
+						heroImage.style.display = '';
+						if (heroVideo) heroVideo.classList.remove('hero-video--active');
+						wrap.classList.toggle('hero-image-wrap--hero2', currentIndex === 1);
+						resetAutoPlay();
 					} else {
+						// Show video, hide image
+						heroImage.classList.remove('is-ready');
+						heroImage.style.display = 'none';
+						wrap.classList.remove('hero-image-wrap--hero2');
+						if (heroVideo) {
+							heroVideo.classList.add('hero-video--active');
+							heroVideo.currentTime = 0;
+							heroVideo.play();
+						}
+						// When video ends, go to first slide
+						if (autoTimer) clearTimeout(autoTimer);
+					}
+
+					// Toggle text content (show first text for slides 0 & 2, second text for slide 1)
+					if (currentIndex === 1) {
 						heroContent?.classList.add('hero-content--hidden');
 						heroContentSecond?.classList.add('hero-content-second--visible');
+					} else {
+						heroContent?.classList.remove('hero-content--hidden');
+						heroContentSecond?.classList.remove('hero-content-second--visible');
 					}
-					resetAutoPlay();
 				}
 
 				function resetAutoPlay() {
-					if (autoTimer) clearInterval(autoTimer);
-					autoTimer = setInterval(() => goToSlide(currentIndex + 1), 6000);
+					if (autoTimer) clearTimeout(autoTimer);
+					autoTimer = setTimeout(() => goToSlide(currentIndex + 1), 6000);
+				}
+
+				// When video ends, loop back to first image
+				if (heroVideo) {
+					heroVideo.addEventListener('ended', () => goToSlide(0));
 				}
 
 				resetAutoPlay();
@@ -393,6 +440,18 @@ import Header from '../components/Header.astro';
 		transition: opacity 0.8s ease;
 	}
 	.hero-image.is-ready {
+		opacity: 1;
+	}
+	.hero-video {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0;
+		transition: opacity 0.8s ease;
+	}
+	.hero-video.hero-video--active {
 		opacity: 1;
 	}
 	.hero-image-wrap--hero2 .hero-image {
