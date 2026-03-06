@@ -203,7 +203,7 @@ import Header from '../components/Header.astro';
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/unnamed.jpg"
+						src="/images/IMG_0111.jpeg"
 						alt="Private luxury yacht cruise in Zakynthos"
 						class="selfdrive-image"
 						width="800"
@@ -229,7 +229,7 @@ import Header from '../components/Header.astro';
 					<img
 						src="/images/license-free-hero.png"
 						alt="Self drive boats at Shipwreck Beach Zakynthos"
-						class="selfdrive-image"
+						class="selfdrive-image selfdrive-image--fit"
 						width="800"
 						height="600"
 					/>
@@ -1069,6 +1069,9 @@ import Header from '../components/Header.astro';
 		object-fit: cover;
 		display: block;
 		min-height: 400px;
+	}
+	.selfdrive-image--fit {
+		object-position: center bottom;
 	}
 
 	@media (max-width: 900px) {
