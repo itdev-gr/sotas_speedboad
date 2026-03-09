@@ -462,6 +462,47 @@ import Header from '../components/Header.astro';
 			});
 		</script>
 		<FloatingContact />
+
+		<script>
+			import { gsap } from 'gsap';
+			import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+			gsap.registerPlugin(ScrollTrigger);
+
+			document.addEventListener('DOMContentLoaded', () => {
+				// Services bar – fade up
+				gsap.from('.services-bar', {
+					scrollTrigger: { trigger: '.services-bar', start: 'top 85%', toggleActions: 'play none none none' },
+					y: 40, opacity: 0, duration: 0.8, ease: 'power2.out'
+				});
+
+				// Selfdrive sections – alternate left/right
+				document.querySelectorAll('.selfdrive-section').forEach((section, i) => {
+					const imageWrap = section.querySelector('.selfdrive-image-wrap');
+					const text = section.querySelector('.selfdrive-text');
+					const isEven = i % 2 === 0; // even: image from left, text from right
+
+					if (imageWrap) {
+						gsap.from(imageWrap, {
+							scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none none' },
+							x: isEven ? -80 : 80, opacity: 0, duration: 0.9, ease: 'power2.out'
+						});
+					}
+					if (text) {
+						gsap.from(text, {
+							scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none none' },
+							x: isEven ? 80 : -80, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power2.out'
+						});
+					}
+				});
+
+				// Footer – fade up
+				gsap.from('.site-footer', {
+					scrollTrigger: { trigger: '.site-footer', start: 'top 90%', toggleActions: 'play none none none' },
+					y: 40, opacity: 0, duration: 0.8, ease: 'power2.out'
+				});
+			});
+		</script>
 	</body>
 </html>
 
@@ -976,6 +1017,7 @@ import Header from '../components/Header.astro';
 		width: 100%;
 		height: 50vh;
 		min-height: 400px;
+		overflow: hidden;
 	}
 	.selfdrive-inner {
 		display: grid;
