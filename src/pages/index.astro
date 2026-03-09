@@ -14,6 +14,8 @@ import Header from '../components/Header.astro';
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+		<script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 	</head>
 	<body>
 		<section class="hero" aria-label="Hero section">
@@ -463,13 +465,10 @@ import Header from '../components/Header.astro';
 		</script>
 		<FloatingContact />
 
-		<script>
-			import { gsap } from 'gsap';
-			import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+		<script is:inline>
 			gsap.registerPlugin(ScrollTrigger);
 
-			document.addEventListener('DOMContentLoaded', () => {
+			document.addEventListener('DOMContentLoaded', function () {
 				// Services bar – fade up
 				gsap.from('.services-bar', {
 					scrollTrigger: { trigger: '.services-bar', start: 'top 60%', toggleActions: 'play none none none' },
@@ -477,10 +476,10 @@ import Header from '../components/Header.astro';
 				});
 
 				// Selfdrive sections – alternate left/right
-				document.querySelectorAll('.selfdrive-section').forEach((section, i) => {
-					const imageWrap = section.querySelector('.selfdrive-image-wrap');
-					const text = section.querySelector('.selfdrive-text');
-					const isEven = i % 2 === 0; // even: image from left, text from right
+				document.querySelectorAll('.selfdrive-section').forEach(function (section, i) {
+					var imageWrap = section.querySelector('.selfdrive-image-wrap');
+					var text = section.querySelector('.selfdrive-text');
+					var isEven = i % 2 === 0;
 
 					if (imageWrap) {
 						gsap.from(imageWrap, {
