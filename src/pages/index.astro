@@ -54,7 +54,7 @@ import Header from '../components/Header.astro';
 
 			<!-- Hero content (first video – left) -->
 			<div class="hero-content">
-				<p class="hero-label">SOT TRAVEL ZAKYNTHOS</p>
+				<p class="hero-label">SOTA TRAVEL ZAKYNTHOS</p>
 				<h1 class="hero-title">
 					<span>LUXURIOUS PRIVATE</span>
 					<span>CRUISES WITH SKIPPER</span>
@@ -387,7 +387,7 @@ import Header from '../components/Header.astro';
 			if (heroImage) {
 				const slides = [
 					{ type: 'image', src: '/images/unnamed.jpg' },
-					{ type: 'image', src: '/images/IMG_6416.jpeg' },
+					{ type: 'image', src: '/images/IMG_6566.jpeg' },
 					{ type: 'video' }
 				];
 				let currentIndex = 0;
@@ -571,26 +571,25 @@ import Header from '../components/Header.astro';
 
 	/* Hero content */
 	.hero-content {
-		position: relative;
+		position: absolute;
 		z-index: 2;
 		max-width: 90%;
-		margin: auto;
 		padding: 2rem;
 		text-align: left;
-		align-self: flex-start;
-		margin-left: 8%;
-		margin-top: 20vh;
+		left: 8%;
+		top: 50%;
+		transform: translateY(-50%);
 		animation: heroContentIn 1s ease-out forwards;
 		opacity: 0;
 	}
 	@keyframes heroContentIn {
 		from {
 			opacity: 0;
-			transform: translateY(32px);
+			transform: translateY(calc(-50% + 32px));
 		}
 		to {
 			opacity: 1;
-			transform: translateY(0);
+			transform: translateY(-50%);
 		}
 	}
 	.hero-content.hero-content--hidden {
@@ -600,26 +599,24 @@ import Header from '../components/Header.astro';
 	@keyframes heroContentOut {
 		from {
 			opacity: 1;
-			transform: translateY(0);
+			transform: translateY(-50%);
 		}
 		to {
 			opacity: 0;
-			transform: translateY(-24px);
+			transform: translateY(calc(-50% - 24px));
 		}
 	}
 
 	/* Hero content for second video (right side) */
 	.hero-content-second {
-		position: relative;
+		position: absolute;
 		z-index: 2;
 		max-width: 90%;
-		margin: auto;
 		padding: 2rem;
 		text-align: right;
-		align-self: flex-end;
-		margin-left: auto;
-		margin-right: 8%;
-		margin-top: calc(20vh - 40vh);
+		right: 8%;
+		top: 50%;
+		transform: translateY(-50%);
 		opacity: 0;
 		pointer-events: none;
 		transition: opacity 0.5s ease, transform 0.5s ease;
@@ -631,15 +628,14 @@ import Header from '../components/Header.astro';
 	}
 	/* Hero content for video slide (left side) */
 	.hero-content-video {
-		position: relative;
+		position: absolute;
 		z-index: 2;
 		max-width: 90%;
-		margin: auto;
 		padding: 2rem;
 		text-align: left;
-		align-self: flex-start;
-		margin-left: 8%;
-		margin-top: calc(20vh - 40vh);
+		left: 8%;
+		top: 50%;
+		transform: translateY(-50%);
 		opacity: 0;
 		pointer-events: none;
 		transition: opacity 0.5s ease, transform 0.5s ease;
@@ -699,7 +695,7 @@ import Header from '../components/Header.astro';
 
 	@media (max-width: 1024px) {
 		.hero-content {
-			margin-left: 5%;
+			left: 5%;
 		}
 		.hero-arrow {
 			width: 40px;
@@ -718,13 +714,11 @@ import Header from '../components/Header.astro';
 			padding-top: 4rem;
 		}
 		.hero-content {
-			margin-left: 5%;
-			margin-top: 15vh;
+			left: 5%;
 			padding: 1.25rem;
 		}
 		.hero-content-second {
-			margin-right: 5%;
-			margin-top: calc(15vh - 35vh);
+			right: 5%;
 			padding: 1.25rem;
 		}
 		.hero-title {
