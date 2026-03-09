@@ -1,5 +1,4 @@
 ---
-import FloatingContact from './FloatingContact.astro';
 ---
 <footer class="site-footer" aria-label="Footer">
 	<div class="footer-main">
@@ -44,7 +43,14 @@ import FloatingContact from './FloatingContact.astro';
 		<p class="footer-copyright">© Copyright 2026, Sota Travel Zakynthos – Designed and Developed by <a href="https://www.itdev.gr/" target="_blank" rel="noopener noreferrer">IT DEV</a></p>
 	</div>
 </footer>
-<FloatingContact />
+<script is:inline>
+(function() {
+	var script = document.createElement('script');
+	script.src = 'https://cbl.link/b/foZ1bvN.js';
+	script.async = true;
+	document.head.appendChild(script);
+})();
+</script>
 
 <style>
 	.site-footer {

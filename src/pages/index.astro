@@ -1,5 +1,4 @@
 ---
-import FloatingContact from '../components/FloatingContact.astro';
 import Header from '../components/Header.astro';
 ---
 
@@ -442,7 +441,14 @@ import Header from '../components/Header.astro';
 			}
 			});
 		</script>
-		<FloatingContact />
+		<script is:inline>
+			(function() {
+				var script = document.createElement('script');
+				script.src = 'https://cbl.link/b/foZ1bvN.js';
+				script.async = true;
+				document.head.appendChild(script);
+			})();
+		</script>
 
 		<script is:inline>
 			gsap.registerPlugin(ScrollTrigger);
