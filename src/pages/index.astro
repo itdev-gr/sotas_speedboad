@@ -472,8 +472,8 @@ import Header from '../components/Header.astro';
 			document.addEventListener('DOMContentLoaded', () => {
 				// Services bar – fade up
 				gsap.from('.services-bar', {
-					scrollTrigger: { trigger: '.services-bar', start: 'top 85%', toggleActions: 'play none none none' },
-					y: 40, opacity: 0, duration: 0.8, ease: 'power2.out'
+					scrollTrigger: { trigger: '.services-bar', start: 'top 60%', toggleActions: 'play none none none' },
+					y: 40, opacity: 0, duration: 1.2, ease: 'power2.out'
 				});
 
 				// Selfdrive sections – alternate left/right
@@ -484,22 +484,22 @@ import Header from '../components/Header.astro';
 
 					if (imageWrap) {
 						gsap.from(imageWrap, {
-							scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none none' },
-							x: isEven ? -80 : 80, opacity: 0, duration: 0.9, ease: 'power2.out'
+							scrollTrigger: { trigger: section, start: '40% 100%', toggleActions: 'play none none none' },
+							x: isEven ? -80 : 80, opacity: 0, duration: 1.35, ease: 'power2.out'
 						});
 					}
 					if (text) {
 						gsap.from(text, {
-							scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none none' },
-							x: isEven ? 80 : -80, opacity: 0, duration: 0.9, delay: 0.15, ease: 'power2.out'
+							scrollTrigger: { trigger: section, start: '40% 100%', toggleActions: 'play none none none' },
+							x: isEven ? 80 : -80, opacity: 0, duration: 1.35, delay: 0.2, ease: 'power2.out'
 						});
 					}
 				});
 
 				// Footer – fade up
 				gsap.from('.site-footer', {
-					scrollTrigger: { trigger: '.site-footer', start: 'top 90%', toggleActions: 'play none none none' },
-					y: 40, opacity: 0, duration: 0.8, ease: 'power2.out'
+					scrollTrigger: { trigger: '.site-footer', start: 'top 60%', toggleActions: 'play none none none' },
+					y: 40, opacity: 0, duration: 1.2, ease: 'power2.out'
 				});
 			});
 		</script>
