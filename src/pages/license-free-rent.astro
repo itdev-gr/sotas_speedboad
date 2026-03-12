@@ -4,7 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 const base = Astro.url.origin;
-let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number }> = [];
+let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string }> = [];
 try {
 	const res = await fetch(`${base}/api/boats`);
 	boats = res.ok ? await res.json() : [];
@@ -49,6 +49,7 @@ try {
 							</div>
 							<div class="speedboat-card-content">
 								<p class="speedboat-card-name">{boat.name}</p>
+								{boat.description && <p class="speedboat-card-description">{boat.description}</p>}
 								<p class="speedboat-pax">Max. {boat.maxPax} pax</p>
 								<div class="speedboat-buttons">
 									<a href={`/book-license-free?boat=${boat.id}`} class="speedboat-btn speedboat-btn-primary">Book Here</a>
@@ -395,6 +396,13 @@ try {
 		font-size: 1.1rem;
 		color: #1a1a1a;
 		margin: 0 0 0.5rem 0;
+	}
+	.speedboat-card-description {
+		white-space: pre-line;
+		font-size: 0.9rem;
+		color: #555;
+		margin: 0 0 0.5rem 0;
+		line-height: 1.5;
 	}
 	.speedboat-rental,
 	.speedboat-pax {
