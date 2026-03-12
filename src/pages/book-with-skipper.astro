@@ -73,7 +73,7 @@ if (boat && !Array.isArray(boat.skipperServices)) (boat as { skipperServices: Sk
 								</div>
 								<div class="bg-[#f5f0e8] rounded-xl shadow-sm border border-gray-100 p-4">
 									<h2 class="book-page-detail-title">{boat.name}</h2>
-									{boat.modalName && <p class="book-page-modal-name">Speedboat "{boat.modalName}"</p>}
+									{boat.modalName && <p class="book-page-modal-name">{boat.modalName}</p>}
 									{boat.lengthMeters && <p class="book-page-length">{boat.lengthMeters} m length</p>}
 									<p class="book-page-pax">Max. {boat.maxPax} pax</p>
 									{boat.description && <p class="book-page-description">{boat.description}</p>}
@@ -363,6 +363,7 @@ if (boat && !Array.isArray(boat.skipperServices)) (boat as { skipperServices: Sk
 		font-size: 0.95rem;
 		line-height: 1.6;
 		color: #444;
+		white-space: pre-line;
 	}
 	.book-page-includes-heading {
 		margin: 0 0 0.5rem;
