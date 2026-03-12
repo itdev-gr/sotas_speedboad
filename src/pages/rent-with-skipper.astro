@@ -86,7 +86,7 @@ try {
 										<button type="button" class="includes-modal-carousel-next" data-carousel={boat.id} aria-label="Next image">&rarr;</button>
 										<span class="includes-modal-carousel-counter" data-carousel-counter={boat.id}>1/{boat.imageUrls!.length}</span>
 									</div>
-									<p class="includes-modal-carousel-title">Speedboat {boat.modalName}</p>
+									<p class="includes-modal-carousel-title">{boat.modalName}</p>
 								</div>
 							) : (
 								<div class="includes-modal-image">
@@ -95,8 +95,7 @@ try {
 							)}
 							<div class="includes-modal-content">
 								<h3 id={titleId} class="includes-modal-title">
-									<span>Speedboat</span>
-									<span class="includes-modal-boat-name">"{boat.modalName}"</span>
+									<span class="includes-modal-boat-name">{boat.modalName}</span>
 								</h3>
 								<p class="includes-modal-heading">Includes:</p>
 								<ul class="includes-modal-list">
