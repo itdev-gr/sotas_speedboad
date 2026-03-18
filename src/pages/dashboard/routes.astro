@@ -419,8 +419,13 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			imageInput.click();
 		});
 
-		imageRemove.addEventListener('click', (e) => {
+		imageRemove.addEventListener('click', async (e) => {
 			e.stopPropagation();
+			const routeId = (document.getElementById('f-id') as HTMLInputElement).value.trim();
+			if (routeId) {
+				const { supabase } = await import('../../lib/supabase');
+				await supabase.storage.from('images').remove([`routes/${routeId}/image.jpg`]);
+			}
 			currentImage = '';
 			updateImageUI();
 		});
@@ -432,14 +437,11 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			if (!routeId) { uploadStatus.textContent = 'Save the route first, then upload.'; imageInput.value = ''; return; }
 			uploadStatus.textContent = 'Uploading...';
 			try {
-				const { getFirebaseStorage } = await import('../../lib/firebase');
-				const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
-				const storage = getFirebaseStorage();
-				if (!storage) { uploadStatus.textContent = 'Storage not configured.'; imageInput.value = ''; return; }
+				const { supabase, getPublicUrl } = await import('../../lib/supabase');
 				const path = `routes/${routeId}/image.jpg`;
-				const storageRef = ref(storage, path);
-				await uploadBytes(storageRef, file);
-				const url = await getDownloadURL(storageRef);
+				const { error } = await supabase.storage.from('images').upload(path, file, { upsert: true });
+				if (error) throw error;
+				const url = getPublicUrl(path);
 				currentImage = url;
 				updateImageUI();
 				uploadStatus.textContent = 'Uploaded. Click Save to keep.';

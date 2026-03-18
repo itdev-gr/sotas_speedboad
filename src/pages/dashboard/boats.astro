@@ -546,13 +546,18 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			imagesGrid.innerHTML = html;
 		}
 
-		imagesGrid.addEventListener('click', (e) => {
+		imagesGrid.addEventListener('click', async (e) => {
 			const target = e.target as HTMLElement;
 			// Remove button
 			const removeBtn = target.closest('.img-slot-remove') as HTMLElement;
 			if (removeBtn) {
 				e.stopPropagation();
 				const i = Number(removeBtn.dataset.i);
+				const boatId = (document.getElementById('f-id') as HTMLInputElement).value.trim();
+				if (boatId) {
+					const { supabase } = await import('../../lib/supabase');
+					await supabase.storage.from('images').remove([`boats/${boatId}/img_${i}.jpg`]);
+				}
 				panelImages.splice(i, 1);
 				renderImagesGrid();
 				return;
@@ -576,14 +581,11 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			const idx = Number(slot?.dataset.i ?? panelImages.length);
 			uploadStatus.textContent = `Uploading image ${idx + 1}...`;
 			try {
-				const { getFirebaseStorage } = await import('../../lib/firebase');
-				const { ref, uploadBytes, getDownloadURL } = await import('firebase/storage');
-				const storage = getFirebaseStorage();
-				if (!storage) { uploadStatus.textContent = 'Storage not configured.'; input.value = ''; return; }
+				const { supabase, getPublicUrl } = await import('../../lib/supabase');
 				const path = `boats/${boatId}/img_${idx}.jpg`;
-				const storageRef = ref(storage, path);
-				await uploadBytes(storageRef, file);
-				const url = await getDownloadURL(storageRef);
+				const { error } = await supabase.storage.from('images').upload(path, file, { upsert: true });
+				if (error) throw error;
+				const url = getPublicUrl(path);
 				panelImages[idx] = url;
 				renderImagesGrid();
 				uploadStatus.textContent = 'Uploaded. Click Save to keep.';
