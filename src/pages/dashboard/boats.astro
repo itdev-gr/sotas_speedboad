@@ -553,10 +553,13 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			if (removeBtn) {
 				e.stopPropagation();
 				const i = Number(removeBtn.dataset.i);
-				const boatId = (document.getElementById('f-id') as HTMLInputElement).value.trim();
-				if (boatId) {
-					const { supabase } = await import('../../lib/supabase');
-					await supabase.storage.from('images').remove([`boats/${boatId}/img_${i}.jpg`]);
+				const url = panelImages[i] || '';
+				if (url.includes('supabase.co/')) {
+					try {
+						const { supabase } = await import('../../lib/supabase');
+						const pathMatch = url.match(/\/images\/(.+?)(\?|$)/);
+						if (pathMatch) await supabase.storage.from('images').remove([pathMatch[1]]);
+					} catch (_) {}
 				}
 				panelImages.splice(i, 1);
 				renderImagesGrid();
@@ -582,7 +585,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			uploadStatus.textContent = `Uploading image ${idx + 1}...`;
 			try {
 				const { supabase, getPublicUrl } = await import('../../lib/supabase');
-				const path = `boats/${boatId}/img_${idx}.jpg`;
+				const path = `boats/${boatId}/img_${Date.now()}.jpg`;
 				const { error } = await supabase.storage.from('images').upload(path, file, { upsert: true });
 				if (error) throw error;
 				const url = getPublicUrl(path);

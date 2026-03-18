@@ -421,10 +421,12 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 
 		imageRemove.addEventListener('click', async (e) => {
 			e.stopPropagation();
-			const routeId = (document.getElementById('f-id') as HTMLInputElement).value.trim();
-			if (routeId) {
-				const { supabase } = await import('../../lib/supabase');
-				await supabase.storage.from('images').remove([`routes/${routeId}/image.jpg`]);
+			if (currentImage.includes('supabase.co/')) {
+				try {
+					const { supabase } = await import('../../lib/supabase');
+					const pathMatch = currentImage.match(/\/images\/(.+?)(\?|$)/);
+					if (pathMatch) await supabase.storage.from('images').remove([pathMatch[1]]);
+				} catch (_) {}
 			}
 			currentImage = '';
 			updateImageUI();
@@ -438,7 +440,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			uploadStatus.textContent = 'Uploading...';
 			try {
 				const { supabase, getPublicUrl } = await import('../../lib/supabase');
-				const path = `routes/${routeId}/image.jpg`;
+				const path = `routes/${routeId}/img_${Date.now()}.jpg`;
 				const { error } = await supabase.storage.from('images').upload(path, file, { upsert: true });
 				if (error) throw error;
 				const url = getPublicUrl(path);
