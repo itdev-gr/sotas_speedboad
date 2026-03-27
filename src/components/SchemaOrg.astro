@@ -1,0 +1,305 @@
+---
+interface Props {
+  page: 'homepage' | 'license-free-rent' | 'rent-with-skipper' | 'private-yachting' | 'special-celebrations' | 'faq' | 'contact' | 'recommended-routes';
+}
+
+const { page } = Astro.props;
+const siteUrl = 'https://rentaboatzakynthos.com';
+
+const localBusiness = {
+  '@type': 'LocalBusiness',
+  '@id': `${siteUrl}/#business`,
+  name: 'Sota Travel Zakynthos',
+  alternateName: 'Rent a Boat Zakynthos',
+  url: siteUrl,
+  logo: `${siteUrl}/images/sota-travel-logo.svg`,
+  image: `${siteUrl}/images/unnamed.jpg`,
+  description: 'Boat rentals and private yacht cruises in Zakynthos, Greece. Self-drive boats (no license required), skipper-driven cruises, private yachting, and special celebration cruises.',
+  telephone: '+306987931327',
+  email: 'sotatravel1@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Zakynthos Marina',
+    addressLocality: 'Zakynthos',
+    addressRegion: 'Ionian Islands',
+    addressCountry: 'GR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 37.7870,
+    longitude: 20.8979,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '09:00',
+    closes: '21:00',
+  },
+  priceRange: '$$',
+  areaServed: {
+    '@type': 'Place',
+    name: 'Zakynthos, Ionian Islands, Greece',
+  },
+  sameAs: [],
+};
+
+const schemas: Record<string, object[]> = {
+  homepage: [
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'WebSite',
+          '@id': `${siteUrl}/#website`,
+          url: siteUrl,
+          name: 'Sota Travel Zakynthos',
+          description: 'Boat rentals and private yacht cruises in Zakynthos, Greece.',
+          publisher: { '@id': `${siteUrl}/#business` },
+        },
+        localBusiness,
+        {
+          '@type': 'Service',
+          name: 'Self Drive Boat Rentals',
+          description: 'Rent a self-drive speedboat in Zakynthos with no license required. 4-hour and 7-hour rental options available.',
+          provider: { '@id': `${siteUrl}/#business` },
+          areaServed: 'Zakynthos, Greece',
+          url: `${siteUrl}/license-free-rent`,
+        },
+        {
+          '@type': 'Service',
+          name: 'Private Cruise with Skipper',
+          description: 'Enjoy a luxurious private cruise around Zakynthos with an experienced professional skipper.',
+          provider: { '@id': `${siteUrl}/#business` },
+          areaServed: 'Zakynthos, Greece',
+          url: `${siteUrl}/rent-with-skipper`,
+        },
+        {
+          '@type': 'Service',
+          name: 'Private Yachting',
+          description: 'Experience the ultimate luxury cruise around Zakynthos on a private yacht with tailored routes and premium service.',
+          provider: { '@id': `${siteUrl}/#business` },
+          areaServed: 'Zakynthos, Greece',
+          url: `${siteUrl}/private-yachting`,
+        },
+        {
+          '@type': 'Service',
+          name: 'Special Celebrations',
+          description: 'Celebrate birthdays, proposals, anniversaries, and special occasions on a private yacht cruise in Zakynthos.',
+          provider: { '@id': `${siteUrl}/#business` },
+          areaServed: 'Zakynthos, Greece',
+          url: `${siteUrl}/special-celebrations`,
+        },
+      ],
+    },
+  ],
+  'license-free-rent': [
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        localBusiness,
+        {
+          '@type': 'Service',
+          name: 'Self Drive Boat Rentals in Zakynthos',
+          description: 'Rent a self-drive speedboat in Zakynthos. No boat license required. Choose from our fleet of modern speedboats with 4-hour and 7-hour rental options.',
+          provider: { '@id': `${siteUrl}/#business` },
+          areaServed: 'Zakynthos, Greece',
+          url: `${siteUrl}/license-free-rent`,
+          offers: {
+            '@type': 'AggregateOffer',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+          },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Self Drive Boat Rentals', item: `${siteUrl}/license-free-rent` },
+          ],
+        },
+      ],
+    },
+  ],
+  'rent-with-skipper': [
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        localBusiness,
+        {
+          '@type': 'Service',
+          name: 'Private Cruise with Skipper in Zakynthos',
+          description: 'Enjoy a luxurious private cruise with an experienced skipper. Sit back and discover Zakynthos and the Ionian Sea in comfort.',
+          provider: { '@id': `${siteUrl}/#business` },
+          areaServed: 'Zakynthos, Greece',
+          url: `${siteUrl}/rent-with-skipper`,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Rent with Skipper', item: `${siteUrl}/rent-with-skipper` },
+          ],
+        },
+      ],
+    },
+  ],
+  'private-yachting': [
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        localBusiness,
+        {
+          '@type': 'Service',
+          name: 'Private Yacht Cruises in Zakynthos',
+          description: 'Experience the ultimate luxury cruise around Zakynthos on a private yacht. Tailored routes to Shipwreck Beach, Blue Caves, and the Ionian coastline.',
+          provider: { '@id': `${siteUrl}/#business` },
+          areaServed: 'Zakynthos, Greece',
+          url: `${siteUrl}/private-yachting`,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Private Yachting', item: `${siteUrl}/private-yachting` },
+          ],
+        },
+      ],
+    },
+  ],
+  'special-celebrations': [
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        localBusiness,
+        {
+          '@type': 'Service',
+          name: 'Special Celebration Cruises in Zakynthos',
+          description: 'Celebrate birthdays, proposals, anniversaries, and special occasions on a private yacht cruise around Zakynthos, Greece.',
+          provider: { '@id': `${siteUrl}/#business` },
+          areaServed: 'Zakynthos, Greece',
+          url: `${siteUrl}/special-celebrations`,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Special Celebrations', item: `${siteUrl}/special-celebrations` },
+          ],
+        },
+      ],
+    },
+  ],
+  faq: [
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        localBusiness,
+        {
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'Do I need a boat license to rent?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'No. Our license-free boats can be driven without any license. We give you a short safety and handling briefing before you set off.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What is included in the rental?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Meet at the port, coolbox with ice, Bluetooth speaker, sun canopy, sunbathing area, GPS tracking, safety equipment, and fuel is not included. Specific inclusions may vary by boat.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'How do I book?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Contact us by phone at +30 698 793 1327 or use the contact form. We will confirm availability and complete your booking.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What are the rental durations?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'We offer 4-hour and 7-hour rentals. Prices depend on the boat.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Where do we meet and start?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'We meet at the port and the boat pickup is at Zakynthos Marina. We will confirm the exact meeting point when you book.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'Can I get a skipper?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Yes. We offer skipper-driven rentals so you can relax and enjoy the cruise.',
+              },
+            },
+            {
+              '@type': 'Question',
+              name: 'What if the weather is bad?',
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: 'Your safety comes first. If conditions are unsafe, we will reschedule or refund according to our cancellation policy.',
+              },
+            },
+          ],
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${siteUrl}/faq` },
+          ],
+        },
+      ],
+    },
+  ],
+  contact: [
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        localBusiness,
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Contact Us', item: `${siteUrl}/contact` },
+          ],
+        },
+      ],
+    },
+  ],
+  'recommended-routes': [
+    {
+      '@context': 'https://schema.org',
+      '@graph': [
+        localBusiness,
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Recommended Routes', item: `${siteUrl}/recommended-routes` },
+          ],
+        },
+      ],
+    },
+  ],
+};
+
+const pageSchemas = schemas[page] || [];
+---
+
+{pageSchemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

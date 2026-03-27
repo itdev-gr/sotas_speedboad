@@ -2,19 +2,18 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SEOHead from '../components/SEOHead.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
 ---
 
-<html lang="el">
+<html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Contact Us | Sota Travel Zakynthos – Zakynthos</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+		<SEOHead
+			title="Contact Us | Book a Boat in Zakynthos | Sota Travel"
+			description="Contact Sota Travel Zakynthos to book your boat rental or ask about our cruises. Call +30 698 793 1327 or send us a message. Based at Zakynthos Marina, Greece. Open daily 9AM-9PM."
+			canonical="https://rentaboatzakynthos.com/contact"
+		/>
+		<SchemaOrg page="contact" />
 	</head>
 	<body class="contact-page-body min-h-screen font-sans antialiased overflow-x-hidden" style="font-family: 'Inter', system-ui, sans-serif;">
 		<Header />
@@ -31,7 +30,7 @@ import Footer from '../components/Footer.astro';
 			<div class="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]" aria-label="Contact form and details">
 			<!-- Left: dark form -->
 			<section class="bg-[#064250] flex flex-col justify-center px-8 py-12 lg:px-12 lg:py-16">
-				<h1 class="text-2xl lg:text-3xl font-bold text-white mb-3">Send us a message</h1>
+				<h2 class="text-2xl lg:text-3xl font-bold text-white mb-3">Send us a message</h2>
 				<p class="text-gray-400 text-sm lg:text-base mb-8 max-w-lg">
 					For any question or info about our services, please fill out the form below and we'll get back to you as soon as possible.
 				</p>
