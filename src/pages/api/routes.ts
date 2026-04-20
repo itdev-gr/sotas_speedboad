@@ -48,7 +48,7 @@ const SEED_ROUTES = [
 	{
 		id: 'route_turtle_island',
 		name: 'Marathonisi (Turtle Island)',
-		duration: '4 hours',
+		duration: 'Sunset Tour',
 		image: '/images/self-drive-boat.png',
 		description: 'Cruise to Turtle Island in Laganas Bay — a protected nesting site for the Caretta Caretta sea turtle. Enjoy the pristine sandy beach and spot turtles in their natural habitat.',
 		highlights: ['Caretta Caretta turtle spotting', 'Unspoiled sandy beach', 'Shallow warm waters', 'Part of the National Marine Park'],
