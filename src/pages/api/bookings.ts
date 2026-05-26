@@ -17,32 +17,30 @@ export const GET: APIRoute = async ({ request }) => {
 	const db = getDb();
 	if (!db) return json({ error: 'Database not configured' }, 503);
 	try {
-		const snap = await db.collection('bookings').get();
-		const bookings = snap.docs
-			.map((d) => {
-				const data = d.data();
-				return {
-					id: d.id,
-					customerName: data.customerName,
-					email: data.email,
-					phone: data.phone,
-					boatId: data.boatId,
-					rentalDate: data.rentalDate,
-					duration: data.duration,
-					locationId: data.locationId,
-					totalEur: data.totalEur,
-					status: data.status,
-					notes: data.notes,
-					createdAt: data.createdAt,
-					// Legacy fields for backward compatibility
-					scooterId: data.scooterId,
-					pickupDate: data.pickupDate,
-					returnDate: data.returnDate,
-					pickupLocationId: data.pickupLocationId,
-					returnLocationId: data.returnLocationId,
-				};
-			})
-			.sort((a, b) => (b.createdAt ?? '').localeCompare(a.createdAt ?? ''));
+		const snap = await db.collection('bookings').orderBy('createdAt', 'desc').get();
+		const bookings = snap.docs.map((d) => {
+			const data = d.data();
+			return {
+				id: d.id,
+				customerName: data.customerName,
+				email: data.email,
+				phone: data.phone,
+				boatId: data.boatId,
+				rentalDate: data.rentalDate,
+				duration: data.duration,
+				locationId: data.locationId,
+				totalEur: data.totalEur,
+				status: data.status,
+				notes: data.notes,
+				createdAt: data.createdAt,
+				// Legacy fields for backward compatibility
+				scooterId: data.scooterId,
+				pickupDate: data.pickupDate,
+				returnDate: data.returnDate,
+				pickupLocationId: data.pickupLocationId,
+				returnLocationId: data.returnLocationId,
+			};
+		});
 		return json(bookings);
 	} catch (e) {
 		console.error(e);

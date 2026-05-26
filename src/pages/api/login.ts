@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { verifySession, setSessionCookieHeader } from '../../lib/auth';
+import { setSessionCookieHeader } from '../../lib/auth';
 import { getAdminAuth } from '../../lib/firebase-admin';
 
 export const prerender = false;
@@ -47,6 +47,13 @@ export const POST: APIRoute = async ({ request }) => {
 		}
 	}
 
-	const cookieHeader = setSessionCookieHeader(idToken);
+	const expiresInMs = 60 * 60 * 24 * 5 * 1000; // 5 days
+	let sessionCookie: string;
+	try {
+		sessionCookie = await auth.createSessionCookie(idToken, { expiresIn: expiresInMs });
+	} catch {
+		return json({ error: 'Failed to create session' }, 500);
+	}
+	const cookieHeader = setSessionCookieHeader(sessionCookie, expiresInMs / 1000);
 	return json({ ok: true }, 200, { 'Set-Cookie': cookieHeader });
 };

@@ -140,9 +140,25 @@ if (boat && !Array.isArray(boat.skipperServices)) (boat as { skipperServices: Sk
 										<label for="book-promo" class="text-xs font-medium text-gray-600">Enter Promo Code</label>
 										<input type="text" id="book-promo" name="promo" placeholder="Promo code" class="border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400" />
 									</div>
-									<button type="submit" class="w-full bg-[#064250] hover:bg-[#0a5a6a] text-white font-bold text-sm uppercase py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
+									<div class="border-t border-gray-100 pt-3 space-y-3">
+										<div class="flex flex-col gap-1">
+											<label for="book-customer-name" class="text-xs font-medium text-gray-600">Your name</label>
+											<input type="text" id="book-customer-name" name="customerName" placeholder="Full name" class="border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400" />
+										</div>
+										<div class="flex flex-col gap-1">
+											<label for="book-email" class="text-xs font-medium text-gray-600">Email</label>
+											<input type="email" id="book-email" name="email" placeholder="you@example.com" class="border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400" />
+										</div>
+										<div class="flex flex-col gap-1">
+											<label for="book-phone" class="text-xs font-medium text-gray-600">Phone</label>
+											<input type="tel" id="book-phone" name="phone" placeholder="+30 698 123 4567" class="border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400" />
+										</div>
+										<p class="text-[11px] text-gray-500">Please provide at least an email or a phone number so we can confirm your booking.</p>
+									</div>
+									<div id="book-form-feedback" class="text-sm min-h-[1.25rem]" aria-live="polite"></div>
+									<button type="submit" id="book-submit-btn" class="w-full bg-[#064250] hover:bg-[#0a5a6a] text-white font-bold text-sm uppercase py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors disabled:opacity-70">
 										<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-										Check Availability
+										Request Booking
 									</button>
 								</form>
 							</div>
@@ -164,19 +180,65 @@ if (boat && !Array.isArray(boat.skipperServices)) (boat as { skipperServices: Sk
 		<Footer />
 		<script>
 			const form = document.getElementById('book-online-form');
-			form?.addEventListener('submit', (e) => {
+			form?.addEventListener('submit', async (e) => {
 				e.preventDefault();
 				const f = e.currentTarget as HTMLFormElement;
+				const feedback = document.getElementById('book-form-feedback');
+				const submitBtn = document.getElementById('book-submit-btn') as HTMLButtonElement | null;
+				if (!feedback) return;
+
 				const boat = (f.querySelector('[name="boat"]') as HTMLInputElement)?.value?.trim() || '';
 				const date = (f.querySelector('[name="date"]') as HTMLInputElement)?.value?.trim() || '';
 				const time = (f.querySelector('[name="time"]') as HTMLInputElement)?.value?.trim() || '';
 				const service = (f.querySelector('[name="service"]:checked') as HTMLInputElement)?.value?.trim() || '';
-				const params = new URLSearchParams();
-				if (boat) params.set('boat', boat);
-				if (date) params.set('date', date);
-				if (time) params.set('time', time);
-				if (service) params.set('service', service);
-				window.location.href = '/contact?' + params.toString();
+				const promo = (f.querySelector('[name="promo"]') as HTMLInputElement)?.value?.trim() || '';
+				const customerName = (f.querySelector('[name="customerName"]') as HTMLInputElement)?.value?.trim() || '';
+				const email = (f.querySelector('[name="email"]') as HTMLInputElement)?.value?.trim() || '';
+				const phone = (f.querySelector('[name="phone"]') as HTMLInputElement)?.value?.trim() || '';
+
+				feedback.textContent = '';
+				feedback.className = 'text-sm min-h-[1.25rem]';
+
+				if (!email && !phone) {
+					feedback.textContent = 'Please provide either an email or a phone number.';
+					feedback.className = 'text-sm min-h-[1.25rem] text-red-600';
+					return;
+				}
+
+				if (submitBtn) submitBtn.disabled = true;
+				try {
+					const notes = time ? `Preferred time: ${time}` : '';
+					const payload = {
+						customerName,
+						email,
+						phone,
+						boatId: boat,
+						rentalDate: date,
+						duration: service,
+						service,
+						promo,
+						notes,
+						source: 'skipper',
+					};
+					const res = await fetch('/api/booking-requests', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify(payload),
+					});
+					const data = await res.json().catch(() => ({}));
+					if (res.ok) {
+						feedback.textContent = 'Thanks! Your booking request was received. We will be in touch shortly.';
+						feedback.className = 'text-sm min-h-[1.25rem] text-green-700';
+						f.reset();
+					} else {
+						feedback.textContent = (data as { error?: string }).error || 'Something went wrong. Please try again.';
+						feedback.className = 'text-sm min-h-[1.25rem] text-red-600';
+					}
+				} catch {
+					feedback.textContent = 'Network error. Please try again.';
+					feedback.className = 'text-sm min-h-[1.25rem] text-red-600';
+				}
+				if (submitBtn) submitBtn.disabled = false;
 			});
 
 			const modal = document.getElementById('service-desc-modal');

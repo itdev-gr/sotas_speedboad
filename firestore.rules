@@ -12,6 +12,9 @@ service cloud.firestore {
     match /bookings/{id} {
       allow read, write: if false;
     }
+    match /booking_requests/{id} {
+      allow read, write: if false;
+    }
     match /locations/{id} {
       allow read, write: if false;
     }

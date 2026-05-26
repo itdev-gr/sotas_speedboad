@@ -1,0 +1,115 @@
+---
+export const prerender = false;
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+---
+<DashboardLayout title="Booking requests">
+	<h1>Booking requests</h1>
+	<div class="dash-card">
+		<p>Booking requests submitted by customers from the public website (License-free and Skipper booking pages). Newest first.</p>
+		<table class="dash-table req-table" id="requests-table">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Customer</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Boat</th>
+					<th>Rental date</th>
+					<th>Duration / Service</th>
+					<th>Promo</th>
+					<th>Source</th>
+					<th>Status</th>
+					<th>Notes</th>
+				</tr>
+			</thead>
+			<tbody id="requests-tbody">
+				<tr><td colspan="11">Loading…</td></tr>
+			</tbody>
+		</table>
+		<p id="requests-msg" style="margin-top: 0.75rem; font-size: 0.9rem; color: #666;"></p>
+	</div>
+	<script>
+		function escapeHtml(s: string) {
+			const div = document.createElement('div');
+			div.textContent = s ?? '';
+			return div.innerHTML;
+		}
+		function formatDate(iso: string) {
+			if (!iso) return '';
+			try {
+				const d = new Date(iso);
+				return d.toLocaleDateString(undefined, { dateStyle: 'short' }) + ' ' + d.toLocaleTimeString(undefined, { timeStyle: 'short' });
+			} catch {
+				return iso;
+			}
+		}
+		(async () => {
+			const tbody = document.getElementById('requests-tbody');
+			const msg = document.getElementById('requests-msg');
+			if (!tbody || !msg) return;
+
+			// Boats for name resolution
+			let boats: Array<{ id: string; name: string }> = [];
+			try {
+				const boatsRes = await fetch('/api/boats', { credentials: 'include' });
+				if (boatsRes.ok) boats = await boatsRes.json();
+			} catch {}
+			const boatName = (id: string) => {
+				const b = boats.find((x) => x.id === id);
+				return b ? b.name : (id || '—');
+			};
+
+			const res = await fetch('/api/booking-requests', { credentials: 'include' });
+			if (!res.ok) {
+				tbody.innerHTML = '<tr><td colspan="11">Failed to load booking requests.</td></tr>';
+				if (res.status === 401) msg.textContent = 'Please log in again.';
+				return;
+			}
+			const requests = await res.json() as Array<{
+				id: string;
+				customerName?: string | null;
+				email?: string | null;
+				phone?: string | null;
+				boatId?: string | null;
+				rentalDate?: string | null;
+				duration?: string | null;
+				service?: string | null;
+				promo?: string | null;
+				notes?: string | null;
+				source?: string | null;
+				status?: string | null;
+				createdAt?: string | null;
+			}>;
+			if (requests.length === 0) {
+				tbody.innerHTML = '<tr><td colspan="11">No booking requests yet.</td></tr>';
+				return;
+			}
+			tbody.innerHTML = requests.map((r) => {
+				const durService = r.service || r.duration || '';
+				return `
+				<tr>
+					<td>${escapeHtml(formatDate(r.createdAt ?? ''))}</td>
+					<td>${escapeHtml(r.customerName ?? '')}</td>
+					<td>${r.email ? `<a href="mailto:${escapeHtml(r.email)}">${escapeHtml(r.email)}</a>` : ''}</td>
+					<td>${escapeHtml(r.phone ?? '')}</td>
+					<td>${escapeHtml(boatName(r.boatId ?? ''))}</td>
+					<td>${escapeHtml(r.rentalDate ?? '')}</td>
+					<td>${escapeHtml(durService)}</td>
+					<td>${escapeHtml(r.promo ?? '')}</td>
+					<td>${escapeHtml(r.source ?? '')}</td>
+					<td>${escapeHtml(r.status ?? '')}</td>
+					<td class="req-notes">${escapeHtml(r.notes ?? '')}</td>
+				</tr>
+			`;
+			}).join('');
+		})();
+	</script>
+	<style>
+		.req-table .req-notes {
+			max-width: 280px;
+			min-width: 140px;
+			white-space: pre-wrap;
+			word-break: break-word;
+		}
+	</style>
+</DashboardLayout>

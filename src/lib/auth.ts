@@ -17,7 +17,7 @@ export async function verifySession(
 	const auth = getAdminAuth();
 	if (!auth) return null;
 	try {
-		const decoded = await auth.verifyIdToken(token);
+		const decoded = await auth.verifySessionCookie(token, true);
 		return { uid: decoded.uid, email: decoded.email ?? null };
 	} catch {
 		return null;
