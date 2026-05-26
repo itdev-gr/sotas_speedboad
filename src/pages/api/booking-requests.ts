@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { Resend } from 'resend';
 import { getDb } from '../../lib/firebase-admin';
 import { verifySession } from '../../lib/auth';
 
@@ -12,6 +13,84 @@ function json(body: unknown, status = 200) {
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const NOTIFICATION_TO = 'sotatravel1@gmail.com';
+const NOTIFICATION_FROM = 'Sota Travel <onboarding@resend.dev>';
+
+function escapeHtml(s: string): string {
+	return s
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#39;');
+}
+
+async function sendNotificationEmail(opts: {
+	id: string;
+	customerName: string | null;
+	email: string | null;
+	phone: string | null;
+	boatId: string;
+	boatName: string | null;
+	rentalDate: string;
+	duration: string | null;
+	service: string | null;
+	promo: string | null;
+	notes: string | null;
+	source: string | null;
+	createdAt: string;
+}) {
+	const apiKey = import.meta.env.RESEND_API_KEY;
+	if (!apiKey) {
+		console.warn('[booking-requests] RESEND_API_KEY not set — skipping email notification');
+		return;
+	}
+	try {
+		const resend = new Resend(apiKey);
+		const rows: Array<[string, string]> = [
+			['Customer', opts.customerName ?? '—'],
+			['Email', opts.email ?? '—'],
+			['Phone', opts.phone ?? '—'],
+			['Boat', opts.boatName ? `${opts.boatName} (${opts.boatId})` : opts.boatId],
+			['Rental date', opts.rentalDate],
+			['Duration', opts.duration ?? '—'],
+			['Service', opts.service ?? '—'],
+			['Promo code', opts.promo ?? '—'],
+			['Source', opts.source ?? '—'],
+			['Notes', opts.notes ?? '—'],
+			['Submitted at', opts.createdAt],
+			['Request ID', opts.id],
+		];
+		const html =
+			`<div style="font-family: -apple-system, system-ui, sans-serif; max-width: 600px; margin: 0 auto; color: #1a1a1a;">` +
+			`<h2 style="color: #064250; margin-bottom: 8px;">New booking request</h2>` +
+			`<p style="color: #555; margin-top: 0;">A customer just submitted a booking request from the website.</p>` +
+			`<table cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; margin-top: 12px;">` +
+			rows
+				.map(
+					([k, v]) =>
+						`<tr><td style="border-bottom: 1px solid #e5e5e5; font-weight: 600; width: 140px; vertical-align: top;">${escapeHtml(k)}</td><td style="border-bottom: 1px solid #e5e5e5; white-space: pre-wrap;">${escapeHtml(v)}</td></tr>`
+				)
+				.join('') +
+			`</table>` +
+			`<p style="margin-top: 20px; color: #555;">View all requests at <a href="https://rentaboatzakynthos.com/dashboard/booking-requests" style="color: #064250;">the admin dashboard</a>.</p>` +
+			`</div>`;
+		const text = rows.map(([k, v]) => `${k}: ${v}`).join('\n') +
+			`\n\nView all requests: https://rentaboatzakynthos.com/dashboard/booking-requests`;
+		const subjectName = opts.customerName || opts.email || opts.phone || 'customer';
+		await resend.emails.send({
+			from: NOTIFICATION_FROM,
+			to: [NOTIFICATION_TO],
+			replyTo: opts.email ?? undefined,
+			subject: `New booking request — ${subjectName} — ${opts.boatName ?? opts.boatId} ${opts.rentalDate}`,
+			html,
+			text,
+		});
+	} catch (e) {
+		console.error('[booking-requests] Failed to send notification email:', e);
+	}
+}
 
 export const GET: APIRoute = async ({ request }) => {
 	const session = await verifySession(request);
@@ -86,6 +165,7 @@ export const POST: APIRoute = async ({ request }) => {
 	const db = getDb();
 	if (!db) return json({ error: 'Service temporarily unavailable' }, 503);
 	try {
+		const createdAt = new Date().toISOString();
 		const doc = {
 			customerName: customerName || null,
 			email: email || null,
@@ -98,9 +178,37 @@ export const POST: APIRoute = async ({ request }) => {
 			notes: notes || null,
 			source: source || null,
 			status: 'new',
-			createdAt: new Date().toISOString(),
+			createdAt,
 		};
 		const ref = await db.collection('booking_requests').add(doc);
+
+		let boatName: string | null = null;
+		try {
+			const boatSnap = await db.collection('boats').doc(boatId).get();
+			if (boatSnap.exists) {
+				const data = boatSnap.data() as { name?: string } | undefined;
+				boatName = data?.name ?? null;
+			}
+		} catch (e) {
+			console.warn('[booking-requests] Boat name lookup failed:', e);
+		}
+
+		await sendNotificationEmail({
+			id: ref.id,
+			customerName: customerName || null,
+			email: email || null,
+			phone: phone || null,
+			boatId,
+			boatName,
+			rentalDate,
+			duration: duration || null,
+			service: service || null,
+			promo: promo || null,
+			notes: notes || null,
+			source: source || null,
+			createdAt,
+		});
+
 		return json({ ok: true, id: ref.id });
 	} catch (e) {
 		console.error(e);
