@@ -14,8 +14,8 @@ function json(body: unknown, status = 200) {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const NOTIFICATION_TO = 'sotatravel1@gmail.com';
-const NOTIFICATION_FROM = 'Sota Travel <onboarding@resend.dev>';
+const NOTIFICATION_TO = import.meta.env.RESEND_TO || 'sotatravel1@gmail.com';
+const NOTIFICATION_FROM = import.meta.env.RESEND_FROM || 'Sota Travel <onboarding@resend.dev>';
 
 function escapeHtml(s: string): string {
 	return s
