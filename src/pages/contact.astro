@@ -164,46 +164,37 @@ import SchemaOrg from '../components/SchemaOrg.astro';
 				const form = document.getElementById('contact-form');
 				const feedback = document.getElementById('contact-form-feedback');
 				const submitBtn = document.getElementById('contact-submit-btn');
+				const originalBtnText = submitBtn?.textContent ?? 'Send Message';
 				form?.addEventListener('submit', async (e) => {
 					e.preventDefault();
 					if (!form || !feedback || !submitBtn) return;
-					const fd = new FormData(form);
-					const firstname = String(fd.get('firstname') ?? '').trim();
-					const lastname = String(fd.get('lastname') ?? '').trim();
-					const country = String(fd.get('country') ?? '').trim();
-					const phone = String(fd.get('phone') ?? '').trim();
-					const email = String(fd.get('email') ?? '').trim();
-					const message = String(fd.get('message') ?? '').trim();
+					const formData = new FormData(form);
+					formData.append('access_key', '294556e6-9579-4d65-8ec3-71e59c4d2436');
+					formData.append('subject', 'New Contact Form Submission - Sota Travel');
+					formData.append('from_name', 'Sota Travel Website');
 					feedback.textContent = '';
 					feedback.className = 'text-sm mt-1 min-h-[1.25rem]';
+					submitBtn.textContent = 'Sending...';
 					submitBtn.disabled = true;
 					try {
-						const payload = {
-							firstname,
-							lastname,
-							country,
-							phone,
-							email,
-							message,
-						};
-						const res = await fetch('/api/contacts', {
+						const res = await fetch('https://api.web3forms.com/submit', {
 							method: 'POST',
-							headers: { 'Content-Type': 'application/json' },
-							body: JSON.stringify(payload),
+							body: formData,
 						});
 						const data = await res.json().catch(() => ({}));
-						if (res.ok) {
-							feedback.textContent = 'Thank you! We will get back to you soon.';
+						if (res.ok && data.success) {
+							feedback.textContent = 'Thank you! Your message has been sent.';
 							feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-green-300';
 							form.reset();
 						} else {
-							feedback.textContent = data.error || 'Something went wrong. Please try again.';
+							feedback.textContent = data.message || 'Something went wrong. Please try again.';
 							feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-red-300';
 						}
 					} catch {
 						feedback.textContent = 'Network error. Please try again.';
 						feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-red-300';
 					}
+					submitBtn.textContent = originalBtnText;
 					submitBtn.disabled = false;
 				});
 			});
