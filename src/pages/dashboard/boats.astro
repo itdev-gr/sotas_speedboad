@@ -72,7 +72,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 					<textarea id="f-description" rows="3" placeholder="Short description"></textarea>
 				</div>
 				<div class="pf">
-					<label>Images (1–4)</label>
+					<label>Images (1–15)</label>
 					<div id="images-grid" class="images-grid"></div>
 					<p id="upload-status" style="font-size:0.8rem;color:#888;margin:0.25rem 0 0;"></p>
 				</div>
@@ -389,7 +389,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 
 		let boats: Boat[] = [];
 		let isCreateMode = false;
-		let panelImages: string[] = []; // current images being edited (1-4)
+		let panelImages: string[] = []; // current images being edited (1-15)
 
 		function esc(s: string) {
 			return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -475,7 +475,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			(document.getElementById('f-description') as HTMLTextAreaElement).value = boat.description || '';
 			// Build images array: imageUrls if available, fall back to imageUrl
 			const urls = (boat.imageUrls && boat.imageUrls.length) ? [...boat.imageUrls] : (boat.imageUrl ? [boat.imageUrl] : []);
-			panelImages = urls.filter(Boolean).slice(0, 4);
+			panelImages = urls.filter(Boolean).slice(0, 15);
 			renderImagesGrid();
 			(document.getElementById('f-price4h') as HTMLInputElement).value = String(boat.price4h || '');
 			(document.getElementById('f-price7h') as HTMLInputElement).value = String(boat.price7h || '');
@@ -521,7 +521,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 
 		// --- Multi-image grid ---
 		function renderImagesGrid() {
-			const MAX = 4;
+			const MAX = 15;
 			let html = '';
 			for (let i = 0; i < MAX; i++) {
 				const url = panelImages[i] || '';
