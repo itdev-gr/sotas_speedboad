@@ -430,18 +430,41 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			updateImageUI();
 		});
 
+		// Shrink/compress large images in the browser so they stay under the upload size limit.
+		async function resizeForUpload(file: File): Promise<File> {
+			try {
+				if (!file.type.startsWith('image/') || file.type === 'image/gif' || file.type === 'image/svg+xml') return file;
+				const MAX = 1920, Q = 0.85;
+				const bitmap = await createImageBitmap(file);
+				let w = bitmap.width, h = bitmap.height;
+				if (Math.max(w, h) > MAX) { const s = MAX / Math.max(w, h); w = Math.round(w * s); h = Math.round(h * s); }
+				const canvas = document.createElement('canvas');
+				canvas.width = w; canvas.height = h;
+				const ctx = canvas.getContext('2d');
+				if (!ctx) return file;
+				ctx.drawImage(bitmap, 0, 0, w, h);
+				bitmap.close?.();
+				const blob: Blob | null = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', Q));
+				if (!blob || blob.size >= file.size) return file;
+				return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
+			} catch { return file; }
+		}
+
 		imageInput.addEventListener('change', async () => {
 			const file = imageInput.files?.[0];
 			if (!file) return;
 			const routeId = (document.getElementById('f-id') as HTMLInputElement).value.trim();
 			if (!routeId) { uploadStatus.textContent = 'Save the route first, then upload.'; imageInput.value = ''; return; }
-			uploadStatus.textContent = 'Uploading...';
+			uploadStatus.textContent = 'Optimising image…';
 			try {
+				const upload = await resizeForUpload(file);
+				uploadStatus.textContent = 'Uploading…';
 				const fd = new FormData();
-				fd.append('file', file);
+				fd.append('file', upload);
 				fd.append('folder', 'routes');
 				fd.append('id', routeId);
 				const res = await fetch('/api/upload', { method: 'POST', credentials: 'include', body: fd });
+				if (res.status === 413) { uploadStatus.textContent = 'That image is too large — please choose a smaller photo.'; imageInput.value = ''; return; }
 				const data = await res.json().catch(() => ({}));
 				if (!res.ok || !data.url) throw new Error(data.error || 'Upload failed');
 				currentImage = data.url;

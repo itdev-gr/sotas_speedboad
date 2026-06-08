@@ -571,6 +571,27 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			}
 		});
 
+		// Shrink/compress large images in the browser so they stay under the upload size limit
+		// (and load faster on the public site). Falls back to the original file if anything fails.
+		async function resizeForUpload(file: File): Promise<File> {
+			try {
+				if (!file.type.startsWith('image/') || file.type === 'image/gif' || file.type === 'image/svg+xml') return file;
+				const MAX = 1920, Q = 0.85;
+				const bitmap = await createImageBitmap(file);
+				let w = bitmap.width, h = bitmap.height;
+				if (Math.max(w, h) > MAX) { const s = MAX / Math.max(w, h); w = Math.round(w * s); h = Math.round(h * s); }
+				const canvas = document.createElement('canvas');
+				canvas.width = w; canvas.height = h;
+				const ctx = canvas.getContext('2d');
+				if (!ctx) return file;
+				ctx.drawImage(bitmap, 0, 0, w, h);
+				bitmap.close?.();
+				const blob: Blob | null = await new Promise((r) => canvas.toBlob(r, 'image/jpeg', Q));
+				if (!blob || blob.size >= file.size) return file;
+				return new File([blob], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' });
+			} catch { return file; }
+		}
+
 		imagesGrid.addEventListener('change', async (e: Event) => {
 			const input = e.target as HTMLInputElement;
 			if (input.type !== 'file') return;
@@ -580,13 +601,16 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			if (!boatId) { uploadStatus.textContent = 'Save the boat first, then upload.'; input.value = ''; return; }
 			const slot = input.closest('.img-slot-add') as HTMLElement;
 			const idx = Number(slot?.dataset.i ?? panelImages.length);
-			uploadStatus.textContent = `Uploading image ${idx + 1}...`;
+			uploadStatus.textContent = `Optimising image ${idx + 1}…`;
 			try {
+				const upload = await resizeForUpload(file);
+				uploadStatus.textContent = `Uploading image ${idx + 1}…`;
 				const fd = new FormData();
-				fd.append('file', file);
+				fd.append('file', upload);
 				fd.append('folder', 'boats');
 				fd.append('id', boatId);
 				const res = await fetch('/api/upload', { method: 'POST', credentials: 'include', body: fd });
+				if (res.status === 413) { uploadStatus.textContent = 'That image is too large — please choose a smaller photo.'; input.value = ''; return; }
 				const data = await res.json().catch(() => ({}));
 				if (!res.ok || !data.url) throw new Error(data.error || 'Upload failed');
 				panelImages[idx] = data.url;
