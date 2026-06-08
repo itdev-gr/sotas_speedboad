@@ -421,11 +421,9 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 
 		imageRemove.addEventListener('click', async (e) => {
 			e.stopPropagation();
-			if (currentImage.includes('supabase.co/')) {
+			if (currentImage.includes('/images/')) {
 				try {
-					const { supabase } = await import('../../lib/supabase');
-					const pathMatch = currentImage.match(/\/images\/(.+?)(\?|$)/);
-					if (pathMatch) await supabase.storage.from('images').remove([pathMatch[1]]);
+					await fetch('/api/upload', { method: 'DELETE', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ url: currentImage }) });
 				} catch (_) {}
 			}
 			currentImage = '';
@@ -439,12 +437,14 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			if (!routeId) { uploadStatus.textContent = 'Save the route first, then upload.'; imageInput.value = ''; return; }
 			uploadStatus.textContent = 'Uploading...';
 			try {
-				const { supabase, getPublicUrl } = await import('../../lib/supabase');
-				const path = `routes/${routeId}/img_${Date.now()}.jpg`;
-				const { error } = await supabase.storage.from('images').upload(path, file, { upsert: true });
-				if (error) throw error;
-				const url = getPublicUrl(path);
-				currentImage = url;
+				const fd = new FormData();
+				fd.append('file', file);
+				fd.append('folder', 'routes');
+				fd.append('id', routeId);
+				const res = await fetch('/api/upload', { method: 'POST', credentials: 'include', body: fd });
+				const data = await res.json().catch(() => ({}));
+				if (!res.ok || !data.url) throw new Error(data.error || 'Upload failed');
+				currentImage = data.url;
 				updateImageUI();
 				uploadStatus.textContent = 'Uploaded. Click Save to keep.';
 			} catch (err) { uploadStatus.textContent = 'Upload failed.'; console.error(err); }
