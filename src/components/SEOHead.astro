@@ -32,6 +32,41 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
   gtag('config', 'AW-18123954099');
 </script>
 
+<!-- Event snippet for Προβολή σελίδας conversion page -->
+<script is:inline>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-18123954099/h8FuCOeMwMUcELOvlsJD',
+        'event_callback': callback
+    });
+    return false;
+  }
+
+  // Fire the Google Ads conversion when users click contact / booking actions.
+  document.addEventListener('click', function (e) {
+    var link = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!link) return;
+    var href = link.getAttribute('href') || '';
+    var isConversion =
+      href.indexOf('tel:') === 0 ||
+      href.indexOf('wa.me') !== -1 ||
+      href.indexOf('/contact') === 0 ||
+      href === '/license-free-rent' ||
+      href === '/rent-with-skipper' ||
+      href === '/private-yachting' ||
+      (link.className && String(link.className).indexOf('floating-contact__item') !== -1);
+    if (!isConversion) return;
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18123954099/h8FuCOeMwMUcELOvlsJD'
+    });
+  }, true);
+</script>
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
