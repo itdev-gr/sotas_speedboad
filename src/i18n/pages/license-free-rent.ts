@@ -2,9 +2,9 @@ import type { Locale } from '../config';
 
 export const licenseFree = {
 	en: {
-		seoTitle: 'Self Drive Boat Rentals in Zakynthos (Zante) | No License Required | Sota Travel',
+		seoTitle: 'Self-Drive Boat Rentals in Zakynthos (Zante) | No License',
 		seoDescription:
-			'Rent a self-drive speedboat in Zakynthos (Zante) with no license required. Choose from modern speedboats with 4-hour and 7-hour rental options. Coolbox, speaker, GPS, and safety equipment included.',
+			'Rent a self-drive speedboat in Zakynthos (Zante) — no license required. 4-hour & 7-hour rentals from €180, with safety gear, coolbox and GPS included.',
 		heroAria: 'License Free Rent',
 		heroLabel: 'NO LICENSE REQUIRED',
 		heroTitle: 'Self Drive Boat Rentals',
@@ -14,6 +14,8 @@ export const licenseFree = {
 		paxPrefix: 'Max.',
 		paxCardSuffix: 'pax',
 		paxModalSuffix: 'passengers',
+		price4hLabel: '4 hours',
+		price7hLabel: '7 hours',
 		bookHere: 'Book Here',
 		includesBtn: 'Includes',
 		includesAria: 'View includes for',
@@ -37,6 +39,8 @@ export const licenseFree = {
 		paxPrefix: 'Max.',
 		paxCardSuffix: 'Pers.',
 		paxModalSuffix: 'Passagiere',
+		price4hLabel: '4 Stunden',
+		price7hLabel: '7 Stunden',
 		bookHere: 'Jetzt buchen',
 		includesBtn: 'Enthalten',
 		includesAria: 'Enthaltene Leistungen ansehen für',
@@ -60,6 +64,8 @@ export const licenseFree = {
 		paxPrefix: 'Max.',
 		paxCardSuffix: 'pers.',
 		paxModalSuffix: 'passagers',
+		price4hLabel: '4 heures',
+		price7hLabel: '7 heures',
 		bookHere: 'Réserver',
 		includesBtn: 'Inclus',
 		includesAria: 'Voir les prestations incluses pour',
@@ -83,6 +89,8 @@ export const licenseFree = {
 		paxPrefix: 'Max.',
 		paxCardSuffix: 'pers.',
 		paxModalSuffix: 'passeggeri',
+		price4hLabel: '4 ore',
+		price7hLabel: '7 ore',
 		bookHere: 'Prenota ora',
 		includesBtn: 'Incluso',
 		includesAria: 'Vedi cosa include',

@@ -48,6 +48,16 @@ try {
 							<p class="speedboat-card-name">{boat.name}</p>
 							{boat.description && <p class="speedboat-card-description">{boat.description}</p>}
 							<p class="speedboat-pax">{s.paxPrefix} {boat.maxPax} {s.paxCardSuffix}</p>
+							{(boat.price4h > 0 || boat.price7h > 0) && (
+								<div class="speedboat-price">
+									{boat.price4h > 0 && (
+										<span class="speedboat-price-item"><span class="speedboat-price-dur">{s.price4hLabel}</span><span class="speedboat-price-val">€{boat.price4h}</span></span>
+									)}
+									{boat.price7h > 0 && (
+										<span class="speedboat-price-item"><span class="speedboat-price-dur">{s.price7hLabel}</span><span class="speedboat-price-val">€{boat.price7h}</span></span>
+									)}
+								</div>
+							)}
 							<div class="speedboat-buttons">
 								<a href={`/book-license-free?boat=${boat.id}`} class="speedboat-btn speedboat-btn-primary">{s.bookHere}</a>
 								<button type="button" class="speedboat-btn speedboat-btn-secondary includes-trigger" data-boat={boat.id} aria-label={`${s.includesAria} ${boat.name}`}>{s.includesBtn} &gt;</button>
@@ -410,6 +420,33 @@ try {
 	}
 	.speedboat-pax {
 		margin-bottom: 1rem;
+	}
+	.speedboat-price {
+		display: flex;
+		gap: 0.5rem;
+		margin: 0 0 1rem 0;
+	}
+	.speedboat-price-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.1rem;
+		flex: 1;
+		padding: 0.45rem 0.5rem;
+		background: #fff;
+		border: 1px solid #d9d2c7;
+		border-radius: 8px;
+	}
+	.speedboat-price-dur {
+		font-size: 0.72rem;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: #6b5e52;
+	}
+	.speedboat-price-val {
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: #1a1a1a;
 	}
 	.speedboat-buttons {
 		display: flex;
