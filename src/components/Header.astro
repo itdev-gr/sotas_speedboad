@@ -425,11 +425,16 @@ const p = (path: string) => localizePath(path, lang);
 			flex-wrap: wrap;
 			justify-content: center;
 			gap: 0.6rem;
-			margin-top: 1.5rem;
+			margin-top: auto;
 			padding-top: 1.75rem;
 			border-top: 1px solid rgba(255, 255, 255, 0.15);
 			width: 100%;
 			max-width: 320px;
+			flex-shrink: 0;
+		}
+		.hero-header--menu-open .nav-lang-mobile .nav-lang-mobile-link {
+			width: auto;
+			white-space: nowrap;
 		}
 		.hero-header--menu-open .nav-links {
 			display: flex;
@@ -441,11 +446,11 @@ const p = (path: string) => localizePath(path, lang);
 			margin: 0;
 			flex-direction: column;
 			align-items: center;
-			justify-content: safe center;
+			justify-content: flex-start;
 			text-align: center;
 			gap: 1.1rem;
 			background: #064250;
-			padding: 5rem 1.5rem 2rem;
+			padding: 5.5rem 1.5rem 2rem;
 			box-shadow: none;
 			z-index: 998;
 			overflow-y: auto;
