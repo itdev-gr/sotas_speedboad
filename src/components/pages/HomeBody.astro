@@ -263,9 +263,13 @@ const c = useCommon(lang);
 						<figcaption>— Stein M · TripAdvisor</figcaption>
 					</figure>
 				</div>
-				<div class="reviews-ctas">
-					<a class="reviews-cta" href="https://www.google.com/maps/place/Boat+Rental+Zakynthos+Sota+Travel/@37.8407318,20.8206522,17z/data=!4m8!3m7!1s0x13674792fceb7531:0xca2bf80ddaaa1d99!8m2!3d37.8407318!4d20.8206522!9m1!1b1" target="_blank" rel="noopener noreferrer">{s.reviewGoogleCta}</a>
-					<a class="reviews-cta reviews-cta--ta" href="https://www.tripadvisor.com/Attraction_Review-g189462-d34338909-Reviews-Sota_Travel_Zakynthos-Zakynthos_Ionian_Islands.html" target="_blank" rel="noopener noreferrer">{s.reviewTaCta}</a>
+				<div class="reviews-badges">
+					<a class="review-badge-link" href="https://www.google.com/maps/place/Boat+Rental+Zakynthos+Sota+Travel/@37.8407318,20.8206522,17z/data=!4m8!3m7!1s0x13674792fceb7531:0xca2bf80ddaaa1d99!8m2!3d37.8407318!4d20.8206522!9m1!1b1" target="_blank" rel="noopener noreferrer" aria-label={s.reviewGoogleCta}>
+						<img class="review-badge" src="/images/google-reviews.png" alt="Google Reviews" width="360" height="180" loading="lazy" />
+					</a>
+					<a class="review-badge-link" href="https://www.tripadvisor.com/Attraction_Review-g189462-d34338909-Reviews-Sota_Travel_Zakynthos-Zakynthos_Ionian_Islands.html" target="_blank" rel="noopener noreferrer" aria-label={s.reviewTaCta}>
+						<img class="review-badge review-badge--ta" src="/images/tripadvisor.png" alt="Tripadvisor" width="557" height="122" loading="lazy" />
+					</a>
 				</div>
 			</div>
 		</section>
@@ -877,30 +881,35 @@ const c = useCommon(lang);
 		font-weight: 600;
 		color: #9fd6cf;
 	}
-	.reviews-ctas {
+	.reviews-badges {
 		display: flex;
-		gap: 1rem;
+		gap: 1.25rem;
 		justify-content: center;
+		align-items: center;
 		flex-wrap: wrap;
 	}
-	.reviews-cta {
-		display: inline-block;
-		padding: 0.8rem 1.6rem;
-		border-radius: 999px;
+	.review-badge-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		background: #fff;
-		color: #064250;
-		font-size: 0.9rem;
-		font-weight: 600;
-		text-decoration: none;
-		transition: transform 0.2s, opacity 0.2s;
+		border-radius: 12px;
+		padding: 0.85rem 1.5rem;
+		min-height: 74px;
+		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+		transition: transform 0.2s, box-shadow 0.2s;
 	}
-	.reviews-cta--ta {
-		background: #34a89f;
-		color: #fff;
+	.review-badge-link:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 	}
-	.reviews-cta:hover {
-		transform: translateY(-1px);
-		opacity: 0.95;
+	.review-badge {
+		height: 48px;
+		width: auto;
+		display: block;
+	}
+	.review-badge--ta {
+		height: 30px;
 	}
 	@media (max-width: 700px) {
 		.reviews-cards {
