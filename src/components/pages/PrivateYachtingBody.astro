@@ -19,7 +19,6 @@ const contactHref = localizePath('/contact', lang);
 		<section class="page-hero" aria-label={s.heroTitle}>
 			<div class="page-hero-overlay"></div>
 			<div class="page-hero-content">
-				<p class="page-hero-label">{s.heroLabel}</p>
 				<h1 class="page-hero-title">{s.heroTitle}</h1>
 				<p class="page-hero-subtitle">{s.heroSubtitle}</p>
 				<a href={contactHref} class="page-hero-cta">{c('cta.contactToBook')}</a>
@@ -124,7 +123,7 @@ const contactHref = localizePath('/contact', lang);
 		z-index: 1;
 		text-align: center;
 		padding: 3rem 2rem;
-		max-width: 36rem;
+		max-width: 100%;
 	}
 	.page-hero-label {
 		font-size: 0.75rem;
@@ -134,6 +133,7 @@ const contactHref = localizePath('/contact', lang);
 		text-transform: uppercase;
 	}
 	.page-hero-title {
+		white-space: nowrap;
 		font-family: 'Cormorant Garamond', serif;
 		font-size: clamp(2.5rem, 5vw, 3.5rem);
 		font-weight: 600;
@@ -241,6 +241,9 @@ const contactHref = localizePath('/contact', lang);
 	}
 
 	@media (max-width: 900px) {
+		.page-hero-title {
+			white-space: normal;
+		}
 		.py-section-inner {
 			grid-template-columns: 1fr;
 		}

@@ -12,7 +12,6 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 });
 
 const featured = posts[0];
-const rest = posts.slice(1);
 
 const dateFmt = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -89,31 +88,13 @@ const blogSchema = {
 				</div>
 			</section>
 
-			<section class="featured-section" aria-label="Featured article">
-				<a class="featured-card" href={`/blog/${featured.id}`}>
-					<div class="featured-image">
-						<img src={featured.data.image} alt={featured.data.imageAlt ?? featured.data.title} width="1200" height="800" fetchpriority="high" decoding="async" />
-					</div>
-					<div class="featured-body">
-						<p class="featured-date">
-							<time datetime={featured.data.pubDate.toISOString()}>{dateFmt.format(featured.data.pubDate)}</time>
-							<span class="meta-dot">·</span>
-							<span>{featured.data.category ?? 'Boat Rental Guides'}</span>
-						</p>
-						<h2 class="featured-title">{featured.data.title}</h2>
-						<p class="featured-excerpt">{featured.data.excerpt ?? featured.data.metaDescription}</p>
-						<span class="featured-cta">Read the full guide →</span>
-					</div>
-				</a>
-			</section>
-
 			<section class="blog-grid-section" aria-label="All posts">
 				<div class="blog-grid-header">
 					<h2 class="blog-grid-heading">All articles</h2>
 					<p class="blog-grid-count">{posts.length} guides</p>
 				</div>
 				<div class="blog-grid">
-					{rest.map((post) => (
+					{posts.map((post) => (
 						<a class="blog-card" href={`/blog/${post.id}`}>
 							<div class="blog-card-image">
 								<img src={post.data.image} alt={post.data.imageAlt ?? post.data.title} width="600" height="400" loading="lazy" decoding="async" />

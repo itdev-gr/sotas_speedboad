@@ -29,7 +29,6 @@ try {
 		<section class="page-hero" aria-label={s.heroAria}>
 			<div class="page-hero-overlay"></div>
 			<div class="page-hero-content">
-				<p class="page-hero-label">{s.heroLabel}</p>
 				<h1 class="page-hero-title">{s.heroTitle}</h1>
 				<p class="page-hero-subtitle">{s.heroSubtitle}</p>
 				<a href={contactHref} class="page-hero-cta">{c('cta.contactToBook')}</a>
@@ -239,7 +238,7 @@ try {
 		z-index: 1;
 		text-align: center;
 		padding: 3rem 2rem;
-		max-width: 36rem;
+		max-width: 100%;
 	}
 	.page-hero-label {
 		font-size: 0.75rem;
@@ -249,6 +248,7 @@ try {
 		text-transform: uppercase;
 	}
 	.page-hero-title {
+		white-space: nowrap;
 		font-family: 'Cormorant Garamond', serif;
 		font-size: clamp(2.5rem, 5vw, 3.5rem);
 		font-weight: 600;
@@ -665,6 +665,9 @@ try {
 	}
 
 	@media (max-width: 900px) {
+		.page-hero-title {
+			white-space: normal;
+		}
 		.license-text {
 			padding: 3rem 1.5rem;
 		}
