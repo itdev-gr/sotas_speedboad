@@ -1,0 +1,53 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import NavagioBody from '../components/pages/NavagioBody.astro';
+import { navagioTour } from '../i18n/pages/navagio-shipwreck-boat-tour';
+
+const lang = 'en';
+const s = navagioTour[lang];
+const siteUrl = 'https://rentaboatzakynthos.com';
+const path = '/navagio-shipwreck-boat-tour';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'TouristTrip',
+			name: s.heroTitle,
+			description: s.seoDescription,
+			url: `${siteUrl}${path}`,
+			touristType: ['Beach lovers', 'Couples', 'Families'],
+			provider: { '@id': `${siteUrl}/#business` },
+			itinerary: {
+				'@type': 'ItemList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, item: { '@type': 'TouristAttraction', name: 'Navagio Shipwreck Beach', address: { '@type': 'PostalAddress', addressLocality: 'Zakynthos', addressCountry: 'GR' } } },
+				],
+			},
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+				{ '@type': 'ListItem', position: 2, name: 'Recommended Routes', item: `${siteUrl}/recommended-routes` },
+				{ '@type': 'ListItem', position: 3, name: s.heroTitle, item: `${siteUrl}${path}` },
+			],
+		},
+	],
+};
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath={path}
+			translated={true}
+			ogImage="https://rentaboatzakynthos.com/images/unnamed.jpg"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<NavagioBody lang={lang} />
+</html>

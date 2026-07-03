@@ -25,7 +25,15 @@ const p = (path: string) => localizePath(path, lang);
 					<a href={p('/private-yachting')} role="menuitem">{t('nav.yachting')}</a>
 				</div>
 			</div>
-			<a href={p('/recommended-routes')}>{t('nav.routes')}</a>
+			<div class="nav-item-dropdown">
+				<a href={p('/recommended-routes')} class="nav-link-parent" aria-haspopup="true" aria-expanded="false">{t('nav.routes')}</a>
+				<div class="nav-dropdown" role="menu">
+					<a href={p('/navagio-shipwreck-boat-tour')} role="menuitem">{t('nav.tourNavagio')}</a>
+					<a href={p('/blue-caves-boat-tour')} role="menuitem">{t('nav.tourBlueCaves')}</a>
+					<a href={p('/keri-caves-turtle-island-boat-tour')} role="menuitem">{t('nav.tourKeri')}</a>
+					<a href={p('/sunset-boat-tour')} role="menuitem">{t('nav.tourSunset')}</a>
+				</div>
+			</div>
 			<a href="/blog">{t('nav.blog')}</a>
 			<a href={p('/faq')}>{t('nav.faq')}</a>
 			<a href={p('/contact')}>{t('nav.contact')}</a>

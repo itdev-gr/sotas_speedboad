@@ -1,0 +1,53 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import SunsetBody from '../components/pages/SunsetBody.astro';
+import { sunsetTour } from '../i18n/pages/sunset-boat-tour';
+
+const lang = 'en';
+const s = sunsetTour[lang];
+const siteUrl = 'https://rentaboatzakynthos.com';
+const path = '/sunset-boat-tour';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'TouristTrip',
+			name: s.heroTitle,
+			description: s.seoDescription,
+			url: `${siteUrl}${path}`,
+			touristType: ['Couples', 'Romantic occasions', 'Beach lovers'],
+			provider: { '@id': `${siteUrl}/#business` },
+			itinerary: {
+				'@type': 'ItemList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, item: { '@type': 'TouristAttraction', name: 'Zakynthos coastline', address: { '@type': 'PostalAddress', addressLocality: 'Zakynthos', addressCountry: 'GR' } } },
+				],
+			},
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+				{ '@type': 'ListItem', position: 2, name: 'Recommended Routes', item: `${siteUrl}/recommended-routes` },
+				{ '@type': 'ListItem', position: 3, name: s.heroTitle, item: `${siteUrl}${path}` },
+			],
+		},
+	],
+};
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath={path}
+			translated={true}
+			ogImage="https://rentaboatzakynthos.com/images/hero2.png"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<SunsetBody lang={lang} />
+</html>

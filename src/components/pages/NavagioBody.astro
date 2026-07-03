@@ -1,0 +1,381 @@
+---
+import Header from '../Header.astro';
+import Footer from '../Footer.astro';
+import { localizePath, type Locale } from '../../i18n/config';
+import { useCommon } from '../../i18n/common';
+import { navagioTour } from '../../i18n/pages/navagio-shipwreck-boat-tour';
+
+interface Props {
+	lang: Locale;
+}
+const { lang } = Astro.props;
+const s = navagioTour[lang];
+const c = useCommon(lang);
+const contactHref = localizePath('/contact', lang);
+const licenseHref = localizePath('/license-free-rent', lang);
+const skipperHref = localizePath('/rent-with-skipper', lang);
+---
+<body class="tour-body">
+	<Header lang={lang} basePath="/navagio-shipwreck-boat-tour" />
+	<main class="tour-page">
+		<section class="page-hero" aria-label={s.heroTitle}>
+			<div class="page-hero-overlay"></div>
+			<div class="page-hero-content">
+				<p class="page-hero-label">{s.heroLabel}</p>
+				<h1 class="page-hero-title">{s.heroTitle}</h1>
+				<p class="page-hero-subtitle">{s.heroSubtitle}</p>
+				<a href={contactHref} class="page-hero-cta">{c('cta.contactToBook')}</a>
+			</div>
+		</section>
+
+		<section class="tour-intro" aria-label={s.introTitle}>
+			<div class="tour-intro-inner">
+				<h2 class="tour-intro-title">{s.introTitle}</h2>
+				<p class="tour-intro-text">{s.introText}</p>
+			</div>
+		</section>
+
+		<section class="tour-section" aria-label={s.sec1Title}>
+			<div class="tour-section-inner">
+				<div class="tour-image-wrap">
+					<img src="/images/IMG_6416.jpeg" alt={s.sec1Alt} width="800" height="600" loading="lazy" />
+				</div>
+				<div class="tour-text">
+					<p class="tour-label">{s.sec1Label}</p>
+					<h2 class="tour-title">{s.sec1Title}</h2>
+					<p class="tour-desc">{s.sec1Text}</p>
+					<a href={licenseHref} class="tour-cta">{s.sec1Cta}</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="tour-section tour-section--reversed" aria-label={s.sec2Title}>
+			<div class="tour-section-inner">
+				<div class="tour-image-wrap">
+					<img src="/images/section-coast.png" alt={s.sec2Alt} width="800" height="600" loading="lazy" />
+				</div>
+				<div class="tour-text">
+					<p class="tour-label">{s.sec2Label}</p>
+					<h2 class="tour-title">{s.sec2Title}</h2>
+					<p class="tour-desc">{s.sec2Text}</p>
+					<a href={skipperHref} class="tour-cta">{s.sec2Cta}</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="tour-faq" aria-label={s.faqTitle}>
+			<div class="tour-faq-inner">
+				<h2 class="tour-faq-title">{s.faqTitle}</h2>
+				<div class="tour-faq-item">
+					<h3 class="tour-faq-q">{s.faq1Q}</h3>
+					<p class="tour-faq-a">{s.faq1A}</p>
+				</div>
+				<div class="tour-faq-item">
+					<h3 class="tour-faq-q">{s.faq2Q}</h3>
+					<p class="tour-faq-a">{s.faq2A}</p>
+				</div>
+				<div class="tour-faq-item">
+					<h3 class="tour-faq-q">{s.faq3Q}</h3>
+					<p class="tour-faq-a">{s.faq3A}</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="tour-cta-section" aria-label={s.ctaTitle}>
+			<div class="tour-cta-inner">
+				<h2 class="tour-cta-title">{s.ctaTitle}</h2>
+				<p class="tour-cta-text">{s.ctaText}</p>
+				<a href={contactHref} class="tour-cta-btn">{s.ctaBtn}</a>
+			</div>
+		</section>
+	</main>
+	<Footer lang={lang} />
+
+	<script is:inline>
+		document.addEventListener('DOMContentLoaded', () => {
+			const header = document.querySelector('.hero-header');
+			if (header) header.classList.add('hero-header--scrolled');
+		});
+	</script>
+</body>
+
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		font-family: 'Inter', system-ui, sans-serif;
+		overflow-x: hidden;
+	}
+	body.tour-body {
+		padding-top: 0;
+	}
+</style>
+
+<style>
+	.tour-page {
+		min-height: 100vh;
+		background: #fdfcf9;
+	}
+	.page-hero {
+		position: relative;
+		width: 100%;
+		min-height: 56vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		overflow: hidden;
+		padding-top: 5rem;
+	}
+	.page-hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: url('/images/unnamed.jpg') center/cover no-repeat;
+		opacity: 0.4;
+	}
+	.page-hero-content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		padding: 3rem 1.5rem;
+		max-width: 100%;
+		color: #fff;
+	}
+	.page-hero-label {
+		font-size: 0.75rem;
+		letter-spacing: 0.2em;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 0.5rem 0;
+		text-transform: uppercase;
+	}
+	.page-hero-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(2rem, 5vw, 3.4rem);
+		font-weight: 600;
+		color: #fff;
+		margin: 0 0 1rem 0;
+		line-height: 1.15;
+		white-space: nowrap;
+	}
+	.page-hero-subtitle {
+		font-size: 1.1rem;
+		color: rgba(255, 255, 255, 0.92);
+		margin: 0 auto 1.5rem;
+		line-height: 1.5;
+		max-width: 44ch;
+	}
+	.page-hero-cta {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		background: #fff;
+		color: #064250;
+		text-decoration: none;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		border-radius: 4px;
+		transition: opacity 0.2s, transform 0.2s;
+	}
+	.page-hero-cta:hover {
+		opacity: 0.95;
+		transform: translateY(-1px);
+	}
+
+	.tour-intro {
+		padding: 4rem 1.5rem 2rem;
+	}
+	.tour-intro-inner {
+		max-width: 760px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.tour-intro-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0 0 1rem;
+		line-height: 1.2;
+	}
+	.tour-intro-text {
+		font-size: 1.05rem;
+		line-height: 1.8;
+		color: #333;
+		margin: 0;
+	}
+
+	.tour-section {
+		width: 100%;
+	}
+	.tour-section-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		min-height: 420px;
+	}
+	.tour-image-wrap {
+		overflow: hidden;
+	}
+	.tour-image-wrap img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		min-height: 360px;
+	}
+	.tour-text {
+		background: #f5f0e8;
+		padding: 4rem 3rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 1rem;
+	}
+	.tour-section--reversed .tour-image-wrap {
+		order: 2;
+	}
+	.tour-section--reversed .tour-text {
+		order: 1;
+		background: #fff;
+	}
+	.tour-label {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.2em;
+		color: #8b7765;
+		margin: 0;
+		text-transform: uppercase;
+	}
+	.tour-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.6rem, 3vw, 2.25rem);
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.2;
+	}
+	.tour-desc {
+		font-size: 1rem;
+		line-height: 1.7;
+		color: #444;
+		margin: 0;
+		max-width: 52ch;
+	}
+	.tour-cta {
+		display: inline-block;
+		align-self: flex-start;
+		padding: 0.85rem 1.9rem;
+		background: #1a1a1a;
+		color: #fff;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: background 0.2s;
+		margin-top: 0.5rem;
+	}
+	.tour-cta:hover {
+		background: #333;
+	}
+
+	.tour-faq {
+		padding: 4rem 1.5rem;
+	}
+	.tour-faq-inner {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.tour-faq-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.6rem, 3vw, 2.25rem);
+		font-weight: 700;
+		color: #1a1a1a;
+		text-align: center;
+		margin: 0 0 2rem;
+	}
+	.tour-faq-item {
+		border-top: 1px solid #e7ded0;
+		padding: 1.25rem 0;
+	}
+	.tour-faq-q {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: #1a1a1a;
+		margin: 0 0 0.5rem;
+	}
+	.tour-faq-a {
+		font-size: 1rem;
+		line-height: 1.65;
+		color: #444;
+		margin: 0;
+	}
+
+	.tour-cta-section {
+		background: #064250;
+		color: #fff;
+		padding: 4rem 1.5rem;
+		text-align: center;
+	}
+	.tour-cta-inner {
+		max-width: 640px;
+		margin: 0 auto;
+	}
+	.tour-cta-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+		font-weight: 600;
+		margin: 0 0 0.75rem;
+	}
+	.tour-cta-text {
+		font-size: 1.05rem;
+		line-height: 1.6;
+		opacity: 0.95;
+		margin: 0 0 1.75rem;
+	}
+	.tour-cta-btn {
+		display: inline-block;
+		padding: 0.9rem 2.2rem;
+		background: #fff;
+		color: #064250;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		text-decoration: none;
+		border-radius: 999px;
+		transition: transform 0.2s;
+	}
+	.tour-cta-btn:hover {
+		transform: translateY(-1px);
+	}
+
+	@media (max-width: 900px) {
+		.page-hero-title {
+			white-space: normal;
+		}
+		.tour-section-inner {
+			grid-template-columns: 1fr;
+		}
+		.tour-section--reversed .tour-image-wrap {
+			order: 0;
+		}
+		.tour-section--reversed .tour-text {
+			order: 0;
+		}
+		.tour-text {
+			padding: 2.5rem 1.5rem;
+		}
+		.tour-image-wrap img {
+			min-height: 260px;
+			max-height: 340px;
+		}
+	}
+</style>

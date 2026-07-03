@@ -1,0 +1,51 @@
+---
+import SEOHead from '../../components/SEOHead.astro';
+import NavagioBody from '../../components/pages/NavagioBody.astro';
+import { navagioTour } from '../../i18n/pages/navagio-shipwreck-boat-tour';
+import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+
+export function getStaticPaths() {
+	return [{ params: { lang: 'de' } }, { params: { lang: 'fr' } }, { params: { lang: 'it' } }];
+}
+
+const { lang: langParam } = Astro.params;
+const lang: Locale = isLocale(langParam) && langParam !== DEFAULT_LOCALE ? langParam : 'de';
+const s = navagioTour[lang];
+const siteUrl = 'https://rentaboatzakynthos.com';
+const path = '/navagio-shipwreck-boat-tour';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'TouristTrip',
+			name: s.heroTitle,
+			description: s.seoDescription,
+			url: `${siteUrl}/${lang}${path}`,
+			provider: { '@id': `${siteUrl}/#business` },
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/${lang}/` },
+				{ '@type': 'ListItem', position: 2, name: s.heroTitle, item: `${siteUrl}/${lang}${path}` },
+			],
+		},
+	],
+};
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath={path}
+			translated={true}
+			ogImage="https://rentaboatzakynthos.com/images/unnamed.jpg"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<NavagioBody lang={lang} />
+</html>

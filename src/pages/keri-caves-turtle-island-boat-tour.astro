@@ -1,0 +1,54 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import KeriTurtleBody from '../components/pages/KeriTurtleBody.astro';
+import { keriTurtleTour } from '../i18n/pages/keri-caves-turtle-island-boat-tour';
+
+const lang = 'en';
+const s = keriTurtleTour[lang];
+const siteUrl = 'https://rentaboatzakynthos.com';
+const path = '/keri-caves-turtle-island-boat-tour';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'TouristTrip',
+			name: s.heroTitle,
+			description: s.seoDescription,
+			url: `${siteUrl}${path}`,
+			touristType: ['Beach lovers', 'Couples', 'Families'],
+			provider: { '@id': `${siteUrl}/#business` },
+			itinerary: {
+				'@type': 'ItemList',
+				itemListElement: [
+					{ '@type': 'ListItem', position: 1, item: { '@type': 'TouristAttraction', name: 'Keri Caves', address: { '@type': 'PostalAddress', addressLocality: 'Zakynthos', addressCountry: 'GR' } } },
+					{ '@type': 'ListItem', position: 2, item: { '@type': 'TouristAttraction', name: 'Turtle Island (Marathonisi), Keri Caves', address: { '@type': 'PostalAddress', addressLocality: 'Zakynthos', addressCountry: 'GR' } } },
+				],
+			},
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+				{ '@type': 'ListItem', position: 2, name: 'Recommended Routes', item: `${siteUrl}/recommended-routes` },
+				{ '@type': 'ListItem', position: 3, name: s.heroTitle, item: `${siteUrl}${path}` },
+			],
+		},
+	],
+};
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath={path}
+			translated={true}
+			ogImage="https://rentaboatzakynthos.com/images/girlinwoater.jpg"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<KeriTurtleBody lang={lang} />
+</html>

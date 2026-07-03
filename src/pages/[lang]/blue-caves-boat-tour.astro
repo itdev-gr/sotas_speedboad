@@ -1,0 +1,51 @@
+---
+import SEOHead from '../../components/SEOHead.astro';
+import BlueCavesBody from '../../components/pages/BlueCavesBody.astro';
+import { blueCavesTour } from '../../i18n/pages/blue-caves-boat-tour';
+import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+
+export function getStaticPaths() {
+	return [{ params: { lang: 'de' } }, { params: { lang: 'fr' } }, { params: { lang: 'it' } }];
+}
+
+const { lang: langParam } = Astro.params;
+const lang: Locale = isLocale(langParam) && langParam !== DEFAULT_LOCALE ? langParam : 'de';
+const s = blueCavesTour[lang];
+const siteUrl = 'https://rentaboatzakynthos.com';
+const path = '/blue-caves-boat-tour';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'TouristTrip',
+			name: s.heroTitle,
+			description: s.seoDescription,
+			url: `${siteUrl}/${lang}${path}`,
+			provider: { '@id': `${siteUrl}/#business` },
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{ '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/${lang}/` },
+				{ '@type': 'ListItem', position: 2, name: s.heroTitle, item: `${siteUrl}/${lang}${path}` },
+			],
+		},
+	],
+};
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath={path}
+			translated={true}
+			ogImage="https://rentaboatzakynthos.com/images/IMG_6507.jpeg"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+	</head>
+	<BlueCavesBody lang={lang} />
+</html>
