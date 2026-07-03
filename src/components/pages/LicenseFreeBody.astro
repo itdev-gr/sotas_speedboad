@@ -42,7 +42,7 @@ try {
 				) : boats.map((boat) => (
 					<div class="speedboat-card">
 						<div class="speedboat-card-image">
-							<img src={boat.imageUrl || '/images/self-drive-boat.png'} alt={boat.name} width="400" height="280" />
+							<img src={boat.imageUrl || '/images/self-drive-boat.webp'} alt={boat.name} width="400" height="280" />
 						</div>
 						<div class="speedboat-card-content">
 							<p class="speedboat-card-name">{boat.name}</p>
@@ -122,7 +122,7 @@ try {
 							</div>
 						) : (
 							<div class="includes-modal-image">
-								<img src={boat.imageUrl || '/images/self-drive-boat.png'} alt={`${boat.name} - ${boat.modalName}`} width="400" height="280" />
+								<img src={boat.imageUrl || '/images/self-drive-boat.webp'} alt={`${boat.name} - ${boat.modalName}`} width="400" height="280" />
 							</div>
 						)}
 						<div class="includes-modal-content">
@@ -263,7 +263,7 @@ try {
 	.page-hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: url('/images/license-free-hero.png') center bottom/cover no-repeat;
+		background: url('/images/license-free-hero.webp') center bottom/cover no-repeat;
 		opacity: 0.25;
 	}
 	.page-hero-content {

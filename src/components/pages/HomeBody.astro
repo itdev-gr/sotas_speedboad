@@ -19,7 +19,7 @@ const c = useCommon(lang);
 			<div class="hero-image-wrap">
 				<img
 					class="hero-image is-ready"
-					src="/images/unnamed.jpg"
+					src="/images/unnamed.webp"
 					alt="Zakynthos boat cruise"
 					fetchpriority="high"
 					width="1920"
@@ -156,12 +156,12 @@ const c = useCommon(lang);
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/license-free-hero.png"
+						src="/images/license-free-hero.webp"
 						alt={s.sd1Alt}
 						class="selfdrive-image selfdrive-image--fit"
 						width="800"
 						height="600"
-					/>
+					 loading="lazy" decoding="async" />
 				</div>
 				<div class="selfdrive-text">
 					<span class="selfdrive-bg-label" aria-hidden="true">SELF DRIVE</span>
@@ -180,12 +180,12 @@ const c = useCommon(lang);
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/image_skipper.png"
+						src="/images/image_skipper.webp"
 						alt={s.sd2Alt}
 						class="selfdrive-image"
 						width="800"
 						height="600"
-					/>
+					 loading="lazy" decoding="async" />
 				</div>
 				<div class="selfdrive-text">
 					<span class="selfdrive-bg-label" aria-hidden="true">SKIPPER DRIVE</span>
@@ -204,12 +204,12 @@ const c = useCommon(lang);
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/IMG_0111.jpeg"
+						src="/images/IMG_0111.webp"
 						alt={s.sd3Alt}
 						class="selfdrive-image"
 						width="800"
 						height="600"
-					/>
+					 loading="lazy" decoding="async" />
 				</div>
 				<div class="selfdrive-text">
 					<span class="selfdrive-bg-label" aria-hidden="true">PRIVATE YACHTING</span>
@@ -228,12 +228,12 @@ const c = useCommon(lang);
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.png"
+						src="/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.webp"
 						alt={s.sd4Alt}
 						class="selfdrive-image"
 						width="800"
 						height="600"
-					/>
+					 loading="lazy" decoding="async" />
 				</div>
 				<div class="selfdrive-text">
 					<span class="selfdrive-bg-label" aria-hidden="true">CELEBRATIONS</span>
@@ -292,8 +292,8 @@ const c = useCommon(lang);
 
 			if (heroImage) {
 				const slides = [
-					{ type: 'image', src: '/images/unnamed.jpg' },
-					{ type: 'image', src: '/images/girlinwoater.jpg' },
+					{ type: 'image', src: '/images/unnamed.webp' },
+					{ type: 'image', src: '/images/girlinwoater.webp' },
 					{ type: 'video' }
 				];
 				let currentIndex = 0;
