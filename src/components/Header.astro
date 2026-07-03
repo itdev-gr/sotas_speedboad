@@ -441,7 +441,7 @@ const p = (path: string) => localizePath(path, lang);
 			margin: 0;
 			flex-direction: column;
 			align-items: center;
-			justify-content: center;
+			justify-content: safe center;
 			text-align: center;
 			gap: 1.1rem;
 			background: #064250;
@@ -476,6 +476,9 @@ const p = (path: string) => localizePath(path, lang);
 		.hero-header--menu-open .nav-dropdown a {
 			font-size: 0.98rem;
 			opacity: 0.8;
+		}
+		.hero-header--menu-open .nav-dropdown a:hover {
+			background: transparent;
 		}
 		.nav-toggle {
 			display: flex;
@@ -562,12 +565,17 @@ const p = (path: string) => localizePath(path, lang);
 		t.addEventListener('click', toggleMenu);
 		n.querySelectorAll('a').forEach((link) => {
 			if (link.classList.contains('nav-link-parent')) {
-				// BOOK RENTAL: toggle its sub-menu instead of navigating (mobile menu only)
+				// Dropdown parents (BOOK RENTAL / RECOMMENDED ROUTES): toggle the sub-menu
+				// instead of navigating, and keep only one open at a time (mobile menu only).
 				link.addEventListener('click', (e) => {
 					if (h.classList.contains('hero-header--menu-open')) {
 						e.preventDefault();
+						e.stopPropagation();
 						const parent = link.closest('.nav-item-dropdown');
-						if (parent) parent.classList.toggle('nav-item-dropdown--open');
+						if (!parent) return;
+						const wasOpen = parent.classList.contains('nav-item-dropdown--open');
+						n.querySelectorAll('.nav-item-dropdown--open').forEach((d) => d.classList.remove('nav-item-dropdown--open'));
+						if (!wasOpen) parent.classList.add('nav-item-dropdown--open');
 					}
 				});
 			} else {
