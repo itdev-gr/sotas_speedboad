@@ -31,7 +31,13 @@ const p = (path: string) => localizePath(path, lang);
 			<a href={p('/contact')}>{t('nav.contact')}</a>
 		</nav>
 		<div class="nav-contact">
-			<a href="tel:+306987931327" class="nav-phone-btn">0030 698 793 1327</a>
+			<a href="tel:+306987931327" class="nav-phone-btn" aria-label={`${t('nav.callUs')}: 0030 698 793 1327`}>
+				<svg class="nav-phone-btn__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+				<span class="nav-phone-btn__text">
+					<span class="nav-phone-btn__label">{t('nav.callUs')}</span>
+					<span class="nav-phone-btn__num">0030 698 793 1327</span>
+				</span>
+			</a>
 			<div class="nav-lang" role="group" aria-label={t('nav.language')}>
 				{LOCALES.map((l) => (
 					<a
@@ -179,21 +185,43 @@ const p = (path: string) => localizePath(path, lang);
 		background: rgba(255, 255, 255, 0.2);
 	}
 	.nav-phone-btn {
-		display: inline-block;
-		padding: 0.4rem 0.75rem;
-		background: rgba(255, 255, 255, 0.2);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.4rem 0.9rem;
+		background: rgba(72, 187, 180, 0.9);
 		color: #fff;
 		text-decoration: none;
-		font-size: 0.992rem;
-		font-weight: 500;
-		border: 1px solid rgba(255, 255, 255, 0.4);
-		border-radius: 4px;
-		transition: background 0.2s, border-color 0.2s;
+		border: 1px solid rgba(72, 187, 180, 1);
+		border-radius: 999px;
+		transition: background 0.2s, border-color 0.2s, transform 0.2s;
 		flex-shrink: 0;
+		line-height: 1.1;
 	}
 	.nav-phone-btn:hover {
-		background: rgba(255, 255, 255, 0.3);
-		border-color: rgba(255, 255, 255, 0.6);
+		background: rgba(72, 187, 180, 1);
+		border-color: #fff;
+		transform: translateY(-1px);
+	}
+	.nav-phone-btn__icon {
+		flex-shrink: 0;
+	}
+	.nav-phone-btn__text {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.nav-phone-btn__label {
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		opacity: 0.95;
+	}
+	.nav-phone-btn__num {
+		font-size: 0.9rem;
+		font-weight: 600;
+		white-space: nowrap;
 	}
 	.nav-toggle {
 		display: none;
