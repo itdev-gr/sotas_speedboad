@@ -85,9 +85,7 @@ const blogSchema = {
 							<li aria-current="page">Blog</li>
 						</ol>
 					</nav>
-					<p class="page-hero-label">SOTA TRAVEL JOURNAL</p>
 					<h1 class="page-hero-title">The Zakynthos Boat Rental Blog</h1>
-					<p class="page-hero-subtitle">In-depth guides to the routes, durations and rental options that actually work on Zakynthos — written by the team who runs the boats.</p>
 				</div>
 			</section>
 
@@ -95,7 +93,6 @@ const blogSchema = {
 				<a class="featured-card" href={`/blog/${featured.id}`}>
 					<div class="featured-image">
 						<img src={featured.data.image} alt={featured.data.imageAlt ?? featured.data.title} width="1200" height="800" fetchpriority="high" decoding="async" />
-						<span class="featured-tag">Featured</span>
 					</div>
 					<div class="featured-body">
 						<p class="featured-date">
@@ -182,7 +179,8 @@ const blogSchema = {
 		text-align: center;
 		color: #fff;
 		padding: 3.5rem 1.5rem;
-		max-width: 820px;
+		max-width: 1200px;
+		width: 100%;
 	}
 	.breadcrumbs--hero ol {
 		justify-content: center;
@@ -216,10 +214,14 @@ const blogSchema = {
 	}
 	.page-hero-title {
 		font-family: 'Cormorant Garamond', serif;
-		font-size: clamp(2.25rem, 5vw, 3.85rem);
+		font-size: clamp(2rem, 5.2vw, 4rem);
 		font-weight: 600;
 		line-height: 1.1;
-		margin: 0 0 1rem;
+		margin: 0;
+		white-space: nowrap;
+	}
+	@media (max-width: 800px) {
+		.page-hero-title { white-space: normal; }
 	}
 	.page-hero-subtitle {
 		font-size: 1.05rem;
