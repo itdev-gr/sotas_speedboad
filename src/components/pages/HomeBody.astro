@@ -245,6 +245,31 @@ const c = useCommon(lang);
 			</div>
 		</section>
 
+		<!-- Reviews / social proof -->
+		<section class="reviews-section" aria-label="Guest reviews">
+			<div class="reviews-inner">
+				<p class="reviews-label">{s.reviewsLabel}</p>
+				<h2 class="reviews-title">{s.reviewsTitle}</h2>
+				<p class="reviews-rating"><span class="reviews-stars" aria-hidden="true">★★★★★</span> {s.reviewsRated}</p>
+				<div class="reviews-cards">
+					<figure class="review-card">
+						<span class="review-stars" aria-hidden="true">★★★★★</span>
+						<blockquote>"What an excellent day. Ilias went out of his way to make sure our trip went smoothly. Petros our skipper was superb and very knowledgeable about all the sites we visited."</blockquote>
+						<figcaption>— Chris D · TripAdvisor</figcaption>
+					</figure>
+					<figure class="review-card">
+						<span class="review-stars" aria-hidden="true">★★★★★</span>
+						<blockquote>"Nice boat and friendly staff. Everything was well arranged — thank you, everyone!"</blockquote>
+						<figcaption>— Stein M · TripAdvisor</figcaption>
+					</figure>
+				</div>
+				<div class="reviews-ctas">
+					<a class="reviews-cta" href="https://www.google.com/maps/place/Boat+Rental+Zakynthos+Sota+Travel/@37.8407318,20.8206522,17z/data=!4m8!3m7!1s0x13674792fceb7531:0xca2bf80ddaaa1d99!8m2!3d37.8407318!4d20.8206522!9m1!1b1" target="_blank" rel="noopener noreferrer">{s.reviewGoogleCta}</a>
+					<a class="reviews-cta reviews-cta--ta" href="https://www.tripadvisor.com/Attraction_Review-g189462-d34338909-Reviews-Sota_Travel_Zakynthos-Zakynthos_Ionian_Islands.html" target="_blank" rel="noopener noreferrer">{s.reviewTaCta}</a>
+				</div>
+			</div>
+		</section>
+
 		<Footer lang={lang} />
 
 		<script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
@@ -786,6 +811,103 @@ const c = useCommon(lang);
 		.home-intro-text {
 			font-size: 1rem;
 			line-height: 1.7;
+		}
+	}
+
+	/* Reviews / social proof */
+	.reviews-section {
+		background: #064250;
+		color: #fff;
+		padding: 4.5rem 1.5rem;
+	}
+	.reviews-inner {
+		max-width: 1100px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.reviews-label {
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: #7fd8cf;
+		margin: 0 0 0.5rem;
+	}
+	.reviews-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.9rem, 4vw, 2.8rem);
+		font-weight: 600;
+		margin: 0 0 0.5rem;
+	}
+	.reviews-rating {
+		font-size: 1rem;
+		margin: 0 0 2.25rem;
+		opacity: 0.95;
+	}
+	.reviews-stars,
+	.review-stars {
+		color: #ffc107;
+		letter-spacing: 0.1em;
+	}
+	.reviews-cards {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		margin-bottom: 2.25rem;
+	}
+	.review-card {
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 12px;
+		padding: 1.75rem;
+		margin: 0;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.review-card blockquote {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.65;
+		color: #f2f7f6;
+	}
+	.review-card figcaption {
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: #9fd6cf;
+	}
+	.reviews-ctas {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.reviews-cta {
+		display: inline-block;
+		padding: 0.8rem 1.6rem;
+		border-radius: 999px;
+		background: #fff;
+		color: #064250;
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: transform 0.2s, opacity 0.2s;
+	}
+	.reviews-cta--ta {
+		background: #34a89f;
+		color: #fff;
+	}
+	.reviews-cta:hover {
+		transform: translateY(-1px);
+		opacity: 0.95;
+	}
+	@media (max-width: 700px) {
+		.reviews-cards {
+			grid-template-columns: 1fr;
+		}
+		.reviews-section {
+			padding: 3.5rem 1.25rem;
 		}
 	}
 
