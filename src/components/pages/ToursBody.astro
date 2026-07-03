@@ -1,0 +1,315 @@
+---
+import Header from '../Header.astro';
+import Footer from '../Footer.astro';
+import { localizePath, type Locale } from '../../i18n/config';
+import { useCommon } from '../../i18n/common';
+import { tours } from '../../i18n/pages/tours';
+
+interface Props {
+	lang: Locale;
+}
+const { lang } = Astro.props;
+const s = tours[lang];
+const c = useCommon(lang);
+const t = (k: string) => (s as Record<string, string>)[k];
+const p = (path: string) => localizePath(path, lang);
+
+const catLabel: Record<string, string> = {
+	rentals: s.filterRentals,
+	tours: s.filterTours,
+	luxury: s.filterLuxury,
+};
+
+const cards = [
+	{ key: 'c1', img: '/images/license-free-hero.png', href: p('/license-free-rent'), cat: 'rentals', price: '180' },
+	{ key: 'c2', img: '/images/image_skipper.png', href: p('/rent-with-skipper'), cat: 'rentals', price: '' },
+	{ key: 'c3', img: '/images/IMG_0111.jpeg', href: p('/private-yachting'), cat: 'luxury', price: '' },
+	{ key: 'c4', img: '/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.png', href: p('/special-celebrations'), cat: 'luxury', price: '' },
+	{ key: 'c5', img: '/images/unnamed.jpg', href: p('/navagio-shipwreck-boat-tour'), cat: 'tours', price: '' },
+	{ key: 'c6', img: '/images/IMG_6507.jpeg', href: p('/blue-caves-boat-tour'), cat: 'tours', price: '' },
+	{ key: 'c7', img: '/images/girlinwoater.jpg', href: p('/keri-caves-turtle-island-boat-tour'), cat: 'tours', price: '' },
+	{ key: 'c8', img: '/images/hero2.png', href: p('/sunset-boat-tour'), cat: 'tours', price: '' },
+];
+---
+<body class="tour-body">
+	<Header lang={lang} basePath="/tours" />
+	<main class="tours-page">
+		<section class="page-hero" aria-label={s.heroTitle}>
+			<div class="page-hero-overlay"></div>
+			<div class="page-hero-content">
+				<p class="page-hero-label">{s.heroLabel}</p>
+				<h1 class="page-hero-title">{s.heroTitle}</h1>
+				<p class="page-hero-subtitle">{s.heroSubtitle}</p>
+			</div>
+		</section>
+
+		<section class="tours-listing" aria-label={s.heroTitle}>
+			<div class="tours-filter" role="tablist" aria-label="Filter">
+				<button type="button" class="tours-filter-btn is-active" data-filter="all">{s.filterAll}</button>
+				<button type="button" class="tours-filter-btn" data-filter="rentals">{s.filterRentals}</button>
+				<button type="button" class="tours-filter-btn" data-filter="tours">{s.filterTours}</button>
+				<button type="button" class="tours-filter-btn" data-filter="luxury">{s.filterLuxury}</button>
+			</div>
+
+			<div class="tours-grid" id="tours-grid">
+				{cards.map((card) => (
+					<article class="tour-card" data-cat={card.cat}>
+						<a class="tour-card-image" href={card.href}>
+							<img src={card.img} alt={t(`${card.key}Title`)} width="600" height="400" loading="lazy" decoding="async" />
+							<span class="tour-card-tag">{catLabel[card.cat]}</span>
+						</a>
+						<div class="tour-card-body">
+							<h2 class="tour-card-title">{t(`${card.key}Title`)}</h2>
+							<p class="tour-card-desc">{t(`${card.key}Desc`)}</p>
+							<div class="tour-card-foot">
+								{card.price ? (
+									<span class="tour-card-price">{s.fromLabel} €{card.price}</span>
+								) : (
+									<span class="tour-card-price tour-card-price--empty"></span>
+								)}
+								<a class="tour-card-btn" href={card.href}>{s.viewBook}</a>
+							</div>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+	</main>
+	<Footer lang={lang} />
+
+	<script is:inline>
+		document.addEventListener('DOMContentLoaded', () => {
+			const header = document.querySelector('.hero-header');
+			if (header) header.classList.add('hero-header--scrolled');
+
+			const btns = document.querySelectorAll('.tours-filter-btn');
+			const cards = document.querySelectorAll('.tour-card');
+			btns.forEach((btn) => {
+				btn.addEventListener('click', () => {
+					const f = btn.getAttribute('data-filter');
+					btns.forEach((b) => b.classList.remove('is-active'));
+					btn.classList.add('is-active');
+					cards.forEach((card) => {
+						const show = f === 'all' || card.getAttribute('data-cat') === f;
+						card.classList.toggle('tour-card--hidden', !show);
+					});
+				});
+			});
+		});
+	</script>
+</body>
+
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		font-family: 'Inter', system-ui, sans-serif;
+		overflow-x: hidden;
+	}
+	body.tour-body {
+		padding-top: 0;
+	}
+</style>
+
+<style>
+	.tours-page {
+		min-height: 100vh;
+		background: #fdfcf9;
+	}
+	.page-hero {
+		position: relative;
+		width: 100%;
+		min-height: 44vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		overflow: hidden;
+		padding-top: 5rem;
+	}
+	.page-hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: url('/images/unnamed.jpg') center/cover no-repeat;
+		opacity: 0.4;
+	}
+	.page-hero-content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		padding: 3rem 1.5rem;
+		color: #fff;
+	}
+	.page-hero-label {
+		font-size: 0.75rem;
+		letter-spacing: 0.2em;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 0.5rem;
+		text-transform: uppercase;
+	}
+	.page-hero-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(2rem, 5vw, 3.2rem);
+		font-weight: 600;
+		margin: 0 0 0.75rem;
+		line-height: 1.15;
+	}
+	.page-hero-subtitle {
+		font-size: 1.1rem;
+		color: rgba(255, 255, 255, 0.92);
+		margin: 0 auto;
+		max-width: 46ch;
+	}
+
+	.tours-listing {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 3rem 1.5rem 4.5rem;
+	}
+	.tours-filter {
+		display: flex;
+		gap: 0.6rem;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin-bottom: 2.5rem;
+	}
+	.tours-filter-btn {
+		padding: 0.55rem 1.2rem;
+		border: 1px solid #d9d2c7;
+		background: #fff;
+		color: #333;
+		font-family: inherit;
+		font-size: 0.9rem;
+		font-weight: 500;
+		border-radius: 999px;
+		cursor: pointer;
+		transition: background 0.2s, color 0.2s, border-color 0.2s;
+	}
+	.tours-filter-btn:hover {
+		border-color: #2aa8a0;
+	}
+	.tours-filter-btn.is-active {
+		background: #064250;
+		color: #fff;
+		border-color: #064250;
+	}
+
+	.tours-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.75rem;
+	}
+	.tour-card {
+		display: flex;
+		flex-direction: column;
+		background: #fff;
+		border: 1px solid #ece5d8;
+		border-radius: 14px;
+		overflow: hidden;
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.tour-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+	}
+	.tour-card--hidden {
+		display: none;
+	}
+	.tour-card-image {
+		position: relative;
+		display: block;
+		height: 210px;
+		overflow: hidden;
+	}
+	.tour-card-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.4s;
+	}
+	.tour-card:hover .tour-card-image img {
+		transform: scale(1.05);
+	}
+	.tour-card-tag {
+		position: absolute;
+		top: 0.75rem;
+		left: 0.75rem;
+		background: rgba(6, 66, 80, 0.92);
+		color: #fff;
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		padding: 0.3rem 0.7rem;
+		border-radius: 999px;
+	}
+	.tour-card-body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		padding: 1.25rem 1.35rem 1.5rem;
+		flex: 1;
+	}
+	.tour-card-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.25;
+	}
+	.tour-card-desc {
+		font-size: 0.92rem;
+		line-height: 1.55;
+		color: #555;
+		margin: 0;
+		flex: 1;
+	}
+	.tour-card-foot {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		margin-top: 0.5rem;
+	}
+	.tour-card-price {
+		font-size: 1.05rem;
+		font-weight: 700;
+		color: #064250;
+	}
+	.tour-card-btn {
+		display: inline-block;
+		padding: 0.6rem 1.15rem;
+		background: #2aa8a0;
+		color: #fff;
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 999px;
+		transition: background 0.2s;
+		white-space: nowrap;
+	}
+	.tour-card-btn:hover {
+		background: #1f8f88;
+	}
+
+	@media (max-width: 900px) {
+		.tours-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	@media (max-width: 600px) {
+		.tours-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

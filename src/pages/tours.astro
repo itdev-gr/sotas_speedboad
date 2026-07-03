@@ -1,0 +1,22 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import ToursBody from '../components/pages/ToursBody.astro';
+import { tours } from '../i18n/pages/tours';
+
+const lang = 'en';
+const s = tours[lang];
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath="/tours"
+			translated={true}
+			ogImage="https://rentaboatzakynthos.com/images/unnamed.jpg"
+		/>
+	</head>
+	<ToursBody lang={lang} />
+</html>
