@@ -47,14 +47,28 @@ const alternates =
 
 <meta charset="utf-8" />
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XX59D06X4W"></script>
+<!-- Google tag (gtag.js) — deferred off the critical path -->
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-XX59D06X4W');
   gtag('config', 'AW-18123954099');
+  (function () {
+    var loaded = false;
+    function loadGtag() {
+      if (loaded) return; loaded = true;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XX59D06X4W';
+      document.head.appendChild(s);
+    }
+    ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (e) {
+      window.addEventListener(e, loadGtag, { once: true, passive: true });
+    });
+    if ('requestIdleCallback' in window) { requestIdleCallback(loadGtag, { timeout: 5000 }); }
+    else { setTimeout(loadGtag, 3500); }
+  })();
 </script>
 
 <!-- Microsoft Clarity -->

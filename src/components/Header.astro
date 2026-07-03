@@ -453,12 +453,20 @@ const p = (path: string) => localizePath(path, lang);
 		.hero-header--menu-open .nav-links a {
 			font-size: 1.1rem;
 			opacity: 1;
+			width: 100%;
+			text-align: center;
+			white-space: normal;
 		}
 		.hero-header--menu-open .nav-item-dropdown {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			gap: 0.65rem;
+			width: 100%;
+		}
+		.hero-header--menu-open .nav-dropdown {
+			width: 100%;
+			align-items: center;
 		}
 		.hero-header--menu-open .nav-link-parent {
 			cursor: pointer;

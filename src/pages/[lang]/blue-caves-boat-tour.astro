@@ -5,7 +5,7 @@ import { blueCavesTour } from '../../i18n/pages/blue-caves-boat-tour';
 import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
 
 export function getStaticPaths() {
-	return [{ params: { lang: 'de' } }, { params: { lang: 'fr' } }, { params: { lang: 'it' } }];
+	return [{ params: { lang: 'de' } }, { params: { lang: 'fr' } }, { params: { lang: 'it' } }, { params: { lang: 'ru' } }];
 }
 
 const { lang: langParam } = Astro.params;

@@ -2,13 +2,16 @@
 // English is the default locale and lives at the site root (no /en prefix).
 // German, French and Italian live under /de, /fr and /it.
 
-export const LOCALES = ['en', 'de', 'fr', 'it'] as const;
+export const LOCALES = ['en', 'de', 'fr', 'it', 'ru'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = 'en';
 
 // Locales that get their own translated marketing routes (used to build hreflang).
-export const TRANSLATED_LOCALES: Locale[] = ['en', 'de', 'fr', 'it'];
+export const TRANSLATED_LOCALES: Locale[] = ['en', 'de', 'fr', 'it', 'ru'];
+
+// Non-default locales that get their own /<lang> routes (for getStaticPaths).
+export const NON_DEFAULT_LOCALES = LOCALES.filter((l) => l !== DEFAULT_LOCALE);
 
 export const SITE_URL = 'https://rentaboatzakynthos.com';
 
@@ -17,6 +20,7 @@ export const OG_LOCALE: Record<Locale, string> = {
   de: 'de_DE',
   fr: 'fr_FR',
   it: 'it_IT',
+  ru: 'ru_RU',
 };
 
 export const LOCALE_LABEL: Record<Locale, string> = {
@@ -24,6 +28,7 @@ export const LOCALE_LABEL: Record<Locale, string> = {
   de: 'DE',
   fr: 'FR',
   it: 'IT',
+  ru: 'RU',
 };
 
 export const LOCALE_NAME: Record<Locale, string> = {
@@ -31,6 +36,7 @@ export const LOCALE_NAME: Record<Locale, string> = {
   de: 'Deutsch',
   fr: 'Français',
   it: 'Italiano',
+  ru: 'Русский',
 };
 
 // Circular flag icon filename (in /public/flags) per locale.
@@ -39,6 +45,7 @@ export const LOCALE_FLAG: Record<Locale, string> = {
   de: 'de',
   fr: 'fr',
   it: 'it',
+  ru: 'ru',
 };
 
 export function isLocale(value: string | undefined): value is Locale {
