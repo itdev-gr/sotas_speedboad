@@ -382,11 +382,11 @@ const p = (path: string) => localizePath(path, lang);
 			display: none;
 		}
 		/* Full-screen mobile menu */
-		.nav-contact .nav-lang {
+		.nav-contact {
 			display: none;
 		}
 		.hero-header--menu-open {
-			z-index: 10000;
+			z-index: 2147483647;
 		}
 		.hero-header--menu-open .nav-lang-mobile {
 			display: flex;
@@ -411,26 +411,39 @@ const p = (path: string) => localizePath(path, lang);
 			align-items: center;
 			justify-content: center;
 			text-align: center;
-			gap: 1.6rem;
-			background: rgba(6, 66, 80, 0.985);
-			padding: 6rem 1.5rem 2.5rem;
+			gap: 1.1rem;
+			background: #064250;
+			padding: 5rem 1.5rem 2rem;
 			box-shadow: none;
 			z-index: 998;
 			overflow-y: auto;
 		}
 		.hero-header--menu-open .nav-links a {
-			font-size: 1.4rem;
+			font-size: 1.1rem;
 			opacity: 1;
 		}
 		.hero-header--menu-open .nav-item-dropdown {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 0.9rem;
+			gap: 0.65rem;
+		}
+		.hero-header--menu-open .nav-link-parent {
+			cursor: pointer;
+		}
+		.hero-header--menu-open .nav-link-parent::after {
+			content: '⌄';
+			display: inline-block;
+			margin-left: 0.4rem;
+			font-size: 0.9em;
+			transition: transform 0.2s ease;
+		}
+		.hero-header--menu-open .nav-item-dropdown--open .nav-link-parent::after {
+			transform: rotate(180deg);
 		}
 		.hero-header--menu-open .nav-dropdown a {
-			font-size: 1.1rem;
-			opacity: 0.85;
+			font-size: 0.98rem;
+			opacity: 0.8;
 		}
 		.nav-toggle {
 			display: flex;
@@ -458,10 +471,14 @@ const p = (path: string) => localizePath(path, lang);
 			padding-left: 0;
 			margin-top: 0.25rem;
 			text-align: center;
-			display: flex;
+			display: none;
 			flex-direction: column;
 			align-items: center;
 			gap: 0.6rem;
+		}
+		.hero-header--menu-open .nav-item-dropdown--open .nav-dropdown {
+			display: flex;
+			margin-top: 0.5rem;
 		}
 	}
 </style>
@@ -475,12 +492,24 @@ const p = (path: string) => localizePath(path, lang);
 		const t = toggle;
 		const n = navLinks;
 
+		// Hide/show floating widgets (WhatsApp / chat) that sit fixed over the page
+		function setWidgetsHidden(hidden) {
+			document.querySelectorAll('body > *').forEach((el) => {
+				if (el === h || el.id === 'main-header') return;
+				if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || el.tagName === 'LINK') return;
+				const cs = getComputedStyle(el);
+				if (cs.position === 'fixed' && parseInt(cs.zIndex || '0', 10) >= 1000) {
+					el.style.visibility = hidden ? 'hidden' : '';
+				}
+			});
+		}
 		function openMenu() {
 			h.classList.add('hero-header--menu-open');
 			t.setAttribute('aria-expanded', 'true');
 			t.setAttribute('aria-label', 'Close menu');
 			n.setAttribute('aria-hidden', 'false');
 			document.body.style.overflow = 'hidden';
+			setWidgetsHidden(true);
 		}
 		function closeMenu() {
 			h.classList.remove('hero-header--menu-open');
@@ -488,6 +517,8 @@ const p = (path: string) => localizePath(path, lang);
 			t.setAttribute('aria-label', 'Open menu');
 			n.setAttribute('aria-hidden', 'true');
 			document.body.style.overflow = '';
+			setWidgetsHidden(false);
+			n.querySelectorAll('.nav-item-dropdown--open').forEach((d) => d.classList.remove('nav-item-dropdown--open'));
 		}
 		function toggleMenu() {
 			const isOpen = h.classList.contains('hero-header--menu-open');
@@ -497,7 +528,18 @@ const p = (path: string) => localizePath(path, lang);
 
 		t.addEventListener('click', toggleMenu);
 		n.querySelectorAll('a').forEach((link) => {
-			link.addEventListener('click', closeMenu);
+			if (link.classList.contains('nav-link-parent')) {
+				// BOOK RENTAL: toggle its sub-menu instead of navigating (mobile menu only)
+				link.addEventListener('click', (e) => {
+					if (h.classList.contains('hero-header--menu-open')) {
+						e.preventDefault();
+						const parent = link.closest('.nav-item-dropdown');
+						if (parent) parent.classList.toggle('nav-item-dropdown--open');
+					}
+				});
+			} else {
+				link.addEventListener('click', closeMenu);
+			}
 		});
 	})();
 
