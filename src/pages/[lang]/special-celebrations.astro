@@ -1,0 +1,29 @@
+---
+import SEOHead from '../../components/SEOHead.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import SpecialCelebrationsBody from '../../components/pages/SpecialCelebrationsBody.astro';
+import { specialCelebrations } from '../../i18n/pages/special-celebrations';
+import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+
+export function getStaticPaths() {
+	return [{ params: { lang: 'de' } }, { params: { lang: 'fr' } }, { params: { lang: 'it' } }];
+}
+
+const { lang: langParam } = Astro.params;
+const lang: Locale = isLocale(langParam) && langParam !== DEFAULT_LOCALE ? langParam : 'de';
+const s = specialCelebrations[lang];
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath="/special-celebrations"
+			translated={true}
+		/>
+		<SchemaOrg page="special-celebrations" />
+	</head>
+	<SpecialCelebrationsBody lang={lang} />
+</html>

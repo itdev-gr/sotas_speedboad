@@ -1,4 +1,13 @@
 ---
+import {
+  LOCALES,
+  OG_LOCALE,
+  DEFAULT_LOCALE,
+  localizePath,
+  absoluteUrl,
+  type Locale,
+} from '../i18n/config';
+
 interface Props {
   title: string;
   description: string;
@@ -6,6 +15,12 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   noindex?: boolean;
+  /** Active locale of the page. */
+  lang?: Locale;
+  /** Canonical English path (e.g. '/contact' or '/'). Enables self-canonical + hreflang. */
+  basePath?: string;
+  /** Whether de/fr/it translations of this page exist (emit hreflang alternates). */
+  translated?: boolean;
 }
 
 const {
@@ -15,9 +30,19 @@ const {
   ogImage = 'https://rentaboatzakynthos.com/images/unnamed.jpg',
   ogType = 'website',
   noindex = false,
+  lang = 'en',
+  basePath,
+  translated = false,
 } = Astro.props;
 
-const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
+const canonicalURL = basePath
+  ? absoluteUrl(localizePath(basePath, lang))
+  : canonical || new URL(Astro.url.pathname, Astro.site).href;
+
+const alternates =
+  translated && basePath
+    ? LOCALES.map((l) => ({ hreflang: l, href: absoluteUrl(localizePath(basePath, l as Locale)) }))
+    : [];
 ---
 
 <meta charset="utf-8" />
@@ -30,6 +55,15 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
   gtag('js', new Date());
   gtag('config', 'G-XX59D06X4W');
   gtag('config', 'AW-18123954099');
+</script>
+
+<!-- Microsoft Clarity -->
+<script is:inline type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "xgop1tmc37");
 </script>
 
 <!-- Event snippet for Προβολή σελίδας conversion page -->
@@ -76,6 +110,14 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
 <link rel="canonical" href={canonicalURL} />
 {noindex && <meta name="robots" content="noindex, nofollow" />}
 
+<!-- hreflang alternates -->
+{alternates.map((alt) => (
+  <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+))}
+{alternates.length > 0 && (
+  <link rel="alternate" hreflang="x-default" href={absoluteUrl(localizePath(basePath!, DEFAULT_LOCALE))} />
+)}
+
 <!-- Open Graph -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
@@ -83,7 +125,7 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
 <meta property="og:image" content={ogImage} />
 <meta property="og:type" content={ogType} />
 <meta property="og:site_name" content="Sota Travel Zakynthos" />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content={OG_LOCALE[lang]} />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -94,8 +136,8 @@ const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site).href;
 <!-- Geo tags for local SEO -->
 <meta name="geo.region" content="GR-21" />
 <meta name="geo.placename" content="Zakynthos" />
-<meta name="geo.position" content="37.7870;20.8979" />
-<meta name="ICBM" content="37.7870, 20.8979" />
+<meta name="geo.position" content="37.8407318;20.8206522" />
+<meta name="ICBM" content="37.8407318, 20.8206522" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />

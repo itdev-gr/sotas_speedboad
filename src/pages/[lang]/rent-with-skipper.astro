@@ -1,0 +1,16 @@
+---
+export const prerender = false;
+import SEOHead from '../../components/SEOHead.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import RentWithSkipperBody from '../../components/pages/RentWithSkipperBody.astro';
+import { rentWithSkipper } from '../../i18n/pages/rent-with-skipper';
+import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+const { lang: langParam } = Astro.params;
+if (!isLocale(langParam) || langParam === DEFAULT_LOCALE) { return new Response(null, { status: 404 }); }
+const lang: Locale = langParam;
+const s = rentWithSkipper[lang];
+---
+<html lang={lang}><head>
+	<SEOHead title={s.seoTitle} description={s.seoDescription} lang={lang} basePath="/rent-with-skipper" translated={true} ogImage="https://rentaboatzakynthos.com/images/image_skipper.png" />
+	<SchemaOrg page="rent-with-skipper" />
+</head><RentWithSkipperBody lang={lang} /></html>

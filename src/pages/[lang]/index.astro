@@ -1,0 +1,32 @@
+---
+import SEOHead from '../../components/SEOHead.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import HomeBody from '../../components/pages/HomeBody.astro';
+import { home } from '../../i18n/pages/home';
+import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+
+export function getStaticPaths() {
+	return [{ params: { lang: 'de' } }, { params: { lang: 'fr' } }, { params: { lang: 'it' } }];
+}
+
+const { lang: langParam } = Astro.params;
+const lang: Locale = isLocale(langParam) && langParam !== DEFAULT_LOCALE ? langParam : 'de';
+const s = home[lang];
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath="/"
+			translated={true}
+			ogImage="https://rentaboatzakynthos.com/images/unnamed.jpg"
+		/>
+		<SchemaOrg page="homepage" />
+		<script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+		<script is:inline src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+	</head>
+	<HomeBody lang={lang} />
+</html>

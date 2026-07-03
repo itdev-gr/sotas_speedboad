@@ -1,0 +1,29 @@
+---
+export const prerender = false;
+import SEOHead from '../../components/SEOHead.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import LicenseFreeBody from '../../components/pages/LicenseFreeBody.astro';
+import { licenseFree } from '../../i18n/pages/license-free-rent';
+import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+
+const { lang: langParam } = Astro.params;
+if (!isLocale(langParam) || langParam === DEFAULT_LOCALE) {
+	return new Response(null, { status: 404 });
+}
+const lang: Locale = langParam;
+const s = licenseFree[lang];
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath="/license-free-rent"
+			translated={true}
+		/>
+		<SchemaOrg page="license-free-rent" />
+	</head>
+	<LicenseFreeBody lang={lang} />
+</html>

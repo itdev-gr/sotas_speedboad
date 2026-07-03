@@ -1,0 +1,29 @@
+---
+export const prerender = false;
+import SEOHead from '../../components/SEOHead.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import RecommendedRoutesBody from '../../components/pages/RecommendedRoutesBody.astro';
+import { recommendedRoutes } from '../../i18n/pages/recommended-routes';
+import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+
+const { lang: langParam } = Astro.params;
+if (!isLocale(langParam) || langParam === DEFAULT_LOCALE) {
+	return new Response(null, { status: 404 });
+}
+const lang: Locale = langParam;
+const s = recommendedRoutes[lang];
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoTitle}
+			description={s.seoDescription}
+			lang={lang}
+			basePath="/recommended-routes"
+			translated={true}
+		/>
+		<SchemaOrg page="recommended-routes" />
+	</head>
+	<RecommendedRoutesBody lang={lang} />
+</html>

@@ -1,0 +1,98 @@
+import type { Locale } from '../config';
+
+export const rentWithSkipper = {
+	en: {
+		seoTitle: 'Private Cruise with Skipper in Zakynthos (Zante) | Sota Travel',
+		seoDescription:
+			'Book a private cruise with a professional skipper in Zakynthos. Relax and discover the Ionian Sea, Shipwreck Beach, Blue Caves, and more. Luxury boat cruises tailored to you.',
+		heroLabel: 'PROFESSIONAL SKIPPER',
+		heroTitle: 'Luxurious Private Cruise with Skipper',
+		heroSubtitle:
+			'Enjoy a relaxing cruise with an experienced skipper. Sit back and discover Zakynthos and the Ionian Sea in comfort.',
+		heroAria: 'Rent with Skipper',
+		chooseTitle: 'Choose Your Cruise',
+		chooseAria: 'Choose your cruise',
+		noBoats: 'No boats available at the moment.',
+		bookWithSkipper: 'Book with Skipper',
+		includesBtn: 'Includes >',
+		includesLabel: 'Includes:',
+		close: 'Close',
+		maxPax: 'Max.',
+		paxUnit: 'pax',
+		passengersUnit: 'passengers',
+		viewIncludesPrefix: 'View includes for',
+		prevImage: 'Previous image',
+		nextImage: 'Next image',
+	},
+	de: {
+		seoTitle: 'Private Kreuzfahrt mit Skipper auf Zakynthos (Zante) | Sota Travel',
+		seoDescription:
+			'Buchen Sie eine private Kreuzfahrt mit einem professionellen Skipper auf Zakynthos. Entspannen Sie und entdecken Sie das Ionische Meer, den Schiffswrackstrand, die Blauen Grotten und vieles mehr. Luxuriöse Bootskreuzfahrten ganz nach Ihren Wünschen.',
+		heroLabel: 'PROFESSIONELLER SKIPPER',
+		heroTitle: 'Luxuriöse private Kreuzfahrt mit Skipper',
+		heroSubtitle:
+			'Genießen Sie eine entspannte Kreuzfahrt mit einem erfahrenen Skipper. Lehnen Sie sich zurück und entdecken Sie Zakynthos und das Ionische Meer in aller Bequemlichkeit.',
+		heroAria: 'Mieten mit Skipper',
+		chooseTitle: 'Wählen Sie Ihre Kreuzfahrt',
+		chooseAria: 'Wählen Sie Ihre Kreuzfahrt',
+		noBoats: 'Derzeit sind keine Boote verfügbar.',
+		bookWithSkipper: 'Mit Skipper buchen',
+		includesBtn: 'Leistungen >',
+		includesLabel: 'Leistungen:',
+		close: 'Schließen',
+		maxPax: 'Max.',
+		paxUnit: 'Pers.',
+		passengersUnit: 'Passagiere',
+		viewIncludesPrefix: 'Leistungen ansehen für',
+		prevImage: 'Vorheriges Bild',
+		nextImage: 'Nächstes Bild',
+	},
+	fr: {
+		seoTitle: 'Croisière privée avec skipper à Zakynthos (Zante) | Sota Travel',
+		seoDescription:
+			'Réservez une croisière privée avec un skipper professionnel à Zakynthos. Détendez-vous et découvrez la mer Ionienne, la plage de l’épave, les Grottes Bleues et bien plus encore. Des croisières de luxe conçues sur mesure pour vous.',
+		heroLabel: 'SKIPPER PROFESSIONNEL',
+		heroTitle: 'Croisière privée de luxe avec skipper',
+		heroSubtitle:
+			'Profitez d’une croisière relaxante avec un skipper expérimenté. Détendez-vous et découvrez Zakynthos et la mer Ionienne en tout confort.',
+		heroAria: 'Location avec skipper',
+		chooseTitle: 'Choisissez votre croisière',
+		chooseAria: 'Choisissez votre croisière',
+		noBoats: 'Aucun bateau disponible pour le moment.',
+		bookWithSkipper: 'Réserver avec skipper',
+		includesBtn: 'Inclus >',
+		includesLabel: 'Inclus :',
+		close: 'Fermer',
+		maxPax: 'Max.',
+		paxUnit: 'pers.',
+		passengersUnit: 'passagers',
+		viewIncludesPrefix: 'Voir les prestations pour',
+		prevImage: 'Image précédente',
+		nextImage: 'Image suivante',
+	},
+	it: {
+		seoTitle: 'Crociera privata con skipper a Zante (Zacinto) | Sota Travel',
+		seoDescription:
+			'Prenota una crociera privata con uno skipper professionista a Zante. Rilassati e scopri il Mar Ionio, la spiaggia del Relitto, le Grotte Blu e molto altro. Crociere di lusso su misura per te.',
+		heroLabel: 'SKIPPER PROFESSIONISTA',
+		heroTitle: 'Crociera privata di lusso con skipper',
+		heroSubtitle:
+			'Goditi una crociera rilassante con uno skipper esperto. Siediti comodamente e scopri Zante e il Mar Ionio in tutta comodità.',
+		heroAria: 'Noleggio con skipper',
+		chooseTitle: 'Scegli la tua crociera',
+		chooseAria: 'Scegli la tua crociera',
+		noBoats: 'Al momento nessuna barca disponibile.',
+		bookWithSkipper: 'Prenota con skipper',
+		includesBtn: 'Incluso >',
+		includesLabel: 'Incluso:',
+		close: 'Chiudi',
+		maxPax: 'Max.',
+		paxUnit: 'pers.',
+		passengersUnit: 'passeggeri',
+		viewIncludesPrefix: 'Vedi cosa include',
+		prevImage: 'Immagine precedente',
+		nextImage: 'Immagine successiva',
+	},
+} as const satisfies Record<Locale, Record<string, string>>;
+
+export type RentWithSkipperKey = keyof (typeof rentWithSkipper)['en'];

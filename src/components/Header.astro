@@ -1,29 +1,49 @@
 ---
+import { LOCALES, LOCALE_LABEL, localizePath, type Locale } from '../i18n/config';
+import { useCommon } from '../i18n/common';
+
+interface Props {
+	lang?: Locale;
+	basePath?: string;
+}
+const { lang = 'en', basePath = '/' } = Astro.props;
+const t = useCommon(lang);
+const p = (path: string) => localizePath(path, lang);
 ---
 <header class="hero-header" id="main-header">
-	<a href="/" class="nav-logo" aria-label="Sota Travel Zakynthos">
+	<a href={p('/')} class="nav-logo" aria-label="Sota Travel Zakynthos">
 		<img class="nav-logo-img" src="/images/sota-travel-logo.svg" alt="Sota Travel Zakynthos" />
 	</a>
 	<div class="nav-menu-wrap">
 		<nav class="nav-links" id="nav-links" aria-hidden="true">
-			<a href="/">HOME</a>
+			<a href={p('/')}>{t('nav.home')}</a>
 			<div class="nav-item-dropdown">
-				<a href="/#selfdrive" class="nav-link-parent" aria-haspopup="true" aria-expanded="false">BOOK RENTAL</a>
+				<a href={`${p('/')}#selfdrive`} class="nav-link-parent" aria-haspopup="true" aria-expanded="false">{t('nav.bookRental')}</a>
 				<div class="nav-dropdown" role="menu">
-					<a href="/license-free-rent" role="menuitem">License Free Rent</a>
-					<a href="/rent-with-skipper" role="menuitem">Rent with Skipper</a>
-					<a href="/private-yachting" role="menuitem">Private Yachting</a>
+					<a href={p('/license-free-rent')} role="menuitem">{t('nav.licenseFree')}</a>
+					<a href={p('/rent-with-skipper')} role="menuitem">{t('nav.skipper')}</a>
+					<a href={p('/private-yachting')} role="menuitem">{t('nav.yachting')}</a>
 				</div>
 			</div>
-			<a href="/recommended-routes">RECOMMENDED ROUTES</a>
-			<a href="/blog">BLOG</a>
-			<a href="/faq">FAQ</a>
-			<a href="/contact">CONTACT US</a>
+			<a href={p('/recommended-routes')}>{t('nav.routes')}</a>
+			<a href="/blog">{t('nav.blog')}</a>
+			<a href={p('/faq')}>{t('nav.faq')}</a>
+			<a href={p('/contact')}>{t('nav.contact')}</a>
 		</nav>
 		<div class="nav-contact">
 			<a href="tel:+306987931327" class="nav-phone-btn">0030 698 793 1327</a>
+			<div class="nav-lang" role="group" aria-label={t('nav.language')}>
+				{LOCALES.map((l) => (
+					<a
+						href={localizePath(basePath, l as Locale)}
+						class:list={['nav-lang-link', { 'nav-lang-link--active': l === lang }]}
+						hreflang={l}
+						aria-current={l === lang ? 'true' : undefined}
+					>{LOCALE_LABEL[l as Locale]}</a>
+				))}
+			</div>
 		</div>
-		<button class="nav-toggle" type="button" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="nav-links" id="nav-toggle-btn">
+		<button class="nav-toggle" type="button" aria-label={t('nav.openMenu')} aria-expanded="false" aria-controls="nav-links" id="nav-toggle-btn">
 			<span></span>
 			<span></span>
 			<span></span>
@@ -135,6 +155,29 @@
 		font-size: 0.926rem;
 		opacity: 0.85;
 	}
+	.nav-lang {
+		display: flex;
+		gap: 0.15rem;
+		align-items: center;
+		margin-top: 0.15rem;
+	}
+	.nav-lang-link {
+		color: #fff;
+		text-decoration: none;
+		font-size: 0.78rem;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		opacity: 0.65;
+		padding: 0.1rem 0.3rem;
+		border-radius: 3px;
+	}
+	.nav-lang-link:hover {
+		opacity: 0.95;
+	}
+	.nav-lang-link--active {
+		opacity: 1;
+		background: rgba(255, 255, 255, 0.2);
+	}
 	.nav-phone-btn {
 		display: inline-block;
 		padding: 0.4rem 0.75rem;
@@ -225,13 +268,13 @@
 		function openMenu() {
 			h.classList.add('hero-header--menu-open');
 			t.setAttribute('aria-expanded', 'true');
-			t.setAttribute('aria-label', 'Κλείσιμο μενού');
+			t.setAttribute('aria-label', 'Close menu');
 			n.setAttribute('aria-hidden', 'false');
 		}
 		function closeMenu() {
 			h.classList.remove('hero-header--menu-open');
 			t.setAttribute('aria-expanded', 'false');
-			t.setAttribute('aria-label', 'Άνοιγμα μενού');
+			t.setAttribute('aria-label', 'Open menu');
 			n.setAttribute('aria-hidden', 'true');
 		}
 		function toggleMenu() {

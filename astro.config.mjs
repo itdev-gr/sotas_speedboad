@@ -10,6 +10,13 @@ export default defineConfig({
   site: 'https://rentaboatzakynthos.com',
   output: 'static',
   adapter: vercel(),
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'de', 'fr', 'it'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     sitemap({
       filter: (page) =>

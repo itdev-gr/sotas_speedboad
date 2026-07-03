@@ -1,0 +1,270 @@
+---
+import Header from '../Header.astro';
+import Footer from '../Footer.astro';
+import { localizePath, type Locale } from '../../i18n/config';
+import { useCommon } from '../../i18n/common';
+import { privateYachting } from '../../i18n/pages/private-yachting';
+
+interface Props {
+	lang: Locale;
+}
+const { lang } = Astro.props;
+const s = privateYachting[lang];
+const c = useCommon(lang);
+const contactHref = localizePath('/contact', lang);
+---
+<body class="license-free-body">
+	<Header lang={lang} basePath="/private-yachting" />
+	<main class="license-free-page">
+		<section class="page-hero" aria-label={s.heroTitle}>
+			<div class="page-hero-overlay"></div>
+			<div class="page-hero-content">
+				<p class="page-hero-label">{s.heroLabel}</p>
+				<h1 class="page-hero-title">{s.heroTitle}</h1>
+				<p class="page-hero-subtitle">{s.heroSubtitle}</p>
+				<a href={contactHref} class="page-hero-cta">{c('cta.contactToBook')}</a>
+			</div>
+		</section>
+
+		<!-- Section 1: Image left, Text right -->
+		<section class="py-section" aria-label={s.sec1Title}>
+			<div class="py-section-inner">
+				<div class="py-image-wrap">
+					<img src="/images/IMG_0112.jpeg" alt={s.sec1Alt} width="800" height="600" />
+				</div>
+				<div class="py-text">
+					<p class="py-label">{s.sec1Label}</p>
+					<h2 class="py-title">{s.sec1Title}</h2>
+					<p class="py-desc">{s.sec1Desc}</p>
+					<a href={contactHref} class="py-cta">{s.sec1Cta}</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Section 2: Text left, Image right -->
+		<section class="py-section py-section--reversed" aria-label={s.sec2Title}>
+			<div class="py-section-inner">
+				<div class="py-image-wrap">
+					<img src="/images/IMG_6507.jpeg" alt={s.sec2Alt} width="800" height="600" />
+				</div>
+				<div class="py-text">
+					<p class="py-label">{s.sec2Label}</p>
+					<h2 class="py-title">{s.sec2Title}</h2>
+					<p class="py-desc">{s.sec2Desc}</p>
+					<a href={contactHref} class="py-cta">{s.sec2Cta}</a>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer lang={lang} />
+
+	<script is:inline>
+		document.addEventListener('DOMContentLoaded', () => {
+			const header = document.querySelector('.hero-header');
+			const heroSection = document.querySelector('.hero');
+			if (header) {
+				if (!heroSection) {
+					header.classList.add('hero-header--scrolled');
+				} else {
+					const onScroll = () => {
+						const heroH = heroSection.getBoundingClientRect().height;
+						header.classList.toggle('hero-header--scrolled', window.scrollY >= heroH - 1);
+					};
+					onScroll();
+					window.addEventListener('scroll', onScroll, { passive: true });
+				}
+			}
+		});
+	</script>
+</body>
+
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		margin: 0;
+		font-family: 'Inter', system-ui, sans-serif;
+		overflow-x: hidden;
+	}
+	body.license-free-body {
+		padding-top: 0;
+	}
+</style>
+
+<style>
+	.license-free-page {
+		min-height: 100vh;
+	}
+
+	.page-hero {
+		position: relative;
+		width: 100%;
+		min-height: 50vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		overflow: hidden;
+		padding-top: 5rem;
+	}
+	.page-hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: url('/images/IMG_0111.jpeg') center/cover no-repeat;
+		opacity: 0.25;
+	}
+	.page-hero-content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		padding: 3rem 2rem;
+		max-width: 36rem;
+	}
+	.page-hero-label {
+		font-size: 0.75rem;
+		letter-spacing: 0.2em;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 0.5rem 0;
+		text-transform: uppercase;
+	}
+	.page-hero-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		font-weight: 600;
+		color: #fff;
+		margin: 0 0 1rem 0;
+		line-height: 1.2;
+	}
+	.page-hero-subtitle {
+		font-size: 1.1rem;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 1.5rem 0;
+		line-height: 1.5;
+	}
+	.page-hero-cta {
+		display: inline-block;
+		padding: 0.9rem 2rem;
+		background: #fff;
+		color: #064250;
+		text-decoration: none;
+		font-size: 0.85rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		border-radius: 4px;
+		transition: opacity 0.2s, transform 0.2s;
+	}
+	.page-hero-cta:hover {
+		opacity: 0.95;
+		transform: translateY(-1px);
+	}
+
+	/* Alternating image/text sections */
+	.py-section {
+		width: 100%;
+	}
+	.py-section-inner {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		min-height: 450px;
+	}
+	.py-image-wrap {
+		overflow: hidden;
+	}
+	.py-image-wrap img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		min-height: 400px;
+	}
+	.py-text {
+		background: #f5f0e8;
+		padding: 4rem 3rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 1rem;
+	}
+	.py-section--reversed .py-image-wrap {
+		order: 2;
+	}
+	.py-section--reversed .py-text {
+		order: 1;
+		background: #fff;
+	}
+	.py-label {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.2em;
+		color: #8b7765;
+		margin: 0;
+		text-transform: uppercase;
+	}
+	.py-title {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+		font-weight: 700;
+		color: #1a1a1a;
+		margin: 0;
+		line-height: 1.2;
+	}
+	.py-desc {
+		font-size: 1rem;
+		line-height: 1.7;
+		color: #444;
+		margin: 0;
+		max-width: 48ch;
+	}
+	.py-cta {
+		display: inline-block;
+		align-self: flex-start;
+		padding: 0.9rem 2rem;
+		background: #1a1a1a;
+		color: #fff;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: background 0.2s;
+		margin-top: 0.5rem;
+	}
+	.py-cta:hover {
+		background: #333;
+	}
+
+	@media (max-width: 900px) {
+		.py-section-inner {
+			grid-template-columns: 1fr;
+		}
+		.py-section--reversed .py-image-wrap {
+			order: 0;
+		}
+		.py-section--reversed .py-text {
+			order: 0;
+		}
+		.py-text {
+			padding: 2.5rem 1.5rem;
+		}
+		.py-image-wrap img {
+			min-height: 280px;
+			max-height: 350px;
+		}
+	}
+	@media (max-width: 600px) {
+		.py-text {
+			padding: 2rem 1.25rem;
+		}
+		.py-image-wrap img {
+			min-height: 220px;
+			max-height: 300px;
+		}
+	}
+</style>

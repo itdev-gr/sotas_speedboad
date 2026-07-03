@@ -1,0 +1,24 @@
+---
+import '../../styles/global.css';
+import SEOHead from '../../components/SEOHead.astro';
+import SchemaOrg from '../../components/SchemaOrg.astro';
+import FaqBody from '../../components/pages/FaqBody.astro';
+import { faq } from '../../i18n/pages/faq';
+import { isLocale, DEFAULT_LOCALE, type Locale } from '../../i18n/config';
+
+export function getStaticPaths() {
+	return [{ params: { lang: 'de' } }, { params: { lang: 'fr' } }, { params: { lang: 'it' } }];
+}
+
+const { lang: langParam } = Astro.params;
+const lang: Locale = isLocale(langParam) && langParam !== DEFAULT_LOCALE ? langParam : 'de';
+const s = faq[lang];
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead title={s.seoTitle} description={s.seoDescription} lang={lang} basePath="/faq" translated={true} />
+		<SchemaOrg page="faq" />
+	</head>
+	<FaqBody lang={lang} />
+</html>
