@@ -820,8 +820,8 @@ const c = useCommon(lang);
 
 	/* Reviews / social proof */
 	.reviews-section {
-		background: #064250;
-		color: #fff;
+		background: #ffffff;
+		color: #1a1a1a;
 		padding: 4.5rem 1.5rem;
 	}
 	.reviews-inner {
@@ -834,19 +834,20 @@ const c = useCommon(lang);
 		font-weight: 600;
 		letter-spacing: 0.2em;
 		text-transform: uppercase;
-		color: #7fd8cf;
+		color: #2aa8a0;
 		margin: 0 0 0.5rem;
 	}
 	.reviews-title {
 		font-family: 'Cormorant Garamond', serif;
 		font-size: clamp(1.9rem, 4vw, 2.8rem);
 		font-weight: 600;
+		color: #1a1a1a;
 		margin: 0 0 0.5rem;
 	}
 	.reviews-rating {
 		font-size: 1rem;
+		color: #333;
 		margin: 0 0 2.25rem;
-		opacity: 0.95;
 	}
 	.reviews-stars,
 	.review-stars {
@@ -857,11 +858,11 @@ const c = useCommon(lang);
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 1.5rem;
-		margin-bottom: 2.25rem;
+		margin-bottom: 2.5rem;
 	}
 	.review-card {
-		background: rgba(255, 255, 255, 0.06);
-		border: 1px solid rgba(255, 255, 255, 0.12);
+		background: #f7f4ee;
+		border: 1px solid #e7ded0;
 		border-radius: 12px;
 		padding: 1.75rem;
 		margin: 0;
@@ -874,16 +875,16 @@ const c = useCommon(lang);
 		margin: 0;
 		font-size: 1rem;
 		line-height: 1.65;
-		color: #f2f7f6;
+		color: #333;
 	}
 	.review-card figcaption {
 		font-size: 0.85rem;
 		font-weight: 600;
-		color: #9fd6cf;
+		color: #8b7765;
 	}
 	.reviews-badges {
 		display: flex;
-		gap: 1.25rem;
+		gap: 1.5rem;
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
@@ -893,23 +894,24 @@ const c = useCommon(lang);
 		align-items: center;
 		justify-content: center;
 		background: #fff;
+		border: 1px solid #e7ded0;
 		border-radius: 12px;
-		padding: 0.85rem 1.5rem;
+		padding: 0.85rem 1.6rem;
 		min-height: 74px;
-		box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 		transition: transform 0.2s, box-shadow 0.2s;
 	}
 	.review-badge-link:hover {
 		transform: translateY(-2px);
-		box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
 	}
 	.review-badge {
-		height: 48px;
+		height: 46px;
 		width: auto;
 		display: block;
 	}
 	.review-badge--ta {
-		height: 30px;
+		height: 28px;
 	}
 	@media (max-width: 700px) {
 		.reviews-cards {
