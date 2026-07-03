@@ -29,6 +29,19 @@ const p = (path: string) => localizePath(path, lang);
 			<a href="/blog">{t('nav.blog')}</a>
 			<a href={p('/faq')}>{t('nav.faq')}</a>
 			<a href={p('/contact')}>{t('nav.contact')}</a>
+			<div class="nav-lang-mobile" role="group" aria-label={t('nav.language')}>
+				{LOCALES.map((l) => (
+					<a
+						href={localizePath(basePath, l as Locale)}
+						class:list={['nav-lang-mobile-link', { 'nav-lang-mobile-link--active': l === lang }]}
+						hreflang={l}
+						aria-current={l === lang ? 'true' : undefined}
+					>
+						<img class="nav-lang-flag" src={`/flags/${LOCALE_FLAG[l as Locale]}.svg`} alt="" width="26" height="26" loading="lazy" />
+						<span>{LOCALE_LABEL[l as Locale]}</span>
+					</a>
+				))}
+			</div>
 		</nav>
 		<div class="nav-contact">
 			<a href="tel:+306987931327" class="nav-phone-btn" aria-label={`${t('nav.callUs')}: 0030 698 793 1327`}>
@@ -257,6 +270,25 @@ const p = (path: string) => localizePath(path, lang);
 		width: 22px;
 		height: 22px;
 	}
+	.nav-lang-mobile {
+		display: none;
+	}
+	.nav-lang-mobile-link {
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		color: #fff;
+		text-decoration: none;
+		font-size: 1rem;
+		font-weight: 500;
+		padding: 0.45rem 0.8rem;
+		border-radius: 999px;
+		opacity: 0.8;
+	}
+	.nav-lang-mobile-link--active {
+		background: rgba(255, 255, 255, 0.18);
+		opacity: 1;
+	}
 	.nav-phone-btn {
 		display: inline-flex;
 		align-items: center;
@@ -348,28 +380,74 @@ const p = (path: string) => localizePath(path, lang);
 		}
 		.nav-links {
 			display: none;
-			position: absolute;
-			top: 100%;
-			right: 0;
-			margin-top: 0.5rem;
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
-			background: rgba(6, 66, 80, 0.98);
-			padding: 1rem;
-			border-radius: 8px;
-			min-width: 220px;
-			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-			z-index: 200;
+		}
+		/* Full-screen mobile menu */
+		.nav-contact .nav-lang {
+			display: none;
+		}
+		.hero-header--menu-open {
+			z-index: 10000;
+		}
+		.hero-header--menu-open .nav-lang-mobile {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.6rem;
+			margin-top: 1.5rem;
+			padding-top: 1.75rem;
+			border-top: 1px solid rgba(255, 255, 255, 0.15);
+			width: 100%;
+			max-width: 320px;
 		}
 		.hero-header--menu-open .nav-links {
 			display: flex;
+			position: fixed;
+			inset: 0;
+			width: 100%;
+			height: 100vh;
+			height: 100dvh;
+			margin: 0;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			gap: 1.6rem;
+			background: rgba(6, 66, 80, 0.985);
+			padding: 6rem 1.5rem 2.5rem;
+			box-shadow: none;
+			z-index: 998;
+			overflow-y: auto;
 		}
-		.hero-header--menu-open .nav-toggle {
-			opacity: 0.9;
+		.hero-header--menu-open .nav-links a {
+			font-size: 1.4rem;
+			opacity: 1;
+		}
+		.hero-header--menu-open .nav-item-dropdown {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.9rem;
+		}
+		.hero-header--menu-open .nav-dropdown a {
+			font-size: 1.1rem;
+			opacity: 0.85;
 		}
 		.nav-toggle {
 			display: flex;
+			position: relative;
+			z-index: 999;
+		}
+		.nav-toggle span {
+			transition: transform 0.3s ease, opacity 0.2s ease;
+		}
+		.hero-header--menu-open .nav-toggle span:nth-child(1) {
+			transform: translateY(7px) rotate(45deg);
+		}
+		.hero-header--menu-open .nav-toggle span:nth-child(2) {
+			opacity: 0;
+		}
+		.hero-header--menu-open .nav-toggle span:nth-child(3) {
+			transform: translateY(-7px) rotate(-45deg);
 		}
 		.nav-item-dropdown .nav-dropdown {
 			position: static;
@@ -380,6 +458,10 @@ const p = (path: string) => localizePath(path, lang);
 			padding-left: 0;
 			margin-top: 0.25rem;
 			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.6rem;
 		}
 	}
 </style>
@@ -398,12 +480,14 @@ const p = (path: string) => localizePath(path, lang);
 			t.setAttribute('aria-expanded', 'true');
 			t.setAttribute('aria-label', 'Close menu');
 			n.setAttribute('aria-hidden', 'false');
+			document.body.style.overflow = 'hidden';
 		}
 		function closeMenu() {
 			h.classList.remove('hero-header--menu-open');
 			t.setAttribute('aria-expanded', 'false');
 			t.setAttribute('aria-label', 'Open menu');
 			n.setAttribute('aria-hidden', 'true');
+			document.body.style.overflow = '';
 		}
 		function toggleMenu() {
 			const isOpen = h.classList.contains('hero-header--menu-open');
