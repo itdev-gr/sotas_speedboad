@@ -67,6 +67,30 @@ try {
 				))}
 			</div>
 		</section>
+
+		<section class="svc-content" aria-label={s.contentTitle}>
+			<div class="svc-content-inner">
+				<h2 class="svc-content-title">{s.contentTitle}</h2>
+				<p class="svc-content-text">{s.contentP1}</p>
+				<p class="svc-content-text">{s.contentP2}</p>
+				<p class="svc-content-text">{s.contentP3}</p>
+				<div class="svc-tours-links">
+					<a href={localizePath('/navagio-shipwreck-boat-tour', lang)}>{c('nav.tourNavagio')}</a>
+					<a href={localizePath('/blue-caves-boat-tour', lang)}>{c('nav.tourBlueCaves')}</a>
+					<a href={localizePath('/keri-caves-turtle-island-boat-tour', lang)}>{c('nav.tourKeri')}</a>
+					<a href={localizePath('/sunset-boat-tour', lang)}>{c('nav.tourSunset')}</a>
+				</div>
+			</div>
+		</section>
+		<section class="svc-faq" aria-label={s.faqTitle}>
+			<div class="svc-faq-inner">
+				<h2 class="svc-faq-title">{s.faqTitle}</h2>
+				<div class="svc-faq-item"><h3>{s.faq1Q}</h3><p>{s.faq1A}</p></div>
+				<div class="svc-faq-item"><h3>{s.faq2Q}</h3><p>{s.faq2A}</p></div>
+				<div class="svc-faq-item"><h3>{s.faq3Q}</h3><p>{s.faq3A}</p></div>
+				<div class="svc-faq-item"><h3>{s.faq4Q}</h3><p>{s.faq4A}</p></div>
+			</div>
+		</section>
 	</main>
 	<Footer lang={lang} />
 
@@ -726,4 +750,18 @@ try {
 			min-height: 220px;
 		}
 	}
+
+	.svc-content { padding: 4rem 1.5rem 1rem; }
+	.svc-content-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+	.svc-content-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: #1a1a1a; margin: 0 0 1rem; line-height: 1.2; }
+	.svc-content-text { font-size: 1.05rem; line-height: 1.8; color: #333; margin: 0 0 1.1rem; }
+	.svc-tours-links { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 1.5rem; }
+	.svc-tours-links a { display: inline-block; padding: 0.5rem 1rem; border: 1px solid #d9d2c7; border-radius: 999px; color: #064250; text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+	.svc-tours-links a:hover { border-color: #2aa8a0; }
+	.svc-faq { padding: 3rem 1.5rem 4.5rem; }
+	.svc-faq-inner { max-width: 800px; margin: 0 auto; }
+	.svc-faq-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.25rem); font-weight: 700; color: #1a1a1a; text-align: center; margin: 0 0 2rem; }
+	.svc-faq-item { border-top: 1px solid #e7ded0; padding: 1.25rem 0; }
+	.svc-faq-item h3 { font-size: 1.1rem; font-weight: 600; color: #1a1a1a; margin: 0 0 0.5rem; }
+	.svc-faq-item p { font-size: 1rem; line-height: 1.65; color: #444; margin: 0; }
 </style>

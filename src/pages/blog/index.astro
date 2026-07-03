@@ -5,10 +5,10 @@ import Footer from '../../components/Footer.astro';
 import SEOHead from '../../components/SEOHead.astro';
 
 const posts = (await getCollection('blog')).sort((a, b) => {
-	const ao = a.data.order ?? 999;
-	const bo = b.data.order ?? 999;
-	if (ao !== bo) return ao - bo;
-	return b.data.pubDate.getTime() - a.data.pubDate.getTime();
+	// Newest first (latest on top, oldest at the bottom)
+	const diff = b.data.pubDate.getTime() - a.data.pubDate.getTime();
+	if (diff !== 0) return diff;
+	return (a.data.order ?? 999) - (b.data.order ?? 999);
 });
 
 const featured = posts[0];
