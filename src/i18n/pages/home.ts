@@ -23,6 +23,8 @@ export const home = {
     svcSkipper: 'Boat Rentals with Skipper',
     svcSelfDrive: 'Self Drive Boats',
     svcCelebrations: 'Special Celebrations',
+    introP3:
+      "Popular trips include the full-island boat tour, family-friendly routes to Turtle Island and the Keri Caves, and relaxed sunset cruises along the coast. We offer flexible 4-hour and 7-hour boat hire in Zante, and every self-drive boat comes with a short safety briefing — no experience needed. Contact us for availability and prices, and we'll tailor the trip to you.",
     sd1Sub: 'NO LICENSE REQUIRED',
     sd1Title: 'SELF DRIVE BOAT RENTALS',
     sd1Desc: 'Rent a self drive boat in Zakynthos and become a captain yourself. No license required!',
@@ -71,6 +73,8 @@ export const home = {
     svcSkipper: 'Bootsverleih mit Skipper',
     svcSelfDrive: 'Selbstfahrer-Boote',
     svcCelebrations: 'Besondere Anlässe',
+    introP3:
+      "Beliebte Ausflüge sind die Rundfahrt um die ganze Insel, familienfreundliche Routen zur Schildkröteninsel und zu den Keri-Höhlen sowie entspannte Sonnenuntergangsfahrten entlang der Küste. Wir bieten flexible 4- und 7-Stunden-Bootsmiete auf Zante, und jedes Selbstfahrerboot kommt mit einer kurzen Sicherheitseinweisung — ganz ohne Vorerfahrung. Kontaktieren Sie uns für Verfügbarkeit und Preise, und wir stellen Ihren Ausflug individuell zusammen.",
     sd1Sub: 'KEIN FÜHRERSCHEIN ERFORDERLICH',
     sd1Title: 'SELBSTFAHRER-BOOTSVERLEIH',
     sd1Desc:
@@ -120,6 +124,8 @@ export const home = {
     svcSkipper: 'Location de bateaux avec skipper',
     svcSelfDrive: 'Bateaux sans skipper',
     svcCelebrations: 'Occasions spéciales',
+    introP3:
+      "Parmi les sorties populaires : le tour complet de l'île, des itinéraires familiaux vers l'île aux Tortues et les grottes de Keri, et de paisibles croisières au coucher du soleil le long de la côte. Nous proposons une location de bateau flexible de 4 et 7 heures à Zante, et chaque bateau sans skipper est fourni avec un court briefing de sécurité — aucune expérience requise. Contactez-nous pour les disponibilités et les tarifs, et nous adapterons la sortie à vos envies.",
     sd1Sub: 'SANS PERMIS REQUIS',
     sd1Title: 'LOCATION DE BATEAUX SANS SKIPPER',
     sd1Desc:
@@ -169,6 +175,8 @@ export const home = {
     svcSkipper: 'Noleggio barche con skipper',
     svcSelfDrive: 'Barche senza skipper',
     svcCelebrations: 'Occasioni speciali',
+    introP3:
+      "Tra le gite più richieste: il giro completo dell'isola, itinerari per famiglie verso l'Isola delle Tartarughe e le Grotte di Keri, e rilassanti crociere al tramonto lungo la costa. Offriamo noleggio barche flessibile di 4 e 7 ore a Zante, e ogni barca self-drive include un breve briefing di sicurezza — senza alcuna esperienza. Contattaci per disponibilità e prezzi e organizzeremo la gita su misura per te.",
     sd1Sub: 'SENZA PATENTE',
     sd1Title: 'NOLEGGIO BARCHE SENZA SKIPPER',
     sd1Desc:
