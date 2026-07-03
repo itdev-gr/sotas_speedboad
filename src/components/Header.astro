@@ -1,5 +1,5 @@
 ---
-import { LOCALES, LOCALE_LABEL, localizePath, type Locale } from '../i18n/config';
+import { LOCALES, LOCALE_LABEL, LOCALE_NAME, LOCALE_FLAG, localizePath, type Locale } from '../i18n/config';
 import { useCommon } from '../i18n/common';
 
 interface Props {
@@ -38,15 +38,26 @@ const p = (path: string) => localizePath(path, lang);
 					<span class="nav-phone-btn__num">0030 698 793 1327</span>
 				</span>
 			</a>
-			<div class="nav-lang" role="group" aria-label={t('nav.language')}>
-				{LOCALES.map((l) => (
-					<a
-						href={localizePath(basePath, l as Locale)}
-						class:list={['nav-lang-link', { 'nav-lang-link--active': l === lang }]}
-						hreflang={l}
-						aria-current={l === lang ? 'true' : undefined}
-					>{LOCALE_LABEL[l as Locale]}</a>
-				))}
+			<div class="nav-lang" id="nav-lang">
+				<button type="button" class="nav-lang-toggle" id="nav-lang-toggle" aria-haspopup="true" aria-expanded="false" aria-label={t('nav.language')}>
+					<img class="nav-lang-flag" src={`/flags/${LOCALE_FLAG[lang]}.svg`} alt="" width="24" height="24" loading="lazy" />
+					<span class="nav-lang-code">{LOCALE_LABEL[lang]}</span>
+					<svg class="nav-lang-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+				</button>
+				<div class="nav-lang-menu" role="menu">
+					{LOCALES.map((l) => (
+						<a
+							href={localizePath(basePath, l as Locale)}
+							class:list={['nav-lang-option', { 'nav-lang-option--active': l === lang }]}
+							hreflang={l}
+							role="menuitem"
+							aria-current={l === lang ? 'true' : undefined}
+						>
+							<img class="nav-lang-flag" src={`/flags/${LOCALE_FLAG[l as Locale]}.svg`} alt="" width="22" height="22" loading="lazy" />
+							<span>{LOCALE_NAME[l as Locale]}</span>
+						</a>
+					))}
+				</div>
 			</div>
 		</div>
 		<button class="nav-toggle" type="button" aria-label={t('nav.openMenu')} aria-expanded="false" aria-controls="nav-links" id="nav-toggle-btn">
@@ -94,7 +105,7 @@ const p = (path: string) => localizePath(path, lang);
 	}
 	.nav-links {
 		display: flex;
-		gap: 1rem;
+		gap: 1.75rem;
 		align-items: center;
 		flex-wrap: wrap;
 		justify-content: flex-end;
@@ -110,7 +121,6 @@ const p = (path: string) => localizePath(path, lang);
 	}
 	.nav-links a:hover {
 		opacity: 1;
-		text-decoration: underline;
 	}
 	.nav-item-dropdown {
 		position: relative;
@@ -162,27 +172,90 @@ const p = (path: string) => localizePath(path, lang);
 		opacity: 0.85;
 	}
 	.nav-lang {
-		display: flex;
-		gap: 0.15rem;
-		align-items: center;
-		margin-top: 0.15rem;
+		position: relative;
+		margin-top: 0.25rem;
 	}
-	.nav-lang-link {
+	.nav-lang-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		background: rgba(255, 255, 255, 0.12);
+		border: 1px solid rgba(255, 255, 255, 0.25);
+		color: #fff;
+		cursor: pointer;
+		padding: 0.25rem 0.5rem;
+		border-radius: 999px;
+		font-family: inherit;
+		transition: background 0.2s, border-color 0.2s;
+	}
+	.nav-lang-toggle:hover {
+		background: rgba(255, 255, 255, 0.2);
+		border-color: rgba(255, 255, 255, 0.45);
+	}
+	.nav-lang-flag {
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		object-fit: cover;
+		display: block;
+		box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+		flex-shrink: 0;
+	}
+	.nav-lang-code {
+		font-size: 0.82rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+	}
+	.nav-lang-caret {
+		transition: transform 0.2s;
+		opacity: 0.85;
+	}
+	.nav-lang.is-open .nav-lang-caret {
+		transform: rotate(180deg);
+	}
+	.nav-lang-menu {
+		position: absolute;
+		top: calc(100% + 0.4rem);
+		right: 0;
+		min-width: 168px;
+		background: rgba(6, 66, 80, 0.98);
+		border-radius: 10px;
+		padding: 0.35rem;
+		box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-6px);
+		transition: opacity 0.18s, visibility 0.18s, transform 0.18s;
+		z-index: 300;
+	}
+	.nav-lang:hover .nav-lang-menu,
+	.nav-lang:focus-within .nav-lang-menu,
+	.nav-lang.is-open .nav-lang-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+	.nav-lang-option {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.5rem 0.6rem;
+		border-radius: 7px;
 		color: #fff;
 		text-decoration: none;
-		font-size: 0.78rem;
-		font-weight: 500;
-		letter-spacing: 0.04em;
-		opacity: 0.65;
-		padding: 0.1rem 0.3rem;
-		border-radius: 3px;
+		font-size: 0.9rem;
+		white-space: nowrap;
 	}
-	.nav-lang-link:hover {
-		opacity: 0.95;
+	.nav-lang-option:hover {
+		background: rgba(255, 255, 255, 0.12);
 	}
-	.nav-lang-link--active {
-		opacity: 1;
-		background: rgba(255, 255, 255, 0.2);
+	.nav-lang-option--active {
+		background: rgba(255, 255, 255, 0.18);
+		font-weight: 600;
+	}
+	.nav-lang-option .nav-lang-flag {
+		width: 22px;
+		height: 22px;
 	}
 	.nav-phone-btn {
 		display: inline-flex;
@@ -314,6 +387,24 @@ const p = (path: string) => localizePath(path, lang);
 		t.addEventListener('click', toggleMenu);
 		n.querySelectorAll('a').forEach((link) => {
 			link.addEventListener('click', closeMenu);
+		});
+	})();
+
+	// Language flag dropdown (click toggle for touch; hover handled by CSS)
+	(function () {
+		const wrap = document.getElementById('nav-lang');
+		const btn = document.getElementById('nav-lang-toggle');
+		if (!wrap || !btn) return;
+		btn.addEventListener('click', (e) => {
+			e.preventDefault();
+			const open = wrap.classList.toggle('is-open');
+			btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+		});
+		document.addEventListener('click', (e) => {
+			if (e.target instanceof Node && !wrap.contains(e.target)) {
+				wrap.classList.remove('is-open');
+				btn.setAttribute('aria-expanded', 'false');
+			}
 		});
 	})();
 </script>

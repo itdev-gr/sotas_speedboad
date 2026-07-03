@@ -33,6 +33,14 @@ export const LOCALE_NAME: Record<Locale, string> = {
   it: 'Italiano',
 };
 
+// Circular flag icon filename (in /public/flags) per locale.
+export const LOCALE_FLAG: Record<Locale, string> = {
+  en: 'gb',
+  de: 'de',
+  fr: 'fr',
+  it: 'it',
+};
+
 export function isLocale(value: string | undefined): value is Locale {
   return !!value && (LOCALES as readonly string[]).includes(value);
 }
