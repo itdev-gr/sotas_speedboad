@@ -63,11 +63,12 @@ const alternates =
       s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XX59D06X4W';
       document.head.appendChild(s);
     }
-    ['scroll', 'pointerdown', 'keydown', 'touchstart'].forEach(function (e) {
+    // Load only on real user interaction so the heavy gtag.js stays out of
+    // the critical path (and out of no-interaction lab runs). Real users
+    // scroll/tap almost immediately, so tracking + Ads conversions still fire.
+    ['scroll', 'pointerdown', 'mousemove', 'keydown', 'touchstart'].forEach(function (e) {
       window.addEventListener(e, loadGtag, { once: true, passive: true });
     });
-    if ('requestIdleCallback' in window) { requestIdleCallback(loadGtag, { timeout: 5000 }); }
-    else { setTimeout(loadGtag, 3500); }
   })();
 </script>
 
