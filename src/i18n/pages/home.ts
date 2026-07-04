@@ -56,7 +56,7 @@ export const home = {
       'Celebrate birthdays, proposals, anniversaries or any special occasion on a private yacht cruise around Zakynthos.',
     sd4Alt: 'Special celebration on a yacht in Zakynthos',
     introLabel: 'ZAKYNTHOS BOAT RENTALS',
-    introTitle: 'Boat trips & self-drive boat rentals across Zakynthos',
+    introTitle: 'Boat trips & self drive boat rentals across Zakynthos',
     introP1:
       "Looking to rent a boat in Zakynthos? Sota Travel is your local, family-run partner for boat rentals in Zakynthos, the Ionian island many visitors know as Zante. We have spent our lives on these waters, so no one knows the island's coastline better. From our base at Zakynthos Marina we make it easy to explore the most beautiful spots by sea, from the famous Navagio Shipwreck Beach to the turquoise Blue Caves and the sheltered coves of Keri.",
     introP2:
