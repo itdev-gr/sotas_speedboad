@@ -29,7 +29,7 @@ A self-drive rental means you are the one operating the boat. No skipper, no gui
 - Fuel costs are on top of the rental fee
 - It requires basic confidence with a simple motorised vehicle
 
-If self-drive sounds like the right fit, you can find full details on the .
+If self-drive sounds like the right fit, you can find full details on the [license-free rental page](/license-free-rent).
 
 ## What Is a Skipper Boat Rental
 
@@ -49,7 +49,7 @@ A skipper rental means a professional captain comes with the boat. You show up, 
 - The route is guided, so you have less spontaneous control over stops
 - You are sharing the experience with a third person on board
 
-Full details on the skipper option are available on the .
+Full details on the skipper option are available on the [rent with skipper page](/rent-with-skipper).
 
 ## Side by Side: Key Differences
 
@@ -95,8 +95,8 @@ Choose a skipper if:
 
 **Does the skipper decide the route or can I request specific destinations?** You can absolutely discuss your preferred destinations before departure. The skipper will factor in sea conditions, timing, and your group's preferences.
 
-**Are both options available for the same routes?** Yes. Both self-drive and skipper rentals can cover the main routes including Navagio, Blue Caves, Turtle Island, and Keri Caves. See the  for a full overview.
+**Are both options available for the same routes?** Yes. Both self-drive and skipper rentals can cover the main routes including Navagio, Blue Caves, Turtle Island, and Keri Caves. See the [recommended routes](/recommended-routes) for a full overview.
 
 **What is the price difference between the two options?** Contact the team directly for current pricing. The skipper rental is priced higher due to the professional service included.
 
-Both options offer an exceptional way to experience Zakynthos from the sea. The question is simply how much of the driving you want to do yourself.  if you are still not sure which one fits your plans and they will help you decide.
+Both options offer an exceptional way to experience Zakynthos from the sea. The question is simply how much of the driving you want to do yourself. Browse the [full range of boat tours](/tours) if you are still not sure which one fits your plans, and the team will help you decide.

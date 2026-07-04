@@ -13,7 +13,7 @@ Booking a boat rental in Zakynthos and then watching a grey sky roll in on the m
 
 ## Most of the Time, Your Day Still Goes Ahead
 
-Bad weather rarely means a full cancellation. What it more often means is a route change. The Ionian Sea has sheltered sections and exposed sections, and a good skipper or a well-informed self-drive rental can move away from the rough coast and still give you a full day on the water.
+Bad weather rarely means a full cancellation. What it more often means is a route change. The Ionian Sea has sheltered sections and exposed sections, and a good [skipper](/rent-with-skipper) or a well-informed [self-drive rental](/license-free-rent) can move away from the rough coast and still give you a full day on the water.
 
 The coastline around Turtle Island, Keri Caves, and the south of the island is far more sheltered from prevailing northwest winds than the exposed west coast where Navagio sits. When the west coast is too rough to visit, the south coast is often perfectly calm. The view changes, but the day on the water does not disappear.
 
@@ -88,3 +88,5 @@ Greek weather forecasts become reliable around 3 to 4 days out. Windy.com is the
 **What months have the calmest sea in Zakynthos?** Late May, June, late September, and early October are the calmest months. The Meltemi winds that can affect July and August are much weaker during these shoulder months.
 
 **Can the boat still go out if only part of the coast is rough?** Yes. If the west coast is exposed but the south and east coasts are calm, the route moves to the sheltered areas. The trip goes ahead with a different itinerary.
+
+If you are unsure whether conditions will suit your dates, [get in touch with the team](/contact) and we will help you pick the safest window to get out on the water.

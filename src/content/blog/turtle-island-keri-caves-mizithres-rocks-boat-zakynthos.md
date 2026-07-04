@@ -59,7 +59,7 @@ This southern route works well as a 5 to 7 hour trip. The stops are geographical
 - Mizithres Rocks: anchor, swim, take in the scenery
 - Return to port
 
-This route is available as a  or as a . It also forms the basis of the , which runs the same stops in the late afternoon and finishes with the sun going down over the cliffs.
+This route is available as a [self-drive rental](/license-free-rent) or as a [private cruise with skipper](/rent-with-skipper). It also forms the basis of the [sunset boat tour](/sunset-boat-tour), which runs the same stops in the late afternoon and finishes with the sun going down over the cliffs.
 
 ## What to Bring for This Route
 
@@ -81,4 +81,4 @@ This route is available as a  or as a . It also forms the basis of the , which r
 
 **Is Mizithres Rocks a good spot for swimming?** Yes. The sheltered water between the rocks and the cliffs is calm, clear, and excellent for swimming.
 
-The southern route is quieter than the north, more intimate, and offers something the Navagio route does not: the real possibility of sharing the water with sea turtles.  and explore the side of Zakynthos that most visitors miss.
+The southern route is quieter than the north, more intimate, and offers something the Navagio route does not: the real possibility of sharing the water with sea turtles. Book the [Keri Caves and Turtle Island boat tour](/keri-caves-turtle-island-boat-tour) and explore the side of Zakynthos that most visitors miss.

@@ -29,7 +29,7 @@ Most people who have never driven a boat before find the controls intuitive with
 
 ### The Safety Briefing You Get Before You Leave the Port
 
-Before any self-drive rental departs, the team at the marina runs a full safety and handling briefing. This is not a formality. It covers the controls, how to start and stop, how to use the throttle correctly, how to reverse and dock, where the safety equipment is kept on board, and what to do in the unlikely event something goes wrong.
+Before any [license-free self-drive rental](/license-free-rent) departs, the team at the marina runs a full safety and handling briefing. This is not a formality. It covers the controls, how to start and stop, how to use the throttle correctly, how to reverse and dock, where the safety equipment is kept on board, and what to do in the unlikely event something goes wrong.
 
 The briefing also covers where you can take the boat and where you cannot. Understanding those limits before you leave is a significant part of what makes a beginner rental safe. You will not be guessing at the boundary once you are on the water.
 
@@ -57,7 +57,7 @@ The boundary exists for a reason. The coastline of Zakynthos includes exposed st
 
 Navagio Shipwreck Beach sits on the northwest coast of the island, which faces the prevailing winds directly. On a calm day, the crossing is straightforward and the beach is one of the most spectacular stops on the island. On a breezy day, the same stretch of water can become genuinely rough, and even experienced captains adjust or cancel the route when conditions there are poor.
 
-If you are a first-time driver and Navagio is your main priority, the honest advice is to book a skipper rental rather than self-drive. A skipper reads the conditions in real time, makes the call on whether the crossing is appropriate, and takes responsibility for the boat. You get Navagio without the anxiety of driving in open water. If the weather is calm and Navagio is within the self-drive boundary, your briefing will tell you so.
+If you are a first-time driver and Navagio is your main priority, the honest advice is to book a [skipper rental](/rent-with-skipper) rather than self-drive. A skipper reads the conditions in real time, makes the call on whether the crossing is appropriate, and takes responsibility for the boat. You get Navagio without the anxiety of driving in open water. If the weather is calm and Navagio is within the self-drive boundary, your briefing will tell you so.
 
 ## When You Should Choose a Skipper Instead
 
@@ -84,3 +84,5 @@ Stay within the area the team defines during the briefing. Do not enter sea cave
 **What happens if I get into trouble on the water?** Every boat carries GPS tracking, so the team knows your position at all times. Keep your phone charged, stay in mobile coverage, and call the marina directly. The backup engine means a mechanical issue will not leave you stranded.
 
 **Should a first-timer choose a skipper instead?** Not necessarily. If you are comfortable following the briefing and staying within the defined area, self-drive is a great option. If you feel genuinely anxious about driving, or if your main destinations include exposed stretches of coastline on a mixed-weather day, a skipper rental will give you more peace of mind and a more relaxed experience.
+
+Feeling ready to take the wheel? See the [license-free self-drive rental](/license-free-rent) details and book your first day on the water with confidence.

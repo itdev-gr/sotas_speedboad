@@ -39,17 +39,17 @@ An experienced skipper reads the sea in real time. They know when conditions at 
 
 ### When you want local knowledge, not just a route map
 
-The  gives you the main destinations and what to expect at each one. A skipper gives you something different: the specific cave that catches the light at 4pm, the cove that is always calm when the north coast is rough, the exact spot to anchor at Navagio before the tour boats arrive. That knowledge is only available from someone who has made these runs hundreds of times.
+The [recommended routes](/recommended-routes) give you the main destinations and what to expect at each one. A skipper gives you something different: the specific cave that catches the light at 4pm, the cove that is always calm when the north coast is rough, the exact spot to anchor at Navagio before the tour boats arrive. That knowledge is only available from someone who has made these runs hundreds of times.
 
 ## When Self-Drive Is the Better Choice
 
-A skipper is not automatically the right answer. If you are a confident couple or a small group of friends who want total independence on the water, who enjoy the idea of making your own decisions about where to go and when to stop, and for whom budget is a consideration, the  delivers everything you need.
+A skipper is not automatically the right answer. If you are a confident couple or a small group of friends who want total independence on the water, who enjoy the idea of making your own decisions about where to go and when to stop, and for whom budget is a consideration, the [license-free self-drive rental](/license-free-rent) delivers everything you need.
 
 The skipper option earns its price when the circumstances call for it. When they do not, paying more does not add anything meaningful to the experience.
 
 ## What the Routes Look Like With a Skipper
 
-Every route available on the  can be run with a skipper:
+Every route available on the [boat tours](/tours) page can be run with a skipper:
 
 - Navagio, Shipwreck Beach, Blue Caves and Xigia: 4 to 7 hours
 - Turtle Island, Keri Caves and Mizithres Rocks: 5 to 7 hours
@@ -78,4 +78,4 @@ The full island tour in particular is only available with a skipper, given the d
 
 **What is the maximum group size for a skipper rental?** Contact the team directly for current vessel capacity and group size options.
 
-A private cruise with a skipper in Zakynthos is worth it when the day matters enough to remove every variable. No logistics, no responsibility, no navigation decisions. Just the sea, the coastline, and a professional who knows exactly where to take you.  or  to discuss your options.
+A private cruise with a skipper in Zakynthos is worth it when the day matters enough to remove every variable. No logistics, no responsibility, no navigation decisions. Just the sea, the coastline, and a professional who knows exactly where to take you. Book a [private cruise with skipper](/rent-with-skipper) or [contact the team](/contact) to discuss your options.

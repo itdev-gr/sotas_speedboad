@@ -13,7 +13,7 @@ Before you book a boat rental in Zakynthos, it is worth knowing exactly what you
 
 ## What Is Always Included
 
-Regardless of whether you go for a self-drive rental or a skipper option, every boat comes equipped with the essentials for a comfortable and safe day on the water.
+Regardless of whether you go for a [self-drive boat rental](/license-free-rent) or a skipper option, every boat comes equipped with the essentials for a comfortable and safe day on the water.
 
 ### Safety equipment
 
@@ -59,11 +59,11 @@ Snorkelling equipment is not included as standard. If you plan to snorkel at the
 
 ## What Is Included With a Skipper Rental
 
-If you book a , everything listed above is included, plus the skipper's professional service for the full duration of your trip. The skipper handles all navigation, anchoring, and route management. You do not need to do anything except enjoy the day.
+If you book a [boat rental with a skipper](/rent-with-skipper), everything listed above is included, plus the skipper's professional service for the full duration of your trip. The skipper handles all navigation, anchoring, and route management. You do not need to do anything except enjoy the day.
 
 ## What Is Included With a Private Yacht Charter
 
-The  is a step up in terms of the vessel and the level of service. The yacht comes with a professional crew, and the experience is tailored specifically to your group. This option is particularly suited to special celebrations, proposals, anniversaries, and any occasion where the day needs to feel exceptional rather than standard.
+The [private yacht charter](/private-yachting) is a step up in terms of the vessel and the level of service. The yacht comes with a professional crew, and the experience is tailored specifically to your group. This option is particularly suited to special celebrations, proposals, anniversaries, and any occasion where the day needs to feel exceptional rather than standard.
 
 ## What to Bring With You
 
@@ -88,4 +88,4 @@ To make the most of your rental, here is what we recommend packing:
 
 **Does the GPS mean the team can track my location during the rental?** The GPS is primarily a safety feature. It ensures that if anything goes wrong, the team can locate the boat quickly. It also helps keep the fleet within the permitted sailing areas.
 
-Knowing what is included before you arrive at the port means you can focus entirely on enjoying the day. For anything else you want to clarify before booking, check the  or .
+Knowing what is included before you arrive at the port means you can focus entirely on enjoying the day. For anything else you want to clarify before booking, browse the [full range of boat tours](/tours) or [get in touch with the team](/contact). Ready to get out on the water? Explore our [license-free boat rental](/license-free-rent) and book your day at sea.

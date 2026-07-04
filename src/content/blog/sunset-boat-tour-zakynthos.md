@@ -60,7 +60,7 @@ The sunset tour runs for 4 hours and covers the following stops:
 - Mizithres Rocks: swim, watch the sunset
 - Return to port
 
-This route is available as a  or as a . For couples and groups celebrating something special, combining it with the  option elevates the whole experience significantly. See the full  for more details.
+This route is available as a [self-drive rental](/license-free-rent) or as a [private cruise with skipper](/rent-with-skipper). For couples and groups celebrating something special, combining it with the [special celebrations](/special-celebrations) option elevates the whole experience significantly. See the full [sunset boat tour](/sunset-boat-tour) details for more.
 
 ## What to Bring
 
@@ -76,10 +76,10 @@ This route is available as a  or as a . For couples and groups celebrating somet
 
 **Is the sunset tour suitable for couples?** It is one of the most popular options for couples. The late afternoon timing, the scenery, and the finish at Mizithres at sunset make it a natural choice for a romantic day on the water.
 
-**Can I book this for a special occasion such as a proposal or anniversary?** Yes. For a fully private, premium version of the sunset experience, the  option is worth considering. It is tailored specifically for occasions like this.
+**Can I book this for a special occasion such as a proposal or anniversary?** Yes. For a fully private, premium version of the sunset experience, the [special celebrations](/special-celebrations) option is worth considering. It is tailored specifically for occasions like this.
 
 **Is 4 hours enough for all three stops?** Yes. The stops on the south coast are geographically close to each other, which means less time travelling between them and more time actually at each location.
 
 **What happens if the sky is cloudy on the day of the tour?** Cloudy sunsets are less dramatic but the route itself is equally enjoyable regardless of sky conditions. The caves, the rock formations, and the swimming stops do not depend on a clear sky to deliver.
 
-The sunset tour is the most atmospheric boat experience Zakynthos offers. The same south coast that looks beautiful at noon looks extraordinary at 6pm.  and plan your evening around being on the water.
+The sunset tour is the most atmospheric boat experience Zakynthos offers. The same south coast that looks beautiful at noon looks extraordinary at 6pm. Book your [sunset boat tour](/sunset-boat-tour) and plan your evening around being on the water.

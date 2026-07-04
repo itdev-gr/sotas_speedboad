@@ -27,7 +27,7 @@ No two runs of this route are identical. Sea conditions, group preferences, and 
 
 ### Navagio Shipwreck Beach
 
-The north coast leg starts with the most iconic stop on the island. Navagio sits inside a closed limestone cove accessible only from the sea. The rusted wreck of the MV Panagiotis has been on this beach since 1980, and the combination of white sand, turquoise water, and sheer cliff walls makes it one of the most visually striking places in the whole of Greece. On a full day tour there is enough time to anchor properly, swim, and take it all in without rushing.
+The north coast leg starts with the most iconic stop on the island. A [Navagio Shipwreck boat tour](/navagio-shipwreck-boat-tour) reaches a closed limestone cove accessible only from the sea. The rusted wreck of the MV Panagiotis has been on this beach since 1980, and the combination of white sand, turquoise water, and sheer cliff walls makes it one of the most visually striking places in the whole of Greece. On a full day tour there is enough time to anchor properly, swim, and take it all in without rushing.
 
 ### Blue Caves
 
@@ -49,7 +49,7 @@ The final major landmark before the return leg is the southwest cape, home to th
 
 ## Why This Route Needs a Skipper
 
-The full island tour covers a significant amount of open water across two distinct coastlines. For self-drive rentals, this level of navigation is beyond the standard briefing. This route is operated as a , which means a professional captain handles all navigation while you focus on the experience.
+The full island tour covers a significant amount of open water across two distinct coastlines. For self-drive rentals, this level of navigation is beyond the standard briefing. This route is operated as a [private cruise with a skipper](/rent-with-skipper), which means a professional captain handles all navigation while you focus on the experience.
 
 The skipper's local knowledge is also a genuine advantage on an 8-hour trip. Knowing which caves are best in the morning, which coves offer shelter if the wind picks up, and where to find the clearest water at each stop makes a tangible difference to the quality of the day.
 
@@ -57,7 +57,7 @@ The skipper's local knowledge is also a genuine advantage on an 8-hour trip. Kno
 
 - Visitors on a short trip who want to cover as much of the island as possible in one day
 - Groups who want a shared, guided experience with no logistics to manage
-- Anyone who has already done one of the shorter routes and wants to go further
+- Anyone who has already done one of the [shorter recommended routes](/recommended-routes) and wants to go further
 - Families or groups of friends who want a full day on the water as the centrepiece of their holiday
 
 ## What to Bring
@@ -73,7 +73,7 @@ The day is long and the sun is relentless in peak season. Pack accordingly:
 
 ## FAQ
 
-**Is the full island tour available as a self-drive rental?** No. Due to the distance covered and the navigation involved, the full island tour is operated as a private cruise with a professional skipper. You can find more details on the .
+**Is the full island tour available as a self-drive rental?** No. Due to the distance covered and the navigation involved, the full island tour is operated as a private cruise with a professional skipper. You can find more details on the [rent with skipper page](/rent-with-skipper).
 
 **How many people can join the full island tour?** The boat capacity depends on the vessel booked. Contact the team directly for group size details and to discuss the best option for your party.
 
@@ -83,4 +83,4 @@ The day is long and the sun is relentless in peak season. Pack accordingly:
 
 **Can we customise the stops on the full island tour?** The core landmarks are fixed, but the skipper will always factor in your group's preferences for how long to stay at each stop and which areas to prioritise.
 
-The full island tour is the most complete boat experience Zakynthos offers. One day, both coasts, all the major landmarks, and multiple chances to get in the water.  to check availability and book your date.
+The full island tour is the most complete boat experience Zakynthos offers. One day, both coasts, all the major landmarks, and multiple chances to get in the water. [Browse our boat tours](/tours) to check availability and book your date.

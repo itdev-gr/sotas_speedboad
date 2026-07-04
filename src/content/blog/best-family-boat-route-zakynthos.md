@@ -13,7 +13,7 @@ Planning a boat trip with children changes the calculation. The route that looks
 
 ## The Best Family Route in One Line
 
-Turtle Island, Keri Caves, and a quiet swimming cove on the south coast. That is it. Short travel time, sheltered water, shallow entry points, and enough to see and do to keep children genuinely engaged across a 4-hour day without pushing anyone past their limit.
+A [Keri Caves and Turtle Island boat tour](/keri-caves-turtle-island-boat-tour), plus a quiet swimming cove on the south coast. That is it. Short travel time, sheltered water, shallow entry points, and enough to see and do to keep children genuinely engaged across a 4-hour day without pushing anyone past their limit.
 
 ## Why the South Coast Beats the Navagio Run for Kids
 
@@ -55,7 +55,7 @@ These stops are unscheduled and flexible. You anchor when you want, stay as long
 
 Both work well for families. The choice depends on the ages of your children and how much mental bandwidth you want to spend on driving versus managing the kids.
 
-Self-drive is manageable with young children if at least one adult can take the wheel while the other focuses on the children. The boats handle easily, the south coast routes are straightforward, and the briefing at the port prepares you for the specific conditions and areas to avoid.
+A [self-drive rental](/license-free-rent) is manageable with young children if at least one adult can take the wheel while the other focuses on the children. The boats handle easily, the south coast routes are straightforward, and the briefing at the port prepares you for the specific conditions and areas to avoid.
 
 A skipper rental removes the driving entirely. Both adults are free to focus on the children, the experience, and the swimming from the moment you leave the marina. The skipper knows the area, reads the conditions in real time, and handles the boat so you do not have to. For families with very young children or kids who need active supervision on the water, this is worth serious consideration.
 
@@ -90,3 +90,5 @@ A 4-hour rental, departing early, is the family-optimised structure for this rou
 **Should families choose a self-drive boat or a skipper?** Both work. A skipper rental frees up both adults to focus on the children throughout the day, which makes a real difference for families with very young children or kids who need active supervision on the water. Self-drive works well for families where one adult can comfortably manage the wheel while the other is with the children.
 
 **How long should a family boat trip be with small children?** A 4-hour rental is the right length for most families with young children. It covers the key stops on the south coast without pushing into the tired-and-hungry afternoon hours. A 7-hour rental works for families with older children who are comfortable on the water for a longer day.
+
+Ready to plan your family day at sea? Browse our [Zakynthos boat tours](/tours) to find the option that best suits your group.

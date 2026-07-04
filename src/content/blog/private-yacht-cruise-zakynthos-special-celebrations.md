@@ -15,7 +15,7 @@ Some days need to be more than just a good boat trip. A marriage proposal on the
 
 ### The vessel
 
-A private yacht is a different category of boat entirely from a self-drive speedboat or a standard skipper rental. More space, more comfort, a higher level of finish throughout. The sunbathing areas are larger, the deck layout is designed for groups to move around freely, and the overall experience on the water feels premium rather than functional.
+A [private yacht](/private-yachting) is a different category of boat entirely from a self-drive speedboat or a standard skipper rental. More space, more comfort, a higher level of finish throughout. The sunbathing areas are larger, the deck layout is designed for groups to move around freely, and the overall experience on the water feels premium rather than functional.
 
 ### The exclusivity
 
@@ -64,13 +64,13 @@ Part of what a private yacht allows is the ability to stop somewhere that standa
 
 ## The Special Celebrations Experience
 
-The  option is distinct from a standard boat rental in every meaningful way:
+The [special celebrations](/special-celebrations) option is distinct from a standard boat rental in every meaningful way:
 
 - Tailored route based on your occasion and preferences
 - Professional crew on board throughout
 - Premium vessel with full comfort and space
 - Flexible timing built around your group
-- Full  experience rather than a standard rental
+- Full [private yachting](/private-yachting) experience rather than a standard rental
 
 This is not a tour with a special occasion add-on. It is a private charter designed from the start around what your day needs to be.
 
@@ -100,4 +100,4 @@ If you are planning a proposal and want the timing to align with a specific loca
 
 **Is a private yacht more expensive than a standard skipper rental?** Yes. The private yachting experience is the premium option in the fleet. Contact the team directly for pricing based on your group size, route, and date.
 
-The right occasion deserves the right boat. A private yacht cruise in Zakynthos for a proposal, a birthday, or an anniversary is not an indulgence. It is the version of the day that you will actually remember.  to start planning your celebration on the water, or visit the  for more details.
+The right occasion deserves the right boat. A private yacht cruise in Zakynthos for a proposal, a birthday, or an anniversary is not an indulgence. It is the version of the day that you will actually remember. [Plan your special celebration](/special-celebrations) on the water, or explore the full [private yachting experience](/private-yachting) for more details.

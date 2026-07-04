@@ -60,7 +60,7 @@ Ideal if you want to explore one specific area, such as Navagio and the Blue Cav
 
 Better if you want to cover more ground, visit multiple spots, and spend longer in the water without rushing. This option suits groups who want a more complete experience.
 
-If you are not sure which duration fits your plans, the  breaks down what you can realistically cover in each timeframe.
+If you are not sure which duration fits your plans, the [recommended routes](/recommended-routes) break down what you can realistically cover in each timeframe, and you can browse every option on the [boat tours](/tours) page.
 
 ## Who Is This Suitable For
 
@@ -74,7 +74,7 @@ It works well for couples, small groups of friends, and families with older chil
 
 ## When a Skipper Makes More Sense
 
-Self-drive is not the right choice for everyone. If your group is large, if the sea conditions are rougher than expected, or if you simply want to relax and let someone else handle the navigation, a  is the better option. You cover the same routes, you just do not have to think about anything.
+Self-drive is not the right choice for everyone. If your group is large, if the sea conditions are rougher than expected, or if you simply want to relax and let someone else handle the navigation, a [private cruise with skipper](/rent-with-skipper) is the better option. You cover the same routes, you just do not have to think about anything.
 
 ## FAQ
 
@@ -88,4 +88,4 @@ Self-drive is not the right choice for everyone. If your group is large, if the 
 
 **How far in advance should I book?** During peak season (July and August), booking at least a few days ahead is recommended. Outside peak season, same-day or next-day availability is usually possible.
 
-Renting a boat in Zakynthos without a license is straightforward, well-regulated, and genuinely one of the best ways to experience the island. The coastline here is designed to be seen from the water.
+Renting a boat in Zakynthos without a license is straightforward, well-regulated, and genuinely one of the best ways to experience the island. The coastline here is designed to be seen from the water. Book your [license-free boat rental](/license-free-rent) and set your own course.

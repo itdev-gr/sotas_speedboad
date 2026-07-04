@@ -43,7 +43,7 @@ The light on Navagio in the afternoon also hits the beach from a different angle
 
 The trade-off is sea state. In peak season, afternoon winds on the Ionian build steadily. The west coast, where Navagio sits, is the most exposed section of the island. What is a smooth crossing in the morning can become noticeably choppier by mid-afternoon.
 
-For a self-drive rental without experience, an afternoon departure on a windy day means a rougher journey to the key destinations on the west coast. For a skipper rental, the skipper reads conditions in real time and makes the call. For a self-drive booking in July or August, the morning window is the more reliable bet.
+For a [self-drive rental](/license-free-rent) without experience, an afternoon departure on a windy day means a rougher journey to the key destinations on the west coast. For a skipper rental, the skipper reads conditions in real time and makes the call. For a self-drive booking in July or August, the morning window is the more reliable bet.
 
 ## Which to Pick Based on What You Want
 
@@ -78,3 +78,5 @@ In peak season (July and August), the morning advantage is real and consistent. 
 **Are boat trips less crowded in the morning or afternoon?** Morning. Excursion boats and private rentals build up as the day progresses. The earliest departures reach the key landmarks before the main flow of boats from across the island arrives at the same stops.
 
 **Does the wind get stronger in the afternoon in Zakynthos?** Yes, particularly in peak summer. The Meltemi is an afternoon phenomenon. Mornings on the Ionian are typically much calmer, and the sea state on the exposed northwest coast is more reliable in the first half of the day.
+
+Whichever slot you choose, browse the [full range of boat tours](/tours) and [contact the team](/contact) to lock in your preferred departure time.

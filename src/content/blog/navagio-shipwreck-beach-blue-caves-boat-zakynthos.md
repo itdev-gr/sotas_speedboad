@@ -9,7 +9,7 @@ pubDate: 2026-05-18
 order: 3
 ---
 
-Navagio Beach is the most photographed spot in Zakynthos, and there is only one way to get there: by boat. The beach sits at the bottom of a sheer limestone cliff on the northwest coast of the island, completely cut off from land. No road leads to it, no path winds down to it. If you want to stand on that white sand next to the rusted shipwreck and look up at those towering white walls, you need to be on the water. Combining Navagio with the Blue Caves in a single trip makes for one of the best half-day routes the island has to offer.
+Navagio Beach is the most photographed spot in Zakynthos, and there is only one way to get there: by boat. The beach sits at the bottom of a sheer limestone cliff on the northwest coast of the island, completely cut off from land. No road leads to it, no path winds down to it. If you want to stand on that white sand next to the rusted shipwreck and look up at those towering white walls, you need to be on the water. Combining the [Navagio shipwreck boat tour](/navagio-shipwreck-boat-tour) with the [Blue Caves boat tour](/blue-caves-boat-tour) in a single trip makes for one of the best half-day routes the island has to offer.
 
 ## Navagio Beach: What to Expect
 
@@ -62,7 +62,7 @@ This route runs along the northwest and north coast of Zakynthos and works well 
 - Xigia Beach: sulphur springs in the water, unique swimming experience
 - Return to port
 
-Both versions of this route are available as  or as a . See the full  for more details.
+Both versions of this route are available as a [self-drive rental](/license-free-rent) or as a [private cruise with skipper](/rent-with-skipper). See the full [recommended routes](/recommended-routes) for more details.
 
 ## What to Bring for This Route
 
@@ -84,4 +84,4 @@ Both versions of this route are available as  or as a . See the full  for more d
 
 **Is this route suitable for a self-drive rental?** Yes. This is one of the most popular self-drive routes in Zakynthos. The briefing covers the navigation for this area specifically.
 
-The Navagio and Blue Caves route is the one most visitors remember long after they leave Zakynthos. The combination of the shipwreck, the cliffs, and that particular shade of blue water in the caves is genuinely unlike anything else on the island.  and make it part of your trip.
+The Navagio and Blue Caves route is the one most visitors remember long after they leave Zakynthos. The combination of the shipwreck, the cliffs, and that particular shade of blue water in the caves is genuinely unlike anything else on the island. Book your [Navagio shipwreck boat tour](/navagio-shipwreck-boat-tour) and make it part of your trip.
