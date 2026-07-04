@@ -51,7 +51,7 @@ export const home = {
       'Celebrate birthdays, proposals, anniversaries or any special occasion on a private yacht cruise around Zakynthos.',
     sd4Alt: 'Special celebration on a yacht in Zakynthos',
     introLabel: 'ZAKYNTHOS BOAT RENTALS',
-    introTitle: 'Rent a boat in Zakynthos (Zante)',
+    introTitle: 'Private boat trips & boat rentals in Zakynthos',
     introP1:
       "Looking to rent a boat in Zakynthos? Sota Travel is your local, family-run partner for boat rentals in Zakynthos, the Ionian island many visitors know as Zante. We have spent our lives on these waters, so no one knows the island's coastline better. From our base at Zakynthos Marina we make it easy to explore the most beautiful spots by sea, from the famous Navagio Shipwreck Beach to the turquoise Blue Caves and the sheltered coves of Keri.",
     introP2:
@@ -108,7 +108,7 @@ export const home = {
       'Feiern Sie Geburtstage, Heiratsanträge, Jahrestage oder jeden anderen besonderen Anlass bei einer privaten Yachtkreuzfahrt rund um Zakynthos.',
     sd4Alt: 'Besondere Feier auf einer Yacht in Zakynthos',
     introLabel: 'WILLKOMMEN BEI SOTA TRAVEL',
-    introTitle: 'Boot mieten auf Zakynthos (Zante)',
+    introTitle: 'Private Bootstouren & Bootsverleih auf Zakynthos',
     introP1:
       'Sota Travel ist Ihr lokaler Partner für Bootsverleih und private Kreuzfahrten auf Zakynthos, der Ionischen Insel, die viele Besucher als Zante kennen. Von unserer Basis an der Marina von Zakynthos aus erkunden Sie mühelos die schönsten Orte der Insel vom Wasser aus, vom berühmten Navagio Shipwreck Beach über die türkisfarbenen Blue Caves bis zu den geschützten Buchten von Keri.',
     introP2:
@@ -165,7 +165,7 @@ export const home = {
       'Célébrez anniversaires, demandes en mariage, fêtes ou toute autre occasion spéciale lors d’une croisière privée en yacht autour de Zakynthos.',
     sd4Alt: 'Célébration spéciale à bord d’un yacht à Zakynthos',
     introLabel: 'BIENVENUE CHEZ SOTA TRAVEL',
-    introTitle: 'Louer un bateau à Zakynthos (Zante)',
+    introTitle: 'Excursions privées en bateau & location de bateaux à Zakynthos',
     introP1:
       'Sota Travel est votre partenaire local pour la location de bateaux et les croisières privées à Zakynthos, l’île ionienne que de nombreux visiteurs connaissent sous le nom de Zante. Depuis notre base à la marina de Zakynthos, nous vous permettons d’explorer facilement les plus beaux sites de l’île par la mer, de la célèbre plage de l’épave Navagio aux Blue Caves turquoise et aux criques abritées de Keri.',
     introP2:
@@ -222,7 +222,7 @@ export const home = {
       'Festeggia compleanni, proposte di matrimonio, anniversari o qualsiasi occasione speciale durante una crociera privata in yacht intorno a Zante.',
     sd4Alt: 'Celebrazione speciale a bordo di uno yacht a Zante',
     introLabel: 'BENVENUTI DA SOTA TRAVEL',
-    introTitle: 'Noleggia una barca a Zante (Zacinto)',
+    introTitle: 'Gite private in barca & noleggio barche a Zante',
     introP1:
       'Sota Travel è il tuo partner locale per il noleggio di barche e le crociere private a Zante, l’isola ionica che molti visitatori conoscono come Zacinto. Dalla nostra base alla Marina di Zante, esplorare via mare i luoghi più belli dell’isola diventa semplice, dalla celebre spiaggia del Relitto di Navagio alle turchesi Blue Caves fino alle riparate insenature di Keri.',
     introP2:
@@ -278,7 +278,7 @@ export const home = {
       'Отпразднуйте день рождения, помолвку, годовщину или любое особое событие во время частного круиза на яхте вокруг Закинфа.',
     sd4Alt: 'Особое торжество на яхте на Закинфе',
     introLabel: 'ДОБРО ПОЖАЛОВАТЬ В SOTA TRAVEL',
-    introTitle: 'Аренда лодки на Закинфе (Занте)',
+    introTitle: 'Частные морские прогулки и аренда лодок на Закинфе',
     introP1:
       'Sota Travel, ваш местный партнёр по аренде лодок и частным круизам на Закинфе, ионическом острове, который многие путешественники знают как Занте. С нашей базы в марине Закинфа вам легко исследовать самые красивые уголки острова с моря, от знаменитого пляжа Навайо с затонувшим кораблём до бирюзовых Голубых пещер и укромных бухт Кери.',
     introP2:
@@ -334,7 +334,7 @@ export const home = {
       'Γιορτάστε γενέθλια, προτάσεις γάμου, επετείους ή οποιαδήποτε ιδιαίτερη περίσταση με μια ιδιωτική κρουαζιέρα με σκάφος γύρω από τη Ζάκυνθο.',
     sd4Alt: 'Ιδιαίτερη εκδήλωση σε σκάφος στη Ζάκυνθο',
     introLabel: 'ΚΑΛΩΣ ΗΡΘΑΤΕ ΣΤΗ SOTA TRAVEL',
-    introTitle: 'Ενοικίαση σκάφους στη Ζάκυνθο',
+    introTitle: 'Ιδιωτικές βόλτες με σκάφος & ενοικιάσεις σκαφών στη Ζάκυνθο',
     introP1:
       'Η Sota Travel είναι ο τοπικός σας συνεργάτης για ενοικιάσεις σκαφών και ιδιωτικές κρουαζιέρες στη Ζάκυνθο, το νησί του Ιονίου. Από τη βάση μας στη Μαρίνα Ζακύνθου, κάνουμε εύκολη την εξερεύνηση των πιο όμορφων σημείων του νησιού από τη θάλασσα, από το διάσημο Ναυάγιο έως τις γαλαζοπράσινες Γαλάζιες Σπηλιές και τους προστατευμένους όρμους του Κερί.',
     introP2:
