@@ -1,0 +1,55 @@
+---
+import '../../styles/global.css';
+import Header from '../Header.astro';
+import Footer from '../Footer.astro';
+import { type Locale } from '../../i18n/config';
+
+interface Props {
+	lang: Locale;
+	basePath: string;
+	title: string;
+	updated: string;
+}
+const { lang, basePath, title, updated } = Astro.props;
+---
+<body class="min-h-screen font-sans antialiased overflow-x-hidden" style="font-family: 'Inter', system-ui, sans-serif;">
+	<Header lang={lang} basePath={basePath} />
+	<main class="min-h-screen bg-white">
+		<section class="relative w-full flex items-center justify-center overflow-hidden pt-28 pb-12" style="background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);">
+			<div class="relative z-10 text-center px-8 max-w-[42rem]">
+				<h1 class="font-serif text-4xl md:text-5xl font-semibold text-white leading-tight" style="font-family: 'Cormorant Garamond', serif;">{title}</h1>
+				<p class="mt-3 text-sm text-white/80">Last updated: {updated}</p>
+			</div>
+		</section>
+		<article class="legal-prose max-w-[46rem] mx-auto px-6 py-14 text-[#33454b]">
+			<slot />
+		</article>
+	</main>
+	<Footer lang={lang} />
+</body>
+
+<style is:global>
+	.legal-prose h2 {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: #064250;
+		margin: 2.2rem 0 0.75rem;
+	}
+	.legal-prose p,
+	.legal-prose li {
+		font-size: 1rem;
+		line-height: 1.7;
+		margin-bottom: 0.9rem;
+	}
+	.legal-prose ul {
+		list-style: disc;
+		padding-left: 1.4rem;
+		margin-bottom: 0.9rem;
+	}
+	.legal-prose a {
+		color: #0a5a6a;
+		text-decoration: underline;
+	}
+	.legal-prose strong { color: #064250; }
+</style>

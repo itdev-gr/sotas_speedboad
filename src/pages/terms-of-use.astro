@@ -1,0 +1,52 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import LegalBody from '../components/pages/LegalBody.astro';
+
+const lang = 'en';
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title="Terms of Use | Sota Travel Zakynthos"
+			description="The terms that apply when you use the Sota Travel Zakynthos website and book a boat rental or cruise with us."
+			lang={lang}
+			basePath="/terms-of-use"
+		/>
+	</head>
+	<LegalBody lang={lang} basePath="/terms-of-use" title="Terms of Use" updated="July 2026">
+		<p>
+			These terms govern your use of <a href="https://rentaboatzakynthos.com">rentaboatzakynthos.com</a>,
+			operated by Sota Travel Zakynthos. By using this website you accept these terms. If you do not
+			agree with them, please do not use the site.
+		</p>
+
+		<h2>Using this website</h2>
+		<p>You may use this website to learn about our services and to contact us. You agree to use it lawfully and not to disrupt, damage or attempt to gain unauthorised access to it.</p>
+
+		<h2>Bookings and enquiries</h2>
+		<p>Prices, availability and trip details shown on the site are indicative and may change. A booking is only confirmed once we reply to you and agree the details in writing. All rentals and cruises are also subject to weather conditions, safety requirements and the instructions of our team.</p>
+
+		<h2>Safety and responsibility</h2>
+		<ul>
+			<li>Self-drive boats are provided within the engine-power limits that require no licence, together with a short safety briefing.</li>
+			<li>You are responsible for operating the boat carefully, respecting local rules and marine-park zones, and keeping everyone on board safe.</li>
+			<li>We may refuse or cancel a rental where safety, weather or conduct makes it necessary.</li>
+		</ul>
+
+		<h2>Intellectual property</h2>
+		<p>All text, images, logos and other content on this website belong to Sota Travel Zakynthos and may not be copied or reused without our written permission.</p>
+
+		<h2>Limitation of liability</h2>
+		<p>The website is provided "as is". To the extent permitted by law, we are not liable for any loss arising from your use of the site or from information that is out of date or incorrect. Nothing in these terms limits liability that cannot be excluded under Greek law.</p>
+
+		<h2>Governing law</h2>
+		<p>These terms are governed by the laws of Greece, and any dispute is subject to the courts of Zakynthos.</p>
+
+		<h2>Contact us</h2>
+		<p>
+			Questions about these terms? Email <a href="mailto:sotatravel1@gmail.com">sotatravel1@gmail.com</a>
+			or call <a href="tel:+306987931327">+30 698 793 1327</a>.
+		</p>
+	</LegalBody>
+</html>

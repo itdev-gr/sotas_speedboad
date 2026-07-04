@@ -1,0 +1,44 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import LegalBody from '../components/pages/LegalBody.astro';
+
+const lang = 'en';
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title="Cookie Policy | Sota Travel Zakynthos"
+			description="How Sota Travel Zakynthos uses cookies on rentaboatzakynthos.com and how you can control them."
+			lang={lang}
+			basePath="/cookie-policy"
+		/>
+	</head>
+	<LegalBody lang={lang} basePath="/cookie-policy" title="Cookie Policy" updated="July 2026">
+		<p>
+			This policy explains how <a href="https://rentaboatzakynthos.com">rentaboatzakynthos.com</a> uses
+			cookies. Cookies are small text files stored on your device that help a website work and help us
+			understand how it is used.
+		</p>
+
+		<h2>The cookies we use</h2>
+		<ul>
+			<li><strong>Essential cookies</strong> — needed for the website to function and cannot be switched off.</li>
+			<li><strong>Analytics cookies</strong> — Google Analytics and Microsoft Clarity, which give us anonymous statistics about how visitors use the site so we can improve it.</li>
+			<li><strong>Advertising cookies</strong> — Google Ads, used to measure the performance of our campaigns.</li>
+		</ul>
+
+		<h2>Managing cookies</h2>
+		<p>
+			You can accept, block or delete cookies at any time through your browser settings. Blocking some
+			cookies may affect how parts of the website work. Most browsers explain how to manage cookies in
+			their help pages — for example Chrome, Safari, Firefox and Edge.
+		</p>
+
+		<h2>More information</h2>
+		<p>
+			For how we handle your personal data, please read our <a href="/privacy-policy">Privacy Policy</a>.
+			For any question, email <a href="mailto:sotatravel1@gmail.com">sotatravel1@gmail.com</a>.
+		</p>
+	</LegalBody>
+</html>
