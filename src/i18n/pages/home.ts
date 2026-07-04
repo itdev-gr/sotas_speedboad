@@ -2,7 +2,7 @@ import type { Locale } from '../config';
 
 export const home = {
   en: {
-    seoTitle: 'Rent a Boat in Zakynthos (Zante) | Boat Rentals & Cruises | Sota Travel',
+    seoTitle: 'Rent a Boat in Zakynthos | Boat Rentals & Cruises | Sota Travel',
     seoDescription:
       'Rent a boat in Zakynthos (Zante), Greece. Self-drive speedboats with no license required, private skipper cruises, and luxury yacht charters. Book your Zante boat rental today!',
     heroLabel: 'SOTA TRAVEL ZAKYNTHOS',
@@ -59,7 +59,7 @@ export const home = {
       "Choose a self-drive speedboat with no licence required, sit back on a private cruise with an experienced skipper, or treat yourself to a luxury private yacht. Every boat is fully equipped and well maintained, and every trip is private, flexible and built around you, ideal for families, couples and special celebrations. With 55+ five-star Google and TripAdvisor reviews, you are in trusted local hands from the very first message.",
   },
   de: {
-    seoTitle: 'Boot mieten auf Zakynthos (Zante) | Bootsverleih & Kreuzfahrten | Sota Travel',
+    seoTitle: 'Boot mieten auf Zakynthos | Bootsverleih & Kreuzfahrten | Sota Travel',
     seoDescription:
       'Mieten Sie ein Boot auf Zakynthos (Zante), Griechenland. Selbstfahrer-Speedboote ohne Führerschein, private Kreuzfahrten mit Skipper und luxuriöse Yachtcharter. Buchen Sie noch heute Ihr Boot auf Zante!',
     heroLabel: 'SOTA TRAVEL ZAKYNTHOS',
@@ -117,7 +117,7 @@ export const home = {
       'Wählen Sie ein Selbstfahrer-Speedboot ohne Führerschein, lehnen Sie sich bei einer privaten Kreuzfahrt mit erfahrenem Skipper zurück oder gönnen Sie sich eine luxuriöse private Yacht. Jeder Ausflug ist privat, flexibel und ganz auf Sie zugeschnitten, ideal für Familien, Paare und besondere Anlässe. Nennen Sie uns Ihre Termine, und wir helfen Ihnen, den perfekten Tag auf dem Wasser zu planen.',
   },
   fr: {
-    seoTitle: 'Louer un bateau à Zakynthos (Zante) | Location & croisières | Sota Travel',
+    seoTitle: 'Louer un bateau à Zakynthos | Location & croisières | Sota Travel',
     seoDescription:
       "Louez un bateau à Zakynthos (Zante), en Grèce. Bateaux sans permis à conduire soi-même, croisières privées avec skipper et locations de yachts de luxe. Réservez dès aujourd'hui votre bateau à Zante !",
     heroLabel: 'SOTA TRAVEL ZAKYNTHOS',
@@ -175,7 +175,7 @@ export const home = {
       'Choisissez un bateau à conduire vous-même sans permis, détendez-vous lors d’une croisière privée avec un skipper expérimenté, ou offrez-vous un yacht privé de luxe. Chaque sortie est privée, flexible et entièrement pensée pour vous, idéale pour les familles, les couples et les occasions spéciales. Indiquez-nous vos dates et nous vous aiderons à planifier la journée parfaite sur l’eau.',
   },
   it: {
-    seoTitle: 'Noleggia una barca a Zante (Zacinto) | Noleggi & crociere | Sota Travel',
+    seoTitle: 'Noleggia una barca a Zante | Noleggi & crociere | Sota Travel',
     seoDescription:
       'Noleggia una barca a Zante (Zacinto), in Grecia. Motoscafi senza patente da guidare in autonomia, crociere private con skipper e noleggio di yacht di lusso. Prenota oggi il tuo noleggio barca a Zante!',
     heroLabel: 'SOTA TRAVEL ZAKYNTHOS',
@@ -233,7 +233,7 @@ export const home = {
       'Scegli un motoscafo da guidare in autonomia senza patente, rilassati durante una crociera privata con uno skipper esperto o concediti uno yacht privato di lusso. Ogni escursione è privata, flessibile e pensata su misura per te, ideale per famiglie, coppie e occasioni speciali. Comunicaci le tue date e ti aiuteremo a pianificare la giornata perfetta in mare.',
   },
   ru: {
-    seoTitle: 'Аренда лодки на Закинфе (Занте) | Аренда лодок и круизы | Sota Travel',
+    seoTitle: 'Аренда лодки на Закинфе | Аренда лодок и круизы | Sota Travel',
     seoDescription:
       'Аренда лодки на Закинфе (Занте), Греция. Моторные лодки без лицензии для самостоятельного управления, частные круизы со шкипером и чартер люксовых яхт. Забронируйте аренду лодки на Занте уже сегодня!',
     heroLabel: 'SOTA TRAVEL ЗАКИНФ',
