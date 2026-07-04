@@ -19,6 +19,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      lastmod: new Date(),
+      changefreq: 'weekly',
       filter: (page) =>
         !page.includes('/login') &&
         !page.includes('/dashboard') &&
