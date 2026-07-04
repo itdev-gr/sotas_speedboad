@@ -73,6 +73,7 @@ const articleSchema = {
 		'@type': 'Person',
 		name: 'Ilias',
 		jobTitle: 'Founder & Skipper',
+		image: `${SITE}/images/ilias-avatar.jpg`,
 		worksFor: { '@type': 'Organization', name: 'Sota Travel Zakynthos', url: SITE },
 	},
 	publisher: {
@@ -166,7 +167,8 @@ const faqSchema =
 							<span class="meta-dot">·</span>
 							<span>{readingMinutes} min read</span>
 							<span class="meta-dot">·</span>
-							<span itemprop="author" itemscope itemtype="https://schema.org/Person">
+							<span class="post-hero-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+								<img class="post-hero-author-avatar" itemprop="image" src="/images/ilias-avatar.webp" alt="Ilias — Founder & Skipper at Sota Travel Zakynthos" width="24" height="24" loading="lazy" decoding="async" />
 								<span itemprop="name">Ilias</span> · <span>Founder &amp; Skipper</span>
 							</span>
 						</p>
@@ -209,7 +211,15 @@ const faqSchema =
 						</aside>
 
 						<div class="post-author">
-							<div class="post-author-avatar" aria-hidden="true">IL</div>
+							<img
+								class="post-author-avatar"
+								src="/images/ilias-avatar.webp"
+								alt="Ilias — Founder & Skipper at Sota Travel Zakynthos"
+								width="56"
+								height="56"
+								loading="lazy"
+								decoding="async"
+							/>
 							<div class="post-author-text">
 								<p class="post-author-name">Ilias — Founder &amp; Skipper</p>
 								<p class="post-author-bio">Ilias founded Sota Travel and has spent years skippering boats around Zakynthos. He knows every cove, cave and route on the island first-hand and helps travellers pick the right boat and trip for their day at sea.</p>
@@ -589,15 +599,25 @@ const faqSchema =
 		width: 56px;
 		height: 56px;
 		border-radius: 999px;
-		background: linear-gradient(135deg, #064250, #0a5a6a);
-		color: #fff;
-		display: flex;
+		object-fit: cover;
+		object-position: center;
+		border: 2px solid #fff;
+		box-shadow: 0 1px 4px rgba(6, 66, 80, 0.25);
+		background: #064250;
+	}
+	.post-hero-author {
+		display: inline-flex;
 		align-items: center;
-		justify-content: center;
-		font-family: 'Cormorant Garamond', serif;
-		font-weight: 600;
-		font-size: 1.15rem;
-		letter-spacing: 0.04em;
+		gap: 0.4em;
+	}
+	.post-hero-author-avatar {
+		width: 24px;
+		height: 24px;
+		border-radius: 999px;
+		object-fit: cover;
+		object-position: center;
+		border: 1px solid rgba(255, 255, 255, 0.7);
+		vertical-align: middle;
 	}
 	.post-author-name {
 		margin: 0 0 0.25rem;
