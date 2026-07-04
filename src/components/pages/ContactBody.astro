@@ -12,147 +12,109 @@ interface Props {
 const { lang } = Astro.props;
 const s = contact[lang];
 const c = useCommon(lang);
+
+const GOOGLE_REVIEWS = 'https://www.google.com/maps/place/Boat+Rental+Zakynthos+Sota+Travel/@37.8407318,20.8180773,17z/data=!4m8!3m7!1s0x13674792fceb7531:0xca2bf80ddaaa1d99!8m2!3d37.8407318!4d20.8206522!9m1!1b1!16s%2Fg%2F11yv91nf_0';
+const TRIPADVISOR_REVIEWS = 'https://www.tripadvisor.com/Attraction_Review-g189462-d34338909-Reviews-Sota_Travel_Zakynthos-Zakynthos_Ionian_Islands.html';
 ---
 <body class="contact-page-body min-h-screen font-sans antialiased overflow-x-hidden" style="font-family: 'Inter', system-ui, sans-serif;">
 	<Header lang={lang} basePath="/contact" />
 	<main class="min-h-screen" aria-label={s.mainAria}>
-		<!-- Hero header (same height as License Free Rent) -->
-		<section class="relative w-full min-h-[50vh] flex items-center justify-center overflow-hidden pt-20 pb-12" style="background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);" aria-label={s.heroAria}>
-			<div class="relative z-10 text-center px-8 py-6 max-w-[36rem]">
-				<p class="text-xs font-semibold tracking-[0.2em] text-white/90 uppercase mb-2">{s.heroLabel}</p>
-				<h1 class="font-serif text-4xl md:text-5xl font-semibold text-white mb-4 leading-tight" style="font-family: 'Plus Jakarta Sans', sans-serif;">{s.heroTitle}</h1>
-				<p class="text-base text-white/90 leading-relaxed">{s.heroSubtitle}</p>
-			</div>
-		</section>
-		<!-- Two-column form + info -->
-		<div class="grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]" aria-label={s.formSectionAria}>
-		<!-- Left: dark form -->
-		<section class="bg-[#064250] flex flex-col justify-center px-8 py-12 lg:px-12 lg:py-16">
-			<h2 class="text-2xl lg:text-3xl font-bold text-white mb-3">{s.formTitle}</h2>
-			<p class="text-gray-400 text-sm lg:text-base mb-8 max-w-lg">
-				{s.formIntro}
-			</p>
-			<form id="contact-form" action="#" method="post" class="flex flex-col gap-6 max-w-lg">
-				<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-					<div class="flex flex-col gap-2">
-						<label for="contact-firstname" class="text-white text-sm font-medium">{s.firstNameLabel}</label>
-						<input type="text" id="contact-firstname" name="firstname" required placeholder={s.firstNamePlaceholder} class="bg-transparent border-0 border-b border-white/80 text-white placeholder-gray-400 py-2 focus:outline-none focus:border-white" />
-					</div>
-					<div class="flex flex-col gap-2">
-						<label for="contact-lastname" class="text-white text-sm font-medium">{s.lastNameLabel}</label>
-						<input type="text" id="contact-lastname" name="lastname" required placeholder={s.lastNamePlaceholder} class="bg-transparent border-0 border-b border-white/80 text-white placeholder-gray-400 py-2 focus:outline-none focus:border-white" />
-					</div>
+		<!-- Contact info band -->
+		<section class="ct-band" aria-label={s.heroAria}>
+			<div class="ct-band-inner">
+				<div class="ct-info">
+					<span class="ct-info-icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+					</span>
+					<p class="ct-info-label">{s.officeAddressLabel}</p>
+					<p class="ct-info-value">{s.officeAddressValue}</p>
+					<p class="ct-info-value">{s.pickupValue}</p>
 				</div>
-				<div class="flex flex-col gap-2">
-					<label for="contact-phone" class="text-white text-sm font-medium">{s.phoneLabel}</label>
-					<div class="flex border-0 border-b border-white/80 focus-within:border-white">
-						<input type="tel" id="contact-phone" name="phone" placeholder={s.phonePlaceholder} class="flex-1 bg-transparent border-0 text-white placeholder-gray-400 py-2 focus:outline-none" />
-					</div>
+				<div class="ct-info">
+					<span class="ct-info-icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+					</span>
+					<p class="ct-info-label">{s.callLabel}</p>
+					<a class="ct-info-value ct-info-link" href="tel:+306987931327">+30 698 793 1327</a>
+					<p class="ct-info-value ct-info-muted">24/7</p>
 				</div>
-				<div class="flex flex-col gap-2">
-					<label for="contact-email" class="text-white text-sm font-medium">{s.emailLabel}</label>
-					<input type="email" id="contact-email" name="email" required placeholder={s.emailPlaceholder} class="bg-transparent border-0 border-b border-white/80 text-white placeholder-gray-400 py-2 focus:outline-none focus:border-white" />
+				<div class="ct-info">
+					<span class="ct-info-icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+					</span>
+					<p class="ct-info-label">{s.emailUsLabel}</p>
+					<a class="ct-info-value ct-info-link" href="mailto:sotatravel1@gmail.com">sotatravel1@gmail.com</a>
 				</div>
-				<div class="flex flex-col gap-2">
-					<label for="contact-message" class="text-white text-sm font-medium">{s.messageLabel}</label>
-					<textarea id="contact-message" name="message" rows="4" required placeholder={s.messagePlaceholder} class="bg-transparent border-0 border-b border-white/80 text-white placeholder-gray-400 py-2 focus:outline-none focus:border-white resize-y min-h-[100px]"></textarea>
-				</div>
-				<div id="contact-form-feedback" class="text-sm mt-1 min-h-[1.25rem]" aria-live="polite"></div>
-				<button type="submit" id="contact-submit-btn" class="mt-2 px-8 py-3 rounded-lg bg-white text-[#064250] font-semibold text-sm uppercase tracking-wide hover:bg-[#f0eee8] transition-colors w-fit disabled:opacity-70">
-					{s.submitBtn}
-				</button>
-			</form>
-		</section>
-
-		<!-- Right: light contact info -->
-		<section class="bg-white flex flex-col justify-center px-8 py-12 lg:px-12 lg:py-16">
-			<p class="text-[#064250] text-xs font-semibold uppercase tracking-wider mb-2">{s.infoLabel}</p>
-			<h2 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">{s.infoTitle}</h2>
-			<p class="text-gray-600 text-sm lg:text-base mb-8 max-w-md">
-				{s.infoIntro}
-			</p>
-
-			<div class="space-y-6 mb-10">
-				<div class="flex gap-4">
-					<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#064250] flex items-center justify-center text-[#064250]">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg>
-					</div>
-					<div>
-						<p class="font-semibold text-gray-900 text-sm">{s.officeAddressLabel}</p>
-						<p class="text-gray-600 text-sm">{s.officeAddressValue}</p>
-					</div>
-				</div>
-				<div class="flex gap-4">
-					<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#064250] flex items-center justify-center text-[#064250]">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a2 2 0 0 1 2 2c0 .5-.2 1.2-.5 1.8L12 12v6m0 0h-2m2 0h2M10 8h4M8 8v10m8-10v10" /></svg>
-					</div>
-					<div>
-						<p class="font-semibold text-gray-900 text-sm">{s.pickupLabel}</p>
-						<p class="text-gray-600 text-sm">{s.pickupValue}</p>
-					</div>
-				</div>
-				<div class="flex gap-4">
-					<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#064250] flex items-center justify-center text-[#064250]">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg>
-					</div>
-					<div>
-						<p class="font-semibold text-gray-900 text-sm">{s.callLabel}</p>
-						<a href="tel:+306987931327" class="text-gray-600 text-sm hover:text-[#064250]">0030 698 793 1327</a>
-					</div>
-				</div>
-				<div class="flex gap-4">
-					<div class="shrink-0 w-10 h-10 rounded-full border-2 border-[#064250] flex items-center justify-center text-[#064250]">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" /></svg>
-					</div>
-					<div>
-						<p class="font-semibold text-gray-900 text-sm">{s.emailUsLabel}</p>
-						<a href="mailto:sotatravel1@gmail.com" class="text-gray-600 text-sm hover:text-[#064250]">sotatravel1@gmail.com</a>
-					</div>
-				</div>
-			</div>
-
-			<div>
-				<p class="font-bold text-gray-900 text-sm mb-4">{s.followLabel}</p>
-				<div class="flex flex-wrap gap-3">
-					<a href="https://www.instagram.com/sota_travel.zakynthos/" target="_blank" rel="noopener noreferrer" aria-label={s.ariaInstagram} class="w-10 h-10 rounded-full bg-[#064250] text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-					<a href="https://www.facebook.com/SotatravelzakynthoS" target="_blank" rel="noopener noreferrer" aria-label={s.ariaFacebook} class="w-10 h-10 rounded-full bg-[#064250] text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-					<a href="#" aria-label={s.ariaTripAdvisor} class="w-10 h-10 rounded-full bg-[#064250] text-white flex items-center justify-center hover:opacity-90"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 0 0 4.04 10.43 5.976 5.976 0 0 0 4.075-1.6L12 19.705l1.922-2.09a5.976 5.976 0 0 0 4.075 1.6 5.997 5.997 0 0 0 4.04-10.43l1.963-2.135h-4.35a13.573 13.573 0 0 0-7.645-2.353zM12 6.255c1.531 0 3.063.303 4.504.91a7.381 7.381 0 0 1 2.24 1.604 3.986 3.986 0 0 1-2.617 1.426 3.975 3.975 0 0 1-2.636-1.018 3.994 3.994 0 0 1-1.491-3.122zm-8.77 5.335a7.36 7.36 0 0 1 2.24-1.604A11.73 11.73 0 0 1 12 6.255c.576 0 1.135.068 1.682.2a3.994 3.994 0 0 0-1.491 3.122 3.975 3.975 0 0 0 2.636 1.018 3.986 3.986 0 0 0 2.617-1.426 7.381 7.381 0 0 1-2.24 1.604 11.674 11.674 0 0 1-4.504.91c-1.531 0-3.063-.303-4.504-.91a7.381 7.381 0 0 1-2.24-1.604z"/></svg></a>
+				<div class="ct-info">
+					<span class="ct-info-icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+					</span>
+					<p class="ct-info-label">WhatsApp &amp; Viber</p>
+					<a class="ct-info-value ct-info-link" href="https://wa.me/306987931327" target="_blank" rel="noopener noreferrer">+30 698 793 1327</a>
+					<p class="ct-info-value ct-info-muted">24/7</p>
 				</div>
 			</div>
 		</section>
-		</div>
-	<!-- Google Maps -->
-	<section aria-label={s.mapAria} class="w-full" style="height: 450px;">
-		<iframe
-			title={s.mapTitle}
-			src="https://maps.google.com/maps?q=37.8407318,20.8206522&z=17&output=embed"
-			width="100%"
-			height="450"
-			style="border:0; display:block;"
-			allowfullscreen
-			loading="lazy"
-			referrerpolicy="no-referrer-when-downgrade"
-		></iframe>
-	</section>
+
+		<!-- Send your message -->
+		<section class="ct-form-section" aria-label={s.formSectionAria}>
+			<div class="ct-form-inner">
+				<h1 class="ct-form-title">{s.formTitle}</h1>
+				<p class="ct-form-intro">{s.formIntro}</p>
+				<form id="contact-form" action="#" method="post" class="ct-form">
+					<div class="ct-form-row">
+						<input type="text" id="contact-firstname" name="firstname" required placeholder={s.firstNamePlaceholder} class="ct-input" aria-label={s.firstNameLabel} />
+						<input type="text" id="contact-lastname" name="lastname" required placeholder={s.lastNamePlaceholder} class="ct-input" aria-label={s.lastNameLabel} />
+					</div>
+					<div class="ct-form-row">
+						<input type="email" id="contact-email" name="email" required placeholder={s.emailPlaceholder} class="ct-input" aria-label={s.emailLabel} />
+						<input type="tel" id="contact-phone" name="phone" placeholder={s.phonePlaceholder} class="ct-input" aria-label={s.phoneLabel} />
+					</div>
+					<textarea id="contact-message" name="message" rows="5" required placeholder={s.messagePlaceholder} class="ct-input ct-textarea" aria-label={s.messageLabel}></textarea>
+					<div id="contact-form-feedback" class="ct-feedback" aria-live="polite"></div>
+					<button type="submit" id="contact-submit-btn" class="ct-submit">{s.submitBtn}</button>
+				</form>
+			</div>
+		</section>
+
+		<!-- Social + Reviews cards -->
+		<section class="ct-cards" aria-label="Social media and reviews">
+			<div class="ct-card ct-card--social">
+				<h2 class="ct-card-title">{s.followLabel}</h2>
+				<div class="ct-card-icons">
+					<a href="https://www.facebook.com/SotatravelzakynthoS" target="_blank" rel="noopener noreferrer" class="ct-card-icon" aria-label={s.ariaFacebook}><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+					<a href="https://www.instagram.com/sota_travel.zakynthos/" target="_blank" rel="noopener noreferrer" class="ct-card-icon" aria-label={s.ariaInstagram}><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+				</div>
+			</div>
+			<div class="ct-card ct-card--reviews">
+				<h2 class="ct-card-title">{c('footer.reviews')}</h2>
+				<div class="ct-card-icons">
+					<a href={GOOGLE_REVIEWS} target="_blank" rel="noopener noreferrer" class="ct-card-icon" aria-label={s.reviewGoogleCta ?? 'Google'}><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.545 10.239v3.821h5.445c-.712 2.315-2.647 3.972-5.445 3.972a6.033 6.033 0 1 1 0-12.064c1.498 0 2.866.549 3.921 1.453l2.814-2.814A9.969 9.969 0 0 0 12.545 2.5 9.969 9.969 0 1 0 22.5 12.5c0-.67-.069-1.325-.189-1.961h-9.766z"/></svg></a>
+					<a href={TRIPADVISOR_REVIEWS} target="_blank" rel="noopener noreferrer" class="ct-card-icon" aria-label="Tripadvisor"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.006 4.295c-2.67 0-5.338.784-7.645 2.353H0l1.963 2.135a5.997 5.997 0 0 0 4.04 10.43 5.976 5.976 0 0 0 4.075-1.6L12 19.705l1.922-2.09a5.976 5.976 0 0 0 4.075 1.6 5.997 5.997 0 0 0 4.04-10.43l1.963-2.135h-4.35a13.573 13.573 0 0 0-7.645-2.353zM6.003 17.336a3.335 3.335 0 1 1 0-6.67 3.335 3.335 0 0 1 0 6.67zm5.997-3.335a5.315 5.315 0 0 0-2.53-4.522 11.44 11.44 0 0 1 5.06 0A5.315 5.315 0 0 0 12 14.001zm5.997 3.335a3.335 3.335 0 1 1 0-6.67 3.335 3.335 0 0 1 0 6.67zm0-5.19a1.855 1.855 0 1 0 0 3.71 1.855 1.855 0 0 0 0-3.71z"/></svg></a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Google Maps -->
+		<section aria-label={s.mapAria} class="w-full" style="height: 450px;">
+			<iframe
+				title={s.mapTitle}
+				src="https://maps.google.com/maps?q=37.8407318,20.8206522&z=17&output=embed"
+				width="100%"
+				height="450"
+				style="border:0; display:block;"
+				allowfullscreen
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+			></iframe>
+		</section>
 	</main>
 	<Footer lang={lang} />
 
 	<script is:inline define:vars={{ t: { sending: s.sending, success: s.successMsg, error: s.errorMsg, network: s.networkErrorMsg, btn: s.submitBtn } }}>
 		document.addEventListener('DOMContentLoaded', () => {
 			const header = document.querySelector('.hero-header');
-			const heroSection = document.querySelector('.hero');
-			if (header) {
-				if (!heroSection) {
-					header.classList.add('hero-header--scrolled');
-				} else {
-					const onScroll = () => {
-						const heroH = heroSection.getBoundingClientRect().height;
-						header.classList.toggle('hero-header--scrolled', window.scrollY >= heroH - 1);
-					};
-					onScroll();
-					window.addEventListener('scroll', onScroll, { passive: true });
-				}
-			}
+			if (header) header.classList.add('hero-header--scrolled');
 			const form = document.getElementById('contact-form');
 			const feedback = document.getElementById('contact-form-feedback');
 			const submitBtn = document.getElementById('contact-submit-btn');
@@ -165,7 +127,7 @@ const c = useCommon(lang);
 				formData.append('subject', 'New Contact Form Submission - Sota Travel');
 				formData.append('from_name', 'Sota Travel Website');
 				feedback.textContent = '';
-				feedback.className = 'text-sm mt-1 min-h-[1.25rem]';
+				feedback.className = 'ct-feedback';
 				submitBtn.textContent = t.sending;
 				submitBtn.disabled = true;
 				try {
@@ -176,15 +138,15 @@ const c = useCommon(lang);
 					const data = await res.json().catch(() => ({}));
 					if (res.ok && data.success) {
 						feedback.textContent = t.success;
-						feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-green-300';
+						feedback.className = 'ct-feedback ct-feedback--ok';
 						form.reset();
 					} else {
 						feedback.textContent = data.message || t.error;
-						feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-red-300';
+						feedback.className = 'ct-feedback ct-feedback--err';
 					}
 				} catch {
 					feedback.textContent = t.network;
-					feedback.className = 'text-sm mt-1 min-h-[1.25rem] text-red-300';
+					feedback.className = 'ct-feedback ct-feedback--err';
 				}
 				submitBtn.textContent = originalBtnText;
 				submitBtn.disabled = false;
@@ -195,7 +157,157 @@ const c = useCommon(lang);
 
 <style is:global>
 	html { scroll-behavior: smooth; }
-	body.contact-page-body {
-		padding-top: 0;
+	body.contact-page-body { padding-top: 0; }
+
+	/* Contact info band */
+	.ct-band {
+		width: 100%;
+		background: #064250;
+		padding: 7rem 1.5rem 3.5rem;
+	}
+	.ct-band-inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2rem;
+	}
+	.ct-info {
+		text-align: center;
+		color: #fff;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.35rem;
+	}
+	.ct-info-icon {
+		width: 54px;
+		height: 54px;
+		border-radius: 999px;
+		background: #fff;
+		color: #064250;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 0.6rem;
+	}
+	.ct-info-icon svg { width: 26px; height: 26px; }
+	.ct-info-label { font-weight: 700; font-size: 1rem; margin: 0; }
+	.ct-info-value { font-size: 0.95rem; color: rgba(255,255,255,0.9); margin: 0; }
+	.ct-info-muted { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+	.ct-info-link { text-decoration: none; color: rgba(255,255,255,0.92); }
+	.ct-info-link:hover { color: #fff; }
+
+	/* Form section */
+	.ct-form-section {
+		width: 100%;
+		background: linear-gradient(180deg, #ffffff 0%, #eef5f5 100%);
+		padding: 4.5rem 1.5rem 5rem;
+	}
+	.ct-form-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+	.ct-form-title {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: clamp(1.9rem, 4vw, 2.75rem);
+		font-weight: 700;
+		color: #064250;
+		margin: 0 0 1rem;
+	}
+	.ct-form-intro {
+		font-size: 1.05rem;
+		line-height: 1.7;
+		color: #4a5a60;
+		max-width: 700px;
+		margin: 0 auto 2.5rem;
+	}
+	.ct-form { display: flex; flex-direction: column; gap: 1.1rem; text-align: left; }
+	.ct-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+	.ct-input {
+		width: 100%;
+		padding: 1rem 1.25rem;
+		border: 1.5px solid #cfe0e0;
+		border-radius: 14px;
+		background: #fff;
+		color: #1a2a2e;
+		font-size: 1rem;
+		font-family: inherit;
+		transition: border-color 0.2s, box-shadow 0.2s;
+	}
+	.ct-input::placeholder { color: #8ca0a3; }
+	.ct-input:focus {
+		outline: none;
+		border-color: #064250;
+		box-shadow: 0 0 0 3px rgba(6,66,80,0.1);
+	}
+	.ct-textarea { resize: vertical; min-height: 130px; }
+	.ct-feedback { font-size: 0.9rem; min-height: 1.1rem; text-align: center; }
+	.ct-feedback--ok { color: #0a7d5a; }
+	.ct-feedback--err { color: #c0392b; }
+	.ct-submit {
+		align-self: center;
+		margin-top: 0.5rem;
+		padding: 0.9rem 2.6rem;
+		background: #fff;
+		color: #064250;
+		border: 1.5px solid #064250;
+		border-radius: 999px;
+		font-weight: 700;
+		font-size: 0.9rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		cursor: pointer;
+		transition: background 0.2s, color 0.2s;
+	}
+	.ct-submit:hover { background: #064250; color: #fff; }
+	.ct-submit:disabled { opacity: 0.7; cursor: default; }
+
+	/* Cards */
+	.ct-cards {
+		width: 100%;
+		background: #eef5f5;
+		padding: 0 1.5rem 5rem;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
+		max-width: 1120px;
+		margin: 0 auto;
+	}
+	.ct-card {
+		border-radius: 18px;
+		padding: 2.5rem 1.5rem;
+		text-align: center;
+		color: #fff;
+	}
+	.ct-card--social { background: #064250; }
+	.ct-card--reviews { background: #b8860b; }
+	.ct-card-title {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: 1.6rem;
+		font-weight: 700;
+		margin: 0 0 1.5rem;
+		color: #fff;
+	}
+	.ct-card-icons { display: flex; justify-content: center; gap: 1rem; }
+	.ct-card-icon {
+		width: 52px;
+		height: 52px;
+		border-radius: 999px;
+		background: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 0.2s;
+	}
+	.ct-card-icon:hover { transform: translateY(-3px); }
+	.ct-card--social .ct-card-icon svg { width: 24px; height: 24px; fill: #064250; }
+	.ct-card--reviews .ct-card-icon svg { width: 26px; height: 26px; fill: #b8860b; }
+
+	@media (max-width: 900px) {
+		.ct-band-inner { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 1.5rem; }
+	}
+	@media (max-width: 600px) {
+		.ct-band { padding: 6rem 1.25rem 2.5rem; }
+		.ct-band-inner { grid-template-columns: 1fr; gap: 2rem; }
+		.ct-form-row { grid-template-columns: 1fr; }
+		.ct-cards { grid-template-columns: 1fr; }
 	}
 </style>
