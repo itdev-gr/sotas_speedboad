@@ -105,7 +105,6 @@ const c = useCommon(lang);
 		<!-- Pillar intro section -->
 		<section class="home-intro" aria-label={s.introTitle}>
 			<div class="home-intro-inner">
-				<p class="home-intro-label">{s.introLabel}</p>
 				<h2 class="home-intro-title">{s.introTitle}</h2>
 				<p class="home-intro-text">{s.introP1}</p>
 				<p class="home-intro-text">{s.introP2}</p>
@@ -570,7 +569,11 @@ const c = useCommon(lang);
 			padding: 1.25rem;
 		}
 		.hero-title {
-			font-size: clamp(2rem, 8vw, 3rem);
+			font-size: 20px;
+		}
+		.hero-tagline {
+			font-size: clamp(0.85rem, 3.4vw, 1rem);
+			margin-bottom: 0.5rem;
 		}
 		.hero-subtitle {
 			font-size: 0.9rem;
