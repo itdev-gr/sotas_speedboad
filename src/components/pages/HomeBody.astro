@@ -106,9 +106,7 @@ const c = useCommon(lang);
 		<section class="home-intro" aria-label={s.introTitle}>
 			<div class="home-intro-inner">
 				<h2 class="home-intro-title">{s.introTitle}</h2>
-				<p class="home-intro-text">{s.introP1}</p>
-				<p class="home-intro-text">{s.introP2}</p>
-				<p class="home-intro-text">{s.introP3}</p>
+				<p class="home-intro-text">{s.introP1} {s.introP2} {s.introP3}</p>
 			</div>
 		</section>
 
@@ -208,6 +206,37 @@ const c = useCommon(lang);
 			</div>
 		</section>
 
+		<!-- Instagram / gallery -->
+		<section class="ig-section" aria-label={s.igTitle}>
+			<div class="ig-inner">
+				<p class="ig-label">{s.igLabel}</p>
+				<h2 class="ig-title">{s.igTitle}</h2>
+				<p class="ig-subtitle">{s.igSubtitle}</p>
+			</div>
+			<div class="ig-grid">
+				{[
+					'/images/unnamed.webp',
+					'/images/IMG_6416.webp',
+					'/images/girlinwoater.webp',
+					'/images/section-coast.webp',
+					'/images/IMG_0111.webp',
+					'/images/IMG_6507.webp',
+					'/images/IMG_6566.webp',
+					'/images/license-free-hero.webp',
+				].map((src) => (
+					<a href="https://www.instagram.com/sota_travel.zakynthos/" target="_blank" rel="noopener noreferrer" class="ig-item" aria-label="Instagram">
+						<img src={src} alt="Sota Travel Zakynthos boat trips" width="600" height="600" loading="lazy" decoding="async" />
+					</a>
+				))}
+			</div>
+			<div class="ig-cta-wrap">
+				<a href="https://www.instagram.com/sota_travel.zakynthos/" target="_blank" rel="noopener noreferrer" class="ig-cta">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+					{s.igCta}
+				</a>
+			</div>
+		</section>
+
 		<!-- Reviews / social proof -->
 		<section class="reviews-section" aria-label="Guest reviews">
 			<div class="reviews-inner">
@@ -253,12 +282,22 @@ const c = useCommon(lang);
 			const header = document.querySelector('.hero-header');
 			const heroSection = document.querySelector('.hero');
 			if (header && heroSection) {
-				const onScroll = () => {
-					const heroH = heroSection.getBoundingClientRect().height;
+				// Cache hero height to avoid a layout read on every scroll (forced reflow)
+				let heroH = heroSection.getBoundingClientRect().height;
+				let ticking = false;
+				const apply = () => {
 					header.classList.toggle('hero-header--scrolled', window.scrollY >= heroH - 1);
+					ticking = false;
 				};
-				onScroll();
+				const onScroll = () => {
+					if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+				};
+				apply();
 				window.addEventListener('scroll', onScroll, { passive: true });
+				window.addEventListener('resize', () => {
+					heroH = heroSection.getBoundingClientRect().height;
+					apply();
+				}, { passive: true });
 			}
 			});
 		</script>
@@ -707,7 +746,9 @@ const c = useCommon(lang);
 		font-size: 1.05rem;
 		line-height: 1.8;
 		color: #1a1a1a;
-		margin: 0 0 1.25rem 0;
+		margin: 0 auto;
+		max-width: 760px;
+		text-align: center;
 	}
 	.home-intro-text:last-child {
 		margin-bottom: 0;
@@ -719,6 +760,98 @@ const c = useCommon(lang);
 		.home-intro-text {
 			font-size: 1rem;
 			line-height: 1.7;
+		}
+	}
+
+	/* Instagram / gallery */
+	.ig-section {
+		width: 100%;
+		background: #fff;
+		padding: 4.5rem 1.5rem 5rem;
+	}
+	.ig-inner {
+		max-width: 760px;
+		margin: 0 auto 2.5rem;
+		text-align: center;
+	}
+	.ig-label {
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: #b8860b;
+		margin: 0 0 0.75rem;
+	}
+	.ig-title {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: clamp(1.9rem, 4vw, 2.75rem);
+		font-weight: 700;
+		color: #064250;
+		margin: 0 0 0.9rem;
+	}
+	.ig-subtitle {
+		font-size: 1.05rem;
+		line-height: 1.7;
+		color: #4a5a60;
+		margin: 0;
+	}
+	.ig-grid {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.85rem;
+	}
+	.ig-item {
+		display: block;
+		overflow: hidden;
+		border-radius: 14px;
+		aspect-ratio: 1 / 1;
+		position: relative;
+	}
+	.ig-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+	.ig-item:hover img {
+		transform: scale(1.06);
+	}
+	.ig-cta-wrap {
+		text-align: center;
+		margin-top: 2.5rem;
+	}
+	.ig-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		padding: 0.9rem 1.8rem;
+		border: 1.5px solid #064250;
+		border-radius: 999px;
+		color: #064250;
+		text-decoration: none;
+		font-weight: 700;
+		font-size: 0.95rem;
+		letter-spacing: 0.02em;
+		transition: background 0.2s, color 0.2s;
+	}
+	.ig-cta:hover {
+		background: #064250;
+		color: #fff;
+	}
+	@media (max-width: 900px) {
+		.ig-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	@media (max-width: 560px) {
+		.ig-grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 0.5rem;
+		}
+		.ig-section {
+			padding: 3rem 1rem 3.5rem;
 		}
 	}
 
