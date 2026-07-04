@@ -65,7 +65,12 @@ const TRIPADVISOR_REVIEWS = 'https://www.tripadvisor.com/Attraction_Review-g1894
 
 	<div class="footer-bottom">
 		<p class="footer-copyright">
-			© 2026 Sota Travel Zakynthos · <a href="/privacy-policy">{t('footer.privacy')}</a> · <a href="/terms-of-use">{t('footer.terms')}</a> · <a href="/cookie-policy">{t('footer.cookies')}</a>
+			<span class="footer-legal">
+				<span>© 2026 Sota Travel Zakynthos</span>
+				<a href="/privacy-policy">{t('footer.privacy')}</a>
+				<a href="/terms-of-use">{t('footer.terms')}</a>
+				<a href="/cookie-policy">{t('footer.cookies')}</a>
+			</span>
 			<span class="footer-credit">{t('footer.copyright')} <a href="https://www.itdev.gr/" target="_blank" rel="noopener noreferrer">IT DEV</a></span>
 		</p>
 	</div>
@@ -176,7 +181,7 @@ const TRIPADVISOR_REVIEWS = 'https://www.tripadvisor.com/Attraction_Review-g1894
 		text-decoration: none;
 	}
 	.footer-line a:hover {
-		text-decoration: underline;
+		opacity: 0.85;
 	}
 	.footer-links {
 		list-style: none;
@@ -201,7 +206,7 @@ const TRIPADVISOR_REVIEWS = 'https://www.tripadvisor.com/Attraction_Review-g1894
 		line-height: 1;
 	}
 	.footer-links a:hover {
-		text-decoration: underline;
+		opacity: 0.85;
 	}
 	.footer-follow {
 		margin: 0.6rem 0 0;
@@ -250,7 +255,13 @@ const TRIPADVISOR_REVIEWS = 'https://www.tripadvisor.com/Attraction_Review-g1894
 		text-decoration: none;
 	}
 	.footer-copyright a:hover {
-		text-decoration: underline;
+		opacity: 0.85;
+	}
+	.footer-legal {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.4rem 1.5rem;
 	}
 	.footer-credit {
 		color: #ffffff;
