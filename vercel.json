@@ -7,6 +7,11 @@
       "source": "/blog/4-hour-vs-7-hour-boat-rental-zakynthos",
       "destination": "/blog",
       "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
     }
   ],
   "headers": [
