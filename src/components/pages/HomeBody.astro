@@ -19,7 +19,7 @@ const c = useCommon(lang);
 			<div class="hero-image-wrap">
 				<img
 					class="hero-image is-ready"
-					src="/images/unnamed.webp"
+					src="/images/unnamed-hero.webp"
 					alt="Zakynthos boat cruise"
 					fetchpriority="high"
 					width="1920"
@@ -115,7 +115,9 @@ const c = useCommon(lang);
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/license-free-hero.webp"
+						src="/images/license-free-hero-960.webp"
+						srcset="/images/license-free-hero-480.webp 480w, /images/license-free-hero-960.webp 960w"
+						sizes="(max-width: 900px) 100vw, 50vw"
 						alt={s.sd1Alt}
 						class="selfdrive-image selfdrive-image--fit"
 						width="800"
@@ -139,7 +141,9 @@ const c = useCommon(lang);
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/image_skipper.webp"
+						src="/images/image_skipper-960.webp"
+						srcset="/images/image_skipper-480.webp 480w, /images/image_skipper-960.webp 960w"
+						sizes="(max-width: 900px) 100vw, 50vw"
 						alt={s.sd2Alt}
 						class="selfdrive-image"
 						width="800"
@@ -163,7 +167,9 @@ const c = useCommon(lang);
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/IMG_0111.webp"
+						src="/images/IMG_0111-960.webp"
+						srcset="/images/IMG_0111-480.webp 480w, /images/IMG_0111-960.webp 960w"
+						sizes="(max-width: 900px) 100vw, 50vw"
 						alt={s.sd3Alt}
 						class="selfdrive-image"
 						width="800"
@@ -187,7 +193,9 @@ const c = useCommon(lang);
 			<div class="selfdrive-inner">
 				<div class="selfdrive-image-wrap">
 					<img
-						src="/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.webp"
+						src="/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A-960.webp"
+						srcset="/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A-480.webp 480w, /images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A-960.webp 960w"
+						sizes="(max-width: 900px) 100vw, 50vw"
 						alt={s.sd4Alt}
 						class="selfdrive-image"
 						width="800"
@@ -213,17 +221,17 @@ const c = useCommon(lang);
 			</div>
 			<div class="ig-grid">
 				{[
-					'/images/unnamed.webp',
-					'/images/IMG_6416.webp',
-					'/images/girlinwoater.webp',
-					'/images/section-coast.webp',
-					'/images/IMG_0111.webp',
-					'/images/IMG_6507.webp',
-					'/images/IMG_6566.webp',
-					'/images/license-free-hero.webp',
+					'/images/unnamed-sq480.webp',
+					'/images/IMG_6416-sq480.webp',
+					'/images/girlinwoater-sq480.webp',
+					'/images/section-coast-sq480.webp',
+					'/images/IMG_0111-sq480.webp',
+					'/images/IMG_6507-sq480.webp',
+					'/images/IMG_6566-sq480.webp',
+					'/images/license-free-hero-sq480.webp',
 				].map((src) => (
 					<a href="https://www.instagram.com/sota_travel.zakynthos/" target="_blank" rel="noopener noreferrer" class="ig-item" aria-label="Instagram">
-						<img src={src} alt="Sota Travel Zakynthos boat trips" width="600" height="600" loading="lazy" decoding="async" />
+						<img src={src} alt="Sota Travel Zakynthos boat trips" width="480" height="480" loading="lazy" decoding="async" sizes="(max-width: 560px) 45vw, (max-width: 900px) 30vw, 280px" />
 					</a>
 				))}
 			</div>
