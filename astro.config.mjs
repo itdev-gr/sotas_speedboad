@@ -25,6 +25,12 @@ export default defineConfig({
         !page.includes('/api/') &&
         !page.includes('/book-license-free') &&
         !page.includes('/book-with-skipper'),
+      // SSR (prerender=false) localized pages the crawler can't auto-discover.
+      customPages: ['de', 'fr', 'it', 'ru', 'el'].flatMap((lang) =>
+        ['license-free-rent', 'rent-with-skipper', 'recommended-routes'].map(
+          (p) => `https://rentaboatzakynthos.com/${lang}/${p}`
+        )
+      ),
     }),
   ],
 
