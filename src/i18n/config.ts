@@ -2,13 +2,13 @@
 // English is the default locale and lives at the site root (no /en prefix).
 // German, French and Italian live under /de, /fr and /it.
 
-export const LOCALES = ['en', 'de', 'fr', 'it', 'ru'] as const;
+export const LOCALES = ['en', 'de', 'fr', 'it', 'ru', 'el'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = 'en';
 
 // Locales that get their own translated marketing routes (used to build hreflang).
-export const TRANSLATED_LOCALES: Locale[] = ['en', 'de', 'fr', 'it', 'ru'];
+export const TRANSLATED_LOCALES: Locale[] = ['en', 'de', 'fr', 'it', 'ru', 'el'];
 
 // Non-default locales that get their own /<lang> routes (for getStaticPaths).
 export const NON_DEFAULT_LOCALES = LOCALES.filter((l) => l !== DEFAULT_LOCALE);
@@ -21,6 +21,7 @@ export const OG_LOCALE: Record<Locale, string> = {
   fr: 'fr_FR',
   it: 'it_IT',
   ru: 'ru_RU',
+  el: 'el_GR',
 };
 
 export const LOCALE_LABEL: Record<Locale, string> = {
@@ -29,6 +30,7 @@ export const LOCALE_LABEL: Record<Locale, string> = {
   fr: 'FR',
   it: 'IT',
   ru: 'RU',
+  el: 'EL',
 };
 
 export const LOCALE_NAME: Record<Locale, string> = {
@@ -37,6 +39,7 @@ export const LOCALE_NAME: Record<Locale, string> = {
   fr: 'Français',
   it: 'Italiano',
   ru: 'Русский',
+  el: 'Ελληνικά',
 };
 
 // Circular flag icon filename (in /public/flags) per locale.
@@ -46,6 +49,7 @@ export const LOCALE_FLAG: Record<Locale, string> = {
   fr: 'fr',
   it: 'it',
   ru: 'ru',
+  el: 'gr',
 };
 
 export function isLocale(value: string | undefined): value is Locale {
