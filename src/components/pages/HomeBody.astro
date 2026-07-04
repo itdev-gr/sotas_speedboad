@@ -43,13 +43,8 @@ const c = useCommon(lang);
 
 			<!-- Hero content (single, centered) -->
 			<div class="hero-content hero-content--center">
-				<h1 class="hero-title">
-					<span>{s.slide1TitleA}</span>
-					<span>{s.slide1TitleB}</span>
-				</h1>
+				<h1 class="hero-title"><span>{s.slide1TitleA}</span> <span>{s.slide1TitleB}</span></h1>
 				<p class="hero-tagline">{s.heroTagline}</p>
-				<p class="hero-subtitle">{s.slide1Sub}</p>
-				<a href={localizePath('/tours', lang)} class="hero-cta">{s.ctaBoatRentals}</a>
 			</div>
 		</section>
 
@@ -418,7 +413,7 @@ const c = useCommon(lang);
 		z-index: 2;
 		left: 50%;
 		top: 56%;
-		width: min(92%, 780px);
+		width: min(96%, 1200px);
 		padding: 1.5rem;
 		text-align: center;
 		transform: translate(-50%, -50%);
@@ -507,7 +502,12 @@ const c = useCommon(lang);
 		text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
 	}
 	.hero-title span {
-		display: block;
+		display: inline;
+	}
+	@media (min-width: 768px) {
+		.hero-title {
+			white-space: nowrap;
+		}
 	}
 	.hero-subtitle {
 		font-size: 1.05rem;
@@ -662,9 +662,14 @@ const c = useCommon(lang);
 		padding: 4.5rem 1.5rem;
 	}
 	.home-intro-inner {
-		max-width: 760px;
+		max-width: 1200px;
 		margin: 0 auto;
 		text-align: center;
+	}
+	.home-intro-text {
+		max-width: 760px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.home-intro-label {
 		font-size: 0.75rem;
@@ -676,11 +681,16 @@ const c = useCommon(lang);
 	}
 	.home-intro-title {
 		font-family: 'Cormorant Garamond', serif;
-		font-size: clamp(1.9rem, 4vw, 2.75rem);
+		font-size: clamp(1.9rem, 3.6vw, 2.75rem);
 		font-weight: 700;
 		color: #1a1a1a;
 		line-height: 1.2;
 		margin: 0 0 1.5rem 0;
+	}
+	@media (min-width: 900px) {
+		.home-intro-title {
+			white-space: nowrap;
+		}
 	}
 	.home-intro-text {
 		font-size: 1.05rem;
