@@ -30,7 +30,7 @@ export const specialCelebrations = {
       'We tailor the experience to your occasion. Ask us to time the cruise around a romantic sunset, to have refreshments waiting on board, to add relaxed swim stops at quiet coves, and to help arrange the special touches that make your celebration feel truly personal.',
     contentP3:
       "Combine your celebration with the island's most beautiful spots: a sunset cruise gliding along the coast, or a route past Navagio Shipwreck Beach, the Blue Caves, the Keri Caves and Turtle Island. Whether it is a proposal cruise, a birthday, an anniversary or any private celebration in Zakynthos, we build the day around you.",
-    faqTitle: 'Celebration Cruises — FAQ',
+    faqTitle: 'Celebration Cruises, FAQ',
     faq1Q: 'What occasions do you cater for?',
     faq1A:
       'Birthdays, marriage proposals, anniversaries, honeymoons, hen and stag parties, and just about any milestone you want to celebrate on the water.',
@@ -57,7 +57,7 @@ export const specialCelebrations = {
     sec1Label: 'STILVOLL FEIERN',
     sec1Title: 'Machen Sie jeden Anlass außergewöhnlich',
     sec1Desc:
-      'Ob Geburtstag, Heiratsantrag, Jahrestag oder ein anderer Meilenstein, der gefeiert werden möchte – es gibt keine schönere Kulisse als die türkisfarbenen Wasser des Ionischen Meeres. Unsere privaten Yachtkreuzfahrten bieten eine exklusive und intime Atmosphäre, um Erinnerungen für ein ganzes Leben zu schaffen.',
+      'Ob Geburtstag, Heiratsantrag, Jahrestag oder ein anderer Meilenstein, der gefeiert werden möchte, es gibt keine schönere Kulisse als die türkisfarbenen Wasser des Ionischen Meeres. Unsere privaten Yachtkreuzfahrten bieten eine exklusive und intime Atmosphäre, um Erinnerungen für ein ganzes Leben zu schaffen.',
     sec1Cta: 'IHRE FEIER PLANEN',
     sec2Aria: 'Maßgeschneiderte Feiern',
     sec2Alt: 'Feier-Kreuzfahrt bei Sonnenuntergang auf Zakynthos',
@@ -68,12 +68,12 @@ export const specialCelebrations = {
     sec2Cta: 'KONTAKT AUFNEHMEN',
     contentTitle: 'Feiern Sie auf einer privaten Kreuzfahrt auf Zakynthos',
     contentP1:
-      'Unsere privaten Kreuzfahrten sind die perfekte Art, Geburtstage, Heiratsanträge, Jahrestage, Flitterwochen, Junggesellinnen- und Junggesellenabschiede und jeden besonderen Meilenstein zu feiern. Sie genießen eine intime, exklusive Atmosphäre auf dem türkisfarbenen Ionischen Meer – mit Abfahrt vom Yachthafen von Zakynthos und nur Ihrer eigenen Gruppe an Bord.',
+      'Unsere privaten Kreuzfahrten sind die perfekte Art, Geburtstage, Heiratsanträge, Jahrestage, Flitterwochen, Junggesellinnen- und Junggesellenabschiede und jeden besonderen Meilenstein zu feiern. Sie genießen eine intime, exklusive Atmosphäre auf dem türkisfarbenen Ionischen Meer, mit Abfahrt vom Yachthafen von Zakynthos und nur Ihrer eigenen Gruppe an Bord.',
     contentP2:
       'Wir passen das Erlebnis an Ihren Anlass an. Bitten Sie uns, die Fahrt auf einen romantischen Sonnenuntergang abzustimmen, Erfrischungen an Bord bereitzuhalten, entspannte Badestopps in ruhigen Buchten einzuplanen und die besonderen Details zu organisieren, die Ihre Feier wirklich persönlich machen.',
     contentP3:
-      'Verbinden Sie Ihre Feier mit den schönsten Orten der Insel: eine Fahrt bei Sonnenuntergang entlang der Küste oder eine Route vorbei am Schiffswrackstrand Navagio, den Blauen Grotten, den Keri-Höhlen und der Schildkröteninsel. Ob Antragskreuzfahrt, Geburtstag, Jahrestag oder jede andere private Feier auf Zakynthos – wir gestalten den Tag ganz nach Ihren Wünschen.',
-    faqTitle: 'Feier-Kreuzfahrten — FAQ',
+      'Verbinden Sie Ihre Feier mit den schönsten Orten der Insel: eine Fahrt bei Sonnenuntergang entlang der Küste oder eine Route vorbei am Schiffswrackstrand Navagio, den Blauen Grotten, den Keri-Höhlen und der Schildkröteninsel. Ob Antragskreuzfahrt, Geburtstag, Jahrestag oder jede andere private Feier auf Zakynthos, wir gestalten den Tag ganz nach Ihren Wünschen.',
+    faqTitle: 'Feier-Kreuzfahrten, FAQ',
     faq1Q: 'Für welche Anlässe eignen sich die Fahrten?',
     faq1A:
       'Geburtstage, Heiratsanträge, Jahrestage, Flitterwochen, Junggesellinnen- und Junggesellenabschiede sowie praktisch jeder Meilenstein, den Sie auf dem Wasser feiern möchten.',
@@ -85,7 +85,7 @@ export const specialCelebrations = {
       'Auf jeden Fall. Wir können die Fahrt auf den Sonnenuntergang des Tages abstimmen, damit Sie unter dem goldenen Himmel des Ionischen Meeres anstoßen können.',
     faq4Q: 'Wie viele Gäste können teilnehmen?',
     faq4A:
-      'Diese Fahrten sind für kleine, intime Gruppen gedacht – nur Ihre eigene Gesellschaft ist an Bord. Die genaue Kapazität hängt vom gewählten Boot ab. Nennen Sie uns Ihre Gruppengröße, und wir empfehlen Ihnen die beste Option.',
+      'Diese Fahrten sind für kleine, intime Gruppen gedacht, nur Ihre eigene Gesellschaft ist an Bord. Die genaue Kapazität hängt vom gewählten Boot ab. Nennen Sie uns Ihre Gruppengröße, und wir empfehlen Ihnen die beste Option.',
   },
   fr: {
     seoTitle: 'Croisières de fête à Zakynthos (Zante) | Anniversaires & Demandes',
@@ -116,7 +116,7 @@ export const specialCelebrations = {
       "Nous adaptons l'expérience à votre occasion. Demandez-nous de programmer la croisière autour d'un coucher de soleil romantique, de prévoir des rafraîchissements à bord, d'ajouter des pauses baignade dans des criques tranquilles et de vous aider à organiser les touches spéciales qui rendront votre célébration vraiment personnelle.",
     contentP3:
       "Associez votre célébration aux plus beaux sites de l'île : une croisière au coucher du soleil le long de la côte, ou un itinéraire passant par la plage de l'épave de Navagio, les Grottes Bleues, les Grottes de Keri et l'Île aux Tortues. Qu'il s'agisse d'une croisière de demande en mariage, d'un anniversaire ou de toute autre célébration privée à Zakynthos, nous construisons la journée autour de vous.",
-    faqTitle: 'Croisières de fête — FAQ',
+    faqTitle: 'Croisières de fête, FAQ',
     faq1Q: 'Pour quelles occasions proposez-vous ces croisières ?',
     faq1A:
       "Anniversaires, demandes en mariage, anniversaires de mariage, lunes de miel, enterrements de vie de jeune fille et de garçon, et pratiquement toute grande occasion que vous souhaitez célébrer sur l'eau.",
@@ -159,7 +159,7 @@ export const specialCelebrations = {
       "Adattiamo l'esperienza alla tua occasione. Chiedici di programmare la crociera intorno a un tramonto romantico, di preparare rinfreschi a bordo, di aggiungere rilassanti soste bagno in calette tranquille e di aiutarti a organizzare i tocchi speciali che rendono la tua festa davvero personale.",
     contentP3:
       "Unisci la tua celebrazione ai luoghi più belli dell'isola: una crociera al tramonto lungo la costa, oppure un itinerario che passa dalla spiaggia del relitto di Navagio, dalle Grotte Blu, dalle Grotte di Keri e dall'Isola delle Tartarughe. Che si tratti di una crociera per una proposta di matrimonio, di un compleanno, di un anniversario o di qualsiasi celebrazione privata a Zante, costruiamo la giornata intorno a te.",
-    faqTitle: 'Crociere per celebrazioni — FAQ',
+    faqTitle: 'Crociere per celebrazioni, FAQ',
     faq1Q: 'Per quali occasioni sono adatte?',
     faq1A:
       "Compleanni, proposte di matrimonio, anniversari, lune di miele, addii al nubilato e al celibato e praticamente qualsiasi traguardo che desideri festeggiare sull'acqua.",
@@ -186,7 +186,7 @@ export const specialCelebrations = {
     sec1Label: 'ПРАЗДНУЙТЕ СО СТИЛЕМ',
     sec1Title: 'Сделайте каждый повод особенным',
     sec1Desc:
-      'Будь то день рождения, предложение руки и сердца, годовщина или любое другое событие, достойное празднования, — нет лучшей обстановки, чем бирюзовые воды Ионического моря. Наши круизы на частной яхте предлагают эксклюзивную и уединённую атмосферу, чтобы создать воспоминания на всю жизнь.',
+      'Будь то день рождения, предложение руки и сердца, годовщина или любое другое событие, достойное празднования,, нет лучшей обстановки, чем бирюзовые воды Ионического моря. Наши круизы на частной яхте предлагают эксклюзивную и уединённую атмосферу, чтобы создать воспоминания на всю жизнь.',
     sec1Cta: 'СПЛАНИРОВАТЬ ТОРЖЕСТВО',
     sec2Aria: 'Торжества на заказ',
     sec2Alt: 'Праздничный круиз на закате на Закинфе',
@@ -197,12 +197,12 @@ export const specialCelebrations = {
     sec2Cta: 'СВЯЖИТЕСЬ С НАМИ',
     contentTitle: 'Отпразднуйте во время частного круиза на Закинфе',
     contentP1:
-      'Наши частные круизы — идеальный способ отметить дни рождения, предложения руки и сердца, годовщины, медовый месяц, девичники и мальчишники и любое событие, достойное памяти. Вы получаете уединённую, эксклюзивную обстановку на бирюзовом Ионическом море, с отправлением из марины Закинфа и только вашей собственной группой на борту.',
+      'Наши частные круизы, идеальный способ отметить дни рождения, предложения руки и сердца, годовщины, медовый месяц, девичники и мальчишники и любое событие, достойное памяти. Вы получаете уединённую, эксклюзивную обстановку на бирюзовом Ионическом море, с отправлением из марины Закинфа и только вашей собственной группой на борту.',
     contentP2:
       'Мы адаптируем впечатления под ваш повод. Попросите нас подстроить круиз под романтический закат, подготовить напитки на борту, добавить расслабленные остановки для купания в тихих бухтах и помочь организовать особые детали, которые сделают ваше торжество по-настоящему личным.',
     contentP3:
       "Совместите ваше торжество с самыми красивыми местами острова: круиз на закате вдоль побережья или маршрут мимо пляжа Навайо с кораблекрушением, Голубых пещер, пещер Кери и Черепашьего острова. Будь то круиз с предложением руки и сердца, день рождения, годовщина или любое другое частное торжество на Закинфе, мы выстраиваем день вокруг вас.",
-    faqTitle: 'Праздничные круизы — часто задаваемые вопросы',
+    faqTitle: 'Праздничные круизы, часто задаваемые вопросы',
     faq1Q: 'Какие события вы организуете?',
     faq1A:
       'Дни рождения, предложения руки и сердца, годовщины, медовый месяц, девичники и мальчишники и практически любое событие, которое вы хотите отпраздновать на воде.',
@@ -245,7 +245,7 @@ export const specialCelebrations = {
       'Προσαρμόζουμε την εμπειρία στην περίστασή σας. Ζητήστε μας να χρονομετρήσουμε την κρουαζιέρα γύρω από ένα ρομαντικό ηλιοβασίλεμα, να έχουμε αναψυκτικά έτοιμα επάνω στο σκάφος, να προσθέσουμε χαλαρές στάσεις για μπάνιο σε ήσυχους όρμους και να σας βοηθήσουμε να οργανώσετε τις ξεχωριστές πινελιές που κάνουν τον εορτασμό σας πραγματικά προσωπικό.',
     contentP3:
       'Συνδυάστε τον εορτασμό σας με τα ομορφότερα σημεία του νησιού: μια κρουαζιέρα ηλιοβασιλέματος κατά μήκος της ακτής ή μια διαδρομή που περνά από την παραλία Ναυάγιο, τις Γαλάζιες Σπηλιές, τις Σπηλιές Κερί και το Νησί της Χελώνας. Είτε πρόκειται για κρουαζιέρα πρότασης γάμου, γενέθλια, επέτειο ή οποιονδήποτε ιδιωτικό εορτασμό στη Ζάκυνθο, χτίζουμε την ημέρα γύρω από εσάς.',
-    faqTitle: 'Κρουαζιέρες εορτασμού — Συχνές ερωτήσεις',
+    faqTitle: 'Κρουαζιέρες εορτασμού, Συχνές ερωτήσεις',
     faq1Q: 'Για ποιες περιστάσεις είστε κατάλληλοι;',
     faq1A:
       'Γενέθλια, προτάσεις γάμου, επετείους, μήνες του μέλιτος, bachelor και bachelorette parties, και σχεδόν κάθε στιγμή που θέλετε να γιορτάσετε στη θάλασσα.',

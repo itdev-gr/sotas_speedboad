@@ -20,7 +20,7 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 <html lang="en">
 	<head>
 		<SEOHead
-			title={boat ? `${boat.name} – Book | Sota Travel Zakynthos` : 'Book Boat | Sota Travel Zakynthos'}
+			title={boat ? `${boat.name}, Book | Sota Travel Zakynthos` : 'Book Boat | Sota Travel Zakynthos'}
 			description="Book a self-drive boat rental in Zakynthos. Select your speedboat, choose your date and duration. No license required."
 			noindex={true}
 		/>
@@ -47,7 +47,7 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 						<div class="page-hero-content">
 							<p class="page-hero-label">NO LICENSE REQUIRED</p>
 							<h1 class="page-hero-title">{boat.name}</h1>
-							<p class="page-hero-subtitle">Book this boat for your Zakynthos adventure. Drive yourself – no license needed.</p>
+							<p class="page-hero-subtitle">Book this boat for your Zakynthos adventure. Drive yourself, no license needed.</p>
 							<a href="/contact" class="page-hero-cta">CONTACT US TO BOOK</a>
 						</div>
 					</section>

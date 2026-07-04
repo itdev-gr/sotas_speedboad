@@ -27,59 +27,29 @@ const c = useCommon(lang);
 					data-hero-image
 				/>
 				<video
-					class="hero-video"
+					class="hero-video hero-video--active"
 					src="/videos/hero.mp4"
+					autoplay
+					loop
 					muted
 					playsinline
-					preload="none"
+					preload="auto"
 					aria-hidden="true"
-					data-hero-video
 				></video>
 				<div class="hero-overlay" aria-hidden="true"></div>
 			</div>
 
 			<Header lang={lang} basePath="/" />
 
-			<!-- Carousel arrows -->
-			<button class="hero-arrow hero-arrow-prev" type="button" aria-label={s.arrowPrev}>
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<polyline points="15 18 9 12 15 6" />
-				</svg>
-			</button>
-			<button class="hero-arrow hero-arrow-next" type="button" aria-label={s.arrowNext}>
-				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-					<polyline points="9 18 15 12 9 6" />
-				</svg>
-			</button>
-
-			<!-- Hero content (first video – left) -->
-			<div class="hero-content">
+			<!-- Hero content (single, centered) -->
+			<div class="hero-content hero-content--center">
 				<h1 class="hero-title">
 					<span>{s.slide1TitleA}</span>
 					<span>{s.slide1TitleB}</span>
 				</h1>
+				<p class="hero-tagline">{s.heroTagline}</p>
 				<p class="hero-subtitle">{s.slide1Sub}</p>
 				<a href={localizePath('/contact', lang)} class="hero-cta">{s.ctaContact}</a>
-			</div>
-
-			<!-- Hero content (second image – right) -->
-			<div class="hero-content-second" aria-hidden="true">
-				<h2 class="hero-title">
-					<span>{s.slide2TitleA}</span>
-					<span>{s.slide2TitleB}</span>
-				</h2>
-				<p class="hero-subtitle">{s.slide2Sub}</p>
-				<a href={localizePath('/contact', lang)} class="hero-cta">{s.ctaContact}</a>
-			</div>
-
-			<!-- Hero content (video slide – left) -->
-			<div class="hero-content-video" aria-hidden="true">
-				<h2 class="hero-title">
-					<span>{s.slide3TitleA}</span>
-					<span>{s.slide3TitleB}</span>
-				</h2>
-				<p class="hero-subtitle">{s.slide3Sub}</p>
-				<a href={localizePath('/private-yachting', lang)} class="hero-cta">{s.ctaViewMore}</a>
 			</div>
 		</section>
 
@@ -247,7 +217,6 @@ const c = useCommon(lang);
 		<!-- Reviews / social proof -->
 		<section class="reviews-section" aria-label="Guest reviews">
 			<div class="reviews-inner">
-				<p class="reviews-label">{s.reviewsLabel}</p>
 				<h2 class="reviews-title">{s.reviewsTitle}</h2>
 				<p class="reviews-rating"><span class="reviews-stars" aria-hidden="true">★★★★★</span> {s.reviewsRated}</p>
 				<div class="reviews-badges">
@@ -279,77 +248,12 @@ const c = useCommon(lang);
 				});
 			});
 
-			const heroImage = document.querySelector('[data-hero-image]');
-			const heroVideo = document.querySelector('[data-hero-video]');
-			const heroContent = document.querySelector('.hero-content');
-			const heroContentSecond = document.querySelector('.hero-content-second');
-			const heroContentVideo = document.querySelector('.hero-content-video');
-			const prevBtn = document.querySelector('.hero-arrow-prev');
-			const nextBtn = document.querySelector('.hero-arrow-next');
-
-			if (heroImage) {
-				const slides = [
-					{ type: 'image', src: '/images/unnamed.webp' },
-					{ type: 'image', src: '/images/girlinwoater.webp' },
-					{ type: 'video' }
-				];
-				let currentIndex = 0;
-				let autoTimer = null;
-
-				function goToSlide(index) {
-					currentIndex = ((index % slides.length) + slides.length) % slides.length;
-					const slide = slides[currentIndex];
-					const wrap = heroImage.closest('.hero-image-wrap');
-
-					// Stop video if leaving video slide
-					if (heroVideo) {
-						heroVideo.pause();
-						heroVideo.currentTime = 0;
-					}
-
-					if (slide.type === 'image') {
-						// Show image, hide video
-						heroImage.classList.remove('is-ready');
-						heroImage.src = slide.src;
-						heroImage.onload = () => heroImage.classList.add('is-ready');
-						heroImage.style.display = '';
-						if (heroVideo) heroVideo.classList.remove('hero-video--active');
-						wrap.classList.toggle('hero-image-wrap--hero2', currentIndex === 1);
-						resetAutoPlay();
-					} else {
-						// Show video, hide image
-						heroImage.classList.remove('is-ready');
-						heroImage.style.display = 'none';
-						wrap.classList.remove('hero-image-wrap--hero2');
-						if (heroVideo) {
-							heroVideo.classList.add('hero-video--active');
-							heroVideo.currentTime = 0;
-							heroVideo.play();
-						}
-						// When video ends, go to first slide
-						if (autoTimer) clearTimeout(autoTimer);
-					}
-
-					// Toggle text content per slide
-					heroContent?.classList.toggle('hero-content--hidden', currentIndex !== 0);
-					heroContentSecond?.classList.toggle('hero-content-second--visible', currentIndex === 1);
-					heroContentVideo?.classList.toggle('hero-content-video--visible', currentIndex === 2);
-				}
-
-				function resetAutoPlay() {
-					if (autoTimer) clearTimeout(autoTimer);
-					autoTimer = setTimeout(() => goToSlide(currentIndex + 1), 6000);
-				}
-
-				// When video ends, loop back to first image
-				if (heroVideo) {
-					heroVideo.addEventListener('ended', () => goToSlide(0));
-				}
-
-				resetAutoPlay();
-
-				if (prevBtn) prevBtn.addEventListener('click', (e) => { e.preventDefault(); goToSlide(currentIndex - 1); });
-				if (nextBtn) nextBtn.addEventListener('click', (e) => { e.preventDefault(); goToSlide(currentIndex + 1); });
+			// Ensure the hero video autoplays (some mobile browsers need a nudge)
+			const heroVideo = document.querySelector('.hero-video');
+			if (heroVideo) {
+				const tryPlay = () => { const p = heroVideo.play(); if (p && p.catch) p.catch(() => {}); };
+				tryPlay();
+				document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
 			}
 
 			const header = document.querySelector('.hero-header');
@@ -364,26 +268,18 @@ const c = useCommon(lang);
 			}
 			});
 		</script>
-		<script is:inline>
-			(function() {
-				var script = document.createElement('script');
-				script.src = 'https://cbl.link/b/foZ1bvN.js';
-				script.async = true;
-				document.head.appendChild(script);
-			})();
-		</script>
 
 		<script is:inline>
 			gsap.registerPlugin(ScrollTrigger);
 
 			document.addEventListener('DOMContentLoaded', function () {
-				// Services bar – fade up
+				// Services bar, fade up
 				gsap.from('.services-bar', {
 					scrollTrigger: { trigger: '.services-bar', start: 'top 60%', toggleActions: 'play none none none' },
 					y: 40, opacity: 0, duration: 1.2, ease: 'power2.out'
 				});
 
-				// Selfdrive sections – alternate left/right
+				// Selfdrive sections, alternate left/right
 				document.querySelectorAll('.selfdrive-section').forEach(function (section, i) {
 					var imageWrap = section.querySelector('.selfdrive-image-wrap');
 					var text = section.querySelector('.selfdrive-text');
@@ -403,7 +299,7 @@ const c = useCommon(lang);
 					}
 				});
 
-				// Footer – fade up
+				// Footer, fade up
 				gsap.from('.site-footer', {
 					scrollTrigger: { trigger: '.site-footer', start: 'top 60%', toggleActions: 'play none none none' },
 					y: 40, opacity: 0, duration: 1.2, ease: 'power2.out'
@@ -442,7 +338,7 @@ const c = useCommon(lang);
 		padding-top: 5rem;
 	}
 
-	/* Image container – fullscreen */
+	/* Image container, fullscreen */
 	.hero-image-wrap {
 		position: absolute;
 		inset: 0;
@@ -516,42 +412,37 @@ const c = useCommon(lang);
 		right: 1.5rem;
 	}
 
-	/* Hero content */
+	/* Hero content (single, centered) */
 	.hero-content {
 		position: absolute;
 		z-index: 2;
-		max-width: 90%;
-		padding: 2rem;
-		text-align: right;
-		right: 8%;
-		top: 65%;
-		transform: translateY(-50%);
-		animation: heroContentIn 1s ease-out forwards;
+		left: 50%;
+		top: 56%;
+		width: min(92%, 780px);
+		padding: 1.5rem;
+		text-align: center;
+		transform: translate(-50%, -50%);
+		animation: heroCenterIn 1s ease-out forwards;
 		opacity: 0;
 	}
-	@keyframes heroContentIn {
+	@keyframes heroCenterIn {
 		from {
 			opacity: 0;
-			transform: translateY(calc(-50% + 32px));
+			transform: translate(-50%, calc(-50% + 28px));
 		}
 		to {
 			opacity: 1;
-			transform: translateY(-50%);
+			transform: translate(-50%, -50%);
 		}
 	}
-	.hero-content.hero-content--hidden {
-		animation: heroContentOut 0.5s ease-in forwards;
-		pointer-events: none;
-	}
-	@keyframes heroContentOut {
-		from {
-			opacity: 1;
-			transform: translateY(-50%);
-		}
-		to {
-			opacity: 0;
-			transform: translateY(calc(-50% - 24px));
-		}
+	.hero-tagline {
+		font-family: 'Cormorant Garamond', serif;
+		font-size: clamp(1.25rem, 2.6vw, 1.9rem);
+		font-weight: 600;
+		color: #fff;
+		margin: 0 0 1rem;
+		letter-spacing: 0.02em;
+		text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
 	}
 
 	/* Hero content for second video (right side) */
@@ -607,21 +498,24 @@ const c = useCommon(lang);
 	}
 	.hero-title {
 		font-family: 'Cormorant Garamond', serif;
-		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		font-size: clamp(2.6rem, 6.5vw, 5rem);
 		font-weight: 600;
 		color: #fff;
-		line-height: 1.1;
+		line-height: 1.05;
 		margin: 0 0 0.75rem 0;
 		letter-spacing: 0.02em;
+		text-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
 	}
 	.hero-title span {
 		display: block;
 	}
 	.hero-subtitle {
-		font-size: 1rem;
-		color: rgba(255, 255, 255, 0.9);
-		margin: 0 0 1.5rem 0;
+		font-size: 1.05rem;
+		color: rgba(255, 255, 255, 0.95);
+		max-width: 560px;
+		margin: 0 auto 1.75rem;
 		font-weight: 300;
+		text-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
 	}
 	.hero-cta {
 		display: inline-block;

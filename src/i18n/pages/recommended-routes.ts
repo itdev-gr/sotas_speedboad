@@ -33,7 +33,7 @@ export const recommendedRoutes = {
 		contactAria: 'Kontakt',
 		ctaTitle: 'Unsicher, welche Route die richtige ist?',
 		ctaDesc:
-			'Kontaktieren Sie uns – wir helfen Ihnen, den perfekten Ausflug ganz nach Ihren Wünschen, Ihrer Gruppengröße und der verfügbaren Zeit zu planen.',
+			'Kontaktieren Sie uns, wir helfen Ihnen, den perfekten Ausflug ganz nach Ihren Wünschen, Ihrer Gruppengröße und der verfügbaren Zeit zu planen.',
 		ctaBtnPrimary: 'Kontakt aufnehmen',
 		ctaBtnCall: 'Anruf: 0030 698 793 1327',
 	},

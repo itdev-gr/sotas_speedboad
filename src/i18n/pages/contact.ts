@@ -61,7 +61,7 @@ export const contact = {
     formSectionAria: 'Kontaktformular und Kontaktdaten',
     formTitle: 'Schreiben Sie uns eine Nachricht',
     formIntro:
-      'Bei Fragen oder Informationen zu unseren Leistungen füllen Sie bitte das folgende Formular aus – wir melden uns so schnell wie möglich bei Ihnen.',
+      'Bei Fragen oder Informationen zu unseren Leistungen füllen Sie bitte das folgende Formular aus, wir melden uns so schnell wie möglich bei Ihnen.',
     firstNameLabel: 'Vorname *',
     firstNamePlaceholder: 'Vorname',
     lastNameLabel: 'Nachname *',
@@ -234,7 +234,7 @@ export const contact = {
     ariaFacebook: 'Facebook',
     ariaTripAdvisor: 'TripAdvisor',
     mapAria: 'Наше местоположение на карте',
-    mapTitle: 'Местоположение Sota Travel — аренда лодок на Закинфе',
+    mapTitle: 'Местоположение Sota Travel, аренда лодок на Закинфе',
   },
   el: {
     seoTitle: 'Επικοινωνία | Κλείστε σκάφος στη Ζάκυνθο | Sota Travel',
