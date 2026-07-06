@@ -166,7 +166,7 @@ const phonePrefixes: Array<{ code: string; name: string; flag: string }> = [
 						<div class="ct-phone-group">
 							<select id="contact-phone-prefix" class="ct-input ct-phone-prefix" aria-label="Country dialing code">
 								{phonePrefixes.map((p, i) => (
-									<option value={p.code} selected={p.code === '+30' && i === 0 ? true : undefined}>{p.flag} {p.name} ({p.code})</option>
+									<option value={p.code} selected={p.code === '+30' && i === 0 ? true : undefined}>{p.flag} {p.code} {p.name}</option>
 								))}
 							</select>
 							<input type="tel" id="contact-phone" name="phone_number" placeholder={s.phonePlaceholder} class="ct-input ct-phone-input" aria-label={s.phoneLabel} />
@@ -354,9 +354,11 @@ const phonePrefixes: Array<{ code: string; name: string; flag: string }> = [
 		flex: 0 0 auto;
 		width: auto;
 		max-width: 40%;
-		padding-right: 0.75rem;
+		padding-left: 0.85rem;
+		padding-right: 0.6rem;
 		cursor: pointer;
 		background-color: #fff;
+		text-overflow: ellipsis;
 	}
 	.ct-phone-input { flex: 1 1 auto; min-width: 0; }
 	.ct-feedback { font-size: 0.9rem; min-height: 1.1rem; text-align: center; }
@@ -429,5 +431,11 @@ const phonePrefixes: Array<{ code: string; name: string; flag: string }> = [
 		.ct-band-inner { grid-template-columns: 1fr; gap: 2rem; }
 		.ct-form-row { grid-template-columns: 1fr; }
 		.ct-cards { grid-template-columns: 1fr; }
+		.ct-phone-prefix {
+			flex: 0 0 8.5rem;
+			max-width: 8.5rem;
+			padding-left: 0.75rem;
+			padding-right: 0.4rem;
+		}
 	}
 </style>
