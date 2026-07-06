@@ -51,10 +51,10 @@ try {
 							{(boat.price4h > 0 || boat.price7h > 0) && (
 								<div class="speedboat-price">
 									{boat.price4h > 0 && (
-										<span class="speedboat-price-item"><span class="speedboat-price-dur">{s.price4hLabel}</span><span class="speedboat-price-val">€{boat.price4h}</span></span>
+										<a href={`/book-license-free?boat=${boat.id}`} class="speedboat-price-item"><span class="speedboat-price-dur">{s.price4hLabel}</span><span class="speedboat-price-val">€{boat.price4h}</span></a>
 									)}
 									{boat.price7h > 0 && (
-										<span class="speedboat-price-item"><span class="speedboat-price-dur">{s.price7hLabel}</span><span class="speedboat-price-val">€{boat.price7h}</span></span>
+										<a href={`/book-license-free?boat=${boat.id}`} class="speedboat-price-item"><span class="speedboat-price-dur">{s.price7hLabel}</span><span class="speedboat-price-val">€{boat.price7h}</span></a>
 									)}
 								</div>
 							)}
@@ -460,6 +460,14 @@ try {
 		background: #fff;
 		border: 1px solid #d9d2c7;
 		border-radius: 8px;
+		text-decoration: none;
+		cursor: pointer;
+		transition: background 0.2s, border-color 0.2s, transform 0.2s;
+	}
+	.speedboat-price-item:hover {
+		background: #f5f0e8;
+		border-color: #a89f94;
+		transform: translateY(-1px);
 	}
 	.speedboat-price-dur {
 		font-size: 0.72rem;
