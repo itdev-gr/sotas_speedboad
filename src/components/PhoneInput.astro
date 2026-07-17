@@ -1,0 +1,67 @@
+---
+import { phonePrefixes } from '../lib/phone-prefixes';
+
+interface Props {
+	idPrefix?: string;
+	label?: string;
+	numberPlaceholder?: string;
+}
+
+const {
+	idPrefix = 'book',
+	label = 'Phone',
+	numberPlaceholder = '698 123 4567',
+} = Astro.props;
+---
+
+<div class="flex flex-col gap-1">
+	<label for={`${idPrefix}-phone`} class="text-xs font-medium text-gray-600">{label}</label>
+	<div class="book-phone-group">
+		<select
+			id={`${idPrefix}-phone-prefix`}
+			name="phone_prefix"
+			class="book-phone-prefix border border-gray-300 rounded-md px-2 py-2 text-sm text-gray-700 bg-white cursor-pointer"
+			aria-label="Country dialing code"
+		>
+			{phonePrefixes.map((p) => (
+				<option value={p.code} selected={p.code === '+30' ? true : undefined}>
+					{p.flag} {p.code} {p.name}
+				</option>
+			))}
+		</select>
+		<input
+			type="tel"
+			id={`${idPrefix}-phone`}
+			name="phone_number"
+			placeholder={numberPlaceholder}
+			class="book-phone-number border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400"
+			aria-label={label}
+		/>
+	</div>
+</div>
+
+<style>
+	.book-phone-group {
+		display: flex;
+		gap: 0.5rem;
+		align-items: stretch;
+	}
+	.book-phone-prefix {
+		flex: 0 0 auto;
+		width: auto;
+		max-width: 42%;
+		padding-left: 0.65rem;
+		padding-right: 0.45rem;
+		text-overflow: ellipsis;
+	}
+	.book-phone-number {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+	@media (max-width: 480px) {
+		.book-phone-prefix {
+			flex: 0 0 8.5rem;
+			max-width: 8.5rem;
+		}
+	}
+</style>

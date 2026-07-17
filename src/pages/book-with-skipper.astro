@@ -4,6 +4,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEOHead from '../components/SEOHead.astro';
+import PhoneInput from '../components/PhoneInput.astro';
 
 const boatId = Astro.url.searchParams.get('boat')?.trim() || null;
 const base = Astro.url.origin;
@@ -149,10 +150,7 @@ if (boat && !Array.isArray(boat.skipperServices)) (boat as { skipperServices: Sk
 											<label for="book-email" class="text-xs font-medium text-gray-600">Email</label>
 											<input type="email" id="book-email" name="email" placeholder="you@example.com" class="border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400" />
 										</div>
-										<div class="flex flex-col gap-1">
-											<label for="book-phone" class="text-xs font-medium text-gray-600">Phone</label>
-											<input type="tel" id="book-phone" name="phone" placeholder="+30 698 123 4567" class="border border-gray-300 rounded-md px-3 py-2 text-sm placeholder-gray-400" />
-										</div>
+										<PhoneInput idPrefix="book" />
 										<p class="text-[11px] text-gray-500">Please provide at least an email or a phone number so we can confirm your booking.</p>
 									</div>
 									<div id="book-form-feedback" class="text-sm min-h-[1.25rem]" aria-live="polite"></div>
@@ -179,6 +177,8 @@ if (boat && !Array.isArray(boat.skipperServices)) (boat as { skipperServices: Sk
 		</div>
 		<Footer />
 		<script>
+			import { getPhoneFromForm } from '../lib/phone-prefixes';
+
 			const form = document.getElementById('book-online-form');
 			form?.addEventListener('submit', async (e) => {
 				e.preventDefault();
@@ -194,7 +194,7 @@ if (boat && !Array.isArray(boat.skipperServices)) (boat as { skipperServices: Sk
 				const promo = (f.querySelector('[name="promo"]') as HTMLInputElement)?.value?.trim() || '';
 				const customerName = (f.querySelector('[name="customerName"]') as HTMLInputElement)?.value?.trim() || '';
 				const email = (f.querySelector('[name="email"]') as HTMLInputElement)?.value?.trim() || '';
-				const phone = (f.querySelector('[name="phone"]') as HTMLInputElement)?.value?.trim() || '';
+				const phone = getPhoneFromForm(f);
 
 				feedback.textContent = '';
 				feedback.className = 'text-sm min-h-[1.25rem]';

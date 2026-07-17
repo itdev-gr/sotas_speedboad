@@ -13,11 +13,60 @@ const s = rentWithSkipper[lang];
 const c = useCommon(lang);
 const contactHref = localizePath('/contact', lang);
 
+type SkipperService = { name: string; durationHours: number; price: number; description?: string };
+type Boat = {
+	id: string;
+	name: string;
+	imageUrl: string;
+	imageUrls: string[];
+	price4h: number;
+	price7h: number;
+	skipperPrice4h: number;
+	skipperPrice7h: number;
+	skipperServices: SkipperService[];
+	maxPax: number;
+	modalName: string;
+	includes: string[];
+	lengthMeters: string;
+	fuelExcludedText: string;
+	sortOrder: number;
+	description?: string;
+};
+
+function servicePriceLabel(svc: SkipperService): string {
+	const hours = svc.durationHours;
+	const unit = hours === 1 ? s.hourSingular : s.hourPlural;
+	if (svc.name) return `${svc.name} - ${hours} ${unit}`;
+	return `${hours} ${unit}`;
+}
+
+function getSkipperPrices(boat: Boat): Array<{ label: string; price: number }> {
+	const services = (boat.skipperServices ?? []).filter((svc) => svc.price > 0);
+	if (services.length > 0) {
+		return services.map((svc) => ({
+			label: servicePriceLabel(svc),
+			price: svc.price,
+		}));
+	}
+	const fallback: Array<{ label: string; price: number }> = [];
+	if (boat.skipperPrice4h > 0) fallback.push({ label: s.price4hLabel, price: boat.skipperPrice4h });
+	if (boat.skipperPrice7h > 0) fallback.push({ label: s.price7hLabel, price: boat.skipperPrice7h });
+	return fallback;
+}
+
 const base = Astro.url.origin;
-let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string }> = [];
+let boats: Boat[] = [];
 try {
 	const res = await fetch(`${base}/api/boats`);
-	boats = res.ok ? await res.json() : [];
+	const data = res.ok ? await res.json() : [];
+	boats = Array.isArray(data)
+		? data.map((boat) => ({
+				...boat,
+				skipperServices: Array.isArray(boat.skipperServices) ? boat.skipperServices : [],
+				skipperPrice4h: Number(boat.skipperPrice4h) || 0,
+				skipperPrice7h: Number(boat.skipperPrice7h) || 0,
+			}))
+		: [];
 } catch {
 	boats = [];
 }
@@ -49,6 +98,16 @@ try {
 							<p class="speedboat-card-name">{boat.name}</p>
 							{boat.description && <p class="speedboat-card-description">{boat.description}</p>}
 							<p class="speedboat-pax">{s.maxPax} {boat.maxPax} {s.paxUnit}</p>
+							{getSkipperPrices(boat).length > 0 && (
+								<div class="speedboat-price">
+									{getSkipperPrices(boat).map((item) => (
+										<a href={`/book-with-skipper?boat=${boat.id}`} class="speedboat-price-item">
+											<span class="speedboat-price-dur">{item.label}</span>
+											<span class="speedboat-price-val">€{item.price}</span>
+										</a>
+									))}
+								</div>
+							)}
 							<div class="speedboat-buttons">
 								<a href={`/book-with-skipper?boat=${boat.id}`} class="speedboat-btn speedboat-btn-primary">{s.bookWithSkipper}</a>
 								<button type="button" class="speedboat-btn speedboat-btn-secondary includes-trigger" data-boat={boat.id} aria-label={`${s.viewIncludesPrefix} ${boat.name}`}>{s.includesBtn}</button>
@@ -435,6 +494,43 @@ try {
 	}
 	.speedboat-pax {
 		margin-bottom: 1rem;
+	}
+	.speedboat-price {
+		display: flex;
+		gap: 0.5rem;
+		margin: 0 0 1rem 0;
+	}
+	.speedboat-price-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.1rem;
+		flex: 1;
+		padding: 0.45rem 0.5rem;
+		background: #fff;
+		border: 1px solid #d9d2c7;
+		border-radius: 8px;
+		text-decoration: none;
+		cursor: pointer;
+		transition: background 0.2s, border-color 0.2s, transform 0.2s;
+	}
+	.speedboat-price-item:hover {
+		background: #f5f0e8;
+		border-color: #a89f94;
+		transform: translateY(-1px);
+	}
+	.speedboat-price-dur {
+		font-size: 0.72rem;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: #6b5e52;
+		text-align: center;
+		line-height: 1.3;
+	}
+	.speedboat-price-val {
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: #1a1a1a;
 	}
 	.speedboat-buttons {
 		display: flex;

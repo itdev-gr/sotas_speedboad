@@ -5,6 +5,7 @@ import Footer from '../Footer.astro';
 import { localizePath, type Locale } from '../../i18n/config';
 import { useCommon } from '../../i18n/common';
 import { contact } from '../../i18n/pages/contact';
+import { phonePrefixes } from '../../lib/phone-prefixes';
 
 interface Props {
 	lang: Locale;
@@ -16,102 +17,7 @@ const c = useCommon(lang);
 const GOOGLE_REVIEWS = 'https://www.google.com/maps/place/Boat+Rental+Zakynthos+Sota+Travel/@37.8407318,20.8180773,17z/data=!4m8!3m7!1s0x13674792fceb7531:0xca2bf80ddaaa1d99!8m2!3d37.8407318!4d20.8206522!9m1!1b1!16s%2Fg%2F11yv91nf_0';
 const TRIPADVISOR_REVIEWS = 'https://www.tripadvisor.com/Attraction_Review-g189462-d34338909-Reviews-Sota_Travel_Zakynthos-Zakynthos_Ionian_Islands.html';
 
-const phonePrefixes: Array<{ code: string; name: string; flag: string }> = [
-	{ code: '+30', name: 'Greece', flag: '🇬🇷' },
-	{ code: '+355', name: 'Albania', flag: '🇦🇱' },
-	{ code: '+213', name: 'Algeria', flag: '🇩🇿' },
-	{ code: '+376', name: 'Andorra', flag: '🇦🇩' },
-	{ code: '+54', name: 'Argentina', flag: '🇦🇷' },
-	{ code: '+374', name: 'Armenia', flag: '🇦🇲' },
-	{ code: '+61', name: 'Australia', flag: '🇦🇺' },
-	{ code: '+43', name: 'Austria', flag: '🇦🇹' },
-	{ code: '+994', name: 'Azerbaijan', flag: '🇦🇿' },
-	{ code: '+973', name: 'Bahrain', flag: '🇧🇭' },
-	{ code: '+880', name: 'Bangladesh', flag: '🇧🇩' },
-	{ code: '+375', name: 'Belarus', flag: '🇧🇾' },
-	{ code: '+32', name: 'Belgium', flag: '🇧🇪' },
-	{ code: '+591', name: 'Bolivia', flag: '🇧🇴' },
-	{ code: '+387', name: 'Bosnia and Herzegovina', flag: '🇧🇦' },
-	{ code: '+55', name: 'Brazil', flag: '🇧🇷' },
-	{ code: '+359', name: 'Bulgaria', flag: '🇧🇬' },
-	{ code: '+855', name: 'Cambodia', flag: '🇰🇭' },
-	{ code: '+1', name: 'Canada', flag: '🇨🇦' },
-	{ code: '+56', name: 'Chile', flag: '🇨🇱' },
-	{ code: '+86', name: 'China', flag: '🇨🇳' },
-	{ code: '+57', name: 'Colombia', flag: '🇨🇴' },
-	{ code: '+506', name: 'Costa Rica', flag: '🇨🇷' },
-	{ code: '+385', name: 'Croatia', flag: '🇭🇷' },
-	{ code: '+357', name: 'Cyprus', flag: '🇨🇾' },
-	{ code: '+420', name: 'Czech Republic', flag: '🇨🇿' },
-	{ code: '+45', name: 'Denmark', flag: '🇩🇰' },
-	{ code: '+593', name: 'Ecuador', flag: '🇪🇨' },
-	{ code: '+20', name: 'Egypt', flag: '🇪🇬' },
-	{ code: '+372', name: 'Estonia', flag: '🇪🇪' },
-	{ code: '+358', name: 'Finland', flag: '🇫🇮' },
-	{ code: '+33', name: 'France', flag: '🇫🇷' },
-	{ code: '+995', name: 'Georgia', flag: '🇬🇪' },
-	{ code: '+49', name: 'Germany', flag: '🇩🇪' },
-	{ code: '+36', name: 'Hungary', flag: '🇭🇺' },
-	{ code: '+354', name: 'Iceland', flag: '🇮🇸' },
-	{ code: '+91', name: 'India', flag: '🇮🇳' },
-	{ code: '+62', name: 'Indonesia', flag: '🇮🇩' },
-	{ code: '+98', name: 'Iran', flag: '🇮🇷' },
-	{ code: '+964', name: 'Iraq', flag: '🇮🇶' },
-	{ code: '+353', name: 'Ireland', flag: '🇮🇪' },
-	{ code: '+972', name: 'Israel', flag: '🇮🇱' },
-	{ code: '+39', name: 'Italy', flag: '🇮🇹' },
-	{ code: '+81', name: 'Japan', flag: '🇯🇵' },
-	{ code: '+962', name: 'Jordan', flag: '🇯🇴' },
-	{ code: '+7', name: 'Kazakhstan', flag: '🇰🇿' },
-	{ code: '+254', name: 'Kenya', flag: '🇰🇪' },
-	{ code: '+965', name: 'Kuwait', flag: '🇰🇼' },
-	{ code: '+371', name: 'Latvia', flag: '🇱🇻' },
-	{ code: '+961', name: 'Lebanon', flag: '🇱🇧' },
-	{ code: '+370', name: 'Lithuania', flag: '🇱🇹' },
-	{ code: '+352', name: 'Luxembourg', flag: '🇱🇺' },
-	{ code: '+60', name: 'Malaysia', flag: '🇲🇾' },
-	{ code: '+356', name: 'Malta', flag: '🇲🇹' },
-	{ code: '+52', name: 'Mexico', flag: '🇲🇽' },
-	{ code: '+373', name: 'Moldova', flag: '🇲🇩' },
-	{ code: '+377', name: 'Monaco', flag: '🇲🇨' },
-	{ code: '+382', name: 'Montenegro', flag: '🇲🇪' },
-	{ code: '+212', name: 'Morocco', flag: '🇲🇦' },
-	{ code: '+31', name: 'Netherlands', flag: '🇳🇱' },
-	{ code: '+64', name: 'New Zealand', flag: '🇳🇿' },
-	{ code: '+389', name: 'North Macedonia', flag: '🇲🇰' },
-	{ code: '+47', name: 'Norway', flag: '🇳🇴' },
-	{ code: '+968', name: 'Oman', flag: '🇴🇲' },
-	{ code: '+92', name: 'Pakistan', flag: '🇵🇰' },
-	{ code: '+51', name: 'Peru', flag: '🇵🇪' },
-	{ code: '+63', name: 'Philippines', flag: '🇵🇭' },
-	{ code: '+48', name: 'Poland', flag: '🇵🇱' },
-	{ code: '+351', name: 'Portugal', flag: '🇵🇹' },
-	{ code: '+974', name: 'Qatar', flag: '🇶🇦' },
-	{ code: '+40', name: 'Romania', flag: '🇷🇴' },
-	{ code: '+7', name: 'Russia', flag: '🇷🇺' },
-	{ code: '+966', name: 'Saudi Arabia', flag: '🇸🇦' },
-	{ code: '+381', name: 'Serbia', flag: '🇷🇸' },
-	{ code: '+65', name: 'Singapore', flag: '🇸🇬' },
-	{ code: '+421', name: 'Slovakia', flag: '🇸🇰' },
-	{ code: '+386', name: 'Slovenia', flag: '🇸🇮' },
-	{ code: '+27', name: 'South Africa', flag: '🇿🇦' },
-	{ code: '+82', name: 'South Korea', flag: '🇰🇷' },
-	{ code: '+34', name: 'Spain', flag: '🇪🇸' },
-	{ code: '+94', name: 'Sri Lanka', flag: '🇱🇰' },
-	{ code: '+46', name: 'Sweden', flag: '🇸🇪' },
-	{ code: '+41', name: 'Switzerland', flag: '🇨🇭' },
-	{ code: '+886', name: 'Taiwan', flag: '🇹🇼' },
-	{ code: '+66', name: 'Thailand', flag: '🇹🇭' },
-	{ code: '+216', name: 'Tunisia', flag: '🇹🇳' },
-	{ code: '+90', name: 'Turkey', flag: '🇹🇷' },
-	{ code: '+380', name: 'Ukraine', flag: '🇺🇦' },
-	{ code: '+971', name: 'United Arab Emirates', flag: '🇦🇪' },
-	{ code: '+44', name: 'United Kingdom', flag: '🇬🇧' },
-	{ code: '+1', name: 'United States', flag: '🇺🇸' },
-	{ code: '+598', name: 'Uruguay', flag: '🇺🇾' },
-	{ code: '+58', name: 'Venezuela', flag: '🇻🇪' },
-	{ code: '+84', name: 'Vietnam', flag: '🇻🇳' },
-];
+
 ---
 <body class="contact-page-body min-h-screen font-sans antialiased overflow-x-hidden" style="font-family: 'Inter', system-ui, sans-serif;">
 	<Header lang={lang} basePath="/contact" />
@@ -164,7 +70,7 @@ const phonePrefixes: Array<{ code: string; name: string; flag: string }> = [
 					<div class="ct-form-row">
 						<input type="email" id="contact-email" name="email" required placeholder={s.emailPlaceholder} class="ct-input" aria-label={s.emailLabel} />
 						<div class="ct-phone-group">
-							<select id="contact-phone-prefix" class="ct-input ct-phone-prefix" aria-label="Country dialing code">
+							<select id="contact-phone-prefix" name="phone_prefix" class="ct-input ct-phone-prefix" aria-label="Country dialing code">
 								{phonePrefixes.map((p, i) => (
 									<option value={p.code} selected={p.code === '+30' && i === 0 ? true : undefined}>{p.flag} {p.code} {p.name}</option>
 								))}
