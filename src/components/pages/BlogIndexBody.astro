@@ -107,29 +107,6 @@ const topics = [
 			</section>
 		)}
 
-		<section class="blog-topics" aria-labelledby="topics-heading">
-			<div class="blog-topics-inner">
-				<p class="blog-topics-heading" id="topics-heading">{s.topicsHeading}</p>
-				<div class="blog-topics-grid">
-					{topics.map((topic) => (
-						<div class="blog-topic" id={`topic-${topic.id}`}>
-							<h2 class="blog-topic-title">{topic.title}</h2>
-							<p class="blog-topic-blurb">{topic.blurb}</p>
-							{topic.links.length > 0 && (
-								<ul class="blog-topic-list">
-									{topic.links.map((link) => (
-										<li>
-											<a href={p(`/blog/${link.slug}`)}>{link.title}</a>
-										</li>
-									))}
-								</ul>
-							)}
-						</div>
-					))}
-				</div>
-			</div>
-		</section>
-
 		<section class="blog-grid-section" aria-label={s.allArticles}>
 			<div class="blog-grid-header">
 				<h2 class="blog-grid-heading">{s.allArticles}</h2>
@@ -161,6 +138,29 @@ const topics = [
 						</div>
 					</a>
 				))}
+			</div>
+		</section>
+
+		<section class="blog-topics" aria-labelledby="topics-heading">
+			<div class="blog-topics-inner">
+				<p class="blog-topics-heading" id="topics-heading">{s.topicsHeading}</p>
+				<div class="blog-topics-grid">
+					{topics.map((topic) => (
+						<div class="blog-topic" id={`topic-${topic.id}`}>
+							<h2 class="blog-topic-title">{topic.title}</h2>
+							<p class="blog-topic-blurb">{topic.blurb}</p>
+							{topic.links.length > 0 && (
+								<ul class="blog-topic-list">
+									{topic.links.map((link) => (
+										<li>
+											<a href={p(`/blog/${link.slug}`)}>{link.title}</a>
+										</li>
+									))}
+								</ul>
+							)}
+						</div>
+					))}
+				</div>
 			</div>
 		</section>
 
@@ -308,7 +308,7 @@ const topics = [
 	}
 
 	.blog-topics {
-		padding: 3.5rem 1.5rem 0;
+		padding: 3rem 1.5rem 0;
 		max-width: 1200px;
 		margin: 0 auto;
 	}
@@ -363,7 +363,7 @@ const topics = [
 	}
 
 	.blog-grid-section {
-		padding: 3.5rem 1.5rem 2rem;
+		padding: 3.5rem 1.5rem 0;
 		max-width: 1200px;
 		margin: 0 auto;
 	}
