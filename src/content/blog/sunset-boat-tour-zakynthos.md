@@ -1,7 +1,7 @@
 ---
-title: "Sunset Boat Tour in Zakynthos: Turtle Island, Keri Caves and Mizithres Rocks"
-metaTitle: "Sunset Boat Tour Zakynthos: Keri Caves and Mizithres"
-metaDescription: "Experience Zakynthos at golden hour. The sunset boat tour covers Turtle Island, Keri Caves, and Mizithres Rocks before sunset over the Ionian Sea."
+title: "Best Sunset Boat Route in Zakynthos: Keri to Mizithres"
+metaTitle: "Best Sunset Boat Route in Zakynthos: Keri to Mizithres"
+metaDescription: "Plan the best sunset boat route in Zakynthos through Turtle Island and Keri Caves to Mizithres, with timing, swim stops and practical packing tips."
 excerpt: "There is a specific window in the late afternoon in Zakynthos when the light changes and the whole south coast looks different. The white limestone cliffs catch the sun at a low angle, the water turns"
 image: "/images/hero2.png"
 imageAlt: "Sunset boat tour passing the Mizithres Rocks in southern Zakynthos"

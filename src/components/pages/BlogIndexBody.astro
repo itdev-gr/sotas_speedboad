@@ -1,0 +1,524 @@
+---
+import Header from '../Header.astro';
+import Footer from '../Footer.astro';
+import { blog as blogStrings, BLOG_TOPIC_CLUSTERS } from '../../i18n/pages/blog';
+import { localizePath, type Locale } from '../../i18n/config';
+import { getBlogSlug, getDateLocale, type BlogEntry } from '../../lib/blog-i18n';
+
+interface Props {
+	lang: Locale;
+	posts: BlogEntry[];
+}
+
+const { lang, posts } = Astro.props;
+const s = blogStrings[lang] ?? blogStrings.en;
+const p = (path: string) => localizePath(path, lang);
+const dateFmt = new Intl.DateTimeFormat(getDateLocale(lang), {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+const basePath = '/blog';
+const featured = posts[0];
+const gridPosts = featured ? posts.slice(1) : posts;
+
+const bySlug = new Map(posts.map((post) => [getBlogSlug(post), post]));
+
+function clusterLinks(slugs: readonly string[]) {
+	return slugs
+		.map((slug) => {
+			const post = bySlug.get(slug);
+			if (!post) return null;
+			return { slug, title: post.data.title };
+		})
+		.filter((item): item is { slug: string; title: string } => item !== null);
+}
+
+const topics = [
+	{
+		id: 'routes',
+		title: s.topicRoutesTitle,
+		blurb: s.topicRoutesBlurb,
+		links: clusterLinks(BLOG_TOPIC_CLUSTERS.routes),
+	},
+	{
+		id: 'planning',
+		title: s.topicPlanningTitle,
+		blurb: s.topicPlanningBlurb,
+		links: clusterLinks(BLOG_TOPIC_CLUSTERS.planning),
+	},
+	{
+		id: 'rules',
+		title: s.topicRulesTitle,
+		blurb: s.topicRulesBlurb,
+		links: clusterLinks(BLOG_TOPIC_CLUSTERS.rules),
+	},
+];
+---
+
+<body class="blog-body">
+	<Header lang={lang} basePath={basePath} />
+	<main class="blog-page">
+		<section class="page-hero" aria-label={s.heroAria}>
+			<div class="page-hero-overlay"></div>
+			<div class="page-hero-content">
+				<nav class="breadcrumbs breadcrumbs--hero" aria-label="Breadcrumb">
+					<ol>
+						<li><a href={p('/')}>{s.home}</a></li>
+						<li aria-hidden="true">›</li>
+						<li aria-current="page">{s.blog}</li>
+					</ol>
+				</nav>
+				<h1 class="page-hero-title">{s.heroTitle}</h1>
+				<p class="page-hero-intro">{s.heroIntro}</p>
+			</div>
+		</section>
+
+		{featured && (
+			<section class="blog-featured" aria-labelledby="featured-heading">
+				<div class="blog-featured-inner">
+					<p class="blog-featured-label" id="featured-heading">{s.featuredLabel}</p>
+					<a class="blog-featured-card" href={p(`/blog/${getBlogSlug(featured)}`)}>
+						<div class="blog-featured-image">
+							<img
+								src={featured.data.image}
+								alt={featured.data.imageAlt ?? featured.data.title}
+								width="900"
+								height="560"
+								loading="eager"
+								fetchpriority="high"
+								decoding="async"
+							/>
+						</div>
+						<div class="blog-featured-body">
+							<p class="blog-card-date">
+								<time datetime={featured.data.pubDate.toISOString()}>
+									{dateFmt.format(featured.data.pubDate)}
+								</time>
+							</p>
+							<h2 class="blog-featured-title">{featured.data.title}</h2>
+							<p class="blog-featured-excerpt">
+								{featured.data.excerpt ?? featured.data.metaDescription}
+							</p>
+							<span class="blog-card-cta">{s.featuredCta}</span>
+						</div>
+					</a>
+				</div>
+			</section>
+		)}
+
+		<section class="blog-topics" aria-labelledby="topics-heading">
+			<div class="blog-topics-inner">
+				<p class="blog-topics-heading" id="topics-heading">{s.topicsHeading}</p>
+				<div class="blog-topics-grid">
+					{topics.map((topic) => (
+						<div class="blog-topic" id={`topic-${topic.id}`}>
+							<h2 class="blog-topic-title">{topic.title}</h2>
+							<p class="blog-topic-blurb">{topic.blurb}</p>
+							{topic.links.length > 0 && (
+								<ul class="blog-topic-list">
+									{topic.links.map((link) => (
+										<li>
+											<a href={p(`/blog/${link.slug}`)}>{link.title}</a>
+										</li>
+									))}
+								</ul>
+							)}
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="blog-grid-section" aria-label={s.allArticles}>
+			<div class="blog-grid-header">
+				<h2 class="blog-grid-heading">{s.allArticles}</h2>
+				<p class="blog-grid-count">{s.guidesCount.replace('{count}', String(posts.length))}</p>
+			</div>
+			<div class="blog-grid">
+				{gridPosts.map((post, index) => (
+					<a class="blog-card" href={p(`/blog/${getBlogSlug(post)}`)}>
+						<div class="blog-card-image">
+							<img
+								src={post.data.image}
+								alt={post.data.imageAlt ?? post.data.title}
+								width="600"
+								height="400"
+								loading={index === 0 && !featured ? 'eager' : 'lazy'}
+								fetchpriority={index === 0 && !featured ? 'high' : undefined}
+								decoding="async"
+							/>
+						</div>
+						<div class="blog-card-body">
+							<p class="blog-card-date">
+								<time datetime={post.data.pubDate.toISOString()}>
+									{dateFmt.format(post.data.pubDate)}
+								</time>
+							</p>
+							<h3 class="blog-card-title">{post.data.title}</h3>
+							<p class="blog-card-excerpt">{post.data.excerpt ?? post.data.metaDescription}</p>
+							<span class="blog-card-cta">{s.readArticle}</span>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<section class="blog-hub-cta" aria-labelledby="hub-cta-heading">
+			<div class="blog-hub-cta-inner">
+				<h2 class="blog-hub-cta-title" id="hub-cta-heading">{s.hubCtaTitle}</h2>
+				<p class="blog-hub-cta-body">{s.hubCtaBody}</p>
+				<div class="blog-hub-cta-buttons">
+					<a class="blog-hub-cta-btn blog-hub-cta-btn--primary" href={p('/contact')}>{s.ctaContact}</a>
+					<a class="blog-hub-cta-btn" href={p('/license-free-rent')}>{s.ctaLicenseFree}</a>
+					<a class="blog-hub-cta-btn" href={p('/rent-with-skipper')}>{s.ctaSkipper}</a>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer lang={lang} />
+</body>
+
+<style is:global>
+	*, *::before, *::after { box-sizing: border-box; }
+	html { scroll-behavior: smooth; }
+	body { margin: 0; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+	body.blog-body { padding-top: 0; }
+</style>
+
+<style>
+	.blog-page { min-height: 100vh; background: #fdfcf9; }
+	.page-hero {
+		position: relative;
+		width: 100%;
+		min-height: 48vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		overflow: hidden;
+		padding-top: 5rem;
+	}
+	.page-hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: url('/images/IMG_6416.jpeg') center/cover no-repeat;
+		opacity: 0.32;
+	}
+	.page-hero-content {
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		color: #fff;
+		padding: 3.5rem 1.5rem;
+		max-width: 860px;
+		width: 100%;
+	}
+	.breadcrumbs--hero ol { justify-content: center; margin-bottom: 1rem; }
+	.breadcrumbs ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		align-items: center;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		font-size: 0.85rem;
+		opacity: 0.92;
+	}
+	.breadcrumbs a {
+		color: #fff;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+		padding-bottom: 1px;
+	}
+	.breadcrumbs a:hover { border-bottom-color: #fff; }
+	.breadcrumbs [aria-current="page"] { opacity: 0.85; }
+	.page-hero-title {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: clamp(2rem, 5vw, 3.4rem);
+		font-weight: 600;
+		line-height: 1.15;
+		margin: 0 0 1rem;
+	}
+	.page-hero-intro {
+		margin: 0 auto;
+		max-width: 42rem;
+		font-size: clamp(1rem, 2vw, 1.15rem);
+		line-height: 1.65;
+		opacity: 0.94;
+	}
+
+	.blog-featured {
+		padding: 3.5rem 1.5rem 0;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.blog-featured-label {
+		margin: 0 0 1rem;
+		font-size: 0.8rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: #0a5a6a;
+		font-weight: 600;
+	}
+	.blog-featured-card {
+		display: grid;
+		grid-template-columns: 1.15fr 1fr;
+		gap: 0;
+		background: #fff;
+		border: 1px solid #ece8db;
+		border-radius: 14px;
+		overflow: hidden;
+		text-decoration: none;
+		color: inherit;
+		box-shadow: 0 4px 18px rgba(6, 66, 80, 0.06);
+		transition: transform 0.25s ease, box-shadow 0.25s ease;
+	}
+	.blog-featured-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 12px 28px rgba(6, 66, 80, 0.14);
+	}
+	.blog-featured-image { aspect-ratio: 16 / 10; overflow: hidden; }
+	.blog-featured-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+	.blog-featured-body {
+		padding: 2rem 2rem 2.25rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.blog-featured-title {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: clamp(1.5rem, 2.5vw, 2rem);
+		line-height: 1.25;
+		margin: 0 0 0.85rem;
+		color: #064250;
+		font-weight: 600;
+	}
+	.blog-featured-excerpt {
+		font-size: 1.02rem;
+		line-height: 1.6;
+		color: #4a5a60;
+		margin: 0 0 1.35rem;
+	}
+
+	.blog-topics {
+		padding: 3.5rem 1.5rem 0;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.blog-topics-heading {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: clamp(1.5rem, 2.8vw, 2rem);
+		margin: 0 0 1.5rem;
+		color: #064250;
+		font-weight: 600;
+	}
+	.blog-topics-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+	}
+	.blog-topic {
+		background: #fff;
+		border: 1px solid #ece8db;
+		border-radius: 14px;
+		padding: 1.5rem 1.4rem 1.6rem;
+	}
+	.blog-topic-title {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: 1.2rem;
+		margin: 0 0 0.6rem;
+		color: #064250;
+		font-weight: 600;
+	}
+	.blog-topic-blurb {
+		margin: 0 0 1rem;
+		font-size: 0.95rem;
+		line-height: 1.55;
+		color: #4a5a60;
+	}
+	.blog-topic-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.55rem;
+	}
+	.blog-topic-list a {
+		color: #0a5a6a;
+		text-decoration: none;
+		font-size: 0.95rem;
+		line-height: 1.4;
+		border-bottom: 1px solid transparent;
+	}
+	.blog-topic-list a:hover {
+		border-bottom-color: #0a5a6a;
+	}
+
+	.blog-grid-section {
+		padding: 3.5rem 1.5rem 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.blog-grid-header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: 2rem;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	.blog-grid-heading {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: clamp(1.7rem, 3vw, 2.3rem);
+		margin: 0;
+		color: #064250;
+		font-weight: 600;
+	}
+	.blog-grid-count {
+		margin: 0;
+		font-size: 0.85rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: #0a5a6a;
+		font-weight: 500;
+	}
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 2rem;
+	}
+	.blog-card {
+		display: flex;
+		flex-direction: column;
+		background: #fff;
+		border-radius: 14px;
+		overflow: hidden;
+		text-decoration: none;
+		color: inherit;
+		border: 1px solid #ece8db;
+		box-shadow: 0 4px 18px rgba(6, 66, 80, 0.06);
+		transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+	}
+	.blog-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 28px rgba(6, 66, 80, 0.14);
+		border-color: #d6d2c6;
+	}
+	.blog-card-image { aspect-ratio: 16 / 10; overflow: hidden; }
+	.blog-card-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.5s ease;
+	}
+	.blog-card:hover .blog-card-image img { transform: scale(1.04); }
+	.blog-card-body {
+		padding: 1.5rem 1.5rem 1.75rem;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+	.blog-card-date {
+		font-size: 0.78rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: #0a5a6a;
+		margin: 0 0 0.7rem;
+		font-weight: 500;
+	}
+	.blog-card-title {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: 1.35rem;
+		line-height: 1.25;
+		margin: 0 0 0.75rem;
+		color: #064250;
+		font-weight: 600;
+	}
+	.blog-card-excerpt {
+		font-size: 0.97rem;
+		line-height: 1.55;
+		color: #4a5a60;
+		margin: 0 0 1.25rem;
+		flex: 1;
+	}
+	.blog-card-cta {
+		color: #0a5a6a;
+		font-weight: 500;
+		font-size: 0.95rem;
+		align-self: flex-start;
+	}
+
+	.blog-hub-cta {
+		padding: 1rem 1.5rem 4.5rem;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.blog-hub-cta-inner {
+		background: linear-gradient(135deg, #064250 0%, #0a5a6a 100%);
+		color: #fff;
+		border-radius: 14px;
+		padding: 2.5rem 2rem;
+		text-align: center;
+	}
+	.blog-hub-cta-title {
+		font-family: 'Plus Jakarta Sans', sans-serif;
+		font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+		margin: 0 0 0.75rem;
+		font-weight: 600;
+	}
+	.blog-hub-cta-body {
+		margin: 0 auto 1.5rem;
+		max-width: 40rem;
+		line-height: 1.6;
+		opacity: 0.94;
+	}
+	.blog-hub-cta-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		justify-content: center;
+	}
+	.blog-hub-cta-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.75rem 1.15rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.95rem;
+		border: 1px solid rgba(255, 255, 255, 0.45);
+		color: #fff;
+		background: transparent;
+		transition: background 0.2s ease, border-color 0.2s ease;
+	}
+	.blog-hub-cta-btn:hover {
+		background: rgba(255, 255, 255, 0.1);
+		border-color: #fff;
+	}
+	.blog-hub-cta-btn--primary {
+		background: #fff;
+		color: #064250;
+		border-color: #fff;
+	}
+	.blog-hub-cta-btn--primary:hover {
+		background: #f3f1ea;
+	}
+
+	@media (max-width: 900px) {
+		.blog-featured-card { grid-template-columns: 1fr; }
+		.blog-topics-grid { grid-template-columns: 1fr; }
+	}
+	@media (max-width: 800px) {
+		.page-hero-title { white-space: normal; }
+	}
+</style>

@@ -1,7 +1,7 @@
 ---
-title: "No License Boat Rental in Zakynthos: How It Works"
-metaTitle: "No License Boat Rental Zakynthos: How It Works"
-metaDescription: "Rent a boat in Zakynthos with no license required. Learn how self drive rentals work, what is included, and how to book your day on the water."
+title: "Do You Need a Boat Licence in Zakynthos? Rules Explained"
+metaTitle: "Do You Need a Boat Licence in Zakynthos? Rules Guide"
+metaDescription: "Find out when you can rent a boat in Zakynthos without a licence, which boats qualify, what the safety briefing covers, and which documents to bring."
 excerpt: "Renting a boat in Zakynthos does not require a license. If you have never sailed before and you are wondering whether you can actually get behind the wheel of a speedboat and explore the island on you"
 image: "/images/license-free-hero.png"
 imageAlt: "Self-drive license-free speedboat ready for rental in Zakynthos"
@@ -46,7 +46,7 @@ Self-drive rentals come equipped with everything you need for a comfortable day 
 
 ### What is not included
 
-Fuel is not included in the rental price. You pay for fuel separately based on how much you use. This is standard practice for self-drive boat rentals in Zakynthos and across Greece.
+Fuel is not included in the rental price. You pay for fuel separately based on how much you use. The [Zakynthos boat rental price guide](/blog/zakynthos-boat-rental-prices-cost-guide) explains how duration, boat choice, fuel and skipper service change the total you compare.
 
 ## How Long Can You Rent the Boat
 

@@ -27,7 +27,7 @@ No two runs of this route are identical. Sea conditions, group preferences, and 
 
 ### Navagio Shipwreck Beach
 
-The north coast leg starts with the most iconic stop on the island. A [Navagio Shipwreck boat tour](/navagio-shipwreck-boat-tour) reaches a closed limestone cove accessible only from the sea. The rusted wreck of the MV Panagiotis has been on this beach since 1980, and the combination of white sand, turquoise water, and sheer cliff walls makes it one of the most visually striking places in the whole of Greece. On a full day tour there is enough time to anchor properly, swim, and take it all in without rushing.
+The north coast leg starts with the most iconic stop on the island. A [Navagio Shipwreck boat tour](/navagio-shipwreck-boat-tour) gives you the sea-level view into the limestone cove. The rusted wreck of the MV Panagiotis has been on the beach since 1980, and the combination of white shore, turquoise water, and sheer cliff walls makes it one of the most visually striking places in Greece. In 2026, landing and swimming inside the restricted cove are prohibited, so the route pauses at the official viewing distance before continuing to an approved swim stop.
 
 ### Blue Caves
 
@@ -62,7 +62,7 @@ The skipper's local knowledge is also a genuine advantage on an 8-hour trip. Kno
 
 ## What to Bring
 
-The day is long and the sun is relentless in peak season. Pack accordingly:
+The day is long and the sun is relentless in peak season. Use the complete [Zakynthos boat-trip packing checklist](/blog/what-to-bring-zakynthos-boat-trip), then make sure these full-day essentials are covered:
 
 - High factor sunscreen, hat, and sunglasses
 - Swimwear and at least one dry change of clothes for the return

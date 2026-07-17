@@ -1,7 +1,7 @@
 ---
-title: "Private Boat Cruise with Skipper in Zakynthos: When It Is Worth It"
-metaTitle: "Private Boat Cruise with Skipper in Zakynthos"
-metaDescription: "When is a private boat cruise with skipper in Zakynthos worth it? Find out who benefits most from the skipper option and when self drive is enough."
+title: "Is a Skipper Worth It for a Zakynthos Boat Rental?"
+metaTitle: "Is a Skipper Worth It for a Zakynthos Boat Rental?"
+metaDescription: "Compare the real benefits of hiring a skipper in Zakynthos, from route knowledge and relaxed cruising to group size, weather and total trip cost."
 excerpt: "A private boat cruise with a skipper in Zakynthos costs more than a self-drive rental. That is the honest starting point. But for a specific type of traveller, in a specific set of circumstances, it i"
 image: "/images/image_skipper.png"
 imageAlt: "Private boat with skipper cruising along the Zakynthos coast"
@@ -39,7 +39,7 @@ An experienced skipper reads the sea in real time. They know when conditions at 
 
 ### When you want local knowledge, not just a route map
 
-The [recommended routes](/recommended-routes) give you the main destinations and what to expect at each one. A skipper gives you something different: the specific cave that catches the light at 4pm, the cove that is always calm when the north coast is rough, the exact spot to anchor at Navagio before the tour boats arrive. That knowledge is only available from someone who has made these runs hundreds of times.
+The [recommended routes](/recommended-routes) give you the main destinations and what to expect at each one. A skipper adds the local judgement needed to reach lesser-known swim stops safely and adapt when conditions change. The guide to [hidden beaches and coves by boat](/blog/hidden-beaches-zakynthos-by-boat) shows why this matters beyond the headline landmarks.
 
 ## When Self-Drive Is the Better Choice
 

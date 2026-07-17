@@ -1,7 +1,7 @@
 ---
-title: "Turtle Island, Keri Caves and Mizithres Rocks by Boat"
-metaTitle: "Turtle Island, Keri Caves and Mizithres by Boat"
-metaDescription: "Explore Turtle Island, Keri Caves, and Mizithres Rocks by boat. The complete south coast route in Zakynthos with swimming spots, caves, and turtle sightings."
+title: "South Zakynthos Boat Route: Turtle Island, Keri and Mizithres"
+metaTitle: "South Zakynthos Boat Route: Keri & Turtle Island"
+metaDescription: "Plan a south Zakynthos boat route to Turtle Island, Keri Caves and Mizithres. Compare stops, swimming, duration and self-drive or skipper options."
 excerpt: "The south coast of Zakynthos is a different world from the north. Where Navagio is dramatic and wide open, the south offers something more intimate: narrow sea caves, enormous rock formations rising o"
 image: "/images/IMG_6507.jpeg"
 imageAlt: "Turtle Island and the Keri Caves seen from a boat in southern Zakynthos"
@@ -21,7 +21,7 @@ Approaching the island by boat gives you a view of the coastline that most visit
 
 ### Swimming near Turtle Island
 
-Swimming in this area is permitted but the rules of the marine park apply. You cannot anchor on the beach itself or approach nesting areas. A self-drive briefing covers the areas you can and cannot go. Spotting a sea turtle while in the water is genuinely possible here and is one of those experiences that stays with you.
+Swimming is allowed only where the marked zone permits it, and the rules of the marine park apply throughout the bay. Do not approach, touch, feed, or swim after a turtle. A self-drive briefing covers the areas you can enter and where you may stop. Read the [Zakynthos Marine Park boat rules](/blog/zakynthos-marine-park-boat-rules) before the day, then follow the current signs and briefing on the water.
 
 ## Keri Caves: Sea Caves on the Southwest Coast
 
@@ -73,9 +73,9 @@ This route is available as a [self-drive rental](/license-free-rent) or as a [pr
 
 **Is it guaranteed I will see sea turtles near Turtle Island?** It is not guaranteed, but the chances are good, particularly in the morning. The bay is one of the most active nesting areas in the Mediterranean.
 
-**Can I land on Turtle Island?** Landing on the island itself is restricted to protect nesting sea turtles. Swimming in the water around it is permitted within the marine park rules.
+**Can I land on Turtle Island?** Access is controlled to protect nesting turtles. Daytime access may be permitted on the designated section of Marathonisi beach, but anchoring, beach equipment, nesting areas and opening hours are regulated. Follow the current buoys, signs and operator instructions.
 
-**Are the Keri Caves accessible in a self-drive boat?** Yes. The main cave openings are wide enough for a small speedboat to enter. The briefing covers how to navigate into and out of the caves safely.
+**Are the Keri Caves accessible in a self-drive boat?** Some self-drive routes reach the Keri coast, but cave entry depends on the chosen boat, the operator's boundaries and sea conditions. Do not enter any opening unless the briefing explicitly allows it on the day.
 
 **How far is this route from the main port in Zakynthos Town?** The south coast route is approximately 45 minutes to 1 hour from the port at a comfortable speed.
 

@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import SEOHead from '../../../components/SEOHead.astro';
+import BlogPostBody from '../../../components/pages/BlogPostBody.astro';
+import { SITE_URL, isLocale, type Locale } from '../../../i18n/config';
+import {
+	buildBlogPostMeta,
+	compareBlogPosts,
+	getAvailableBlogLocales,
+	getBlogSlug,
+} from '../../../lib/blog-i18n';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blogI18n');
+	return posts.map((post) => ({
+		params: { lang: post.data.locale, slug: post.data.sourceSlug },
+		props: { post, lang: post.data.locale },
+	}));
+}
+
+const { post, lang: langProp } = Astro.props;
+const langParam = Astro.params.lang;
+const lang: Locale = isLocale(langParam) ? langParam : langProp;
+const slug = post.data.sourceSlug;
+const localePosts = (await getCollection('blogI18n'))
+	.filter((entry) => entry.data.locale === lang)
+	.sort(compareBlogPosts);
+const related = localePosts.filter((entry) => entry.data.sourceSlug !== slug).slice(0, 3);
+const availableLocales = await getAvailableBlogLocales(slug);
+const meta = buildBlogPostMeta(post, lang);
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={post.data.metaTitle ?? post.data.title}
+			description={post.data.metaDescription}
+			lang={lang}
+			basePath={meta.basePath}
+			translated={availableLocales.length > 1}
+			availableLocales={availableLocales.length > 1 ? availableLocales : undefined}
+			ogImage={`${SITE_URL}${meta.heroImage}`}
+			ogType="article"
+		/>
+		<meta property="article:published_time" content={meta.published} />
+		<meta property="article:modified_time" content={meta.updated} />
+		<meta property="article:author" content="Ilias, Founder & Skipper, Sota Travel Zakynthos" />
+		<meta property="article:section" content={post.data.category ?? 'Boat Rental Guides'} />
+		<link rel="preload" as="image" href={meta.heroImage} fetchpriority="high" />
+		<script type="application/ld+json" set:html={JSON.stringify(meta.articleSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(meta.breadcrumbSchema)} />
+		{meta.faqSchema && <script type="application/ld+json" set:html={JSON.stringify(meta.faqSchema)} />}
+	</head>
+	<BlogPostBody lang={lang} post={post} related={related} />
+</html>

@@ -34,21 +34,24 @@ const p = (path: string) => localizePath(path, lang);
 					<a href={p('/sunset-boat-tour')} role="menuitem">{t('nav.tourSunset')}</a>
 				</div>
 			</div>
-			<a href="/blog">{t('nav.blog')}</a>
+			<a href={p('/blog')}>{t('nav.blog')}</a>
 			<a href={p('/faq')}>{t('nav.faq')}</a>
 			<a href={p('/contact')}>{t('nav.contact')}</a>
 			<div class="nav-lang-mobile" role="group" aria-label={t('nav.language')}>
-				{LOCALES.map((l) => (
-					<a
-						href={localizePath(basePath, l as Locale)}
-						class:list={['nav-lang-mobile-link', { 'nav-lang-mobile-link--active': l === lang }]}
-						hreflang={l}
-						aria-current={l === lang ? 'true' : undefined}
-					>
-						<img class="nav-lang-flag" src={`/flags/${LOCALE_FLAG[l as Locale]}.svg`} alt="" width="26" height="26" loading="lazy" />
-						<span>{LOCALE_LABEL[l as Locale]}</span>
-					</a>
-				))}
+				<p class="nav-lang-mobile-label">{t('nav.language')}</p>
+				<div class="nav-lang-mobile-flags">
+					{LOCALES.map((l) => (
+						<a
+							href={localizePath(basePath, l as Locale)}
+							class:list={['nav-lang-mobile-link', { 'nav-lang-mobile-link--active': l === lang }]}
+							hreflang={l}
+							aria-current={l === lang ? 'true' : undefined}
+						>
+							<img class="nav-lang-flag" src={`/flags/${LOCALE_FLAG[l as Locale]}.svg`} alt="" width="26" height="26" loading="lazy" />
+							<span>{LOCALE_LABEL[l as Locale]}</span>
+						</a>
+					))}
+				</div>
 			</div>
 		</nav>
 		<a href={p('/tours')} class="nav-book-btn">{t('nav.bookNow')}</a>
@@ -244,7 +247,7 @@ const p = (path: string) => localizePath(path, lang);
 		visibility: hidden;
 		transform: translateY(-6px);
 		transition: opacity 0.18s, visibility 0.18s, transform 0.18s;
-		z-index: 300;
+		z-index: 10000;
 	}
 	.nav-lang:hover .nav-lang-menu,
 	.nav-lang:focus-within .nav-lang-menu,
@@ -277,6 +280,22 @@ const p = (path: string) => localizePath(path, lang);
 	}
 	.nav-lang-mobile {
 		display: none;
+	}
+	.nav-lang-mobile-label {
+		width: 100%;
+		margin: 0 0 0.35rem;
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		opacity: 0.75;
+	}
+	.nav-lang-mobile-flags {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.6rem;
+		width: 100%;
 	}
 	.nav-lang-mobile-link {
 		display: flex;
@@ -409,7 +428,6 @@ const p = (path: string) => localizePath(path, lang);
 		.nav-links {
 			display: none;
 		}
-		/* Full-screen mobile menu */
 		.nav-contact {
 			display: none;
 		}
@@ -422,9 +440,8 @@ const p = (path: string) => localizePath(path, lang);
 		}
 		.hero-header--menu-open .nav-lang-mobile {
 			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: 0.6rem;
+			flex-direction: column;
+			align-items: center;
 			margin-top: auto;
 			padding-top: 1.75rem;
 			border-top: 1px solid rgba(255, 255, 255, 0.15);

@@ -1,8 +1,8 @@
 ---
-title: "Private Yacht Cruise in Zakynthos for Proposals, Birthdays and Anniversaries"
-metaTitle: "Private Yacht Cruise Zakynthos: Proposals and More"
-metaDescription: "Plan a proposal, birthday, or anniversary on a private yacht in Zakynthos. Tailored cruises with crew for special occasions on the Ionian Sea."
-excerpt: "Some days need to be more than just a good boat trip. A marriage proposal on the water. A milestone birthday with the people who matter most. An anniversary that deserves more than a dinner reservatio"
+title: "How to Plan a Proposal or Birthday on a Zakynthos Yacht"
+metaTitle: "Plan a Proposal or Birthday on a Zakynthos Yacht"
+metaDescription: "Plan a Zakynthos yacht proposal, birthday or anniversary with the right route, timing, food and personal details. Use this practical booking checklist."
+excerpt: "A practical guide to planning a proposal, birthday or anniversary on a Zakynthos yacht, including route timing, food, personal details and weather backup."
 image: "/images/IMG_0111.jpeg"
 imageAlt: "Private yacht set up for a celebration cruise off Zakynthos"
 pubDate: 2026-05-18
@@ -31,7 +31,7 @@ Zakynthos offers some of the most naturally dramatic backdrops in the Mediterran
 
 ### Why the water works for proposals
 
-A private yacht gives you control over the moment in a way that a beach or a restaurant cannot. You can time the proposal to coincide with a specific location: anchored inside a sea cave with the blue water around you, drifting past the cliffs at Navagio, or sitting at Mizithres Rocks as the sun drops below the horizon. The setting is private, the timing is yours, and the memory is built into a place that is genuinely extraordinary.
+A private yacht gives you control over the moment in a way that a beach or a restaurant cannot. You can time the proposal to coincide with a specific location: paused outside a sea cave with blue water around you, viewing the cliffs at Navagio from the permitted distance, or sitting near Mizithres Rocks as the sun drops below the horizon. The setting is private, the timing is yours, and the memory is built into a place that is genuinely extraordinary.
 
 ### Romantic sunset route
 

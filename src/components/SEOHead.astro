@@ -21,6 +21,8 @@ interface Props {
   basePath?: string;
   /** Whether de/fr/it translations of this page exist (emit hreflang alternates). */
   translated?: boolean;
+  /** Limit hreflang to locales that actually exist (defaults to all LOCALES when translated). */
+  availableLocales?: Locale[];
 }
 
 const {
@@ -33,15 +35,23 @@ const {
   lang = 'en',
   basePath,
   translated = false,
+  availableLocales,
 } = Astro.props;
 
 const canonicalURL = basePath
   ? absoluteUrl(localizePath(basePath, lang))
   : canonical || new URL(Astro.url.pathname, Astro.site).href;
 
+const hreflangLocales =
+  availableLocales ??
+  (translated && basePath ? ([...LOCALES] as Locale[]) : []);
+
 const alternates =
   translated && basePath
-    ? LOCALES.map((l) => ({ hreflang: l, href: absoluteUrl(localizePath(basePath, l as Locale)) }))
+    ? hreflangLocales.map((l) => ({
+        hreflang: l,
+        href: absoluteUrl(localizePath(basePath, l)),
+      }))
     : [];
 ---
 

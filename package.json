@@ -7,7 +7,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "compress-videos": "bash scripts/compress-videos.sh"
+    "compress-videos": "bash scripts/compress-videos.sh",
+    "translate:blog": "node scripts/translate-blog.mjs",
+    "check:blog-translations": "node scripts/check-blog-translations.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
@@ -25,6 +27,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "@vitalets/google-translate-api": "^9.2.1",
     "typescript": "^5.9.3"
   }
 }

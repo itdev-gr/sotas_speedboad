@@ -1,0 +1,114 @@
+---
+import { getCollection } from 'astro:content';
+import SEOHead from '../../../components/SEOHead.astro';
+import BlogIndexBody from '../../../components/pages/BlogIndexBody.astro';
+import { blog as blogStrings } from '../../../i18n/pages/blog';
+import { LOCALES, NON_DEFAULT_LOCALES, SITE_URL, isLocale, type Locale } from '../../../i18n/config';
+import { compareBlogPosts, getBlogPostsForLocale, getBlogSlug } from '../../../lib/blog-i18n';
+
+export function getStaticPaths() {
+	return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const { lang: langParam } = Astro.params;
+const lang: Locale = isLocale(langParam) ? langParam : 'de';
+const posts = (await getBlogPostsForLocale(lang)).sort(compareBlogPosts);
+const s = blogStrings[lang];
+const featured = posts[0];
+const blogUrl = `${SITE_URL}/${lang}/blog`;
+
+const translatedLocales = new Set<Locale>(['en']);
+const i18nPosts = await getCollection('blogI18n');
+for (const post of i18nPosts) translatedLocales.add(post.data.locale);
+const indexLocales = LOCALES.filter((locale) => translatedLocales.has(locale));
+
+const blogPostings = posts.map((post) => ({
+	'@type': 'BlogPosting' as const,
+	headline: post.data.title,
+	description: post.data.metaDescription,
+	url: `${SITE_URL}/${lang}/blog/${getBlogSlug(post)}`,
+	datePublished: post.data.pubDate.toISOString(),
+	dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+	image: `${SITE_URL}${post.data.image}`,
+}));
+
+const itemListSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ItemList',
+	name: s.heroTitle,
+	itemListElement: posts.map((post, i) => ({
+		'@type': 'ListItem',
+		position: i + 1,
+		url: `${SITE_URL}/${lang}/blog/${getBlogSlug(post)}`,
+		name: post.data.title,
+	})),
+};
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{ '@type': 'ListItem', position: 1, name: s.home, item: `${SITE_URL}/${lang}/` },
+		{ '@type': 'ListItem', position: 2, name: s.blog, item: blogUrl },
+	],
+};
+
+const blogSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Blog',
+	name: s.heroTitle,
+	description: s.seoIndexDescription,
+	url: blogUrl,
+	inLanguage: lang,
+	publisher: {
+		'@type': 'Organization',
+		name: 'Sota Travel Zakynthos',
+		logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/sota-travel-logo.svg` },
+	},
+	blogPost: blogPostings,
+};
+
+const collectionSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'CollectionPage',
+	name: s.heroTitle,
+	description: s.seoIndexDescription,
+	url: blogUrl,
+	inLanguage: lang,
+	isPartOf: {
+		'@type': 'WebSite',
+		name: 'Sota Travel Zakynthos',
+		url: SITE_URL,
+	},
+	mainEntity: {
+		'@type': 'ItemList',
+		itemListElement: posts.map((post, i) => ({
+			'@type': 'ListItem',
+			position: i + 1,
+			url: `${SITE_URL}/${lang}/blog/${getBlogSlug(post)}`,
+			name: post.data.title,
+		})),
+	},
+};
+---
+
+<html lang={lang}>
+	<head>
+		<SEOHead
+			title={s.seoIndexTitle}
+			description={s.seoIndexDescription}
+			lang={lang}
+			basePath="/blog"
+			translated={indexLocales.length > 1}
+			availableLocales={indexLocales.length > 1 ? indexLocales : undefined}
+			ogImage={featured ? `${SITE_URL}${featured.data.image}` : undefined}
+			ogType="website"
+		/>
+		{featured && <link rel="preload" as="image" href={featured.data.image} fetchpriority="high" />}
+		<script type="application/ld+json" set:html={JSON.stringify(collectionSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(blogSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+	</head>
+	<BlogIndexBody lang={lang} posts={posts} />
+</html>
