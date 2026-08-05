@@ -3,8 +3,8 @@ title: "Can You Visit Navagio Beach in 2026? Boat Access Guide"
 metaTitle: "Can You Visit Navagio Beach in 2026? Boat Access Guide"
 metaDescription: "Navagio Beach is closed to landings and swimming in 2026. Learn how boat viewing works, the current restrictions and how to add the Blue Caves."
 excerpt: "Navagio remains open for offshore viewing in 2026, while landing and swimming are prohibited. This guide explains the restrictions and Blue Caves route."
-image: "/images/IMG_6566.jpeg"
-imageAlt: "Navagio Shipwreck Beach in Zakynthos viewed from the boat anchorage"
+image: "/images/license-free-hero.webp"
+imageAlt: "Rental boats anchored at Navagio Shipwreck Beach in Zakynthos"
 pubDate: 2026-05-18
 order: 3
 ---

@@ -3,8 +3,8 @@ title: "Peut-on visiter la plage de Navagio en 2026 ?"
 metaTitle: "Navagio en 2026 : accès en bateau et restrictions"
 metaDescription: "En 2026, débarquement et baignade restent interdits à Navagio. Découvrez l'observation en bateau, les restrictions et l'itinéraire avec les Blue Caves."
 excerpt: "Navagio reste visible depuis la mer en 2026, mais débarquement et baignade sont interdits. Voici les règles et l'itinéraire avec les Blue Caves."
-image: "/images/IMG_6566.jpeg"
-imageAlt: "Plage de Navagio et son épave à Zakynthos vues depuis la zone d'observation en bateau"
+image: "/images/license-free-hero.webp"
+imageAlt: "Rental boats anchored at Navagio Shipwreck Beach in Zakynthos"
 pubDate: 2026-05-18
 order: 3
 locale: "fr"

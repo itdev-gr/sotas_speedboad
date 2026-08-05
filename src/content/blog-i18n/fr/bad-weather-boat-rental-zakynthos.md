@@ -3,8 +3,8 @@ title: "Mauvais temps lors de votre location de bateau à Zakynthos : à quoi s'
 metaTitle: "Mauvais temps lors de votre location de bateau à Zakynthos : à quoi s'attendre"
 metaDescription: "Inquiet à propos du vent le jour de votre location de bateau à Zakynthos ? La plupart des sorties ont lieu avec un changement d'itinéraire. Voici comment fonctionnent le report et les remboursements."
 excerpt: "Réserver une location de bateau à Zakynthos, puis voir un ciel gris s'installer le matin de votre sortie, c'est un moment décevant. Vous attendiez ce jour avec impatience. Vous aviez planifié l'itinéraire."
-image: "/images/section-coast.png"
-imageAlt: "Côte de Zakynthos vue depuis un bateau par temps calme"
+image: "/images/hero2.webp"
+imageAlt: "Calm turquoise water and rocky Zakynthos coastline on a settled day"
 pubDate: 2026-06-19
 order: 11
 locale: "fr"

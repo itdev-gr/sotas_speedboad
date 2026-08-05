@@ -3,8 +3,8 @@ title: "Zakynthos Boat Rental Prices: 2026 Cost Guide"
 metaTitle: "Zakynthos Boat Rental Prices: Complete 2026 Cost Guide"
 metaDescription: "Zakynthos boat rental prices start at €180. Compare 2026 duration, fuel, skipper costs, inclusions and key questions before booking to avoid surprise extras."
 excerpt: "A practical guide to Zakynthos boat rental prices in 2026, covering base hire, fuel, duration, skipper costs, inclusions and fair quote comparisons."
-image: "/images/IMG_6416.webp"
-imageAlt: "Aerial view of a private rental speedboat on deep blue water in Zakynthos"
+image: "/images/self-drive-boat.webp"
+imageAlt: "Self-drive rental boat on the water, a common Zakynthos hire format"
 pubDate: 2026-07-17
 order: 16
 ---

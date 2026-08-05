@@ -3,8 +3,8 @@ title: "Утренняя или дневная аренда лодки на Zaky
 metaTitle: "Утренняя или дневная аренда лодки на Zakynthos: лучшее время"
 metaDescription: "Утро или послеобеденное время для аренды лодки на Zakynthos? Утром море спокойнее, днём лучше свет на Navagio. Как выбрать."
 excerpt: "Большинство людей бронируют лодку на Zakynthos и не задумываются о времени выхода. Но время отправления из марины меняет морские условия, толпы на остановках и качество фотографий."
-image: "/images/IMG_6416.jpeg"
-imageAlt: "Скоростная лодка у побережья Zakynthos в утреннем свете"
+image: "/images/unnamed.webp"
+imageAlt: "Navagio Bay in bright daylight, a common morning boat destination"
 pubDate: 2026-06-19
 order: 14
 locale: "ru"

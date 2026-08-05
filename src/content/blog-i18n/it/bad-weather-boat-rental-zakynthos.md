@@ -3,8 +3,8 @@ title: "Maltempo sulla tua barca a noleggio a Zante: cosa aspettarti"
 metaTitle: "Maltempo sulla tua barca a noleggio a Zante: cosa aspettarti"
 metaDescription: "Preoccupato per il vento durante il giorno del noleggio della barca a Zante? La maggior parte dei viaggi viene ancora effettuata con un cambio di percorso. Ecco come funzionano la riprogrammazione e i rimborsi."
 excerpt: "Prenotare un noleggio di barche a Zante e poi guardare un cielo grigio che si alza la mattina del tuo viaggio è un momento strabiliante. Non vedevi l'ora che arrivasse questo giorno. Hai pianificato il percorso."
-image: "/images/section-coast.png"
-imageAlt: "La costa di Zante vista da una barca in una giornata tranquilla"
+image: "/images/hero2.webp"
+imageAlt: "Calm turquoise water and rocky Zakynthos coastline on a settled day"
 pubDate: 2026-06-19
 order: 11
 locale: "it"

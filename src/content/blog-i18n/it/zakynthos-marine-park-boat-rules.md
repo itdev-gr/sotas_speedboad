@@ -3,8 +3,8 @@ title: "Regole nautiche del Parco Marino di Zakynthos"
 metaTitle: "Regole nautiche del Parco Marino di Zakynthos"
 metaDescription: "Segui le regole nautiche del Parco Marino di Zakynthos: zone a 6 nodi, distanze dalle tartarughe, limiti di ormeggio e spiagge protette."
 excerpt: "Una guida pratica alla navigazione nelle zone protette, alla bassa velocità e all'osservazione responsabile delle tartarughe Caretta caretta nel Parco Marino di Zakynthos."
-image: "/images/IMG_6566.webp"
-imageAlt: "Piccola barca a noleggio ancorata in acque limpide accanto alle scogliere calcaree di Zakynthos"
+image: "/images/skipper-drive.webp"
+imageAlt: "Boat under way in Zakynthos waters governed by marine park rules"
 pubDate: 2026-07-17
 order: 18
 locale: "it"

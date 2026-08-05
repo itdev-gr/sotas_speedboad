@@ -3,8 +3,8 @@ title: "Morgens oder nachmittags Bootsverleih auf Zakynthos: Die beste Zeit"
 metaTitle: "Morgens oder nachmittags Bootsverleih auf Zakynthos: Die beste Zeit"
 metaDescription: "Morgens oder nachmittags für Ihren Zakynthos-Bootsverleih? Morgens ruhigere See, nachmittags besseres Navagio-Licht. So treffen Sie die richtige Wahl."
 excerpt: "Die meisten buchen ihren Zakynthos-Bootsverleih, ohne über die Abfahrtszeit nachzudenken. Doch die Zeit, zu der Sie den Yachthafen verlassen, verändert Seebedingungen, Andrang an jedem Stopp und die Qualität Ihrer Fotos."
-image: "/images/IMG_6416.jpeg"
-imageAlt: "Speedboot an der Zakynthos-Küste im Morgenlicht"
+image: "/images/unnamed.webp"
+imageAlt: "Navagio Bay in bright daylight, a common morning boat destination"
 pubDate: 2026-06-19
 order: 14
 locale: "de"

@@ -3,8 +3,8 @@ title: "Bad Weather on Your Zakynthos Boat Rental: What to Expect"
 metaTitle: "Bad Weather on Your Zakynthos Boat Rental: What to Expect"
 metaDescription: "Worried about wind on your boat rental day in Zakynthos? Most trips still run with a route change. Here is how rescheduling and refunds work."
 excerpt: "Booking a boat rental in Zakynthos and then watching a grey sky roll in on the morning of your trip is a gut-dropping moment. You have been looking forward to this day. You have planned the route."
-image: "/images/section-coast.png"
-imageAlt: "Zakynthos coastline seen from a boat on a calm day"
+image: "/images/hero2.webp"
+imageAlt: "Calm turquoise water and rocky Zakynthos coastline on a settled day"
 pubDate: 2026-06-19
 order: 11
 ---

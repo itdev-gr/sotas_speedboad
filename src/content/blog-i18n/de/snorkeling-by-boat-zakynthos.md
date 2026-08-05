@@ -4,7 +4,7 @@ metaTitle: "Beste Schnorchelplätze mit dem Boot auf Zakynthos: Lokaler Führer"
 metaDescription: "Bestes Schnorcheln mit dem Boot auf Zakynthos: ruhige Stopps an der Südküste, Ausrüstungstipps, Marine Park-Regeln und wann ein privates Boot einer Gruppen-Schnorcheltour überlegen ist."
 excerpt: "Das beste Schnorcheln auf Zakynthos gelingt selten an einem überfüllten Strandzugang. Klares Wasser, Höhlenlicht und ruhigere Buchten belohnen ein Boot, das dort anhalten kann, wo die Sicht und der Schutz eigentlich gut sind."
 image: "/images/girlinwoater.webp"
-imageAlt: "Schwimmer im klaren türkisfarbenen Wasser vor der Küste von Zakynthos"
+imageAlt: "Boat bow above clear turquoise snorkelling water in Zakynthos"
 pubDate: 2026-08-05
 order: 23
 category: "Routes & destinations"

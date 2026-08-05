@@ -3,8 +3,8 @@ title: "Noleggio barca self-drive o con skipper a Zante: quale opzione è miglio
 metaTitle: "Noleggio barca self-drive o con skipper a Zante"
 metaDescription: "Confronta i noleggi barca self-drive e con skipper a Zante. Scopri quale opzione si adatta al tuo gruppo, al budget e al tipo di giornata che vuoi in acqua."
 excerpt: "Quando prenoti un noleggio barca a Zante, la prima vera decisione che affronti è questa: vuoi guidare la barca tu o assumere uno skipper professionista?"
-image: "/images/self-drive-boat.png"
-imageAlt: "Confronto tra noleggi barca self-drive e con skipper a Zante"
+image: "/images/license-free-hero.webp"
+imageAlt: "Fleet of self-drive rental boats at Navagio Beach in Zakynthos"
 pubDate: 2026-05-18
 order: 7
 locale: "it"

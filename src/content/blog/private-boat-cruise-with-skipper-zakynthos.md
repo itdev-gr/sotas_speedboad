@@ -3,8 +3,8 @@ title: "Is a Skipper Worth It for a Zakynthos Boat Rental?"
 metaTitle: "Is a Skipper Worth It for a Zakynthos Boat Rental?"
 metaDescription: "Compare the real benefits of hiring a skipper in Zakynthos, from route knowledge and relaxed cruising to group size, weather and total trip cost."
 excerpt: "A private boat cruise with a skipper in Zakynthos costs more than a self-drive rental. That is the honest starting point. But for a specific type of traveller, in a specific set of circumstances, it i"
-image: "/images/image_skipper.png"
-imageAlt: "Private boat with skipper cruising along the Zakynthos coast"
+image: "/images/image_skipper.webp"
+imageAlt: "Private boat with guests enjoying a cave stop on the Zakynthos coast"
 pubDate: 2026-05-18
 order: 5
 ---

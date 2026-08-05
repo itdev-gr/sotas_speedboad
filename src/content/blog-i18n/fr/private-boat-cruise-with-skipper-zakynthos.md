@@ -3,8 +3,8 @@ title: "Un skipper vaut-il le coût pour louer un bateau à Zakynthos ?"
 metaTitle: "Skipper à Zakynthos : est-ce que cela vaut le coût ?"
 metaDescription: "Comparez les avantages réels d'un skipper à Zakynthos : itinéraires, confort, taille du groupe, météo, coût total et journée de navigation sans stress."
 excerpt: "Une sortie privée avec skipper coûte plus cher qu'une location en autonomie. Découvrez dans quels cas ce supplément transforme réellement l'expérience."
-image: "/images/image_skipper.png"
-imageAlt: "Bateau privé avec skipper longeant la côte de Zakynthos"
+image: "/images/image_skipper.webp"
+imageAlt: "Private boat with guests enjoying a cave stop on the Zakynthos coast"
 pubDate: 2026-05-18
 order: 5
 locale: "fr"

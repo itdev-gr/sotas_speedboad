@@ -3,8 +3,8 @@ title: "Location de bateau le matin ou l'après-midi à Zakynthos : le meilleur 
 metaTitle: "Location de bateau le matin ou l'après-midi à Zakynthos : le meilleur moment"
 metaDescription: "Matin ou après-midi pour votre location de bateau à Zakynthos ? Le matin offre une mer plus calme, l'après-midi une meilleure lumière sur Navagio. Voici comment choisir."
 excerpt: "La plupart des gens réservent leur location de bateau à Zakynthos sans vraiment réfléchir à l'heure de départ. Pourtant, le moment où vous quittez la marina change les conditions en mer, l'affluence à chaque arrêt et la qualité des photos que vous ramènerez."
-image: "/images/IMG_6416.jpeg"
-imageAlt: "Speedboat sur la côte de Zakynthos à la lumière du matin"
+image: "/images/unnamed.webp"
+imageAlt: "Navagio Bay in bright daylight, a common morning boat destination"
 pubDate: 2026-06-19
 order: 14
 locale: "fr"

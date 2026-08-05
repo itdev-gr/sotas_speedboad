@@ -3,8 +3,8 @@ title: "Der beste private Bootstag für Paare auf Zakynthos"
 metaTitle: "Bester privater Bootstag für Paare auf Zakynthos (kein Sonnenuntergang)"
 metaDescription: "Planen Sie einen privaten Bootstag für Paare auf Zakynthos: Tagesrouten, Badestopps, Selbstfahrer vs. Skipper und wann Sonnenuntergang oder Heiratsantragskreuzfahrten besser sind."
 excerpt: "Ein privater Bootstag für Paare auf Zakynthos muss nicht unbedingt ein Sonnenuntergangspaket oder einen Heiratsantrag bedeuten. Privatsphäre am Mittag, klares Wasser und eine Route, die nie hektisch wirkt, sind oft das, was Paare tatsächlich wollen."
-image: "/images/image_skipper.webp"
-imageAlt: "Private, von einem Skipper geführte Bootsfahrt entlang der Küste von Zakynthos"
+image: "/images/IMG_0112.webp"
+imageAlt: "Private boat in turquoise water inside a Zakynthos sea cave"
 pubDate: 2026-08-05
 order: 25
 category: "Planning & costs"

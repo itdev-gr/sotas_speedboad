@@ -4,7 +4,7 @@ metaTitle: "Best Snorkeling Spots by Boat in Zakynthos: Local Guide"
 metaDescription: "Best snorkeling by boat in Zakynthos: calm south-coast stops, gear tips, Marine Park rules and when a private boat beats a group snorkel tour."
 excerpt: "The best snorkeling in Zakynthos is rarely from a packed beach entry. Clear water, cave light and quieter coves reward a boat that can stop where the visibility and shelter are actually good."
 image: "/images/girlinwoater.webp"
-imageAlt: "Swimmer in clear turquoise water off the Zakynthos coast"
+imageAlt: "Boat bow above clear turquoise snorkelling water in Zakynthos"
 pubDate: 2026-08-05
 order: 23
 category: "Routes & destinations"

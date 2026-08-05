@@ -3,8 +3,8 @@ title: "Itinéraire bateau au sud de Zakynthos : Keri et Turtle Island"
 metaTitle: "Sud de Zakynthos en bateau : Keri et Turtle Island"
 metaDescription: "Préparez votre itinéraire en bateau au sud de Zakynthos : Turtle Island, grottes de Keri, Mizithres, baignade, durée et choix avec ou sans skipper en 2026."
 excerpt: "Turtle Island, les grottes de Keri et les rochers de Mizithres composent le meilleur itinéraire en bateau sur la côte sud de Zakynthos."
-image: "/images/IMG_6507.jpeg"
-imageAlt: "Turtle Island et les grottes de Keri vues depuis un bateau au sud de Zakynthos"
+image: "/images/IMG_6507.webp"
+imageAlt: "Sea caves and limestone cliffs on the south coast of Zakynthos"
 pubDate: 2026-05-18
 order: 9
 locale: "fr"

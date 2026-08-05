@@ -3,8 +3,8 @@ title: "Частный круиз или групповой лодочный т�
 metaTitle: "Частный круиз или групповой лодочный тур на Zakynthos: что выбрать?"
 metaDescription: "Частный круиз или групповой лодочный тур на Zakynthos? Сравнение стоимости на человека, приватности и гибкости с чётким выбором для пар и групп."
 excerpt: "На каком-то этапе планирования отпуска на Zakynthos возникает вопрос: стоит ли платить за частную лодку или групповой тур делает то же самое дешевле?"
-image: "/images/image_skipper.png"
-imageAlt: "Частный лодочный круиз со шкипером у побережья Zakynthos"
+image: "/images/IMG_0111.webp"
+imageAlt: "Private boat approaching Navagio Beach away from crowded excursion traffic"
 pubDate: 2026-06-19
 order: 15
 locale: "ru"

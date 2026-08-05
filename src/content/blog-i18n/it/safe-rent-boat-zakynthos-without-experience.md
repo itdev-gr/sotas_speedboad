@@ -3,8 +3,8 @@ title: "È sicuro noleggiare una barca a Zante senza esperienza?"
 metaTitle: "È sicuro noleggiare una barca a Zante senza esperienza?"
 metaDescription: "Non hai mai guidato una barca? Un noleggio self-drive a Zante è sicuro per i principianti. Ecco cosa copre il briefing sulla sicurezza e dove puoi andare."
 excerpt: "Noleggiare una barca a Zante senza esperienza è una delle preoccupazioni più comuni che sentiamo prima di una prenotazione. La risposta breve è sì, è sicuro, e migliaia di guidatori alla prima esperienza fanno esattamente questo ogni stagione."
-image: "/images/self-drive-boat.png"
-imageAlt: "Noleggio motoscafo self-drive sulla costa di Zante"
+image: "/images/IMG_6507.webp"
+imageAlt: "Calm cave coastline and easy water conditions for first-time renters"
 pubDate: 2026-06-19
 order: 13
 locale: "it"

@@ -3,8 +3,8 @@ title: "Organiser une demande en mariage ou un anniversaire sur un yacht"
 metaTitle: "Demande en mariage sur un yacht à Zakynthos : guide"
 metaDescription: "Préparez une demande en mariage, un anniversaire ou des noces sur un yacht à Zakynthos : itinéraire, horaires, repas, détails personnels et plan B météo."
 excerpt: "Guide pratique pour organiser une demande en mariage, un anniversaire ou des noces sur un yacht à Zakynthos : parcours, horaires, repas et météo."
-image: "/images/IMG_0111.jpeg"
-imageAlt: "Yacht privé préparé pour une célébration au large de Zakynthos"
+image: "/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.webp"
+imageAlt: "Private celebration cruise at sunset off the Zakynthos coast"
 pubDate: 2026-05-18
 order: 6
 locale: "fr"

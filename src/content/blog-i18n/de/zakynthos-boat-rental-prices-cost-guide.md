@@ -3,8 +3,8 @@ title: "Boot mieten auf Zakynthos: Preise und Kosten 2026"
 metaTitle: "Boot mieten auf Zakynthos: Preise und Kosten 2026"
 metaDescription: "Ein Boot auf Zakynthos kostet ab €180. Vergleichen Sie 2026 Mietdauer, Kraftstoff, Skipper-Kosten, Leistungen und mögliche Extras vor der Buchung."
 excerpt: "Ein praktischer Preisführer zum Bootsverleih auf Zakynthos 2026: Grundmiete, Kraftstoff, Mietdauer, Skipper-Kosten, Leistungen und faire Angebotsvergleiche."
-image: "/images/IMG_6416.webp"
-imageAlt: "Luftaufnahme eines privaten Miet-Speedboots auf tiefblauem Wasser vor Zakynthos"
+image: "/images/self-drive-boat.webp"
+imageAlt: "Self-drive rental boat on the water, a common Zakynthos hire format"
 pubDate: 2026-07-17
 order: 16
 locale: "de"

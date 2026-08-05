@@ -3,8 +3,8 @@ title: "Beste Zakynthos-Bootsroute für Familien mit Kindern"
 metaTitle: "Beste Zakynthos-Bootsroute für Familien mit Kindern"
 metaDescription: "Die ruhigste, kinderfreundlichste Bootsroute auf Zakynthos. Turtle Island und Keri Caves, flaches Schwimmen, weniger Zeit auf See. Ein Familientagesplan."
 excerpt: "Eine Bootsfahrt mit Kindern zu planen, ändert die Rechnung. Die Route, die auf dem Papier am beeindruckendsten aussieht, ist nicht immer die, die den besten Familientag ergibt."
-image: "/images/IMG_6507.jpeg"
-imageAlt: "Turtle Island und die Südküste von Zakynthos vom Boot aus gesehen"
+image: "/images/IMG_6566.webp"
+imageAlt: "Boat in sheltered turquoise water on a calm family-friendly south-coast route"
 pubDate: 2026-06-19
 order: 12
 locale: "de"

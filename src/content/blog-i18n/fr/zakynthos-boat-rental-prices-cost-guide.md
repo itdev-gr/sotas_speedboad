@@ -3,8 +3,8 @@ title: "Prix de location de bateau à Zakynthos : guide 2026"
 metaTitle: "Prix de location de bateau à Zakynthos : guide complet 2026"
 metaDescription: "La location de bateau à Zakynthos débute à 180 €. Comparez en 2026 durées, carburant, skipper, prestations incluses et suppléments avant de réserver."
 excerpt: "Guide pratique des prix de location de bateau à Zakynthos en 2026 : tarif de base, carburant, durée, skipper, prestations incluses et comparaison équitable des devis."
-image: "/images/IMG_6416.webp"
-imageAlt: "Vue aérienne d'un speedboat privé en location sur les eaux bleu profond de Zakynthos"
+image: "/images/self-drive-boat.webp"
+imageAlt: "Self-drive rental boat on the water, a common Zakynthos hire format"
 pubDate: 2026-07-17
 order: 16
 locale: "fr"

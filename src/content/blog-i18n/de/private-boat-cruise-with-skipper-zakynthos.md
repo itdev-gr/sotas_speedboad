@@ -3,8 +3,8 @@ title: "Lohnt sich ein Skipper beim Bootsverleih auf Zakynthos?"
 metaTitle: "Lohnt sich ein Skipper beim Bootsverleih auf Zakynthos?"
 metaDescription: "Vergleichen Sie die Vorteile eines Skippers auf Zakynthos: Ortskenntnis, entspanntes Cruisen, Gruppengröße, Wetter und die Gesamtkosten Ihrer Bootstour."
 excerpt: "Eine private Bootstour mit Skipper auf Zakynthos kostet mehr als ein Selbstfahrer-Boot. Für bestimmte Reisende und Situationen ist sie den Aufpreis jedoch nicht nur wert, sondern die einzig passende Wahl."
-image: "/images/image_skipper.png"
-imageAlt: "Privates Boot mit Skipper entlang der Zakynthos-Küste"
+image: "/images/image_skipper.webp"
+imageAlt: "Private boat with guests enjoying a cave stop on the Zakynthos coast"
 pubDate: 2026-05-18
 order: 5
 locale: "de"

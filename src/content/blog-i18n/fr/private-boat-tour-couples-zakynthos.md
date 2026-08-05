@@ -3,8 +3,8 @@ title: "Meilleure journée en bateau privé pour les couples à Zakynthos"
 metaTitle: "Meilleure journée en bateau privé pour les couples à Zakynthos (pas au coucher du soleil)"
 metaDescription: "Planifiez une journée en bateau privé pour les couples à Zakynthos : itinéraires de jour, arrêts baignade, conduite autonome ou skipper, et quand le coucher du soleil ou les croisières en proposition sont préférables."
 excerpt: "Une journée en bateau privé pour les couples à Zakynthos ne signifie pas nécessairement un forfait coucher de soleil ou une configuration de proposition. L'intimité à midi, l'eau claire et un itinéraire qui ne semble jamais précipité sont souvent ce que les couples souhaitent réellement."
-image: "/images/image_skipper.webp"
-imageAlt: "Croisière en bateau privée avec skipper le long de la côte de Zakynthos"
+image: "/images/IMG_0112.webp"
+imageAlt: "Private boat in turquoise water inside a Zakynthos sea cave"
 pubDate: 2026-08-05
 order: 25
 category: "Planning & costs"

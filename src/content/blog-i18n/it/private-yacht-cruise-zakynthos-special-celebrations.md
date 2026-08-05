@@ -3,8 +3,8 @@ title: "Come organizzare una proposta o un compleanno in yacht a Zante"
 metaTitle: "Proposta o compleanno in yacht a Zante: guida"
 metaDescription: "Organizza una proposta, un compleanno o un anniversario in yacht a Zante scegliendo itinerario, orari, cibo e dettagli con questa guida pratica."
 excerpt: "Guida pratica per organizzare una proposta, un compleanno o un anniversario in yacht a Zante, con itinerario, orari, cibo e un piano in caso di maltempo."
-image: "/images/IMG_0111.jpeg"
-imageAlt: "Yacht privato allestito per una crociera celebrativa al largo di Zante"
+image: "/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.webp"
+imageAlt: "Private celebration cruise at sunset off the Zakynthos coast"
 pubDate: 2026-05-18
 order: 6
 locale: "it"

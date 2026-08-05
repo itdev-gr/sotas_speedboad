@@ -3,8 +3,8 @@ title: "How to Plan a Proposal or Birthday on a Zakynthos Yacht"
 metaTitle: "Plan a Proposal or Birthday on a Zakynthos Yacht"
 metaDescription: "Plan a Zakynthos yacht proposal, birthday or anniversary with the right route, timing, food and personal details. Use this practical booking checklist."
 excerpt: "A practical guide to planning a proposal, birthday or anniversary on a Zakynthos yacht, including route timing, food, personal details and weather backup."
-image: "/images/IMG_0111.jpeg"
-imageAlt: "Private yacht set up for a celebration cruise off Zakynthos"
+image: "/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.webp"
+imageAlt: "Private celebration cruise at sunset off the Zakynthos coast"
 pubDate: 2026-05-18
 order: 6
 ---

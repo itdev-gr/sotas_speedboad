@@ -3,8 +3,8 @@ title: "Do You Need a Boat Licence in Zakynthos? Rules Explained"
 metaTitle: "Do You Need a Boat Licence in Zakynthos? Rules Guide"
 metaDescription: "Find out when you can rent a boat in Zakynthos without a licence, which boats qualify, what the safety briefing covers, and which documents to bring."
 excerpt: "Renting a boat in Zakynthos does not require a license. If you have never sailed before and you are wondering whether you can actually get behind the wheel of a speedboat and explore the island on you"
-image: "/images/license-free-hero.png"
-imageAlt: "Self-drive license-free speedboat ready for rental in Zakynthos"
+image: "/images/self-drive-boat.webp"
+imageAlt: "Self-drive license-free speedboat on clear Zakynthos water"
 pubDate: 2026-05-18
 order: 4
 ---

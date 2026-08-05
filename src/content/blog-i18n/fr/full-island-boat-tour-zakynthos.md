@@ -3,8 +3,8 @@ title: "Tour complet de Zakynthos en bateau : que voir en une journée ?"
 metaTitle: "Tour complet de Zakynthos en bateau : itinéraire de 8 h"
 metaDescription: "Découvrez tout le littoral de Zakynthos en une journée : Navagio, Blue Caves, grottes du sud et plusieurs baignades lors d'un tour complet en bateau en 2026."
 excerpt: "Une journée, un bateau et tout le littoral : le tour complet de Zakynthos réunit les grands sites des côtes nord et sud avec plusieurs baignades."
-image: "/images/section-coast.png"
-imageAlt: "Vue aérienne du littoral de Zakynthos et de l'itinéraire du tour complet en bateau"
+image: "/images/unnamed-hero.webp"
+imageAlt: "Navagio Shipwreck Beach and cliffs seen from above on a full-island boat route"
 pubDate: 2026-05-18
 order: 2
 locale: "fr"

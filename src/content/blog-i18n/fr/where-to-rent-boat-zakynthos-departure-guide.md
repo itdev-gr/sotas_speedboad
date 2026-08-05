@@ -3,8 +3,8 @@ title: "Où louer un bateau à Zakynthos : guide des ports"
 metaTitle: "Où louer un bateau à Zakynthos : guide des ports"
 metaDescription: "Comparez 6 points de départ à Zakynthos selon itinéraire, parking, transfert et météo, puis choisissez le port adapté au nord ou au sud."
 excerpt: "Le meilleur endroit où louer un bateau à Zakynthos dépend de la côte que vous souhaitez explorer. Comparez les principales zones de départ avant de choisir un opérateur."
-image: "/images/self-drive-boat.webp"
-imageAlt: "Vue aérienne d'un speedboat sans skipper naviguant sur les eaux claires de Zakynthos"
+image: "/images/IMG_6416.webp"
+imageAlt: "Rental speedboat on open water leaving from a Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 locale: "fr"

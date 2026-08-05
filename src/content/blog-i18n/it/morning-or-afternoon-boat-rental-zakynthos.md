@@ -3,8 +3,8 @@ title: "Noleggio barca a Zante al mattino o al pomeriggio: il momento migliore"
 metaTitle: "Noleggio barca a Zante al mattino o al pomeriggio: il momento migliore"
 metaDescription: "Mattina o pomeriggio per il noleggio barca a Zante? La mattina offre mari più calmi, il pomeriggio una luce migliore su Navagio. Ecco come scegliere."
 excerpt: "La maggior parte delle persone prenota il noleggio barca a Zante senza pensare un attimo all'orario di partenza. Ma l'ora in cui lasci il porto cambia le condizioni del mare, la folla a ogni sosta e la qualità delle foto che riporti a casa."
-image: "/images/IMG_6416.jpeg"
-imageAlt: "Motoscafo sulla costa di Zante nella luce del mattino"
+image: "/images/unnamed.webp"
+imageAlt: "Navagio Bay in bright daylight, a common morning boat destination"
 pubDate: 2026-06-19
 order: 14
 locale: "it"

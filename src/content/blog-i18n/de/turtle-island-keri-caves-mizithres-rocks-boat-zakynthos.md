@@ -3,8 +3,8 @@ title: "Süd-Zakynthos per Boot: Turtle Island, Keri und Mizithres"
 metaTitle: "Bootsroute Süd-Zakynthos: Keri, Turtle Island und Mizithres"
 metaDescription: "Planen Sie die Südroute per Boot zu Turtle Island, Keri Caves und Mizithres: Stopps, Badestellen, Dauer sowie Optionen für Selbstfahrer oder mit Skipper."
 excerpt: "Die Südküste von Zakynthos ist eine andere Welt als der Norden. Während Navagio dramatisch und weitläufig ist, bietet der Süden enge Meereshöhlen, riesige Felsformationen und ein streng geschütztes Meeresgebiet."
-image: "/images/IMG_6507.jpeg"
-imageAlt: "Turtle Island und Keri Caves vom Boot im Süden von Zakynthos gesehen"
+image: "/images/IMG_6507.webp"
+imageAlt: "Sea caves and limestone cliffs on the south coast of Zakynthos"
 pubDate: 2026-05-18
 order: 9
 locale: "de"

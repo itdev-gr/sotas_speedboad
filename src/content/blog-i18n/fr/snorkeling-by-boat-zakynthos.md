@@ -4,7 +4,7 @@ metaTitle: "Meilleurs sites de plongée en apnée en bateau à Zakynthos : guid
 metaDescription: "Meilleure plongée en apnée en bateau à Zakynthos : arrêts calmes sur la côte sud, conseils sur l'équipement, règles du parc marin et quand un bateau privé bat une excursion de plongée en apnée en groupe."
 excerpt: "La meilleure plongée en apnée à Zakynthos se fait rarement depuis une entrée de plage bondée. L'eau claire, la lumière des grottes et les criques plus calmes récompensent un bateau qui peut s'arrêter là où la visibilité et l'abri sont réellement bons."
 image: "/images/girlinwoater.webp"
-imageAlt: "Nageur dans une eau turquoise claire au large de la côte de Zakynthos"
+imageAlt: "Boat bow above clear turquoise snorkelling water in Zakynthos"
 pubDate: 2026-08-05
 order: 23
 category: "Routes & destinations"

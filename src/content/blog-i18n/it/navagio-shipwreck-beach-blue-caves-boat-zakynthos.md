@@ -3,8 +3,8 @@ title: "Si può visitare Navagio nel 2026? Guida all'accesso in barca"
 metaTitle: "Navagio 2026: guida aggiornata all'accesso in barca"
 metaDescription: "Nel 2026 a Navagio sono vietati sbarco e balneazione. Scopri come funziona la visita in barca, quali restrizioni valgono e come unire le Grotte Blu."
 excerpt: "Nel 2026 Navagio resta visibile dal mare, ma sbarco e balneazione sono vietati. Ecco le restrizioni aggiornate e l'itinerario con le Grotte Blu."
-image: "/images/IMG_6566.jpeg"
-imageAlt: "Spiaggia del Relitto di Navagio a Zante vista dall'area consentita alle barche"
+image: "/images/license-free-hero.webp"
+imageAlt: "Rental boats anchored at Navagio Shipwreck Beach in Zakynthos"
 pubDate: 2026-05-18
 order: 3
 locale: "it"

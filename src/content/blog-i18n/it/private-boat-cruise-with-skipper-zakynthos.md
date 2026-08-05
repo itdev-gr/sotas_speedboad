@@ -3,8 +3,8 @@ title: "Vale la pena noleggiare una barca con skipper a Zante?"
 metaTitle: "Barca con skipper a Zante: ne vale la pena?"
 metaDescription: "Valuta i veri vantaggi di uno skipper a Zante: conoscenza delle rotte, relax, dimensioni del gruppo, condizioni del mare e costo totale."
 excerpt: "Una crociera privata con skipper a Zante costa più di un noleggio self-drive. In alcune situazioni, però, è l'unica scelta che offre davvero l'esperienza desiderata."
-image: "/images/image_skipper.png"
-imageAlt: "Barca privata con skipper in navigazione lungo la costa di Zante"
+image: "/images/image_skipper.webp"
+imageAlt: "Private boat with guests enjoying a cave stop on the Zakynthos coast"
 pubDate: 2026-05-18
 order: 5
 locale: "it"

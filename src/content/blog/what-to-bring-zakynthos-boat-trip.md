@@ -3,8 +3,8 @@ title: "What to Bring on a Zakynthos Boat Trip: Checklist"
 metaTitle: "What to Bring on a Zakynthos Boat Trip | Checklist"
 metaDescription: "Pack for your Zakynthos boat trip with a clear checklist covering ID, sun protection, swim gear, water, children's needs, phone care and marina arrival."
 excerpt: "A complete packing and preparation checklist for a Zakynthos boat day, from documents and sun protection to children’s essentials, phone care and what your boat may already include."
-image: "/images/fleet-experience.webp"
-imageAlt: "Traveller seated on the sun deck of a private boat in Zakynthos"
+image: "/images/image_skipper.webp"
+imageAlt: "Guests on a private boat preparing for a day on the Zakynthos water"
 pubDate: 2026-07-17
 order: 17
 ---

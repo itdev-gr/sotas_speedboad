@@ -3,8 +3,8 @@ title: "Prezzi del noleggio barche a Zakynthos: costi 2026"
 metaTitle: "Prezzi del noleggio barche a Zakynthos: guida 2026"
 metaDescription: "I prezzi del noleggio barche a Zakynthos partono da €180. Confronta durata, carburante, skipper, servizi inclusi e costi extra nel 2026."
 excerpt: "Una guida pratica ai prezzi del noleggio barche a Zakynthos nel 2026, con costi base, carburante, durata, skipper, servizi inclusi e confronto dei preventivi."
-image: "/images/IMG_6416.webp"
-imageAlt: "Vista aerea di un motoscafo privato a noleggio nelle acque blu intenso di Zakynthos"
+image: "/images/self-drive-boat.webp"
+imageAlt: "Self-drive rental boat on the water, a common Zakynthos hire format"
 pubDate: 2026-07-17
 order: 16
 locale: "it"

@@ -3,8 +3,8 @@ title: "Navagio Beach 2026 besuchen: Regeln für Bootstouren"
 metaTitle: "Navagio Beach 2026 besuchen: Regeln für Bootstouren"
 metaDescription: "Anlanden und Schwimmen sind am Navagio Beach 2026 verboten. Erfahren Sie, wie die Besichtigung per Boot genau abläuft und wie Sie die Blue Caves ergänzen."
 excerpt: "Navagio bleibt 2026 für die Besichtigung vom Meer aus geöffnet, während Anlanden und Schwimmen verboten sind. Dieser Leitfaden erklärt die Regeln und die Route zu den Blue Caves."
-image: "/images/IMG_6566.jpeg"
-imageAlt: "Navagio Shipwreck Beach auf Zakynthos vom Boot-Ankerplatz aus gesehen"
+image: "/images/license-free-hero.webp"
+imageAlt: "Rental boats anchored at Navagio Shipwreck Beach in Zakynthos"
 pubDate: 2026-05-18
 order: 3
 locale: "de"

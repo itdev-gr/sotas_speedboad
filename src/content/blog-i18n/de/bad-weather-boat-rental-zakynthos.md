@@ -3,8 +3,8 @@ title: "Schlechtes Wetter bei Ihrem Zakynthos-Bootsverleih: Was Sie erwartet"
 metaTitle: "Schlechtes Wetter bei Ihrem Zakynthos-Bootsverleih: Was Sie erwartet"
 metaDescription: "Machen Sie sich Sorgen wegen Wind an Ihrem Bootsmiettag auf Zakynthos? Die meisten Fahrten finden mit Routenänderung statt. So funktionieren Umbuchung und Rückerstattung."
 excerpt: "Einen Bootsverleih auf Zakynthos zu buchen und dann am Morgen Ihrer Fahrt zuzusehen, wie der graue Himmel aufzieht, ist ein unangenehmer Moment. Sie haben sich auf diesen Tag gefreut. Sie haben die Route geplant."
-image: "/images/section-coast.png"
-imageAlt: "Die Küste von Zakynthos an einem ruhigen Tag vom Boot aus gesehen"
+image: "/images/hero2.webp"
+imageAlt: "Calm turquoise water and rocky Zakynthos coastline on a settled day"
 pubDate: 2026-06-19
 order: 11
 locale: "de"

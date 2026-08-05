@@ -3,8 +3,8 @@ title: "Heiratsantrag oder Geburtstag auf Zakynthos-Yacht planen"
 metaTitle: "Heiratsantrag oder Geburtstag auf Zakynthos-Yacht planen"
 metaDescription: "Planen Sie einen Heiratsantrag, Geburtstag oder Jahrestag auf einer Yacht auf Zakynthos mit passender Route, Zeitplanung, Verpflegung und persönlichen Details."
 excerpt: "Ein praktischer Leitfaden für Heiratsanträge, Geburtstage oder Jahrestage auf einer Yacht auf Zakynthos, von Route und Zeitplanung bis zu Verpflegung, persönlichen Details und einem Schlechtwetterplan."
-image: "/images/IMG_0111.jpeg"
-imageAlt: "Private Yacht für eine Feier-Kreuzfahrt vor Zakynthos eingerichtet"
+image: "/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.webp"
+imageAlt: "Private celebration cruise at sunset off the Zakynthos coast"
 pubDate: 2026-05-18
 order: 6
 locale: "de"

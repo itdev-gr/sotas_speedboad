@@ -3,8 +3,8 @@ title: "7 plages cachées et criques de Zakynthos en bateau"
 metaTitle: "7 plages cachées et criques de Zakynthos en bateau"
 metaDescription: "Découvrez 7 plages cachées et criques de Zakynthos en bateau : itinéraires, conseils de skipper, état de la mer et baignade plus sûre."
 excerpt: "Au-delà des sites emblématiques de Zakynthos, découvrez sept petites plages, criques et formations rocheuses qui méritent une journée en bateau bien préparée."
-image: "/images/IMG_6507.webp"
-imageAlt: "Grotte marine calcaire au-dessus des eaux turquoise et transparentes de la côte de Zakynthos"
+image: "/images/girlinwoater.webp"
+imageAlt: "Boat approaching a hidden limestone cave arch on the Zakynthos coast"
 pubDate: 2026-07-17
 order: 20
 locale: "fr"

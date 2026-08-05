@@ -3,8 +3,8 @@ title: "Rundfahrt um Zakynthos: Was Sie an einem Tag sehen"
 metaTitle: "Rundfahrt um Zakynthos: Die komplette 8-Stunden-Route"
 metaDescription: "Sehen Sie die Küste von Zakynthos an einem Tag. Die Rundfahrt um die Insel umfasst Navagio, Blue Caves, Höhlen an der Südküste und mehrere Schwimmstopps."
 excerpt: "Eine Rundfahrt um Zakynthos ist genau das, wonach es klingt: ein Tag, ein Boot, die gesamte Küstenlinie. Sie umrunden die Insel und besuchen die wichtigsten Sehenswürdigkeiten an Nord- und Südküste."
-image: "/images/section-coast.png"
-imageAlt: "Luftaufnahme der Zakynthos-Küste mit der Route der Rundfahrt um die Insel"
+image: "/images/unnamed-hero.webp"
+imageAlt: "Navagio Shipwreck Beach and cliffs seen from above on a full-island boat route"
 pubDate: 2026-05-18
 order: 2
 locale: "de"

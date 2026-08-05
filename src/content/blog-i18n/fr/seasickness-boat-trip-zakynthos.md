@@ -3,8 +3,8 @@ title: "Mal de mer lors d'une excursion en bateau à Zakynthos : des itinéraire
 metaTitle: "Mal de mer lors d'une excursion en bateau à Zakynthos : itinéraires et conseils plus calmes"
 metaDescription: "Vous craignez le mal de mer lors d'une excursion en bateau à Zakynthos ? Choisissez des itinéraires plus calmes sur la côte sud, des créneaux matinaux et des conseils pratiques contre le mal des transports avant de réserver."
 excerpt: "Si vous êtes enthousiasmé par les grottes de Zakynthos et les vues sur les épaves mais que vous craignez de vous sentir malade sur le bateau, vous n'êtes pas seul. La bonne nouvelle est que le choix de l’itinéraire et le timing comptent autant que les tablettes."
-image: "/images/IMG_6566.webp"
-imageAlt: "Eaux côtières calmes et falaises calcaires le long d'une route en bateau à Zakynthos"
+image: "/images/hero2.png"
+imageAlt: "Sheltered rocky coastline and calm inshore water in Zakynthos"
 pubDate: 2026-08-05
 order: 24
 category: "Rules & safety"

@@ -3,8 +3,8 @@ title: "Itinerario nel sud di Zante: Marathonisi, Keri e Mizithres"
 metaTitle: "Itinerario sud di Zante: Keri e Marathonisi"
 metaDescription: "Organizza un itinerario in barca nel sud di Zante tra Marathonisi, Grotte di Keri e Mizithres. Confronta soste, durata, nuotate e formule."
 excerpt: "La costa meridionale di Zante è diversa dal nord: grotte marine, imponenti rocce sull'acqua e una delle aree marine più protette della Grecia."
-image: "/images/IMG_6507.jpeg"
-imageAlt: "Marathonisi e le Grotte di Keri viste da una barca nel sud di Zante"
+image: "/images/IMG_6507.webp"
+imageAlt: "Sea caves and limestone cliffs on the south coast of Zakynthos"
 pubDate: 2026-05-18
 order: 9
 locale: "it"

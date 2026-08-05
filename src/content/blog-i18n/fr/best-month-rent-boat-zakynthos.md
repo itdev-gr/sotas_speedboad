@@ -4,7 +4,7 @@ metaTitle: "Meilleur mois pour louer un bateau à Zakynthos : guide mois par moi
 metaDescription: "Meilleur mois pour louer un bateau à Zakynthos ? Comparez l'état de la mer de mai à octobre, les foules, la température de l'eau et la pression des réservations avant de fixer une date."
 excerpt: "Le meilleur mois pour louer un bateau à Zakynthos n’est pas le même que le meilleur mois pour visiter l’île. L'état de la mer, le vent de l'après-midi, la température de l'eau, la foule dans les grottes et la distance à laquelle vous devez réserver changent le jour de votre mise à l'eau."
 image: "/images/IMG_6416.webp"
-imageAlt: "Bateau rapide de location privé sur les eaux d'un bleu profond au large de la côte de Zakynthos"
+imageAlt: "Private rental speedboat on deep blue water off the Zakynthos coast"
 pubDate: 2026-08-05
 order: 21
 category: "Planning & costs"

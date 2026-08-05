@@ -3,8 +3,8 @@ title: "Est-il sûr de louer un bateau à Zakynthos sans expérience ?"
 metaTitle: "Est-il sûr de louer un bateau à Zakynthos sans expérience ?"
 metaDescription: "Jamais conduit un bateau ? Une location en autonomie à Zakynthos est sûre pour les débutants. Voici ce que couvre le briefing de sécurité et où vous pouvez aller."
 excerpt: "Louer un bateau à Zakynthos sans expérience est l'une des préoccupations les plus courantes que nous entendons avant une réservation. La réponse courte est oui, c'est sûr, et des milliers de conducteurs débutants font exactement cela chaque saison."
-image: "/images/self-drive-boat.png"
-imageAlt: "Location de speedboat en autonomie sur le littoral de Zakynthos"
+image: "/images/IMG_6507.webp"
+imageAlt: "Calm cave coastline and easy water conditions for first-time renters"
 pubDate: 2026-06-19
 order: 13
 locale: "fr"

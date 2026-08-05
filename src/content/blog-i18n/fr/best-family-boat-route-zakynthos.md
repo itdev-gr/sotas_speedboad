@@ -3,8 +3,8 @@ title: "Meilleur itinéraire en bateau à Zakynthos pour les familles avec enfan
 metaTitle: "Meilleur itinéraire en bateau à Zakynthos pour les familles avec enfants"
 metaDescription: "L'itinéraire en bateau le plus calme et adapté aux enfants à Zakynthos. Turtle Island et Keri Caves, baignade en eau peu profonde, moins de temps en mer. Un programme pour une journée en famille."
 excerpt: "Planifier une sortie en bateau avec des enfants change la donne. L'itinéraire qui semble le plus impressionnant sur le papier n'est pas toujours celui qui offre la meilleure journée en famille."
-image: "/images/IMG_6507.jpeg"
-imageAlt: "Turtle Island et la côte sud de Zakynthos vues depuis un bateau"
+image: "/images/IMG_6566.webp"
+imageAlt: "Boat in sheltered turquoise water on a calm family-friendly south-coast route"
 pubDate: 2026-06-19
 order: 12
 locale: "fr"

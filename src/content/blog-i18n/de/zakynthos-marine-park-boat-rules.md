@@ -3,8 +3,8 @@ title: "Zakynthos Marine Park: Regeln für Boote und Schildkröten"
 metaTitle: "Zakynthos Marine Park: Bootsregeln zum Schildkrötenschutz"
 metaDescription: "Regeln für Boote im Zakynthos Marine Park: 6-Knoten-Zonen, Abstand zu Schildkröten, Ankerverbote und rücksichtsvolle Besuche an Niststränden."
 excerpt: "Praktischer Leitfaden zur Navigation in Schutzzonen, zu langsamer Fahrt und zur rücksichtsvollen Beobachtung von Unechten Karettschildkröten im Zakynthos Marine Park."
-image: "/images/IMG_6566.webp"
-imageAlt: "Kleines Mietboot im klaren Wasser vor Kalksteinklippen auf Zakynthos"
+image: "/images/skipper-drive.webp"
+imageAlt: "Boat under way in Zakynthos waters governed by marine park rules"
 pubDate: 2026-07-17
 order: 18
 locale: "de"

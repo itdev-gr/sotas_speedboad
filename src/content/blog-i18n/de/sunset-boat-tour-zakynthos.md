@@ -4,7 +4,7 @@ metaTitle: "Sonnenuntergangsroute Zakynthos: Keri bis Mizithres"
 metaDescription: "Planen Sie die beste Sonnenuntergangsroute auf Zakynthos über Turtle Island und die Keri Caves bis Mizithres, mit den besten Zeiten, Badestopps und Packtipps."
 excerpt: "Am späten Nachmittag verändert sich das Licht auf Zakynthos und lässt die gesamte Südküste anders wirken. Weiße Kalksteinklippen fangen die tief stehende Sonne ein, während das Wasser in kräftigem Blau und Gold leuchtet."
 image: "/images/hero2.png"
-imageAlt: "Sonnenuntergangstour vorbei an Mizithres Rocks im Süden von Zakynthos"
+imageAlt: "Rocky Zakynthos coastline in warm late-afternoon light"
 pubDate: 2026-05-18
 order: 8
 locale: "de"

@@ -3,8 +3,8 @@ title: "Serve la patente nautica a Zante? Tutte le regole"
 metaTitle: "Serve la patente nautica a Zante? Guida alle regole"
 metaDescription: "Scopri quando puoi noleggiare una barca a Zante senza patente, quali modelli sono idonei, cosa include il briefing e quali documenti portare."
 excerpt: "Per noleggiare una barca a Zante non serve sempre la patente nautica. Anche senza esperienza, puoi guidare un motoscafo ed esplorare l'isola in autonomia."
-image: "/images/license-free-hero.png"
-imageAlt: "Motoscafo senza patente pronto per il noleggio self-drive a Zante"
+image: "/images/self-drive-boat.webp"
+imageAlt: "Self-drive license-free speedboat on clear Zakynthos water"
 pubDate: 2026-05-18
 order: 4
 locale: "it"

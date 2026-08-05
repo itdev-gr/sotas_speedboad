@@ -3,8 +3,8 @@ title: "Best Private Boat Day for Couples in Zakynthos"
 metaTitle: "Best Private Boat Day for Couples in Zakynthos (Not Sunset)"
 metaDescription: "Plan a private boat day for couples in Zakynthos: daytime routes, swim stops, self-drive vs skipper, and when sunset or proposal cruises are better."
 excerpt: "A private boat day for couples in Zakynthos does not have to mean a sunset package or a proposal setup. Midday privacy, clear water and a route that never feels rushed are often what couples actually want."
-image: "/images/image_skipper.webp"
-imageAlt: "Private skipper-led boat cruise along the Zakynthos coastline"
+image: "/images/IMG_0112.webp"
+imageAlt: "Private boat in turquoise water inside a Zakynthos sea cave"
 pubDate: 2026-08-05
 order: 25
 category: "Planning & costs"

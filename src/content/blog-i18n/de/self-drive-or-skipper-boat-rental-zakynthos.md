@@ -3,8 +3,8 @@ title: "Selbstfahrer oder Skipper Bootsverleih auf Zakynthos: Welche Option ist 
 metaTitle: "Selbstfahrer oder Skipper Bootsverleih auf Zakynthos"
 metaDescription: "Selbstfahrer- und Skipper-Bootsverleih auf Zakynthos im Vergleich. Finden Sie heraus, welche Option zu Ihrer Gruppe, Ihrem Budget und dem Tag passt, den Sie auf dem Wasser wollen."
 excerpt: "Beim Buchen eines Bootsverleihs auf Zakynthos steht als erste echte Entscheidung an: Möchten Sie das Boot selbst steuern oder einen professionellen Skipper engagieren? Beide Optionen bringen Sie aufs Wasser."
-image: "/images/self-drive-boat.png"
-imageAlt: "Vergleich von Selbstfahrer- und skipperführten Bootsverleih auf Zakynthos"
+image: "/images/license-free-hero.webp"
+imageAlt: "Fleet of self-drive rental boats at Navagio Beach in Zakynthos"
 pubDate: 2026-05-18
 order: 7
 locale: "de"

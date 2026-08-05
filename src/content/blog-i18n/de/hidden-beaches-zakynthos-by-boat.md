@@ -3,8 +3,8 @@ title: "7 versteckte Strände und Buchten auf Zakynthos per Boot"
 metaTitle: "7 versteckte Strände auf Zakynthos per Boot"
 metaDescription: "Entdecken Sie 7 versteckte Strände und Buchten auf Zakynthos per Boot: mit Routentipps, Skipper-Hinweisen, Wettervorbehalten und Sicherheit beim Baden."
 excerpt: "Entdecken Sie abseits der berühmten Sehenswürdigkeiten sieben kleinere Strände, Buchten und Felsformationen für einen sorgfältig geplanten Bootstag auf Zakynthos."
-image: "/images/IMG_6507.webp"
-imageAlt: "Kalksteinhöhle über klarem türkisfarbenem Wasser an der Küste von Zakynthos"
+image: "/images/girlinwoater.webp"
+imageAlt: "Boat approaching a hidden limestone cave arch on the Zakynthos coast"
 pubDate: 2026-07-17
 order: 20
 locale: "de"

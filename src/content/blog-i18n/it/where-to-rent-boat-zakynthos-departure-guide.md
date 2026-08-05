@@ -3,8 +3,8 @@ title: "Punti di partenza in barca a Zakynthos: guida ai porti"
 metaTitle: "Punti di partenza in barca a Zakynthos: guida ai porti"
 metaDescription: "Confronta 6 punti di partenza in barca a Zakynthos per itinerario, parcheggio, trasferimenti e meteo, scegliendo il porto adatto alla tua uscita."
 excerpt: "Il luogo migliore per noleggiare una barca a Zakynthos dipende dalla costa che vuoi esplorare. Confronta le principali aree di partenza dell'isola prima di scegliere un operatore."
-image: "/images/self-drive-boat.webp"
-imageAlt: "Vista aerea di un motoscafo self-drive che naviga nelle acque limpide di Zakynthos"
+image: "/images/IMG_6416.webp"
+imageAlt: "Rental speedboat on open water leaving from a Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 locale: "it"

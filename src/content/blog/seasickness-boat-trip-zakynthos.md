@@ -3,8 +3,8 @@ title: "Seasickness on a Zakynthos Boat Trip: Calmer Routes"
 metaTitle: "Seasickness on a Zakynthos Boat Trip: Calmer Routes & Tips"
 metaDescription: "Worried about seasickness on a Zakynthos boat trip? Choose calmer south-coast routes, morning slots and practical motion-sickness tips before you book."
 excerpt: "If you are excited about Zakynthos caves and shipwreck views but quietly worried about feeling ill on the boat, you are not alone. The good news is that route choice and timing matter as much as tablets."
-image: "/images/IMG_6566.webp"
-imageAlt: "Calm coastal water and limestone cliffs along a Zakynthos boat route"
+image: "/images/hero2.png"
+imageAlt: "Sheltered rocky coastline and calm inshore water in Zakynthos"
 pubDate: 2026-08-05
 order: 24
 category: "Rules & safety"
