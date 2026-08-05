@@ -30,7 +30,6 @@ function getField(frontmatter, key) {
 }
 
 const files = (await readdir(sourceDir)).filter((file) => file.endsWith('.md'));
-let missing = 0;
 let stale = 0;
 
 for (const file of files) {
@@ -44,14 +43,14 @@ for (const file of files) {
 			const translatedHash = getField(fm, 'sourceHash');
 			if (translatedHash !== sourceHash) stale += 1;
 		} catch {
-			missing += 1;
+			// Missing translations are OK — localized routes fall back to English.
 		}
 	}
 }
 
-if (missing || stale) {
-	console.error(`Blog translation check failed: ${missing} missing, ${stale} stale`);
+if (stale) {
+	console.error(`Blog translation check failed: ${stale} stale translation(s). Run npm run translate:blog to refresh.`);
 	process.exit(1);
 }
 
-console.log(`Blog translations OK for ${files.length} posts x ${targetLocales.length} locales`);
+console.log(`Blog translations OK for ${files.length} posts (${targetLocales.length} optional locales; missing files use English fallback).`);

@@ -3,7 +3,7 @@ import { render } from 'astro:content';
 import Header from '../Header.astro';
 import Footer from '../Footer.astro';
 import { blog as blogStrings } from '../../i18n/pages/blog';
-import { SITE_URL, localizePath, type Locale } from '../../i18n/config';
+import { SITE_URL, localizePath, LOCALE_NAME, type Locale } from '../../i18n/config';
 import {
 	getBlogSlug,
 	getDateLocale,
@@ -14,9 +14,10 @@ interface Props {
 	lang: Locale;
 	post: BlogEntry;
 	related: BlogEntry[];
+	isFallback?: boolean;
 }
 
-const { lang, post, related } = Astro.props;
+const { lang, post, related, isFallback = false } = Astro.props;
 const s = blogStrings[lang] ?? blogStrings.en;
 const p = (path: string) => localizePath(path, lang);
 const slug = getBlogSlug(post);
@@ -89,6 +90,12 @@ const canonical = `${SITE_URL}${p(basePath)}`;
 					)}
 
 					<div class="post-content">
+						{isFallback && (
+							<div class="post-fallback-notice" role="status">
+								<p>{s.fallbackNotice.replace('{language}', LOCALE_NAME[lang])}</p>
+								<a href={`/blog/${slug}`}>{s.fallbackNoticeCta}</a>
+							</div>
+						)}
 						<div class="post-prose" itemprop="articleBody">
 							<Content />
 						</div>
@@ -337,6 +344,24 @@ const canonical = `${SITE_URL}${p(basePath)}`;
 	}
 
 	.post-content { min-width: 0; }
+
+	.post-fallback-notice {
+		margin: 0 0 1.5rem;
+		padding: 1rem 1.15rem;
+		border: 1px solid rgba(42, 168, 160, 0.35);
+		border-radius: 10px;
+		background: #eef9f8;
+		color: #064250;
+		font-size: 0.95rem;
+		line-height: 1.55;
+	}
+	.post-fallback-notice p { margin: 0 0 0.65rem; }
+	.post-fallback-notice a {
+		color: #0a6b7a;
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
 
 	.post-prose {
 		font-size: 1.085rem;

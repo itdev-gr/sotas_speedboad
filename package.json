@@ -4,11 +4,12 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/translate-blog.mjs --missing-only --continue-on-error && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "compress-videos": "bash scripts/compress-videos.sh",
     "translate:blog": "node scripts/translate-blog.mjs",
+    "translate:blog:missing": "node scripts/translate-blog.mjs --missing-only --continue-on-error",
     "check:blog-translations": "node scripts/check-blog-translations.mjs"
   },
   "dependencies": {

@@ -44,6 +44,9 @@ export const blog = {
 		authorCall: 'Call 0030 698 793 1327',
 		keepReading: 'Keep reading',
 		founderSkipper: 'Founder & Skipper',
+		fallbackNotice:
+			'This guide is shown in English while we prepare the {language} version. Use the flag menu to switch back anytime.',
+		fallbackNoticeCta: 'Read the English version',
 	},
 	de: {
 		seoIndexTitle: 'Zakynthos Bootsverleih Guides | Routen, Preise & Tipps | Sota Travel',
@@ -89,6 +92,9 @@ export const blog = {
 		authorCall: 'Anrufen: 0030 698 793 1327',
 		keepReading: 'Weiterlesen',
 		founderSkipper: 'Gründer & Skipper',
+		fallbackNotice:
+			'Dieser Guide wird auf Englisch angezeigt, während wir die {language}-Version vorbereiten. Über das Flaggenmenü können Sie jederzeit zurückwechseln.',
+		fallbackNoticeCta: 'Englische Version lesen',
 	},
 	fr: {
 		seoIndexTitle: 'Guides location bateau Zakynthos | Itinéraires, prix & conseils | Sota Travel',
@@ -134,6 +140,9 @@ export const blog = {
 		authorCall: 'Appeler le 0030 698 793 1327',
 		keepReading: 'À lire aussi',
 		founderSkipper: 'Fondateur & skipper',
+		fallbackNotice:
+			'Ce guide s’affiche en anglais pendant que nous préparons la version {language}. Utilisez le menu des drapeaux pour revenir quand vous le souhaitez.',
+		fallbackNoticeCta: 'Lire la version anglaise',
 	},
 	it: {
 		seoIndexTitle: 'Guide noleggio barche Zante | Itinerari, prezzi & consigli | Sota Travel',
@@ -179,6 +188,9 @@ export const blog = {
 		authorCall: 'Chiama il 0030 698 793 1327',
 		keepReading: 'Continua a leggere',
 		founderSkipper: 'Fondatore & skipper',
+		fallbackNotice:
+			'Questa guida è mostrata in inglese mentre prepariamo la versione {language}. Usa il menu bandiere per tornare indietro quando vuoi.',
+		fallbackNoticeCta: 'Leggi la versione inglese',
 	},
 	ru: {
 		seoIndexTitle: 'Гиды по аренде лодок на Закинфе | Маршруты, цены и советы | Sota Travel',
@@ -224,6 +236,9 @@ export const blog = {
 		authorCall: 'Позвонить: 0030 698 793 1327',
 		keepReading: 'Читайте также',
 		founderSkipper: 'Основатель и шкипер',
+		fallbackNotice:
+			'Этот гид показан на английском, пока мы готовим версию на {language}. Используйте меню флагов, чтобы переключиться в любой момент.',
+		fallbackNoticeCta: 'Читать на английском',
 	},
 	el: {
 		seoIndexTitle: 'Οδηγοί ενοικίασης σκαφών Ζάκυνθος | Διαδρομές, τιμές & tips | Sota Travel',
@@ -269,6 +284,9 @@ export const blog = {
 		authorCall: 'Κλήση: 0030 698 793 1327',
 		keepReading: 'Συνέχισε την ανάγνωση',
 		founderSkipper: 'Ιδρυτής & σκίπερ',
+		fallbackNotice:
+			'Αυτός ο οδηγός εμφανίζεται στα Αγγλικά ενώ ετοιμάζουμε την έκδοση στα {language}. Χρησιμοποιήστε το μενού σημαιών για να αλλάξετε γλώσσα.',
+		fallbackNoticeCta: 'Διάβασε την αγγλική έκδοση',
 	},
 } as const;
 
@@ -287,21 +305,27 @@ export const BLOG_TOPIC_CLUSTERS = {
 		'hidden-beaches-zakynthos-by-boat',
 		'full-island-boat-tour-zakynthos',
 		'best-family-boat-route-zakynthos',
+		'snorkeling-by-boat-zakynthos',
 	],
 	planning: [
 		'zakynthos-boat-rental-prices-cost-guide',
 		'what-to-bring-zakynthos-boat-trip',
 		'where-to-rent-boat-zakynthos-departure-guide',
 		'morning-or-afternoon-boat-rental-zakynthos',
+		'best-month-rent-boat-zakynthos',
+		'boat-trip-from-laganas-tsilivi-argassi-alykes-zakynthos',
 		'self-drive-or-skipper-boat-rental-zakynthos',
 		'private-boat-cruise-with-skipper-zakynthos',
 		'private-cruise-vs-group-boat-tour-zakynthos',
 		'private-yacht-cruise-zakynthos-special-celebrations',
+		'private-boat-tour-couples-zakynthos',
+		'private-boat-8-12-people-zakynthos',
 	],
 	rules: [
 		'no-license-boat-rental-zakynthos',
 		'zakynthos-marine-park-boat-rules',
 		'bad-weather-boat-rental-zakynthos',
 		'safe-rent-boat-zakynthos-without-experience',
+		'seasickness-boat-trip-zakynthos',
 	],
 } as const;

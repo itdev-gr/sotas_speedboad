@@ -2,32 +2,52 @@
 import { getCollection } from 'astro:content';
 import SEOHead from '../../../components/SEOHead.astro';
 import BlogPostBody from '../../../components/pages/BlogPostBody.astro';
-import { SITE_URL, isLocale, type Locale } from '../../../i18n/config';
+import { SITE_URL, NON_DEFAULT_LOCALES, isLocale, type Locale } from '../../../i18n/config';
 import {
 	buildBlogPostMeta,
 	compareBlogPosts,
 	getAvailableBlogLocales,
+	getBlogPostForLocale,
+	getBlogPostsForLocale,
 	getBlogSlug,
+	hasBlogTranslation,
 } from '../../../lib/blog-i18n';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blogI18n');
-	return posts.map((post) => ({
-		params: { lang: post.data.locale, slug: post.data.sourceSlug },
-		props: { post, lang: post.data.locale },
-	}));
+	const english = await getCollection('blog');
+	const paths: Array<{
+		params: { lang: string; slug: string };
+		props: { lang: Locale; slug: string; isFallback: boolean };
+	}> = [];
+
+	for (const lang of NON_DEFAULT_LOCALES) {
+		for (const post of english) {
+			const translated = await hasBlogTranslation(post.id, lang);
+			paths.push({
+				params: { lang, slug: post.id },
+				props: { lang, slug: post.id, isFallback: !translated },
+			});
+		}
+	}
+
+	return paths;
 }
 
-const { post, lang: langProp } = Astro.props;
+const { lang: langProp, slug, isFallback: isFallbackProp } = Astro.props;
 const langParam = Astro.params.lang;
 const lang: Locale = isLocale(langParam) ? langParam : langProp;
-const slug = post.data.sourceSlug;
-const localePosts = (await getCollection('blogI18n'))
-	.filter((entry) => entry.data.locale === lang)
-	.sort(compareBlogPosts);
-const related = localePosts.filter((entry) => entry.data.sourceSlug !== slug).slice(0, 3);
+
+const resolved = await getBlogPostForLocale(slug, lang);
+if (!resolved) {
+	return Astro.redirect('/blog/');
+}
+
+const { post, isFallback } = resolved;
+const localePosts = (await getBlogPostsForLocale(lang)).sort(compareBlogPosts);
+const related = localePosts.filter((entry) => getBlogSlug(entry) !== slug).slice(0, 3);
 const availableLocales = await getAvailableBlogLocales(slug);
 const meta = buildBlogPostMeta(post, lang);
+const enCanonical = `${SITE_URL}/blog/${slug}`;
 ---
 
 <html lang={lang}>
@@ -37,8 +57,9 @@ const meta = buildBlogPostMeta(post, lang);
 			description={post.data.metaDescription}
 			lang={lang}
 			basePath={meta.basePath}
-			translated={availableLocales.length > 1}
-			availableLocales={availableLocales.length > 1 ? availableLocales : undefined}
+			canonical={isFallback ? enCanonical : undefined}
+			translated={!isFallback && availableLocales.length > 1}
+			availableLocales={!isFallback && availableLocales.length > 1 ? availableLocales : undefined}
 			ogImage={`${SITE_URL}${meta.heroImage}`}
 			ogType="article"
 		/>
@@ -51,5 +72,5 @@ const meta = buildBlogPostMeta(post, lang);
 		<script type="application/ld+json" set:html={JSON.stringify(meta.breadcrumbSchema)} />
 		{meta.faqSchema && <script type="application/ld+json" set:html={JSON.stringify(meta.faqSchema)} />}
 	</head>
-	<BlogPostBody lang={lang} post={post} related={related} />
+	<BlogPostBody lang={lang} post={post} related={related} isFallback={isFallback} />
 </html>

@@ -70,16 +70,40 @@ function localizeLinks(markdown, locale) {
 		out = out.replaceAll(`](${internalPath})`, `](${localized})`);
 		out = out.replaceAll(`](${internalPath}/)`, `](${localized})`);
 	}
+	// Localize English blog post deep links: /blog/slug -> /{locale}/blog/slug
+	out = out.replaceAll('](/blog/', `](/${locale}/blog/`);
+	return out;
+}
+
+function protectMarkdownUrls(text) {
+	const urls = [];
+	const protectedText = text.replace(/\]\(([^)]+)\)/g, (_, url) => {
+		const index = urls.length;
+		urls.push(url);
+		return `]({{URL${index}}})`;
+	});
+	return { protectedText, urls };
+}
+
+function restoreMarkdownUrls(text, urls) {
+	let out = text;
+	for (let i = 0; i < urls.length; i += 1) {
+		out = out.replaceAll(`]({{URL${i}}})`, `](${urls[i]})`);
+		// Google sometimes inserts spaces around placeholders
+		out = out.replaceAll(`] ({{URL${i}}})`, `](${urls[i]})`);
+		out = out.replaceAll(`]({{ URL${i} }})`, `](${urls[i]})`);
+	}
 	return out;
 }
 
 async function translateText(text, target) {
 	if (!text.trim()) return text;
-	const chunks = splitText(text, 4500);
+	const { protectedText, urls } = protectMarkdownUrls(text);
+	const chunks = splitText(protectedText, 4500);
 	const translated = [];
 	for (const chunk of chunks) {
 		let lastError;
-		for (let attempt = 0; attempt < 5; attempt += 1) {
+		for (let attempt = 0; attempt < 8; attempt += 1) {
 			try {
 				const result = await translate(chunk, { to: target });
 				translated.push(result.text);
@@ -87,13 +111,15 @@ async function translateText(text, target) {
 				break;
 			} catch (error) {
 				lastError = error;
-				await sleep(1000 * (attempt + 1));
+				const message = String(error?.message ?? error);
+				const retryAfter = message.includes('Too Many Requests') ? 20000 * (attempt + 1) : 2000 * (attempt + 1);
+				await sleep(retryAfter);
 			}
 		}
 		if (lastError) throw lastError;
-		await sleep(500);
+		await sleep(2500);
 	}
-	return translated.join('');
+	return restoreMarkdownUrls(translated.join(''), urls);
 }
 
 function splitText(text, maxLen) {
@@ -115,7 +141,7 @@ function sleep(ms) {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function translatePost(fileName, locale) {
+async function translatePost(fileName, locale, options) {
 	const sourcePath = path.join(sourceDir, fileName);
 	const raw = await readFile(sourcePath, 'utf8');
 	const { frontmatter, body } = parseFrontmatter(raw);
@@ -129,10 +155,14 @@ async function translatePost(fileName, locale) {
 		const existingHash = getField(parseFrontmatter(existing).frontmatter, 'sourceHash');
 		if (existingHash === sourceHash) {
 			console.log(`skip ${locale}/${slug}`);
-			return;
+			return { status: 'skipped' };
+		}
+		if (options.missingOnly) {
+			console.log(`skip stale ${locale}/${slug} (--missing-only)`);
+			return { status: 'skipped' };
 		}
 	} catch {
-		// generate fresh
+		// missing file — translate below
 	}
 
 	const target = localeTargets[locale];
@@ -148,14 +178,31 @@ async function translatePost(fileName, locale) {
 	await mkdir(outDir, { recursive: true });
 	await writeFile(outPath, output, 'utf8');
 	console.log(`wrote ${locale}/${slug}`);
+	return { status: 'written' };
 }
 
 const onlyLocale = process.argv.find((arg) => arg.startsWith('--locale='))?.split('=')[1];
+const onlySlug = process.argv.find((arg) => arg.startsWith('--slug='))?.split('=')[1];
+const missingOnly = process.argv.includes('--missing-only');
+const continueOnError = process.argv.includes('--continue-on-error');
 const locales = onlyLocale ? [onlyLocale] : targetLocales;
-const files = (await readdir(sourceDir)).filter((file) => file.endsWith('.md'));
+let files = (await readdir(sourceDir)).filter((file) => file.endsWith('.md'));
+if (onlySlug) files = files.filter((file) => file.replace(/\.md$/, '') === onlySlug);
 
+let failures = 0;
 for (const locale of locales) {
 	for (const file of files) {
-		await translatePost(file, locale);
+		try {
+			await translatePost(file, locale, { missingOnly });
+		} catch (error) {
+			failures += 1;
+			console.error(`failed ${locale}/${file.replace(/\.md$/, '')}: ${error?.message ?? error}`);
+			if (!continueOnError) throw error;
+		}
 	}
+}
+
+if (failures > 0) {
+	console.error(`Blog translation finished with ${failures} failure(s). Untranslated posts still work via English fallback routes.`);
+	process.exit(continueOnError ? 0 : 1);
 }

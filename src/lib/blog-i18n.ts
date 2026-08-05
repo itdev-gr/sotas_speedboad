@@ -41,6 +41,9 @@ export function localizeBlogLinks(markdown: string, locale: Locale): string {
 		out = out.replaceAll(`](${path})`, `](${localized})`);
 		out = out.replaceAll(`](${path}/)`, `](${localized})`);
 	}
+	if (locale !== DEFAULT_LOCALE) {
+		out = out.replaceAll('](/blog/', `](/${locale}/blog/`);
+	}
 	return out;
 }
 
@@ -61,7 +64,43 @@ export async function getTranslatedBlogPosts(locale: Locale): Promise<Translated
 
 export async function getBlogPostsForLocale(locale: Locale): Promise<BlogEntry[]> {
 	if (locale === DEFAULT_LOCALE) return getEnglishBlogPosts();
-	return getTranslatedBlogPosts(locale);
+
+	const english = await getEnglishBlogPosts();
+	const translated = await getTranslatedBlogPosts(locale);
+	const translatedSlugs = new Set(translated.map((post) => post.data.sourceSlug));
+
+	// Show every English post on localized indexes; untranslated slugs use EN content
+	// until auto-translation generates blog-i18n files.
+	const fallbacks = english.filter((post) => !translatedSlugs.has(post.id));
+	return [...translated, ...fallbacks].sort(compareBlogPosts);
+}
+
+/** Whether a locale has a dedicated blog-i18n file for this slug. */
+export async function hasBlogTranslation(slug: string, locale: Locale): Promise<boolean> {
+	if (locale === DEFAULT_LOCALE) return true;
+	const translated = await getCollection('blogI18n');
+	return translated.some((post) => post.data.sourceSlug === slug && post.data.locale === locale);
+}
+
+export async function getBlogPostForLocale(
+	slug: string,
+	locale: Locale,
+): Promise<{ post: BlogEntry; isFallback: boolean } | null> {
+	if (locale === DEFAULT_LOCALE) {
+		const english = await getCollection('blog');
+		const post = english.find((entry) => entry.id === slug);
+		return post ? { post, isFallback: false } : null;
+	}
+
+	const translated = await getCollection('blogI18n');
+	const localized = translated.find(
+		(entry) => entry.data.sourceSlug === slug && entry.data.locale === locale,
+	);
+	if (localized) return { post: localized, isFallback: false };
+
+	const english = await getCollection('blog');
+	const fallback = english.find((entry) => entry.id === slug);
+	return fallback ? { post: fallback, isFallback: true } : null;
 }
 
 export async function getAvailableBlogLocales(slug: string): Promise<Locale[]> {
