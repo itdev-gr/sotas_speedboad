@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/translate-blog.mjs --missing-only --continue-on-error && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "compress-videos": "bash scripts/compress-videos.sh",
