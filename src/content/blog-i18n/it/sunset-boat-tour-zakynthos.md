@@ -3,8 +3,8 @@ title: "Miglior itinerario al tramonto a Zante: da Keri a Mizithres"
 metaTitle: "Itinerario al tramonto a Zante: Keri e Mizithres"
 metaDescription: "Organizza il miglior tour in barca al tramonto a Zante tra Isola delle Tartarughe, Grotte di Keri e Mizithres, con orari, soste e consigli."
 excerpt: "Nel tardo pomeriggio, la luce trasforma la costa meridionale di Zante: le scogliere bianche si accendono e il mare assume intense sfumature blu e dorate."
-image: "/images/blog-stock-sunset-silhouette.jpeg"
-imageAlt: "Boat silhouette on the Ionian Sea at sunset"
+image: "/images/blog-stock-cliffs-sunset.jpeg"
+imageAlt: "Zakynthos cliffs and sea at sunset on a south-coast route"
 pubDate: 2026-05-18
 order: 8
 locale: "it"

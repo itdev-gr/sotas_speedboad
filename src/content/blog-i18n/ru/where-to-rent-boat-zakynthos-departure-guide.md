@@ -4,7 +4,7 @@ metaTitle: "Места отправления лодок на Закинфе: п
 metaDescription: "Сравните 6 мест отправления лодок на Закинфе по маршрутам, парковке, трансферам и погоде, чтобы выбрать порт для севера или юга."
 excerpt: "Лучшее место для аренды лодки на Закинфе зависит от побережья, которое вы хотите увидеть. Сравните основные точки отправления на острове перед выбором оператора."
 image: "/images/blog-stock-marina-departure.jpeg"
-imageAlt: "Boats at a Greek marina — planning your Zakynthos departure point"
+imageAlt: "Sailboats at a marina — planning your Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 locale: "ru"

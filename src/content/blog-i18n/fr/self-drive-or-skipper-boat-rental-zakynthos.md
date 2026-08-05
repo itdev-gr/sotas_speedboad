@@ -3,8 +3,8 @@ title: "Location de bateau en autonomie ou avec skipper à Zakynthos : quelle op
 metaTitle: "Location de bateau en autonomie ou avec skipper à Zakynthos"
 metaDescription: "Comparez les locations de bateaux en autonomie et avec skipper à Zakynthos. Découvrez quelle option convient à votre groupe, votre budget et le type de journée que vous voulez sur l'eau."
 excerpt: "Lors de la réservation d'une location de bateau à Zakynthos, la première vraie décision que vous devez prendre est la suivante : voulez-vous conduire le bateau vous-même ou engager un skipper professionnel pour le faire ?"
-image: "/images/blog-stock-yachts-zakynthos.jpeg"
-imageAlt: "Boats moored in clear Zakynthos water — self-drive or skippered formats"
+image: "/images/skipper-drive.webp"
+imageAlt: "Guest at the helm deciding between self-drive and skippered hire"
 pubDate: 2026-05-18
 order: 7
 locale: "fr"

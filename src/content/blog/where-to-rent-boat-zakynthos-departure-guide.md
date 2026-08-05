@@ -4,7 +4,7 @@ metaTitle: "Zakynthos Boat Departure Points: Complete Harbour Guide"
 metaDescription: "Compare 6 Zakynthos boat departure points by route, parking, transfers and weather, then choose the right harbour for your north- or south-coast trip."
 excerpt: "The best place to rent a boat in Zakynthos depends on the coast you want to explore. Compare the island's main departure areas before choosing an operator."
 image: "/images/blog-stock-marina-departure.jpeg"
-imageAlt: "Boats at a Greek marina — planning your Zakynthos departure point"
+imageAlt: "Sailboats at a marina — planning your Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 ---

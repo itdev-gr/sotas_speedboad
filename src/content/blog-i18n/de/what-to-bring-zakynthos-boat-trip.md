@@ -3,8 +3,8 @@ title: "Packliste für eine Bootstour auf Zakynthos"
 metaTitle: "Bootstour auf Zakynthos: Packliste zum Mitnehmen"
 metaDescription: "Packliste für Ihre Bootstour auf Zakynthos: Ausweis, Sonnenschutz, Badesachen, Wasser, Bedarf für Kinder, Handyschutz und Ankunft am Hafen."
 excerpt: "Die vollständige Pack- und Vorbereitungsliste für einen Bootstag auf Zakynthos: Dokumente, Sonnenschutz, Bedarf für Kinder, Handyschutz und bereits vorhandene Bootsausstattung."
-image: "/images/blog-stock-aerial-beach-boat.jpeg"
-imageAlt: "Aerial view of a boat day at a Zakynthos beach stop"
+image: "/images/fleet-experience.webp"
+imageAlt: "Guest relaxing on a boat sun deck before a day on the water"
 pubDate: 2026-07-17
 order: 17
 locale: "de"

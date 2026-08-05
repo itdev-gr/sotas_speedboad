@@ -3,8 +3,8 @@ title: "Meilleur itinéraire au coucher du soleil à Zakynthos"
 metaTitle: "Coucher de soleil en bateau à Zakynthos : Keri-Mizithres"
 metaDescription: "Préparez votre sortie en bateau au coucher du soleil à Zakynthos : Turtle Island, grottes de Keri, Mizithres, horaires, baignades et conseils pratiques."
 excerpt: "De Turtle Island aux rochers de Mizithres par les grottes de Keri, découvrez l'itinéraire en bateau qui révèle la côte sud à l'heure dorée."
-image: "/images/blog-stock-sunset-silhouette.jpeg"
-imageAlt: "Boat silhouette on the Ionian Sea at sunset"
+image: "/images/blog-stock-cliffs-sunset.jpeg"
+imageAlt: "Zakynthos cliffs and sea at sunset on a south-coast route"
 pubDate: 2026-05-18
 order: 8
 locale: "fr"

@@ -3,8 +3,8 @@ title: "Zakynthos Marine Park Boat Rules: Turtle-Safe Guide"
 metaTitle: "Zakynthos Marine Park Boat Rules: Turtle-Safe Guide"
 metaDescription: "Follow Zakynthos Marine Park boat rules for 6-knot zones, turtle-safe distances, anchoring limits and responsible visits to protected nesting beaches."
 excerpt: "A practical guide to protected-zone navigation, low-speed boating and responsible loggerhead turtle observation in Zakynthos Marine Park."
-image: "/images/blog-stock-tourboats-caves.jpeg"
-imageAlt: "Tour boats near Zakynthos cliffs in an area governed by marine park rules"
+image: "/images/blog-stock-turtle.jpeg"
+imageAlt: "Loggerhead sea turtle swimming — marine park protection context"
 pubDate: 2026-07-17
 order: 18
 ---

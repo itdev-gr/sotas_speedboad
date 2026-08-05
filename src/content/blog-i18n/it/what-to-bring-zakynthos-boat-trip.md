@@ -3,8 +3,8 @@ title: "Cosa portare in barca a Zakynthos: lista completa"
 metaTitle: "Cosa portare in barca a Zakynthos | Lista completa"
 metaDescription: "Prepara la gita in barca a Zakynthos con una lista per documenti, protezione solare, costume, acqua, bambini, telefono e arrivo in marina."
 excerpt: "Una lista completa per preparare una giornata in barca a Zakynthos: documenti, protezione solare, necessità dei bambini, telefono e dotazioni già presenti a bordo."
-image: "/images/blog-stock-aerial-beach-boat.jpeg"
-imageAlt: "Aerial view of a boat day at a Zakynthos beach stop"
+image: "/images/fleet-experience.webp"
+imageAlt: "Guest relaxing on a boat sun deck before a day on the water"
 pubDate: 2026-07-17
 order: 17
 locale: "it"

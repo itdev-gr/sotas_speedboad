@@ -4,7 +4,7 @@ metaTitle: "Boot mieten auf Zakynthos: 6 Häfen und Abfahrtsorte"
 metaDescription: "Vergleichen Sie 6 Abfahrtsorte für Boote auf Zakynthos nach Route, Parken, Transfer und Wetter und wählen Sie den passenden Hafen im Norden oder Süden."
 excerpt: "Wo Sie auf Zakynthos am besten ein Boot mieten, hängt von der gewünschten Küste ab. Vergleichen Sie die wichtigsten Abfahrtsorte, bevor Sie einen Anbieter wählen."
 image: "/images/blog-stock-marina-departure.jpeg"
-imageAlt: "Boats at a Greek marina — planning your Zakynthos departure point"
+imageAlt: "Sailboats at a marina — planning your Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 locale: "de"

@@ -3,8 +3,8 @@ title: "Is It Safe to Rent a Boat in Zakynthos With No Experience?"
 metaTitle: "Is It Safe to Rent a Boat in Zakynthos With No Experience?"
 metaDescription: "Never driven a boat? A self-drive rental in Zakynthos is safe for beginners. Here is what the safety briefing covers and where you can go."
 excerpt: "Renting a boat in Zakynthos with no experience is one of the most common concerns we hear before a booking. The short answer is yes, it is safe, and thousands of first-time drivers do exactly this every season."
-image: "/images/blog-stock-birds-eye-boat.jpeg"
-imageAlt: "Bird's-eye view of a small rental boat on calm Zakynthos water"
+image: "/images/blog-stock-marina-harbour.jpeg"
+imageAlt: "Boats docked in a calm marina before a first rental day"
 pubDate: 2026-06-19
 order: 13
 ---

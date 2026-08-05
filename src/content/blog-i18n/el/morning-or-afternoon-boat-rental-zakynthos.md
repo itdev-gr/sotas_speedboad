@@ -3,8 +3,8 @@ title: "Πρωί ή απόγευμα για ενοικίαση σκάφους σ
 metaTitle: "Πρωί ή απόγευμα για ενοικίαση σκάφους στη Ζάκυνθο"
 metaDescription: "Πρωί ή απόγευμα για την ενοικίαση σκάφους στη Ζάκυνθο; Το πρωί φέρνει πιο ήρεμη θάλασσα, το απόγευμα καλύτερο φως στο Ναυάγιο. Δείτε πώς να επιλέξετε."
 excerpt: "Οι περισσότεροι κλείνουν ενοικίαση σκάφους στη Ζάκυνθο χωρίς να σκέφτονται την ώρα αναχώρησης. Αλλά η ώρα που φεύγετε από τη μαρίνα αλλάζει τις συνθήκες θάλασσας, τα πλήθη και την ποιότητα των φωτογραφιών."
-image: "/images/unnamed.webp"
-imageAlt: "Navagio Bay in bright daylight, a common morning boat destination"
+image: "/images/blog-stock-sunrise-marina.jpeg"
+imageAlt: "Boats on calm water at sunrise — choosing a morning slot"
 pubDate: 2026-06-19
 order: 14
 locale: "el"

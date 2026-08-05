@@ -3,8 +3,8 @@ title: "Αυτοκινούμενη ή ενοικίαση με κυβερνήτη
 metaTitle: "Αυτοκινούμενη ή ενοικίαση με κυβερνήτη στη Ζάκυνθο"
 metaDescription: "Συγκρίνετε αυτοκινούμενες ενοικιάσεις και ενοικιάσεις με κυβερνήτη στη Ζάκυνθο. Βρείτε ποια επιλογή ταιριάζει στην ομάδα, τον προϋπολογισμό και τη μέρα που θέλετε στο νερό."
 excerpt: "Όταν κλείνετε ενοικίαση σκάφους στη Ζάκυνθο, η πρώτη πραγματική απόφαση είναι αυτή: θέλετε να οδηγήσετε το σκάφος μόνοι σας ή να νοικιάσετε επαγγελματία κυβερνήτη;"
-image: "/images/blog-stock-yachts-zakynthos.jpeg"
-imageAlt: "Boats moored in clear Zakynthos water — self-drive or skippered formats"
+image: "/images/skipper-drive.webp"
+imageAlt: "Guest at the helm deciding between self-drive and skippered hire"
 pubDate: 2026-05-18
 order: 7
 locale: "el"

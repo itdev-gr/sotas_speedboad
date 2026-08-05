@@ -3,8 +3,8 @@ title: "Morning or Afternoon Boat Rental in Zakynthos: Best Time"
 metaTitle: "Morning or Afternoon Boat Rental in Zakynthos: Best Time"
 metaDescription: "Morning or afternoon for your Zakynthos boat rental? Mornings bring calmer seas, afternoons better Navagio light. Here is how to choose."
 excerpt: "Most people book their Zakynthos boat rental and do not give the departure time a second thought. But the time you leave the marina changes the sea conditions, the crowds at each stop, and the quality of photos you come home with."
-image: "/images/unnamed.webp"
-imageAlt: "Navagio Bay in bright daylight, a common morning boat destination"
+image: "/images/blog-stock-sunrise-marina.jpeg"
+imageAlt: "Boats on calm water at sunrise — choosing a morning slot"
 pubDate: 2026-06-19
 order: 14
 ---

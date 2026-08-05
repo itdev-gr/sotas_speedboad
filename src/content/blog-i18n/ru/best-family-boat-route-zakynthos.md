@@ -3,8 +3,8 @@ title: "Лучший лодочный маршрут на Zakynthos для се�
 metaTitle: "Лучший лодочный маршрут на Zakynthos для семей с детьми"
 metaDescription: "Самый спокойный и дружелюбный к детям лодочный маршрут на Zakynthos. Turtle Island и Keri Caves, мелкое купание, меньше времени в море. План семейного дня."
 excerpt: "Планирование лодочной поездки с детьми меняет расчёт. Маршрут, который на бумаге выглядит впечатляюще, не всегда даёт лучший семейный день."
-image: "/images/IMG_6566.webp"
-imageAlt: "Boat in sheltered turquoise water on a calm family-friendly south-coast route"
+image: "/images/blog-stock-friends-deck.jpeg"
+imageAlt: "Friends enjoying a sunny day together on a boat deck"
 pubDate: 2026-06-19
 order: 12
 locale: "ru"

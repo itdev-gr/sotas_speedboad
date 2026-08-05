@@ -3,8 +3,8 @@ title: "Best Sunset Boat Route in Zakynthos: Keri to Mizithres"
 metaTitle: "Best Sunset Boat Route in Zakynthos: Keri to Mizithres"
 metaDescription: "Plan the best sunset boat route in Zakynthos through Turtle Island and Keri Caves to Mizithres, with timing, swim stops and practical packing tips."
 excerpt: "There is a specific window in the late afternoon in Zakynthos when the light changes and the whole south coast looks different. The white limestone cliffs catch the sun at a low angle, the water turns"
-image: "/images/blog-stock-sunset-silhouette.jpeg"
-imageAlt: "Boat silhouette on the Ionian Sea at sunset"
+image: "/images/blog-stock-cliffs-sunset.jpeg"
+imageAlt: "Zakynthos cliffs and sea at sunset on a south-coast route"
 pubDate: 2026-05-18
 order: 8
 ---

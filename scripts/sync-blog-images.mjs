@@ -12,11 +12,11 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const IMAGE_MAP = {
 	'bad-weather-boat-rental-zakynthos': {
 		image: '/images/blog-stock-calm-cloudy-sea.jpeg',
-		imageAlt: 'Calm sea under a cloudy sky — weather-aware boat planning in Greece',
+		imageAlt: 'Calm sea under a cloudy sky when planning around weather',
 	},
 	'best-family-boat-route-zakynthos': {
-		image: '/images/IMG_6566.webp',
-		imageAlt: 'Boat in sheltered turquoise water on a calm family-friendly south-coast route',
+		image: '/images/blog-stock-friends-deck.jpeg',
+		imageAlt: 'Friends enjoying a sunny day together on a boat deck',
 	},
 	'best-month-rent-boat-zakynthos': {
 		image: '/images/IMG_6416.webp',
@@ -24,19 +24,19 @@ const IMAGE_MAP = {
 	},
 	'boat-trip-from-laganas-tsilivi-argassi-alykes-zakynthos': {
 		image: '/images/blog-stock-greece-speedboat.jpeg',
-		imageAlt: 'Speedboat cruising the Greek coastline from a resort departure area',
+		imageAlt: 'Speedboat cruising a scenic Greek coastline from a resort area',
 	},
 	'full-island-boat-tour-zakynthos': {
-		image: '/images/unnamed-hero.webp',
-		imageAlt: 'Navagio Shipwreck Beach and cliffs seen from above on a full-island boat route',
+		image: '/images/blog-stock-tourboats-caves.jpeg',
+		imageAlt: 'Tour boats near Zakynthos cliffs on a full-day island route',
 	},
 	'hidden-beaches-zakynthos-by-boat': {
 		image: '/images/blog-stock-natural-arch.jpeg',
-		imageAlt: 'Natural sea arch and limestone coast reachable by boat in Zakynthos',
+		imageAlt: 'Natural sea arch on the Zakynthos coast',
 	},
 	'morning-or-afternoon-boat-rental-zakynthos': {
-		image: '/images/unnamed.webp',
-		imageAlt: 'Navagio Bay in bright daylight, a common morning boat destination',
+		image: '/images/blog-stock-sunrise-marina.jpeg',
+		imageAlt: 'Boats on calm water at sunrise — choosing a morning slot',
 	},
 	'navagio-shipwreck-beach-blue-caves-boat-zakynthos': {
 		image: '/images/license-free-hero.webp',
@@ -47,8 +47,8 @@ const IMAGE_MAP = {
 		imageAlt: 'Aerial view of a rental boat on clear Zakynthos water',
 	},
 	'private-boat-8-12-people-zakynthos': {
-		image: '/images/fleet-experience.webp',
-		imageAlt: 'Guests relaxing on the sun deck during a private Zakynthos boat day',
+		image: '/images/blog-stock-group-party.jpeg',
+		imageAlt: 'Group of friends with drinks on a private boat day',
 	},
 	'private-boat-cruise-with-skipper-zakynthos': {
 		image: '/images/image_skipper.webp',
@@ -59,52 +59,52 @@ const IMAGE_MAP = {
 		imageAlt: 'Private boat in turquoise water inside a Zakynthos sea cave',
 	},
 	'private-cruise-vs-group-boat-tour-zakynthos': {
-		image: '/images/IMG_0111.webp',
-		imageAlt: 'Private boat approaching Navagio Beach away from crowded excursion traffic',
+		image: '/images/blog-stock-yachts-zakynthos.jpeg',
+		imageAlt: 'Small boats moored in clear Zakynthos water — private vs shared formats',
 	},
 	'private-yacht-cruise-zakynthos-special-celebrations': {
 		image: '/images/0DF67F7B-8AA7-476C-BCEB-37E088D4925A.webp',
 		imageAlt: 'Private celebration cruise at sunset off the Zakynthos coast',
 	},
 	'safe-rent-boat-zakynthos-without-experience': {
-		image: '/images/blog-stock-birds-eye-boat.jpeg',
-		imageAlt: 'Bird\'s-eye view of a small rental boat on calm Zakynthos water',
+		image: '/images/blog-stock-marina-harbour.jpeg',
+		imageAlt: 'Boats docked in a calm marina before a first rental day',
 	},
 	'seasickness-boat-trip-zakynthos': {
 		image: '/images/blog-stock-calm-bay.jpeg',
 		imageAlt: 'Calm inshore water and settled conditions for sensitive passengers',
 	},
 	'self-drive-or-skipper-boat-rental-zakynthos': {
-		image: '/images/blog-stock-yachts-zakynthos.jpeg',
-		imageAlt: 'Boats moored in clear Zakynthos water — self-drive or skippered formats',
+		image: '/images/skipper-drive.webp',
+		imageAlt: 'Guest at the helm deciding between self-drive and skippered hire',
 	},
 	'snorkeling-by-boat-zakynthos': {
-		image: '/images/blog-stock-blue-caves.jpeg',
-		imageAlt: 'Blue Caves coastline and clear water for snorkelling by boat in Zakynthos',
+		image: '/images/blog-stock-snorkel-underwater.jpeg',
+		imageAlt: 'Snorkeller underwater in clear blue sea',
 	},
 	'sunset-boat-tour-zakynthos': {
-		image: '/images/blog-stock-sunset-silhouette.jpeg',
-		imageAlt: 'Boat silhouette on the Ionian Sea at sunset',
+		image: '/images/blog-stock-cliffs-sunset.jpeg',
+		imageAlt: 'Zakynthos cliffs and sea at sunset on a south-coast route',
 	},
 	'turtle-island-keri-caves-mizithres-rocks-boat-zakynthos': {
 		image: '/images/IMG_6507.webp',
 		imageAlt: 'Sea caves and limestone cliffs on the south coast of Zakynthos',
 	},
 	'what-to-bring-zakynthos-boat-trip': {
-		image: '/images/blog-stock-aerial-beach-boat.jpeg',
-		imageAlt: 'Aerial view of a boat day at a Zakynthos beach stop',
+		image: '/images/fleet-experience.webp',
+		imageAlt: 'Guest relaxing on a boat sun deck before a day on the water',
 	},
 	'where-to-rent-boat-zakynthos-departure-guide': {
 		image: '/images/blog-stock-marina-departure.jpeg',
-		imageAlt: 'Boats at a Greek marina — planning your Zakynthos departure point',
+		imageAlt: 'Sailboats at a marina — planning your Zakynthos departure point',
 	},
 	'zakynthos-boat-rental-prices-cost-guide': {
 		image: '/images/blog-stock-zante-aerial.jpeg',
 		imageAlt: 'Aerial view of a boat on turquoise Zakynthos water',
 	},
 	'zakynthos-marine-park-boat-rules': {
-		image: '/images/blog-stock-tourboats-caves.jpeg',
-		imageAlt: 'Tour boats near Zakynthos cliffs in an area governed by marine park rules',
+		image: '/images/blog-stock-turtle.jpeg',
+		imageAlt: 'Loggerhead sea turtle swimming — marine park protection context',
 	},
 };
 

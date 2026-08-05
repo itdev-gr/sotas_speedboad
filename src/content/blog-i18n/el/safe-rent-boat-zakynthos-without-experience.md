@@ -3,8 +3,8 @@ title: "Είναι ασφαλές να ενοικιάσετε σκάφος στ�
 metaTitle: "Είναι ασφαλές να ενοικιάσετε σκάφος στη Ζάκυνθο χωρίς εμπειρία;"
 metaDescription: "Δεν έχετε ξαναοδηγήσει σκάφος; Η αυτοκινούμενη ενοικίαση στη Ζάκυνθο είναι ασφαλής για αρχάριους. Δείτε τι καλύπτει η ενημέρωση ασφαλείας και πού μπορείτε να πάτε."
 excerpt: "Η ενοικίαση σκάφους στη Ζάκυνθο χωρίς εμπειρία είναι ένα από τα πιο συχνά ερωτήματα πριν την κράτηση. Η σύντομη απάντηση είναι ναι, είναι ασφαλές, και χιλιάδες πρωτάρηδες οδηγοί το κάνουν κάθε σεζόν."
-image: "/images/blog-stock-birds-eye-boat.jpeg"
-imageAlt: "Bird's-eye view of a small rental boat on calm Zakynthos water"
+image: "/images/blog-stock-marina-harbour.jpeg"
+imageAlt: "Boats docked in a calm marina before a first rental day"
 pubDate: 2026-06-19
 order: 13
 locale: "el"

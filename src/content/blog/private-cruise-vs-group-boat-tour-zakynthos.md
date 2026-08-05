@@ -3,8 +3,8 @@ title: "Private Cruise vs Group Boat Tour in Zakynthos: Which Wins?"
 metaTitle: "Private Cruise vs Group Boat Tour in Zakynthos: Which Wins?"
 metaDescription: "Private cruise or group boat tour in Zakynthos? Compare cost per person, privacy and flexibility, with a clear pick for couples and groups."
 excerpt: "At some point in planning every Zakynthos holiday, this question comes up: is it worth paying for a private boat, or does a group tour do the same job for less?"
-image: "/images/IMG_0111.webp"
-imageAlt: "Private boat approaching Navagio Beach away from crowded excursion traffic"
+image: "/images/blog-stock-yachts-zakynthos.jpeg"
+imageAlt: "Small boats moored in clear Zakynthos water — private vs shared formats"
 pubDate: 2026-06-19
 order: 15
 ---

@@ -3,8 +3,8 @@ title: "Bateau privé pour 8 à 12 personnes à Zakynthos"
 metaTitle: "Bateau privé pour 8 à 12 personnes à Zakynthos : tailles et itinéraires"
 metaDescription: "Besoin d'un bateau privé pour 8 à 12 personnes à Zakynthos ? Comparez la capacité, le réalisme de l'itinéraire, la valeur du skipper et les conseils de réservation avant de diviser un grand groupe."
 excerpt: "Un bateau privé pour 8 à 12 personnes à Zakynthos est un problème de réservation différent de celui d'une demi-journée en couple. La capacité, le confort, la distance du parcours et la valeur du skipper changent tous une fois que le groupe ne rentre plus dans une petite coque automotrice."
-image: "/images/fleet-experience.webp"
-imageAlt: "Guests relaxing on the sun deck during a private Zakynthos boat day"
+image: "/images/blog-stock-group-party.jpeg"
+imageAlt: "Group of friends with drinks on a private boat day"
 pubDate: 2026-08-05
 order: 26
 category: "Planning & costs"

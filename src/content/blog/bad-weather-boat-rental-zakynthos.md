@@ -4,7 +4,7 @@ metaTitle: "Bad Weather on Your Zakynthos Boat Rental: What to Expect"
 metaDescription: "Worried about wind on your boat rental day in Zakynthos? Most trips still run with a route change. Here is how rescheduling and refunds work."
 excerpt: "Booking a boat rental in Zakynthos and then watching a grey sky roll in on the morning of your trip is a gut-dropping moment. You have been looking forward to this day. You have planned the route."
 image: "/images/blog-stock-calm-cloudy-sea.jpeg"
-imageAlt: "Calm sea under a cloudy sky — weather-aware boat planning in Greece"
+imageAlt: "Calm sea under a cloudy sky when planning around weather"
 pubDate: 2026-06-19
 order: 11
 ---

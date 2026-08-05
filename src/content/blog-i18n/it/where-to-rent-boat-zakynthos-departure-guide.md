@@ -4,7 +4,7 @@ metaTitle: "Punti di partenza in barca a Zakynthos: guida ai porti"
 metaDescription: "Confronta 6 punti di partenza in barca a Zakynthos per itinerario, parcheggio, trasferimenti e meteo, scegliendo il porto adatto alla tua uscita."
 excerpt: "Il luogo migliore per noleggiare una barca a Zakynthos dipende dalla costa che vuoi esplorare. Confronta le principali aree di partenza dell'isola prima di scegliere un operatore."
 image: "/images/blog-stock-marina-departure.jpeg"
-imageAlt: "Boats at a Greek marina — planning your Zakynthos departure point"
+imageAlt: "Sailboats at a marina — planning your Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 locale: "it"

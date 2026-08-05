@@ -3,8 +3,8 @@ title: "Τι να πάρετε σε εκδρομή με σκάφος στη Ζά
 metaTitle: "Τι να πάρετε σε εκδρομή με σκάφος στη Ζάκυνθο | Λίστα"
 metaDescription: "Ετοιμαστείτε για εκδρομή με σκάφος στη Ζάκυνθο: ταυτότητα, αντηλιακή προστασία, μαγιό, νερό, είδη για παιδιά, κινητό και άφιξη στη μαρίνα."
 excerpt: "Πλήρης λίστα προετοιμασίας για μια μέρα με σκάφος στη Ζάκυνθο, από έγγραφα και αντηλιακή προστασία έως είδη για παιδιά, φροντίδα κινητού και παροχές του σκάφους."
-image: "/images/blog-stock-aerial-beach-boat.jpeg"
-imageAlt: "Aerial view of a boat day at a Zakynthos beach stop"
+image: "/images/fleet-experience.webp"
+imageAlt: "Guest relaxing on a boat sun deck before a day on the water"
 pubDate: 2026-07-17
 order: 17
 locale: "el"

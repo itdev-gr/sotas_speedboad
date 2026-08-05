@@ -4,7 +4,7 @@ metaTitle: "Κακός καιρός στην ενοικίαση σκάφους �
 metaDescription: "Ανησυχείτε για τον άνεμο την ημέρα της ενοικίασης σκάφους στη Ζάκυνθο; Οι περισσότερες εκδρομές γίνονται με αλλαγή διαδρομής. Δείτε πώς λειτουργούν η αναπρογραμματισμένη ημερομηνία και οι επιστροφές χρημάτων."
 excerpt: "Να κλείσετε ενοικίαση σκάφους στη Ζάκυνθο και να βλέπετε τον γκρίζο ουρανό να σκοτεινιάζει το πρωί της εκδρομής σας είναι μια στιγμή που κόβει την ανάσα. Ανυπομονούσατε γι' αυτή την ημέρα. Είχατε σχεδιάσει τη διαδρομή."
 image: "/images/blog-stock-calm-cloudy-sea.jpeg"
-imageAlt: "Calm sea under a cloudy sky — weather-aware boat planning in Greece"
+imageAlt: "Calm sea under a cloudy sky when planning around weather"
 pubDate: 2026-06-19
 order: 11
 locale: "el"

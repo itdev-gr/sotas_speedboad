@@ -3,8 +3,8 @@ title: "Η καλύτερη διαδρομή με σκάφος στη Ζάκυν
 metaTitle: "Η καλύτερη διαδρομή με σκάφος στη Ζάκυνθο για οικογένειες με παιδιά"
 metaDescription: "Η πιο ήρεμη, φιλική προς παιδιά διαδρομή στη Ζάκυνθο. Νησί της Χελώνας και Σπηλιές Κερί, ρηχό κολύμπι, λιγότερος χρόνος στη θάλασσα. Πλάνο για οικογενειακή μέρα."
 excerpt: "Ο σχεδιασμός εκδρομής με σκάφος με παιδιά αλλάζει τον υπολογισμό. Η διαδρομή που φαίνεται πιο εντυπωσιακή στο χαρτί δεν είναι πάντα αυτή που δίνει την καλύτερη οικογενειακή μέρα."
-image: "/images/IMG_6566.webp"
-imageAlt: "Boat in sheltered turquoise water on a calm family-friendly south-coast route"
+image: "/images/blog-stock-friends-deck.jpeg"
+imageAlt: "Friends enjoying a sunny day together on a boat deck"
 pubDate: 2026-06-19
 order: 12
 locale: "el"

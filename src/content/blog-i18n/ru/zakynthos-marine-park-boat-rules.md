@@ -3,8 +3,8 @@ title: "Правила для лодок в морском парке Закин
 metaTitle: "Правила для лодок в морском парке Закинфа: защита черепах"
 metaDescription: "Соблюдайте правила морского парка Закинфа: зоны 6 узлов, дистанции до черепах, ограничения на швартовку и посещение гнездовых пляжей."
 excerpt: "Практический гид по навигации в охраняемых зонах, движению на малой скорости и ответственному наблюдению за черепахами логгерхед в морском парке Закинфа."
-image: "/images/blog-stock-tourboats-caves.jpeg"
-imageAlt: "Tour boats near Zakynthos cliffs in an area governed by marine park rules"
+image: "/images/blog-stock-turtle.jpeg"
+imageAlt: "Loggerhead sea turtle swimming — marine park protection context"
 pubDate: 2026-07-17
 order: 18
 locale: "ru"

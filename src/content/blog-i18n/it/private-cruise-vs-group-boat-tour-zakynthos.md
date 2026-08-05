@@ -3,8 +3,8 @@ title: "Crociera privata vs tour di gruppo in barca a Zante: quale vince?"
 metaTitle: "Crociera privata vs tour di gruppo in barca a Zante: quale vince?"
 metaDescription: "Crociera privata o tour di gruppo in barca a Zante? Confronta costo a persona, privacy e flessibilità, con una scelta chiara per coppie e gruppi."
 excerpt: "A un certo punto nella pianificazione di ogni vacanza a Zante emerge questa domanda: vale la pena pagare per una barca privata, o un tour di gruppo fa lo stesso lavoro per meno?"
-image: "/images/IMG_0111.webp"
-imageAlt: "Private boat approaching Navagio Beach away from crowded excursion traffic"
+image: "/images/blog-stock-yachts-zakynthos.jpeg"
+imageAlt: "Small boats moored in clear Zakynthos water — private vs shared formats"
 pubDate: 2026-06-19
 order: 15
 locale: "it"

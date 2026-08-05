@@ -3,8 +3,8 @@ title: "Full Island Boat Tour in Zakynthos: What You See in One Day"
 metaTitle: "Full Island Boat Tour in Zakynthos: 8 Hour Route"
 metaDescription: "See the entire coast of Zakynthos in one day. The full island boat tour covers Navagio, Blue Caves, south coast caves, and multiple swimming stops."
 excerpt: "A full island boat tour in Zakynthos is exactly what it sounds like: one day, one boat, the entire coastline. You circumnavigate the island, hitting the major landmarks on both the north and south coa"
-image: "/images/unnamed-hero.webp"
-imageAlt: "Navagio Shipwreck Beach and cliffs seen from above on a full-island boat route"
+image: "/images/blog-stock-tourboats-caves.jpeg"
+imageAlt: "Tour boats near Zakynthos cliffs on a full-day island route"
 pubDate: 2026-05-18
 order: 2
 ---

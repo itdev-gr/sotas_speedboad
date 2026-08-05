@@ -3,8 +3,8 @@ title: "Il miglior percorso in barca a Zante per famiglie con bambini"
 metaTitle: "Il miglior percorso in barca a Zante per famiglie con bambini"
 metaDescription: "Il percorso in barca più tranquillo e adatto ai bambini a Zante. Turtle Island e Keri Caves, nuotate in acque basse, meno tempo in mare. Un piano per la giornata in famiglia."
 excerpt: "Organizzare una gita in barca con i bambini cambia tutto. Il percorso che sulla carta sembra il più spettacolare non è sempre quello che regala la giornata migliore in famiglia."
-image: "/images/IMG_6566.webp"
-imageAlt: "Boat in sheltered turquoise water on a calm family-friendly south-coast route"
+image: "/images/blog-stock-friends-deck.jpeg"
+imageAlt: "Friends enjoying a sunny day together on a boat deck"
 pubDate: 2026-06-19
 order: 12
 locale: "it"

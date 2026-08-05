@@ -4,7 +4,7 @@ metaTitle: "7 versteckte Strände auf Zakynthos per Boot"
 metaDescription: "Entdecken Sie 7 versteckte Strände und Buchten auf Zakynthos per Boot: mit Routentipps, Skipper-Hinweisen, Wettervorbehalten und Sicherheit beim Baden."
 excerpt: "Entdecken Sie abseits der berühmten Sehenswürdigkeiten sieben kleinere Strände, Buchten und Felsformationen für einen sorgfältig geplanten Bootstag auf Zakynthos."
 image: "/images/blog-stock-natural-arch.jpeg"
-imageAlt: "Natural sea arch and limestone coast reachable by boat in Zakynthos"
+imageAlt: "Natural sea arch on the Zakynthos coast"
 pubDate: 2026-07-17
 order: 20
 locale: "de"

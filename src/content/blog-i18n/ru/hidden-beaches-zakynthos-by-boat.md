@@ -4,7 +4,7 @@ metaTitle: "7 скрытых пляжей и бухт Закинфа на лод
 metaDescription: "Откройте 7 скрытых пляжей и бухт Закинфа на лодке: идеи маршрутов, советы по выбору шкипера, погодные ограничения и безопасное купание."
 excerpt: "Помимо главных достопримечательностей Закинфа, семь небольших пляжей, бухт и скальных образований делают продуманный день на лодке особенно интересным."
 image: "/images/blog-stock-natural-arch.jpeg"
-imageAlt: "Natural sea arch and limestone coast reachable by boat in Zakynthos"
+imageAlt: "Natural sea arch on the Zakynthos coast"
 pubDate: 2026-07-17
 order: 20
 locale: "ru"

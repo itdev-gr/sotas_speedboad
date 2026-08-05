@@ -13,3 +13,10 @@ Blog stock hero images (Unsplash License / Pexels License — free commercial us
 - `blog-stock-calm-bay.jpeg` — Unsplash / Jack Barton — calm bay, Greece
 - `blog-stock-birds-eye-boat.jpeg` — Unsplash — bird's eye boat at Navagio, Zakynthos
 - `blog-stock-aerial-beach-boat.jpeg` — Unsplash / Ana-Maria D. — aerial Navagio boat
+- `blog-stock-snorkel-underwater.jpeg` — Pexels / Ecrinn Burgazli — underwater snorkelling
+- `blog-stock-marina-harbour.jpeg` — Pexels — Mediterranean marina with boats docked
+- `blog-stock-sunrise-marina.jpeg` — Pexels / Magda Ehlers — boats at sunrise
+- `blog-stock-friends-deck.jpeg` — Pexels / iam luisao — friends on a boat deck
+- `blog-stock-group-party.jpeg` — Pexels / Matheus Bertelli — group on a boat
+- `blog-stock-turtle.jpeg` — Pexels / Oscar Trisley — loggerhead sea turtle
+- `blog-stock-cliffs-sunset.jpeg` — Unsplash / Lucas Chizzali — Zakynthos cliffs at sunset

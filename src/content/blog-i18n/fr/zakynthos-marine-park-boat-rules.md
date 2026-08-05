@@ -3,8 +3,8 @@ title: "Règles du parc marin de Zakynthos : guide tortues"
 metaTitle: "Règles du parc marin de Zakynthos : guide tortues"
 metaDescription: "Respectez les règles du parc marin de Zakynthos : zones à 6 nœuds, distances avec les tortues, limites de mouillage et plages de nidification."
 excerpt: "Guide pratique de la navigation en zone protégée, de la vitesse réduite et de l'observation responsable des tortues caouannes dans le parc marin de Zakynthos."
-image: "/images/blog-stock-tourboats-caves.jpeg"
-imageAlt: "Tour boats near Zakynthos cliffs in an area governed by marine park rules"
+image: "/images/blog-stock-turtle.jpeg"
+imageAlt: "Loggerhead sea turtle swimming — marine park protection context"
 pubDate: 2026-07-17
 order: 18
 locale: "fr"

@@ -3,8 +3,8 @@ title: "Croisière privée ou excursion de groupe à Zakynthos : laquelle choisi
 metaTitle: "Croisière privée ou excursion de groupe à Zakynthos : laquelle choisir ?"
 metaDescription: "Croisière privée ou excursion de groupe à Zakynthos ? Comparez le coût par personne, l'intimité et la flexibilité, avec un choix clair pour les couples et les groupes."
 excerpt: "À un moment ou un autre lors de la planification de chaque séjour à Zakynthos, cette question se pose : vaut-il la peine de payer pour un bateau privé, ou une excursion de groupe fait-elle le même travail pour moins cher ?"
-image: "/images/IMG_0111.webp"
-imageAlt: "Private boat approaching Navagio Beach away from crowded excursion traffic"
+image: "/images/blog-stock-yachts-zakynthos.jpeg"
+imageAlt: "Small boats moored in clear Zakynthos water — private vs shared formats"
 pubDate: 2026-06-19
 order: 15
 locale: "fr"

@@ -3,8 +3,8 @@ title: "Selbstfahrer oder Skipper Bootsverleih auf Zakynthos: Welche Option ist 
 metaTitle: "Selbstfahrer oder Skipper Bootsverleih auf Zakynthos"
 metaDescription: "Selbstfahrer- und Skipper-Bootsverleih auf Zakynthos im Vergleich. Finden Sie heraus, welche Option zu Ihrer Gruppe, Ihrem Budget und dem Tag passt, den Sie auf dem Wasser wollen."
 excerpt: "Beim Buchen eines Bootsverleihs auf Zakynthos steht als erste echte Entscheidung an: Möchten Sie das Boot selbst steuern oder einen professionellen Skipper engagieren? Beide Optionen bringen Sie aufs Wasser."
-image: "/images/blog-stock-yachts-zakynthos.jpeg"
-imageAlt: "Boats moored in clear Zakynthos water — self-drive or skippered formats"
+image: "/images/skipper-drive.webp"
+imageAlt: "Guest at the helm deciding between self-drive and skippered hire"
 pubDate: 2026-05-18
 order: 7
 locale: "de"

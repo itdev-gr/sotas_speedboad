@@ -4,7 +4,7 @@ metaTitle: "Σημεία αναχώρησης σκαφών στη Ζάκυνθο
 metaDescription: "Συγκρίνετε 6 σημεία αναχώρησης σκαφών στη Ζάκυνθο ανά διαδρομή, πάρκινγκ, μεταφορά και καιρό, για να επιλέξετε το σωστό λιμάνι."
 excerpt: "Το καλύτερο σημείο ενοικίασης σκάφους στη Ζάκυνθο εξαρτάται από την ακτή που θέλετε να εξερευνήσετε. Συγκρίνετε τις κύριες περιοχές αναχώρησης πριν επιλέξετε πάροχο."
 image: "/images/blog-stock-marina-departure.jpeg"
-imageAlt: "Boats at a Greek marina — planning your Zakynthos departure point"
+imageAlt: "Sailboats at a marina — planning your Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 locale: "el"

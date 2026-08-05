@@ -4,7 +4,7 @@ metaTitle: "Mauvais temps lors de votre location de bateau à Zakynthos : à quo
 metaDescription: "Inquiet à propos du vent le jour de votre location de bateau à Zakynthos ? La plupart des sorties ont lieu avec un changement d'itinéraire. Voici comment fonctionnent le report et les remboursements."
 excerpt: "Réserver une location de bateau à Zakynthos, puis voir un ciel gris s'installer le matin de votre sortie, c'est un moment décevant. Vous attendiez ce jour avec impatience. Vous aviez planifié l'itinéraire."
 image: "/images/blog-stock-calm-cloudy-sea.jpeg"
-imageAlt: "Calm sea under a cloudy sky — weather-aware boat planning in Greece"
+imageAlt: "Calm sea under a cloudy sky when planning around weather"
 pubDate: 2026-06-19
 order: 11
 locale: "fr"

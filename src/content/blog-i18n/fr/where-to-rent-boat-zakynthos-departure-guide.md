@@ -4,7 +4,7 @@ metaTitle: "Où louer un bateau à Zakynthos : guide des ports"
 metaDescription: "Comparez 6 points de départ à Zakynthos selon itinéraire, parking, transfert et météo, puis choisissez le port adapté au nord ou au sud."
 excerpt: "Le meilleur endroit où louer un bateau à Zakynthos dépend de la côte que vous souhaitez explorer. Comparez les principales zones de départ avant de choisir un opérateur."
 image: "/images/blog-stock-marina-departure.jpeg"
-imageAlt: "Boats at a Greek marina — planning your Zakynthos departure point"
+imageAlt: "Sailboats at a marina — planning your Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 locale: "fr"

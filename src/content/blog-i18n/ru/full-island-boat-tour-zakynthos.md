@@ -3,8 +3,8 @@ title: "Полный обход Закинфа на лодке: что увид�
 metaTitle: "Полный тур на лодке вокруг Закинфа: маршрут на 8 часов"
 metaDescription: "Осмотрите все побережье Закинфа за день: Навагио, Голубые пещеры, гроты южного берега и несколько остановок для купания на маршруте со шкипером за 8 часов."
 excerpt: "Полный обход Закинфа означает один день, одну лодку и все побережье: главные места северного и южного берегов и несколько остановок для купания."
-image: "/images/unnamed-hero.webp"
-imageAlt: "Navagio Shipwreck Beach and cliffs seen from above on a full-island boat route"
+image: "/images/blog-stock-tourboats-caves.jpeg"
+imageAlt: "Tour boats near Zakynthos cliffs on a full-day island route"
 pubDate: 2026-05-18
 order: 2
 locale: "ru"

@@ -78,6 +78,41 @@ const ASSETS = [
 		url: 'https://unsplash.com/photos/DVMIcFoqDpI/download?force=true&w=1600',
 		credit: 'Unsplash / Ana-Maria D. — aerial Navagio boat',
 	},
+	{
+		file: 'blog-stock-snorkel-underwater.jpeg',
+		url: 'https://images.pexels.com/photos/31363200/pexels-photo-31363200.jpeg?auto=compress&cs=tinysrgb&w=1600',
+		credit: 'Pexels / Ecrinn Burgazli — underwater snorkelling',
+	},
+	{
+		file: 'blog-stock-marina-harbour.jpeg',
+		url: 'https://images.pexels.com/photos/35531431/pexels-photo-35531431.jpeg?auto=compress&cs=tinysrgb&w=1600',
+		credit: 'Pexels — Mediterranean marina with boats docked',
+	},
+	{
+		file: 'blog-stock-sunrise-marina.jpeg',
+		url: 'https://images.pexels.com/photos/35424399/pexels-photo-35424399.jpeg?auto=compress&cs=tinysrgb&w=1600',
+		credit: 'Pexels / Magda Ehlers — boats at sunrise',
+	},
+	{
+		file: 'blog-stock-friends-deck.jpeg',
+		url: 'https://images.pexels.com/photos/12652910/pexels-photo-12652910.jpeg?auto=compress&cs=tinysrgb&w=1600',
+		credit: 'Pexels / iam luisao — friends on a boat deck',
+	},
+	{
+		file: 'blog-stock-group-party.jpeg',
+		url: 'https://images.pexels.com/photos/18999522/pexels-photo-18999522.jpeg?auto=compress&cs=tinysrgb&w=1600',
+		credit: 'Pexels / Matheus Bertelli — group on a boat',
+	},
+	{
+		file: 'blog-stock-turtle.jpeg',
+		url: 'https://images.pexels.com/photos/33495897/pexels-photo-33495897.jpeg?auto=compress&cs=tinysrgb&w=1600',
+		credit: 'Pexels / Oscar Trisley — loggerhead sea turtle',
+	},
+	{
+		file: 'blog-stock-cliffs-sunset.jpeg',
+		url: 'https://unsplash.com/photos/8iFUl9WScPg/download?force=true&w=1600',
+		credit: 'Unsplash / Lucas Chizzali — Zakynthos cliffs at sunset',
+	},
 ];
 
 async function download({ file, url }) {

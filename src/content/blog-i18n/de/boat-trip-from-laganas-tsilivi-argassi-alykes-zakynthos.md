@@ -4,7 +4,7 @@ metaTitle: "Bootsfahrt von Laganas, Tsilivi, Argassi oder Alykes: Welcher Hafen?
 metaDescription: "Übernachten Sie in Laganas, Tsilivi, Argassi oder Alykes? Vergleichen Sie die besten Abfahrtshäfen für Zakynthos-Boote, die Transferlogik und die Routenanpassung, bevor Sie buchen."
 excerpt: "Die meisten Zakynthos-Besucher schlafen nicht am Yachthafen. Sie schlafen in Laganas, Tsilivi, Argassi oder Alykes – und stellen sich dann die gleiche Frage: Von welchem ​​Hafen aus sollten wir eigentlich für einen Bootstag aufbrechen?"
 image: "/images/blog-stock-greece-speedboat.jpeg"
-imageAlt: "Speedboat cruising the Greek coastline from a resort departure area"
+imageAlt: "Speedboat cruising a scenic Greek coastline from a resort area"
 pubDate: 2026-08-05
 order: 22
 category: "Planning & costs"

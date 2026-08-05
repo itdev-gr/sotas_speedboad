@@ -3,8 +3,8 @@ title: "Private Kreuzfahrt vs. Gruppenbootstour auf Zakynthos: Was ist besser?"
 metaTitle: "Private Kreuzfahrt vs. Gruppenbootstour auf Zakynthos: Was ist besser?"
 metaDescription: "Private Kreuzfahrt oder Gruppenbootstour auf Zakynthos? Vergleichen Sie Kosten pro Person, Privatsphäre und Flexibilität – mit klarer Empfehlung für Paare und Gruppen."
 excerpt: "Bei der Planung jedes Zakynthos-Urlaubs kommt irgendwann diese Frage auf: Lohnt sich ein privates Boot, oder erledigt eine Gruppentour denselben Job für weniger Geld?"
-image: "/images/IMG_0111.webp"
-imageAlt: "Private boat approaching Navagio Beach away from crowded excursion traffic"
+image: "/images/blog-stock-yachts-zakynthos.jpeg"
+imageAlt: "Small boats moored in clear Zakynthos water — private vs shared formats"
 pubDate: 2026-06-19
 order: 15
 locale: "de"

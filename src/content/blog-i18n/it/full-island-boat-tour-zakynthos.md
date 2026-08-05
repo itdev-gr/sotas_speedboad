@@ -3,8 +3,8 @@ title: "Tour completo di Zante in barca: cosa vedere in un giorno"
 metaTitle: "Tour completo di Zante in barca: itinerario di 8 ore"
 metaDescription: "Scopri tutta la costa di Zante in un giorno. Il tour completo in barca tocca Navagio, Grotte Blu, grotte del sud e diverse soste per nuotare."
 excerpt: "Un giorno, una barca e l'intera costa: il tour completo di Zante circumnaviga l'isola e raggiunge i luoghi più importanti del nord e del sud."
-image: "/images/unnamed-hero.webp"
-imageAlt: "Navagio Shipwreck Beach and cliffs seen from above on a full-island boat route"
+image: "/images/blog-stock-tourboats-caves.jpeg"
+imageAlt: "Tour boats near Zakynthos cliffs on a full-day island route"
 pubDate: 2026-05-18
 order: 2
 locale: "it"
