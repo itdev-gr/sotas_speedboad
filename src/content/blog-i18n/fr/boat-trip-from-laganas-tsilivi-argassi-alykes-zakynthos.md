@@ -3,8 +3,8 @@ title: "Excursion en bateau depuis Laganas, Tsilivi, Argassi ou Alykes"
 metaTitle: "Excursion en bateau depuis Laganas, Tsilivi, Argassi ou Alykes : quel port ?"
 metaDescription: "Vous séjournez à Laganas, Tsilivi, Argassi ou Alykes ? Comparez les meilleurs ports de départ des bateaux de Zakynthos, la logique de transfert et l'itinéraire adapté avant de réserver."
 excerpt: "La plupart des visiteurs de Zakynthos ne dorment pas à la marina. Ils dorment à Laganas, Tsilivi, Argassi ou Alykes — puis se posent la même question : de quel port doit-on réellement partir pour une journée en bateau ?"
-image: "/images/skipper-drive.webp"
-imageAlt: "Self-drive boat heading out from a Zakynthos resort area"
+image: "/images/blog-stock-greece-speedboat.jpeg"
+imageAlt: "Speedboat cruising the Greek coastline from a resort departure area"
 pubDate: 2026-08-05
 order: 22
 category: "Planning & costs"

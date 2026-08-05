@@ -3,8 +3,8 @@ title: "Лучший маршрут на закате на Закинфе: Ке�
 metaTitle: "Лодочный маршрут на закате на Закинфе: Кери и Мизитрес"
 metaDescription: "Спланируйте прогулку на закате по югу Закинфа: Черепаший остров, пещеры Кери и скалы Мизитрес, время выхода, купание и практический список вещей с собой."
 excerpt: "Во второй половине дня южное побережье Закинфа преображается: известняковые скалы ловят золотой свет, а море становится насыщенно-синим."
-image: "/images/hero2.png"
-imageAlt: "Rocky Zakynthos coastline in warm late-afternoon light"
+image: "/images/blog-stock-sunset-silhouette.jpeg"
+imageAlt: "Boat silhouette on the Ionian Sea at sunset"
 pubDate: 2026-05-18
 order: 8
 locale: "ru"

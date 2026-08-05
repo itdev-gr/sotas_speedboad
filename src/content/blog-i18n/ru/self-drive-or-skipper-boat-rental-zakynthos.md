@@ -3,8 +3,8 @@ title: "Самостоятельная аренда или лодка со шк�
 metaTitle: "Самостоятельная аренда или лодка со шкипером на Zakynthos"
 metaDescription: "Сравните самостоятельную аренду и аренду со шкипером на Zakynthos. Узнайте, какой вариант подходит вашей группе, бюджету и желаемому дню на воде."
 excerpt: "При бронировании лодки на Zakynthos первое настоящее решение: управлять лодкой самому или нанять профессионального шкипера? Оба варианта выводят на воду к тем же потрясающим местам."
-image: "/images/license-free-hero.webp"
-imageAlt: "Fleet of self-drive rental boats at Navagio Beach in Zakynthos"
+image: "/images/blog-stock-yachts-zakynthos.jpeg"
+imageAlt: "Boats moored in clear Zakynthos water — self-drive or skippered formats"
 pubDate: 2026-05-18
 order: 7
 locale: "ru"

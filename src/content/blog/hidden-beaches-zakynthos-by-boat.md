@@ -3,8 +3,8 @@ title: "7 Hidden Beaches and Coves in Zakynthos by Boat"
 metaTitle: "7 Hidden Beaches and Coves in Zakynthos by Boat"
 metaDescription: "Discover 7 hidden beaches and coves in Zakynthos by boat, with practical route ideas, skipper guidance, sea-condition caveats and safer swimming advice."
 excerpt: "Look beyond Zakynthos' headline landmarks to seven smaller beaches, coves and rock formations that reward a carefully planned boat day."
-image: "/images/girlinwoater.webp"
-imageAlt: "Boat approaching a hidden limestone cave arch on the Zakynthos coast"
+image: "/images/blog-stock-natural-arch.jpeg"
+imageAlt: "Natural sea arch and limestone coast reachable by boat in Zakynthos"
 pubDate: 2026-07-17
 order: 20
 ---

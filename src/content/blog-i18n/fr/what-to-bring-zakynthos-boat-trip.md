@@ -3,8 +3,8 @@ title: "Que prévoir pour une sortie en bateau à Zakynthos : liste"
 metaTitle: "Que prévoir pour une sortie en bateau à Zakynthos"
 metaDescription: "Préparez votre sortie en bateau à Zakynthos : papiers, protection solaire, baignade, eau, besoins des enfants, téléphone et arrivée à la marina."
 excerpt: "Liste complète pour préparer une journée en bateau à Zakynthos : documents, protection solaire, affaires des enfants, téléphone et équipements éventuellement fournis à bord."
-image: "/images/image_skipper.webp"
-imageAlt: "Guests on a private boat preparing for a day on the Zakynthos water"
+image: "/images/blog-stock-aerial-beach-boat.jpeg"
+imageAlt: "Aerial view of a boat day at a Zakynthos beach stop"
 pubDate: 2026-07-17
 order: 17
 locale: "fr"

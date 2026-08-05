@@ -3,8 +3,8 @@ title: "7 κρυφές παραλίες και όρμοι στη Ζάκυνθο 
 metaTitle: "7 κρυφές παραλίες στη Ζάκυνθο με σκάφος"
 metaDescription: "Ανακαλύψτε 7 κρυφές παραλίες και όρμους στη Ζάκυνθο με σκάφος, με ιδέες διαδρομών, συμβουλές κυβερνήτη και οδηγίες για ασφαλέστερο μπάνιο."
 excerpt: "Πέρα από τα διάσημα αξιοθέατα της Ζακύνθου, επτά μικρότερες παραλίες, όρμοι και βραχώδεις σχηματισμοί αξίζουν μια προσεκτικά οργανωμένη μέρα με σκάφος."
-image: "/images/girlinwoater.webp"
-imageAlt: "Boat approaching a hidden limestone cave arch on the Zakynthos coast"
+image: "/images/blog-stock-natural-arch.jpeg"
+imageAlt: "Natural sea arch and limestone coast reachable by boat in Zakynthos"
 pubDate: 2026-07-17
 order: 20
 locale: "el"

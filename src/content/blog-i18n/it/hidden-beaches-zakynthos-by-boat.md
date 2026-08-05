@@ -3,8 +3,8 @@ title: "7 spiagge e calette nascoste di Zakynthos in barca"
 metaTitle: "7 spiagge nascoste di Zakynthos da scoprire in barca"
 metaDescription: "Scopri 7 spiagge e calette nascoste di Zakynthos in barca, con itinerari, consigli sullo skipper, condizioni del mare e indicazioni per nuotare."
 excerpt: "Oltre ai luoghi simbolo di Zakynthos, scopri sette piccole spiagge, calette e formazioni rocciose che rendono speciale una giornata in barca ben organizzata."
-image: "/images/girlinwoater.webp"
-imageAlt: "Boat approaching a hidden limestone cave arch on the Zakynthos coast"
+image: "/images/blog-stock-natural-arch.jpeg"
+imageAlt: "Natural sea arch and limestone coast reachable by boat in Zakynthos"
 pubDate: 2026-07-17
 order: 20
 locale: "it"

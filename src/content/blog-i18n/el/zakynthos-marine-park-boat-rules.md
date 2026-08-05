@@ -3,8 +3,8 @@ title: "Κανόνες σκαφών στο Θαλάσσιο Πάρκο Ζακύ�
 metaTitle: "Κανόνες σκαφών στο Θαλάσσιο Πάρκο Ζακύνθου"
 metaDescription: "Τηρήστε τους κανόνες του Θαλάσσιου Πάρκου Ζακύνθου: όριο 6 κόμβων, αποστάσεις από χελώνες, αγκυροβόληση και προστασία παραλιών ωοτοκίας."
 excerpt: "Πρακτικός οδηγός για την πλεύση στις προστατευόμενες ζώνες, τη χαμηλή ταχύτητα και την υπεύθυνη παρατήρηση της θαλάσσιας χελώνας καρέτα καρέτα στο Θαλάσσιο Πάρκο Ζακύνθου."
-image: "/images/skipper-drive.webp"
-imageAlt: "Boat under way in Zakynthos waters governed by marine park rules"
+image: "/images/blog-stock-tourboats-caves.jpeg"
+imageAlt: "Tour boats near Zakynthos cliffs in an area governed by marine park rules"
 pubDate: 2026-07-17
 order: 18
 locale: "el"

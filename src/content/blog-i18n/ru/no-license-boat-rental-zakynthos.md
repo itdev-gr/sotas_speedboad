@@ -3,8 +3,8 @@ title: "Нужны ли права на лодку на Закинфе? Прав
 metaTitle: "Нужны ли права на лодку на Закинфе? Правила аренды"
 metaDescription: "Узнайте, когда на Закинфе можно арендовать лодку без прав, какие суда подходят, что входит в инструктаж по безопасности и какие документы взять с собой."
 excerpt: "Для аренды маломощной лодки на Закинфе права не нужны. Даже без опыта вы сможете пройти инструктаж, сесть за штурвал и самостоятельно исследовать побережье."
-image: "/images/self-drive-boat.webp"
-imageAlt: "Self-drive license-free speedboat on clear Zakynthos water"
+image: "/images/blog-stock-zakynthos-drone.jpeg"
+imageAlt: "Aerial view of a rental boat on clear Zakynthos water"
 pubDate: 2026-05-18
 order: 4
 locale: "ru"

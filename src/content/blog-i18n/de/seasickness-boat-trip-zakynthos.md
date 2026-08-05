@@ -3,8 +3,8 @@ title: "Seekrankheit auf einer Zakynthos-Bootsfahrt: Ruhigere Routen"
 metaTitle: "Seekrankheit auf einer Zakynthos-Bootsfahrt: Ruhigere Routen und Tipps"
 metaDescription: "Haben Sie Angst vor Seekrankheit auf einer Bootsfahrt nach Zakynthos? Wählen Sie vor der Buchung ruhigere Routen an der Südküste, Zeitnischen am Morgen und praktische Tipps gegen Reisekrankheit."
 excerpt: "Wenn Sie von den Höhlen und Schiffswracks auf Zakynthos begeistert sind, sich aber leise Sorgen machen, dass Ihnen auf dem Boot schlecht wird, sind Sie nicht allein. Die gute Nachricht ist, dass Routenwahl und Timing genauso wichtig sind wie Tablets."
-image: "/images/hero2.png"
-imageAlt: "Sheltered rocky coastline and calm inshore water in Zakynthos"
+image: "/images/blog-stock-calm-bay.jpeg"
+imageAlt: "Calm inshore water and settled conditions for sensitive passengers"
 pubDate: 2026-08-05
 order: 24
 category: "Rules & safety"

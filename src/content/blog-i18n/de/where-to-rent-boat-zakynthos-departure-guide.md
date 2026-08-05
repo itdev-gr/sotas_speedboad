@@ -3,8 +3,8 @@ title: "Boot mieten auf Zakynthos: 6 Abfahrtsorte im Vergleich"
 metaTitle: "Boot mieten auf Zakynthos: 6 Häfen und Abfahrtsorte"
 metaDescription: "Vergleichen Sie 6 Abfahrtsorte für Boote auf Zakynthos nach Route, Parken, Transfer und Wetter und wählen Sie den passenden Hafen im Norden oder Süden."
 excerpt: "Wo Sie auf Zakynthos am besten ein Boot mieten, hängt von der gewünschten Küste ab. Vergleichen Sie die wichtigsten Abfahrtsorte, bevor Sie einen Anbieter wählen."
-image: "/images/IMG_6416.webp"
-imageAlt: "Rental speedboat on open water leaving from a Zakynthos departure point"
+image: "/images/blog-stock-marina-departure.jpeg"
+imageAlt: "Boats at a Greek marina — planning your Zakynthos departure point"
 pubDate: 2026-07-17
 order: 19
 locale: "de"

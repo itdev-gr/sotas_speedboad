@@ -3,8 +3,8 @@ title: "Faut-il un permis bateau à Zakynthos ? Règles 2026"
 metaTitle: "Permis bateau à Zakynthos : règles et guide 2026"
 metaDescription: "Découvrez quand louer un bateau à Zakynthos sans permis, les modèles concernés, le briefing de sécurité obligatoire et les documents à présenter en 2026."
 excerpt: "À Zakynthos, certains bateaux se louent sans permis. Découvrez les règles, le briefing de sécurité, les documents requis et les limites à respecter."
-image: "/images/self-drive-boat.webp"
-imageAlt: "Self-drive license-free speedboat on clear Zakynthos water"
+image: "/images/blog-stock-zakynthos-drone.jpeg"
+imageAlt: "Aerial view of a rental boat on clear Zakynthos water"
 pubDate: 2026-05-18
 order: 4
 locale: "fr"

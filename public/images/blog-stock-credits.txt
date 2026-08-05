@@ -1,0 +1,15 @@
+Blog stock hero images (Unsplash License / Pexels License — free commercial use)
+
+- `blog-stock-marina-departure.jpeg` — Unsplash / marina at golden hour (Naxos, Greece)
+- `blog-stock-zante-aerial.jpeg` — Unsplash / Francesco Ungaro — Zakynthos aerial
+- `blog-stock-zakynthos-drone.jpeg` — Pexels / Efrem Efre — Zakynthos aerial boat
+- `blog-stock-yachts-zakynthos.jpeg` — Unsplash — boats in Zakynthos waters
+- `blog-stock-blue-caves.jpeg` — Unsplash — Blue Caves, Zakynthos
+- `blog-stock-natural-arch.jpeg` — Unsplash / erika m — sea arch, Zakynthos
+- `blog-stock-tourboats-caves.jpeg` — Pexels / Louis — tour boats near Zakynthos caves
+- `blog-stock-sunset-silhouette.jpeg` — Unsplash — Ionian sunset boat silhouette
+- `blog-stock-greece-speedboat.jpeg` — Pexels / Margo Evardson — speedboat, Greece
+- `blog-stock-calm-cloudy-sea.jpeg` — Unsplash / Anna Hunko — calm cloudy sea
+- `blog-stock-calm-bay.jpeg` — Unsplash / Jack Barton — calm bay, Greece
+- `blog-stock-birds-eye-boat.jpeg` — Unsplash — bird's eye boat at Navagio, Zakynthos
+- `blog-stock-aerial-beach-boat.jpeg` — Unsplash / Ana-Maria D. — aerial Navagio boat

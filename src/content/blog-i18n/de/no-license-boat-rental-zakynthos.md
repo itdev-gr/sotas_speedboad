@@ -3,8 +3,8 @@ title: "Brauchen Sie auf Zakynthos einen Bootsführerschein?"
 metaTitle: "Bootsführerschein auf Zakynthos nötig? Regeln im Überblick"
 metaDescription: "Boot ohne Führerschein auf Zakynthos mieten: Erfahren Sie, welche Boote zulässig sind, was das Sicherheitsbriefing umfasst und welche Dokumente Sie brauchen."
 excerpt: "Für einen Bootsverleih auf Zakynthos brauchen Sie keinen Führerschein. Auch ohne Segelerfahrung können Sie selbst ein Speedboot steuern und die Insel in Ihrem eigenen Tempo erkunden."
-image: "/images/self-drive-boat.webp"
-imageAlt: "Self-drive license-free speedboat on clear Zakynthos water"
+image: "/images/blog-stock-zakynthos-drone.jpeg"
+imageAlt: "Aerial view of a rental boat on clear Zakynthos water"
 pubDate: 2026-05-18
 order: 4
 locale: "de"

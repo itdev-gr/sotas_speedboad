@@ -3,8 +3,8 @@ title: "Τιμές ενοικίασης σκάφους στη Ζάκυνθο: Κ
 metaTitle: "Τιμές ενοικίασης σκάφους στη Ζάκυνθο: Οδηγός 2026"
 metaDescription: "Οι τιμές ενοικίασης σκάφους στη Ζάκυνθο ξεκινούν από €180. Συγκρίνετε διάρκεια, καύσιμα, κυβερνήτη, παροχές και πρόσθετες χρεώσεις για το 2026."
 excerpt: "Πρακτικός οδηγός για τις τιμές ενοικίασης σκάφους στη Ζάκυνθο το 2026, με βασικό ναύλο, καύσιμα, διάρκεια, κόστος κυβερνήτη, παροχές και σωστή σύγκριση προσφορών."
-image: "/images/self-drive-boat.webp"
-imageAlt: "Self-drive rental boat on the water, a common Zakynthos hire format"
+image: "/images/blog-stock-zante-aerial.jpeg"
+imageAlt: "Aerial view of a boat on turquoise Zakynthos water"
 pubDate: 2026-07-17
 order: 16
 locale: "el"

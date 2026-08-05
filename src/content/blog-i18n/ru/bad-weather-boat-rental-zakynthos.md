@@ -3,8 +3,8 @@ title: "Плохая погода в день аренды лодки на Zakyn
 metaTitle: "Плохая погода в день аренды лодки на Zakynthos: чего ожидать"
 metaDescription: "Беспокоитесь о ветре в день аренды лодки на Zakynthos? Большинство поездок всё равно состоятся с изменением маршрута. Как работают перенос и возврат средств."
 excerpt: "Забронировать лодку на Zakynthos, а утром в день поездки увидеть, как надвигается серое небо — неприятный момент. Вы ждали этот день. Вы продумали маршрут."
-image: "/images/hero2.webp"
-imageAlt: "Calm turquoise water and rocky Zakynthos coastline on a settled day"
+image: "/images/blog-stock-calm-cloudy-sea.jpeg"
+imageAlt: "Calm sea under a cloudy sky — weather-aware boat planning in Greece"
 pubDate: 2026-06-19
 order: 11
 locale: "ru"

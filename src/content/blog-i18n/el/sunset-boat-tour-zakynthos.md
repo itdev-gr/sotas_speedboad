@@ -3,8 +3,8 @@ title: "Η καλύτερη διαδρομή για ηλιοβασίλεμα σ�
 metaTitle: "Ηλιοβασίλεμα με σκάφος στη Ζάκυνθο: Κερί και Μυζήθρες"
 metaDescription: "Σχεδιάστε την καλύτερη διαδρομή για ηλιοβασίλεμα στη Ζάκυνθο, από το Μαραθονήσι και τις Σπηλιές Κεριού έως τις Μυζήθρες, με στάσεις και συμβουλές."
 excerpt: "Αργά το απόγευμα, το φως μεταμορφώνει τη νότια ακτή της Ζακύνθου. Μια 4ωρη εκδρομή με σκάφος συνδυάζει Μαραθονήσι, Σπηλιές Κεριού και ηλιοβασίλεμα στις Μυζήθρες."
-image: "/images/hero2.png"
-imageAlt: "Rocky Zakynthos coastline in warm late-afternoon light"
+image: "/images/blog-stock-sunset-silhouette.jpeg"
+imageAlt: "Boat silhouette on the Ionian Sea at sunset"
 pubDate: 2026-05-18
 order: 8
 locale: "el"

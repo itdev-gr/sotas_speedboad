@@ -3,8 +3,8 @@ title: "Что взять на морскую прогулку на Закинф
 metaTitle: "Что взять на морскую прогулку на Закинфе | Чек-лист"
 metaDescription: "Соберите всё для прогулки на лодке по Закинфу: документы, защита от солнца, купальные вещи, вода, детские принадлежности и защита телефона."
 excerpt: "Полный список вещей и подготовки к дню на лодке на Закинфе: от документов и защиты от солнца до детских принадлежностей, телефона и бортового оснащения."
-image: "/images/image_skipper.webp"
-imageAlt: "Guests on a private boat preparing for a day on the Zakynthos water"
+image: "/images/blog-stock-aerial-beach-boat.jpeg"
+imageAlt: "Aerial view of a boat day at a Zakynthos beach stop"
 pubDate: 2026-07-17
 order: 17
 locale: "ru"

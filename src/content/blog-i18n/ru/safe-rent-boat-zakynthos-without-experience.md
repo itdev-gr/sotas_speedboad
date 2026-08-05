@@ -3,8 +3,8 @@ title: "Безопасно ли арендовать лодку на Zakynthos �
 metaTitle: "Безопасно ли арендовать лодку на Zakynthos без опыта?"
 metaDescription: "Никогда не управляли лодкой? Самостоятельная аренда на Zakynthos безопасна для новичков. Что охватывает инструктаж по безопасности и куда можно отправиться."
 excerpt: "Аренда лодки на Zakynthos без опыта — одно из самых частых опасений перед бронированием. Краткий ответ: да, это безопасно, и тысячи водителей-новичков делают это каждый сезон."
-image: "/images/IMG_6507.webp"
-imageAlt: "Calm cave coastline and easy water conditions for first-time renters"
+image: "/images/blog-stock-birds-eye-boat.jpeg"
+imageAlt: "Bird's-eye view of a small rental boat on calm Zakynthos water"
 pubDate: 2026-06-19
 order: 13
 locale: "ru"
