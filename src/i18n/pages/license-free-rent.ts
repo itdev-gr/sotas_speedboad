@@ -30,7 +30,7 @@ export const licenseFree = {
 		contentP2:
 			"Every self-drive boat comes ready for the day: a coolbox packed with ice, a sun canopy for welcome shade, a Bluetooth speaker for your soundtrack, plus GPS tracking and full safety equipment (fuel is the only extra). It's an effortless, relaxed way to explore the coast, ideal for families and first-time captains alike.",
 		contentP3:
-			'For beginners, the spectacular north route is perfect: cruise to view Navagio Shipwreck Beach from the permitted distance and visit the shimmering Blue Caves at Cape Skinari, where the water glows an extraordinary luminous blue. With a 7-hour rental you can extend your day along the dramatic northwest coast and take in the island's most iconic scenery.',
+			"For beginners, the spectacular north route is perfect: cruise to view Navagio Shipwreck Beach from the permitted distance and visit the shimmering Blue Caves at Cape Skinari, where the water glows an extraordinary luminous blue. With a 7-hour rental you can extend your day along the dramatic northwest coast and take in the island's most iconic scenery.",
 		faqTitle: 'Self-Drive Boat Rental, FAQ',
 		faq1Q: 'Do I need a boat licence?',
 		faq1A:
