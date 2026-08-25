@@ -3,6 +3,7 @@ import Header from '../Header.astro';
 import Footer from '../Footer.astro';
 import { localizePath, type Locale } from '../../i18n/config';
 import { useCommon } from '../../i18n/common';
+import { filterLicenseFreeBoats } from '../../lib/license-free-boats';
 import { licenseFree } from '../../i18n/pages/license-free-rent';
 
 interface Props {
@@ -13,10 +14,11 @@ const s = licenseFree[lang];
 const c = useCommon(lang);
 
 const base = Astro.url.origin;
-let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string }> = [];
+let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string; licenseFreeVisible?: boolean }> = [];
 try {
 	const res = await fetch(`${base}/api/boats`);
-	boats = res.ok ? await res.json() : [];
+	const data = res.ok ? await res.json() : [];
+	boats = filterLicenseFreeBoats(Array.isArray(data) ? data : []);
 } catch {
 	boats = [];
 }

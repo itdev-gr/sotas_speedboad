@@ -23,7 +23,7 @@ const DEFAULT_INCLUDES = [
 	'All Required Safety Equipment',
 ];
 
-const SEED_BOATS: Array<{ id: string; name: string; imageUrl: string; imageUrls?: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number }> = [
+const SEED_BOATS: Array<{ id: string; name: string; imageUrl: string; imageUrls?: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; licenseFreeVisible: boolean }> = [
 	{
 		id: 'boat1',
 		name: 'Boat 1',
@@ -36,6 +36,7 @@ const SEED_BOATS: Array<{ id: string; name: string; imageUrl: string; imageUrls?
 		lengthMeters: '5',
 		fuelExcludedText: 'Fuel not included',
 		sortOrder: 1,
+		licenseFreeVisible: true,
 	},
 	{
 		id: 'boat2',
@@ -50,6 +51,7 @@ const SEED_BOATS: Array<{ id: string; name: string; imageUrl: string; imageUrls?
 		lengthMeters: '5.4',
 		fuelExcludedText: 'Fuel not included',
 		sortOrder: 2,
+		licenseFreeVisible: true,
 	},
 	{
 		id: 'boat3',
@@ -63,6 +65,7 @@ const SEED_BOATS: Array<{ id: string; name: string; imageUrl: string; imageUrls?
 		lengthMeters: '5.5',
 		fuelExcludedText: 'Fuel not included',
 		sortOrder: 3,
+		licenseFreeVisible: true,
 	},
 ];
 
@@ -102,6 +105,10 @@ function toBoatDoc(d: QueryDocumentSnapshot) {
 		fuelExcludedText: String(data.fuelExcludedText ?? 'Fuel not included'),
 		sortOrder: Number(data.sortOrder) ?? 0,
 		description: String(data.description ?? ''),
+		licenseFreeVisible:
+			data.licenseFreeVisible === undefined
+				? Number(data.sortOrder) < 4
+				: data.licenseFreeVisible !== false,
 	};
 }
 
@@ -145,6 +152,7 @@ type BoatPayload = {
 	fuelExcludedText?: string;
 	sortOrder?: number;
 	description?: string;
+	licenseFreeVisible?: boolean;
 };
 
 export const PUT: APIRoute = async ({ request }) => {
@@ -173,6 +181,7 @@ export const PUT: APIRoute = async ({ request }) => {
 		if (body.fuelExcludedText !== undefined) update.fuelExcludedText = String(body.fuelExcludedText).trim();
 		if (body.sortOrder !== undefined) update.sortOrder = Number(body.sortOrder) ?? 0;
 		if (body.description !== undefined) update.description = String(body.description).trim();
+		if (body.licenseFreeVisible !== undefined) update.licenseFreeVisible = body.licenseFreeVisible !== false;
 		if (Object.keys(update).length > 0) await ref.set(update, { merge: true });
 		return json({ ok: true });
 	} catch (e) {

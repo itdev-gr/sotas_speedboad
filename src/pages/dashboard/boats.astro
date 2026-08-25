@@ -116,6 +116,12 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 					<label for="f-sortOrder">Sort order</label>
 					<input type="number" id="f-sortOrder" min="0" />
 				</div>
+				<div class="pf pf-checkbox">
+					<label>
+						<input type="checkbox" id="f-licenseFreeVisible" checked />
+						Show on License Free Rent (self-drive)
+					</label>
+				</div>
 			</div>
 		</form>
 		<div class="panel-footer">
@@ -278,6 +284,16 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 		.pf textarea { resize: vertical; min-height: 60px; }
 		.pf-row { display: flex; gap: 0.75rem; }
 		.pf-row > .pf { flex: 1; }
+		.pf-checkbox label {
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			font-size: 0.9rem;
+			font-weight: 500;
+			color: #333;
+			cursor: pointer;
+		}
+		.pf-checkbox input { width: auto; }
 
 		/* Images grid */
 		.images-grid {
@@ -376,6 +392,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			fuelExcludedText: string;
 			sortOrder: number;
 			description?: string;
+			licenseFreeVisible?: boolean;
 		};
 
 		const tbody = document.getElementById('boats-tbody')!;
@@ -484,6 +501,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 			(document.getElementById('f-fuelExcludedText') as HTMLInputElement).value = boat.fuelExcludedText || 'Fuel not included';
 			(document.getElementById('f-includes') as HTMLTextAreaElement).value = (boat.includes || []).join('\n');
 			(document.getElementById('f-sortOrder') as HTMLInputElement).value = String(boat.sortOrder || '');
+			(document.getElementById('f-licenseFreeVisible') as HTMLInputElement).checked = boat.licenseFreeVisible !== false;
 			uploadStatus.textContent = '';
 			// Reset to Details tab
 			switchTab('details');
@@ -642,6 +660,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 				includes,
 				description: (document.getElementById('f-description') as HTMLTextAreaElement).value.trim(),
 				sortOrder: Number((document.getElementById('f-sortOrder') as HTMLInputElement).value) || 0,
+				licenseFreeVisible: (document.getElementById('f-licenseFreeVisible') as HTMLInputElement).checked,
 			};
 			showMsg('');
 			const res = await fetch('/api/boats', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(payload) });
@@ -657,6 +676,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 				id: newId, name: '', imageUrl: '', imageUrls: [], price4h: 0, price7h: 0,
 				skipperPrice4h: 0, skipperPrice7h: 0, maxPax: 0, modalName: '', includes: [],
 				lengthMeters: '', fuelExcludedText: 'Fuel not included', sortOrder: nextOrder, description: '',
+				licenseFreeVisible: nextOrder < 4,
 			}, true);
 		});
 

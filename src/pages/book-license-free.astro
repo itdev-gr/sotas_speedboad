@@ -5,13 +5,15 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEOHead from '../components/SEOHead.astro';
 import PhoneInput from '../components/PhoneInput.astro';
+import { filterLicenseFreeBoats } from '../lib/license-free-boats';
 
 const boatId = Astro.url.searchParams.get('boat')?.trim() || null;
 const base = Astro.url.origin;
-let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string }> = [];
+let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string[]; price4h: number; price7h: number; maxPax: number; modalName: string; includes: string[]; lengthMeters: string; fuelExcludedText: string; sortOrder: number; description?: string; licenseFreeVisible?: boolean }> = [];
 try {
 	const res = await fetch(`${base}/api/boats`, { cache: 'no-store' });
-	boats = res.ok ? await res.json() : [];
+	const data = res.ok ? await res.json() : [];
+	boats = filterLicenseFreeBoats(Array.isArray(data) ? data : []);
 } catch {
 	boats = [];
 }
