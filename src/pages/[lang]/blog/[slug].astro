@@ -58,6 +58,7 @@ const enCanonical = `${SITE_URL}/blog/${slug}`;
 			lang={lang}
 			basePath={meta.basePath}
 			canonical={isFallback ? enCanonical : undefined}
+			noindex={isFallback}
 			translated={!isFallback && availableLocales.length > 1}
 			availableLocales={!isFallback && availableLocales.length > 1 ? availableLocales : undefined}
 			ogImage={`${SITE_URL}${meta.heroImage}`}

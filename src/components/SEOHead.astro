@@ -38,9 +38,11 @@ const {
   availableLocales,
 } = Astro.props;
 
-const canonicalURL = basePath
-  ? absoluteUrl(localizePath(basePath, lang))
-  : canonical || new URL(Astro.url.pathname, Astro.site).href;
+const canonicalURL = canonical
+  ? canonical
+  : basePath
+    ? absoluteUrl(localizePath(basePath, lang))
+    : new URL(Astro.url.pathname, Astro.site).href;
 
 const hreflangLocales =
   availableLocales ??
