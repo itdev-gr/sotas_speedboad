@@ -6,6 +6,7 @@ excerpt: "Most license-free boats in Zakynthos are priced as a 4-hour or 7-hour 
 image: "/images/blog-stock-marina-departure.jpeg"
 imageAlt: "Boats leaving a marina for a timed rental day"
 pubDate: 2026-09-14
+updatedDate: 2026-09-14
 order: 27
 category: "Planning & costs"
 ---

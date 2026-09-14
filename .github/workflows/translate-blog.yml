@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - 'src/content/blog/**'
+      - 'scripts/translate-blog.mjs'
+      - 'scripts/translate-missing-batch.mjs'
   workflow_dispatch:
 
 jobs:
