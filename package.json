@@ -10,6 +10,7 @@
     "compress-videos": "bash scripts/compress-videos.sh",
     "translate:blog": "node scripts/translate-blog.mjs",
     "translate:blog:missing": "node scripts/translate-blog.mjs --missing-only --continue-on-error",
+    "translate:blog:batch": "node scripts/translate-missing-batch.mjs",
     "check:blog-translations": "node scripts/check-blog-translations.mjs"
   },
   "dependencies": {

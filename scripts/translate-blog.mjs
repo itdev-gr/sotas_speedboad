@@ -96,36 +96,117 @@ function restoreMarkdownUrls(text, urls) {
 	return out;
 }
 
-async function translateText(text, target) {
+const CHUNK_MAX = 2200;
+const MYMEMORY_CHUNK_MAX = 450;
+const REQUEST_TIMEOUT_MS = 60_000;
+const MAX_ATTEMPTS = 6;
+const PAUSE_BETWEEN_CHUNKS_MS = 4000;
+const PAUSE_MYMEMORY_MS = 350;
+
+const myMemoryEmail = process.env.MYMEMORY_EMAIL || 'info@itdev.gr';
+let googleBlocked = false;
+
+async function translateChunkGoogle(chunk, target) {
+	return Promise.race([
+		translate(chunk, { to: target }),
+		new Promise((_, reject) => {
+			setTimeout(() => reject(new Error(`Translate timeout after ${REQUEST_TIMEOUT_MS}ms`)), REQUEST_TIMEOUT_MS);
+		}),
+	]);
+}
+
+async function translateChunkMyMemory(chunk, target, from = 'en') {
+	const url = new URL('https://api.mymemory.translated.net/get');
+	url.searchParams.set('q', chunk);
+	url.searchParams.set('langpair', `${from}|${target}`);
+	if (myMemoryEmail) url.searchParams.set('de', myMemoryEmail);
+
+	const response = await fetch(url, { signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
+	if (!response.ok) throw new Error(`MyMemory HTTP ${response.status}`);
+	const data = await response.json();
+	const text = data?.responseData?.translatedText;
+	if (!text) throw new Error(data?.responseDetails || 'MyMemory empty response');
+	if (/MYMEMORY WARNING|QUOTA/i.test(text)) throw new Error('MyMemory daily quota reached');
+	return { text };
+}
+
+async function translateChunk(chunk, target) {
+	if (!googleBlocked) {
+		try {
+			return await translateChunkGoogle(chunk, target);
+		} catch (error) {
+			const message = String(error?.message ?? error);
+			if (/too many requests|429|rate/i.test(message)) {
+				googleBlocked = true;
+				console.warn('  Google Translate rate limited; using MyMemory for remaining chunks.');
+			} else {
+				throw error;
+			}
+		}
+	}
+	return translateChunkMyMemory(chunk, target);
+}
+
+async function translateViaProvider(text, target, label, chunkSize, pauseMs) {
 	if (!text.trim()) return text;
 	const { protectedText, urls } = protectMarkdownUrls(text);
-	const chunks = splitText(protectedText, 4500);
+	const chunks = splitText(protectedText, chunkSize);
 	const translated = [];
-	for (const chunk of chunks) {
+	for (let index = 0; index < chunks.length; index += 1) {
+		const chunk = chunks[index];
+		if (label) {
+			console.log(`  ${label} chunk ${index + 1}/${chunks.length} → ${target}`);
+		}
 		let lastError;
-		for (let attempt = 0; attempt < 8; attempt += 1) {
+		for (let attempt = 0; attempt < MAX_ATTEMPTS; attempt += 1) {
 			try {
-				const result = await translate(chunk, { to: target });
+				const result = await translateChunk(chunk, target);
 				translated.push(result.text);
 				lastError = undefined;
 				break;
 			} catch (error) {
 				lastError = error;
 				const message = String(error?.message ?? error);
-				const retryAfter = message.includes('Too Many Requests') ? 20000 * (attempt + 1) : 2000 * (attempt + 1);
+				const quota = /quota|MYMEMORY/i.test(message);
+				const retryAfter = quota ? 60_000 : Math.min(12_000, 2000 * (attempt + 1));
+				console.warn(`  retry ${attempt + 1}/${MAX_ATTEMPTS}: ${message.slice(0, 120)}`);
 				await sleep(retryAfter);
 			}
 		}
 		if (lastError) throw lastError;
-		await sleep(2500);
+		if (index < chunks.length - 1) await sleep(pauseMs);
 	}
 	return restoreMarkdownUrls(translated.join(''), urls);
+}
+
+async function translateText(text, target, label = '') {
+	const chunkSize = googleBlocked ? MYMEMORY_CHUNK_MAX : CHUNK_MAX;
+	const pauseMs = googleBlocked ? PAUSE_MYMEMORY_MS : PAUSE_BETWEEN_CHUNKS_MS;
+	return translateViaProvider(text, target, label, chunkSize, pauseMs);
+}
+
+function pushHardChunks(parts, segment, maxLen) {
+	if (segment.length <= maxLen) {
+		parts.push(segment);
+		return;
+	}
+	for (let offset = 0; offset < segment.length; offset += maxLen) {
+		parts.push(segment.slice(offset, offset + maxLen));
+	}
 }
 
 function splitText(text, maxLen) {
 	const parts = [];
 	let current = '';
 	for (const paragraph of text.split(/(\n\n+)/)) {
+		if (paragraph.length > maxLen) {
+			if (current) {
+				parts.push(current);
+				current = '';
+			}
+			pushHardChunks(parts, paragraph, maxLen);
+			continue;
+		}
 		if ((current + paragraph).length > maxLen && current) {
 			parts.push(current);
 			current = paragraph;
@@ -166,13 +247,20 @@ async function translatePost(fileName, locale, options) {
 	}
 
 	const target = localeTargets[locale];
+	console.log(`translating ${locale}/${slug}…`);
 	let nextFrontmatter = frontmatter;
 	for (const field of ['title', 'metaTitle', 'metaDescription', 'excerpt', 'imageAlt']) {
 		const value = getField(frontmatter, field);
-		if (value) nextFrontmatter = setField(nextFrontmatter, field, await translateText(value, target));
+		if (value) {
+			nextFrontmatter = setField(
+				nextFrontmatter,
+				field,
+				await translateText(value, target, `${locale}/${slug} ${field}`),
+			);
+		}
 	}
 
-	const translatedBody = localizeLinks(await translateText(body, target), locale);
+	const translatedBody = localizeLinks(await translateText(body, target, `${locale}/${slug} body`), locale);
 	const output = `---\n${nextFrontmatter.trim()}\nlocale: "${locale}"\nsourceSlug: "${slug}"\nsourceHash: "${sourceHash}"\ntranslatedAt: "${new Date().toISOString().slice(0, 10)}"\n---\n\n${translatedBody.trim()}\n`;
 
 	await mkdir(outDir, { recursive: true });
