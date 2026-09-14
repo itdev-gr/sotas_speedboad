@@ -10,7 +10,7 @@ order: 24
 category: "Rules & safety"
 ---
 
-If you are excited about Zakynthos caves and shipwreck views but quietly worried about feeling ill on the boat, you are not alone. Motion sickness is one of the most common pre-booking fears we hear — and one of the easiest to reduce with better planning.
+If you are excited about Zakynthos caves and shipwreck views but quietly worried about feeling ill on the boat, you are not alone. Motion sickness is one of the most common pre-booking fears we hear, and one of the easiest to reduce with better planning.
 
 This guide is not medical advice. It is local boat-day planning: which coasts feel calmer, when to depart, which booking type helps, and what to do if someone in your group is sensitive to motion.
 
@@ -19,7 +19,7 @@ This guide is not medical advice. It is local boat-day planning: which coasts fe
 > - South-coast routes are usually kinder than exposed northwest crossings.
 > - Morning departures reduce the chance of an afternoon breeze building under you.
 > - A skipper can change coast when one side of the island is uncomfortable.
-> - Medication, horizon focus and smart seating help — but route choice does the heavy lifting.
+> - Medication, horizon focus and smart seating help, but route choice does the heavy lifting.
 
 ## Quick Answer: How Do You Reduce Seasickness on a Zakynthos Boat Trip?
 
@@ -79,7 +79,7 @@ These are common-sense boat practices, not a substitute for advice from a doctor
 - Choose a seat with a stable view of the horizon; mid-boat often feels less lively than the bow
 - Avoid reading or phone scrolling on bumpy legs
 - Keep cool, sip water, and skip heavy greasy food right before departure
-- Tell the skipper or rental team early if someone starts to feel unwell — earlier adjustments are easier
+- Tell the skipper or rental team early if someone starts to feel unwell, earlier adjustments are easier
 
 Pack comfort items with the rest of your kit using [what to bring on a Zakynthos boat trip](/blog/what-to-bring-zakynthos-boat-trip).
 
@@ -96,7 +96,7 @@ If weather turns, understand the process in our [bad weather boat rental guide](
 | Kids + one motion-sensitive adult | Morning south-coast private boat |
 | Couple, one person anxious | Short skippered south itinerary first |
 | Friends chasing Shipwreck photos | Settled morning, skipper, flexible backup coast |
-| Large group with mixed tolerance | Higher-capacity private boat, conservative route — see [8–12 people guide](/blog/private-boat-8-12-people-zakynthos) |
+| Large group with mixed tolerance | Higher-capacity private boat, conservative route, see [8–12 people guide](/blog/private-boat-8-12-people-zakynthos) |
 
 ## FAQ
 

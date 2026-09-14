@@ -3,8 +3,8 @@ title: "Best Private Boat Day for Couples in Zakynthos"
 metaTitle: "Best Private Boat Day for Couples in Zakynthos (Not Sunset)"
 metaDescription: "Plan a private boat day for couples in Zakynthos: daytime routes, swim stops, self-drive vs skipper, and when sunset or proposal cruises are better."
 excerpt: "A private boat day for couples in Zakynthos does not have to mean a sunset package or a proposal setup. Midday privacy, clear water and a route that never feels rushed are often what couples actually want."
-image: "/images/IMG_0112.webp"
-imageAlt: "Private boat in turquoise water inside a Zakynthos sea cave"
+image: "/images/blog-stock-friends-deck.jpeg"
+imageAlt: "Couple enjoying a private boat day on deck in Zakynthos"
 pubDate: 2026-08-05
 order: 25
 category: "Planning & costs"
@@ -18,7 +18,7 @@ This guide is for daytime private boat planning: the best route shapes for two p
 >
 > - A private daytime south-coast route is the strongest default for most couples.
 > - Self-drive works when you want independence; skipper wins when you want zero logistics.
-> - Sunset and proposal days are different products — use them when timing or occasion is the point.
+> - Sunset and proposal days are different products, use them when timing or occasion is the point.
 > - Book morning in peak summer if swimming and calm water matter more than golden-hour photos.
 
 ## Quick Answer: Best Private Boat Day for Couples
@@ -86,7 +86,7 @@ Best when the evening light and finish timing are the point of the day. See [sun
 
 ### Proposal, birthday or anniversary staging
 
-Best when you need coordination beyond a normal romantic day out — route timing, surprise details, yacht-level space. See [special celebrations](/special-celebrations) and the [proposal or birthday yacht guide](/blog/private-yacht-cruise-zakynthos-special-celebrations).
+Best when you need coordination beyond a normal romantic day out, route timing, surprise details, yacht-level space. See [special celebrations](/special-celebrations) and the [proposal or birthday yacht guide](/blog/private-yacht-cruise-zakynthos-special-celebrations).
 
 Use the product that matches the job. A daytime south-coast swim day is not a failed sunset cruise. It is a different brief.
 

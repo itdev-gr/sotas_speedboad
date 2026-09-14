@@ -12,18 +12,18 @@ category: "Planning & costs"
 
 A private boat for 8–12 people in Zakynthos is a different booking problem from a couple’s half-day. Capacity, comfort on the water, shade, swim logistics and route distance all change once the group no longer fits a compact self-drive hull.
 
-This guide is for friend groups, extended families and celebrations that need one private boat — not seats on a 40-person excursion. It explains how to think about size, which routes stay realistic, and when splitting into two boats is smarter than forcing everyone onto the wrong vessel.
+This guide is for friend groups, extended families and celebrations that need one private boat, not seats on a 40-person excursion. It explains how to think about size, which routes stay realistic, and when splitting into two boats is smarter than forcing everyone onto the wrong vessel.
 
 > **Key takeaways**
 >
-> - Start with confirmed legal capacity and comfortable capacity — they are not always the same feeling on the water.
+> - Start with confirmed legal capacity and comfortable capacity, they are not always the same feeling on the water.
 > - Larger groups usually get more from a skippered private boat than from self-drive.
 > - South-coast plans scale better than ambitious full-island ideas for big mixed groups.
 > - In July–August, book early. High-capacity private boats are a finite inventory.
 
 ## Quick Answer: Can You Book a Private Boat for 10 People in Zakynthos?
 
-Yes — but you must match the group to a boat that is rated for that headcount and suitable for the route you want. Do not assume every “private boat” page can take 10 or 12 guests. Ask for the exact vessel capacity, what is included, and whether the quote is for the whole boat.
+Yes, but you must match the group to a boat that is rated for that headcount and suitable for the route you want. Do not assume every “private boat” page can take 10 or 12 guests. Ask for the exact vessel capacity, what is included, and whether the quote is for the whole boat.
 
 Sota Travel can help you size the day through [rent with skipper](/rent-with-skipper), [private yachting](/private-yachting) or [contact](/contact) with your real headcount, ages and date.
 
@@ -82,7 +82,7 @@ Splitting into two boats is worth considering when:
 - Half the group wants a energetic swim day and half wants the calmest possible route
 - You have two natural subgroups (for example two families)
 
-One boat is better when the point is being together — shared music, shared cake, shared photos, one itinerary. For occasion energy, also see [special celebrations](/special-celebrations).
+One boat is better when the point is being together, shared music, shared cake, shared photos, one itinerary. For occasion energy, also see [special celebrations](/special-celebrations).
 
 ## Cost Logic for Larger Groups
 
@@ -103,7 +103,7 @@ Send the operator:
 3. Must-see stops versus nice-to-have stops
 4. Whether the day is a birthday, stag/hen, family reunion or open free day
 5. Any seasickness, non-swimmer or mobility notes
-6. Hotel area for meeting-point planning — [resort departure guide](/blog/boat-trip-from-laganas-tsilivi-argassi-alykes-zakynthos)
+6. Hotel area for meeting-point planning, [resort departure guide](/blog/boat-trip-from-laganas-tsilivi-argassi-alykes-zakynthos)
 
 In July and August, do this before everyone flies in. High-capacity private inventory is limited.
 

@@ -2,7 +2,7 @@
 title: "Boat Trip from Laganas, Tsilivi, Argassi or Alykes"
 metaTitle: "Boat Trip from Laganas, Tsilivi, Argassi or Alykes: Which Port?"
 metaDescription: "Staying in Laganas, Tsilivi, Argassi or Alykes? Compare the best Zakynthos boat departure ports, transfer logic and route fit before you book."
-excerpt: "Most Zakynthos visitors do not sleep at the marina. They sleep in Laganas, Tsilivi, Argassi or Alykes — then ask the same question: which port should we actually leave from for a boat day?"
+excerpt: "Most Zakynthos visitors do not sleep at the marina. They sleep in Laganas, Tsilivi, Argassi or Alykes, then ask the same question: which port should we actually leave from for a boat day?"
 image: "/images/blog-stock-greece-speedboat.jpeg"
 imageAlt: "Speedboat cruising a scenic Greek coastline from a resort area"
 pubDate: 2026-08-05
@@ -10,7 +10,7 @@ order: 22
 category: "Planning & costs"
 ---
 
-Most Zakynthos visitors do not sleep at the marina. They sleep in Laganas, Tsilivi, Argassi or Alykes — then ask the same question: which port should we actually leave from for a boat day?
+Most Zakynthos visitors do not sleep at the marina. They sleep in Laganas, Tsilivi, Argassi or Alykes, then ask the same question: which port should we actually leave from for a boat day?
 
 The answer is not always “the closest beach bar with a ticket desk.” The right departure point depends on the coast you want, whether you are booking a private rental or a shared excursion, and how much of your day you are willing to spend in a taxi before you even start the engine.
 
@@ -18,7 +18,7 @@ Sota Travel operates from **Zakynthos Marina** on the east coast. This guide exp
 
 > **Key takeaways**
 >
-> - Choose the coast first, then the port — not the reverse.
+> - Choose the coast first, then the port, not the reverse.
 > - Laganas and Argassi guests often favour south-coast plans; Tsilivi and Alykes guests often favour easier east-coast access.
 > - Zakynthos Marina is a practical central base when you want one operator for south or north options.
 > - Transfer time is part of the real trip length. Count it before you compare “4-hour” offers.
@@ -38,7 +38,7 @@ These are planning defaults, not hard rules. Sea conditions, boat type and your 
 
 Laganas guests naturally think about turtles, Marathonisi and the south. That instinct is usually right.
 
-A south-coast private day — Turtle Island, Keri Caves, Mizithres and a swim stop — keeps travel time productive. The [Keri Caves and Turtle Island tour page](/keri-caves-turtle-island-boat-tour) and the [south route blog](/blog/turtle-island-keri-caves-mizithres-rocks-boat-zakynthos) explain what that day includes.
+A south-coast private day, Turtle Island, Keri Caves, Mizithres and a swim stop, keeps travel time productive. The [Keri Caves and Turtle Island tour page](/keri-caves-turtle-island-boat-tour) and the [south route blog](/blog/turtle-island-keri-caves-mizithres-rocks-boat-zakynthos) explain what that day includes.
 
 If your Laganas group wants Navagio, understand the trade-off: you are choosing a north/west landmark day, not a “nearest beach” day. Porto Vromi operators market short west-coast crossings for a reason. From the south resorts, that means a longer land transfer before a shorter sea leg. For many private renters, a skippered plan from a central or southern base with a realistic route is cleaner than chasing the shortest possible Shipwreck crossing at any logistics cost.
 
