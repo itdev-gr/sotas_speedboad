@@ -306,8 +306,11 @@ export const BLOG_TOPIC_CLUSTERS = {
 		'full-island-boat-tour-zakynthos',
 		'best-family-boat-route-zakynthos',
 		'snorkeling-by-boat-zakynthos',
+		'cameo-island-or-marathonisi-by-boat-zakynthos',
 	],
 	planning: [
+		'4-hour-vs-7-hour-boat-rental-zakynthos',
+		'zakynthos-cruise-port-private-boat-trip',
 		'zakynthos-boat-rental-prices-cost-guide',
 		'what-to-bring-zakynthos-boat-trip',
 		'where-to-rent-boat-zakynthos-departure-guide',

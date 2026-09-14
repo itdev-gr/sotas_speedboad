@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node scripts/copy-sitemap-to-vercel-static.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "compress-videos": "bash scripts/compress-videos.sh",

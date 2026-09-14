@@ -131,7 +131,7 @@ const c = useCommon(lang);
 					<p class="selfdrive-desc">
 						{s.sd1Desc}
 					</p>
-					<a href={localizePath('/license-free-rent', lang)} class="selfdrive-cta">{s.ctaViewMore}</a>
+					<a href={localizePath('/license-free-rent', lang)} class="selfdrive-cta" aria-label={s.sd1Title}></a>
 				</div>
 			</div>
 		</section>
@@ -157,7 +157,7 @@ const c = useCommon(lang);
 					<p class="selfdrive-desc">
 						{s.sd2Desc}
 					</p>
-					<a href={localizePath('/rent-with-skipper', lang)} class="selfdrive-cta">{s.ctaViewMore}</a>
+					<a href={localizePath('/rent-with-skipper', lang)} class="selfdrive-cta" aria-label={s.sd2Title}></a>
 				</div>
 			</div>
 		</section>
@@ -183,7 +183,7 @@ const c = useCommon(lang);
 					<p class="selfdrive-desc">
 						{s.sd3Desc}
 					</p>
-					<a href={localizePath('/private-yachting', lang)} class="selfdrive-cta">{s.ctaViewMore}</a>
+					<a href={localizePath('/private-yachting', lang)} class="selfdrive-cta" aria-label={s.sd3Title}></a>
 				</div>
 			</div>
 		</section>
@@ -209,7 +209,7 @@ const c = useCommon(lang);
 					<p class="selfdrive-desc">
 						{s.sd4Desc}
 					</p>
-					<a href={localizePath('/special-celebrations', lang)} class="selfdrive-cta">{s.ctaViewMore}</a>
+					<a href={localizePath('/special-celebrations', lang)} class="selfdrive-cta" aria-label={s.sd4Title}></a>
 				</div>
 			</div>
 		</section>
@@ -1200,19 +1200,20 @@ const c = useCommon(lang);
 	}
 	.selfdrive-cta {
 		display: inline-block;
-		padding: 0.9rem 2rem;
+		padding: 0.9rem 1.25rem;
 		background: #1a1a1a;
 		color: #fff;
-		font-size: 0.8rem;
-		font-weight: 600;
-		letter-spacing: 0.15em;
-		text-transform: uppercase;
+		font-size: 1.1rem;
+		line-height: 1;
 		text-decoration: none;
 		transition: background 0.2s, color 0.2s;
 		position: relative;
 		z-index: 1;
 		align-self: flex-end;
 		margin-top: 0.25rem;
+	}
+	.selfdrive-cta::after {
+		content: '→';
 	}
 	.selfdrive-cta:hover {
 		background: #333;

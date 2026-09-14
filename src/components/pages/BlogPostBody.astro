@@ -93,7 +93,7 @@ const canonical = `${SITE_URL}${p(basePath)}`;
 						{isFallback && (
 							<div class="post-fallback-notice" role="status">
 								<p>{s.fallbackNotice.replace('{language}', LOCALE_NAME[lang])}</p>
-								<a href={`/blog/${slug}`}>{s.fallbackNoticeCta}</a>
+								<a href={`/blog/${slug}/`}>{s.fallbackNoticeCta}</a>
 							</div>
 						)}
 						<div class="post-prose" itemprop="articleBody">
@@ -148,7 +148,7 @@ const canonical = `${SITE_URL}${p(basePath)}`;
 						<h2 class="related-title">{s.keepReading}</h2>
 						<div class="related-grid">
 							{related.map((r) => (
-								<a class="related-card" href={p(`/blog/${getBlogSlug(r)}`)}>
+								<a class="related-card" href={p(`/blog/${getBlogSlug(r)}/`)}>
 									<div class="related-card-image">
 										<img src={r.data.image} alt={r.data.imageAlt ?? r.data.title} width="400" height="260" loading="lazy" decoding="async" />
 									</div>
