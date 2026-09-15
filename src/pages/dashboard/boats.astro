@@ -426,7 +426,7 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 						<button type="button" class="sort-btn move-up" data-i="${i}" ${i === 0 ? 'disabled' : ''} title="Move up">&#9650;</button>
 						<button type="button" class="sort-btn move-down" data-i="${i}" ${i === boats.length - 1 ? 'disabled' : ''} title="Move down">&#9660;</button>
 					</td>
-					<td><img class="boat-thumb" src="${esc((b.imageUrls && b.imageUrls[0]) || b.imageUrl || '/images/self-drive-boat.png')}" alt="${esc(b.name)}" /></td>
+					<td><img class="boat-thumb" src="${esc((b.imageUrls && b.imageUrls[0]) || b.imageUrl || '/images/self-drive-boat.png')}" alt="${esc(b.name)}" onerror="this.onerror=null;this.src='/images/self-drive-boat.webp'" /></td>
 					<td><strong>${esc(b.name)}</strong>${b.modalName ? `<br><small style="color:#888">${esc(b.modalName)}</small>` : ''}</td>
 					<td>${b.maxPax}</td>
 					<td>&euro;${b.price4h}</td>

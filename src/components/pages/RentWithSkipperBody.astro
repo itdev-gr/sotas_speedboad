@@ -3,6 +3,7 @@ import Header from '../Header.astro';
 import Footer from '../Footer.astro';
 import { localizePath, type Locale } from '../../i18n/config';
 import { useCommon } from '../../i18n/common';
+import { withPublicBoatImages } from '../../lib/boat-images';
 import { rentWithSkipper } from '../../i18n/pages/rent-with-skipper';
 
 interface Props {
@@ -60,12 +61,17 @@ try {
 	const res = await fetch(`${base}/api/boats`);
 	const data = res.ok ? await res.json() : [];
 	boats = Array.isArray(data)
-		? data.map((boat) => ({
-				...boat,
-				skipperServices: Array.isArray(boat.skipperServices) ? boat.skipperServices : [],
-				skipperPrice4h: Number(boat.skipperPrice4h) || 0,
-				skipperPrice7h: Number(boat.skipperPrice7h) || 0,
-			}))
+		? data.map((boat) =>
+				withPublicBoatImages(
+					{
+						...boat,
+						skipperServices: Array.isArray(boat.skipperServices) ? boat.skipperServices : [],
+						skipperPrice4h: Number(boat.skipperPrice4h) || 0,
+						skipperPrice7h: Number(boat.skipperPrice7h) || 0,
+					},
+					'skipper',
+				),
+			)
 		: [];
 } catch {
 	boats = [];
@@ -92,7 +98,7 @@ try {
 				) : boats.map((boat) => (
 					<div class="speedboat-card">
 						<div class="speedboat-card-image">
-							<img src={boat.imageUrl || '/images/skipper-drive.webp'} alt={boat.name} width="400" height="280" />
+							<img src={boat.imageUrl || '/images/skipper-drive.webp'} alt={boat.name} width="400" height="280" onerror="this.onerror=null;this.src='/images/skipper-drive.webp'" />
 						</div>
 						<div class="speedboat-card-content">
 							<p class="speedboat-card-name">{boat.name}</p>
@@ -161,7 +167,7 @@ try {
 								<div class="includes-modal-carousel" data-carousel={boat.id}>
 									<div class="includes-modal-carousel-track">
 										{boat.imageUrls!.map((url, i) => (
-											<div class="includes-modal-carousel-slide"><img src={url} alt={`${boat.modalName} ${i + 1}`} width="400" height="280" /></div>
+											<div class="includes-modal-carousel-slide"><img src={url} alt={`${boat.modalName} ${i + 1}`} width="400" height="280" onerror="this.onerror=null;this.src='/images/skipper-drive.webp'" /></div>
 										))}
 									</div>
 									<button type="button" class="includes-modal-carousel-prev" data-carousel={boat.id} aria-label={s.prevImage}>&larr;</button>
@@ -172,7 +178,7 @@ try {
 							</div>
 						) : (
 							<div class="includes-modal-image">
-								<img src={boat.imageUrl || '/images/skipper-drive.webp'} alt={`${boat.name} - ${boat.modalName}`} width="400" height="280" />
+								<img src={boat.imageUrl || '/images/skipper-drive.webp'} alt={`${boat.name} - ${boat.modalName}`} width="400" height="280" onerror="this.onerror=null;this.src='/images/skipper-drive.webp'" />
 							</div>
 						)}
 						<div class="includes-modal-content">
@@ -457,6 +463,7 @@ try {
 		height: 220px;
 		overflow: hidden;
 		border-radius: 12px 12px 0 0;
+		background: #d9d2c7;
 	}
 	.speedboat-card-image img {
 		width: 100%;

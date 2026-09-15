@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import SEOHead from '../components/SEOHead.astro';
 import PhoneInput from '../components/PhoneInput.astro';
 import { filterLicenseFreeBoats } from '../lib/license-free-boats';
+import { withPublicBoatImages } from '../lib/boat-images';
 
 const boatId = Astro.url.searchParams.get('boat')?.trim() || null;
 const base = Astro.url.origin;
@@ -13,7 +14,9 @@ let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string
 try {
 	const res = await fetch(`${base}/api/boats`, { cache: 'no-store' });
 	const data = res.ok ? await res.json() : [];
-	boats = filterLicenseFreeBoats(Array.isArray(data) ? data : []);
+	boats = filterLicenseFreeBoats(Array.isArray(data) ? data : []).map((boat) =>
+		withPublicBoatImages(boat, 'license-free'),
+	);
 } catch {
 	boats = [];
 }
@@ -62,17 +65,17 @@ const boat = boatId ? boats.find((b) => b.id === boatId) : null;
 								<div class="book-page-media">
 									{boat.imageUrls && boat.imageUrls.length > 0 ? (
 										<div class="book-page-gallery">
-											<img src={boat.imageUrls[0]} alt={boat.name} width="600" height="400" class="book-page-main-image" />
+											<img src={boat.imageUrls[0]} alt={boat.name} width="600" height="400" class="book-page-main-image" onerror="this.onerror=null;this.src='/images/self-drive-boat.webp'" />
 											{boat.imageUrls.length > 1 && (
 												<div class="book-page-thumbs">
 													{boat.imageUrls.slice(0, 5).map((url, i) => (
-														<img src={url} alt={`${boat.name} ${i + 1}`} width="80" height="56" class="book-page-thumb" />
+														<img src={url} alt={`${boat.name} ${i + 1}`} width="80" height="56" class="book-page-thumb" onerror="this.onerror=null;this.src='/images/self-drive-boat.webp'" />
 													))}
 												</div>
 											)}
 										</div>
 									) : (
-										<img src={boat.imageUrl || '/images/self-drive-boat.png'} alt={boat.name} width="600" height="400" class="book-page-main-image" />
+										<img src={boat.imageUrl || '/images/self-drive-boat.png'} alt={boat.name} width="600" height="400" class="book-page-main-image" onerror="this.onerror=null;this.src='/images/self-drive-boat.webp'" />
 									)}
 								</div>
 								<!-- Boat details under the images -->

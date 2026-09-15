@@ -4,6 +4,7 @@ import Footer from '../Footer.astro';
 import { localizePath, type Locale } from '../../i18n/config';
 import { useCommon } from '../../i18n/common';
 import { filterLicenseFreeBoats } from '../../lib/license-free-boats';
+import { withPublicBoatImages } from '../../lib/boat-images';
 import { licenseFree } from '../../i18n/pages/license-free-rent';
 
 interface Props {
@@ -18,7 +19,9 @@ let boats: Array<{ id: string; name: string; imageUrl: string; imageUrls: string
 try {
 	const res = await fetch(`${base}/api/boats`);
 	const data = res.ok ? await res.json() : [];
-	boats = filterLicenseFreeBoats(Array.isArray(data) ? data : []);
+	boats = filterLicenseFreeBoats(Array.isArray(data) ? data : []).map((boat) =>
+		withPublicBoatImages(boat, 'license-free'),
+	);
 } catch {
 	boats = [];
 }
@@ -44,7 +47,7 @@ try {
 				) : boats.map((boat) => (
 					<div class="speedboat-card">
 						<div class="speedboat-card-image">
-							<img src={boat.imageUrl || '/images/self-drive-boat.webp'} alt={boat.name} width="400" height="280" />
+							<img src={boat.imageUrl || '/images/self-drive-boat.webp'} alt={boat.name} width="400" height="280" onerror="this.onerror=null;this.src='/images/self-drive-boat.webp'" />
 						</div>
 						<div class="speedboat-card-content">
 							<p class="speedboat-card-name">{boat.name}</p>
@@ -113,7 +116,7 @@ try {
 								<div class="includes-modal-carousel" data-carousel={boat.id}>
 									<div class="includes-modal-carousel-track">
 										{boat.imageUrls!.map((url, i) => (
-											<div class="includes-modal-carousel-slide"><img src={url} alt={`${boat.modalName} ${i + 1}`} width="400" height="280" /></div>
+											<div class="includes-modal-carousel-slide"><img src={url} alt={`${boat.modalName} ${i + 1}`} width="400" height="280" onerror="this.onerror=null;this.src='/images/self-drive-boat.webp'" /></div>
 										))}
 									</div>
 									<button type="button" class="includes-modal-carousel-prev" data-carousel={boat.id} aria-label={s.prevImage}>&larr;</button>
@@ -124,7 +127,7 @@ try {
 							</div>
 						) : (
 							<div class="includes-modal-image">
-								<img src={boat.imageUrl || '/images/self-drive-boat.webp'} alt={`${boat.name} - ${boat.modalName}`} width="400" height="280" />
+								<img src={boat.imageUrl || '/images/self-drive-boat.webp'} alt={`${boat.name} - ${boat.modalName}`} width="400" height="280" onerror="this.onerror=null;this.src='/images/self-drive-boat.webp'" />
 							</div>
 						)}
 						<div class="includes-modal-content">
@@ -409,6 +412,7 @@ try {
 		height: 220px;
 		overflow: hidden;
 		border-radius: 12px 12px 0 0;
+		background: #d9d2c7;
 	}
 	.speedboat-card-image img {
 		width: 100%;
